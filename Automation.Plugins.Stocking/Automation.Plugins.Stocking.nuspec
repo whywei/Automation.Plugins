@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://www.myget.org/gallery/thok</licenseUrl>
+    <projectUrl>https://www.myget.org/gallery/thok</projectUrl>
+    <iconUrl>https://www.myget.org/gallery/thok</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>Automation Plugins Stocking</tags>
+    <dependencies>
+      <dependency id="Automation.Plugins.MainPlugin" version="1.0.0.0" />
+      <dependency id="Automation.Service.OPC" version="1.0.0.0" />
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{479F2E9D-F211-4619-8521-C939760743E5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Automation.Plugins.AiOiTag</RootNamespace>
+    <AssemblyName>Automation.Plugins.AiOiTag</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\bin\Debug\Extensions\Packages\Automation.Plugins.AiOiTag\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\bin\Release\Extensions\Packages\Automation.Plugins.AiOiTag\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Automation.Core">
+      <HintPath>..\packages\Automation.Core.1.0.0.0\lib\net40-Client\Automation.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Automation.Service.OPC">
+      <HintPath>..\packages\Automation.Service.OPC.1.0.0.0\lib\net40\Automation.Service.OPC.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v13.1.Core, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DotSpatial.Controls">
+      <HintPath>..\packages\DotSpatial.Controls.1.6.0.0\lib\net40-Client\DotSpatial.Controls.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Data">
+      <HintPath>..\packages\DotSpatial.Data.1.6.0.0\lib\net40-Client\DotSpatial.Data.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Data.Forms">
+      <HintPath>..\packages\DotSpatial.Data.Forms.1.6.0.0\lib\net40-Client\DotSpatial.Data.Forms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Extensions">
+      <HintPath>..\packages\DotSpatial.Extensions.1.6.0.0\lib\net40-Client\DotSpatial.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Modeling.Forms">
+      <HintPath>..\packages\DotSpatial.Modeling.Forms.1.6.0.0\lib\net40-Client\DotSpatial.Modeling.Forms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Mono">
+      <HintPath>..\packages\DotSpatial.Mono.1.6.0.0\lib\net40-Client\DotSpatial.Mono.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Projections">
+      <HintPath>..\packages\DotSpatial.Projections.1.6.0.0\lib\net40-Client\DotSpatial.Projections.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Projections.Forms">
+      <HintPath>..\packages\DotSpatial.Projections.Forms.1.6.0.0\lib\net40-Client\DotSpatial.Projections.Forms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Serialization">
+      <HintPath>..\packages\DotSpatial.Serialization.1.6.0.0\lib\net40-Client\DotSpatial.Serialization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Symbology">
+      <HintPath>..\packages\DotSpatial.Symbology.1.6.0.0\lib\net40-Client\DotSpatial.Symbology.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Symbology.Forms">
+      <HintPath>..\packages\DotSpatial.Symbology.Forms.1.6.0.0\lib\net40-Client\DotSpatial.Symbology.Forms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Topology">
+      <HintPath>..\packages\DotSpatial.Topology.1.6.0.0\lib\net40-Client\DotSpatial.Topology.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Action\TagManagerAction.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\GlobalStrings.Designer.cs">
+      <DependentUpon>GlobalStrings.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Util\AiOiTag.cs" />
+    <Compile Include="View\Controls\SelectControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\SelectControl.Designer.cs">
+      <DependentUpon>SelectControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\SetControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\SetControl.Designer.cs">
+      <DependentUpon>SetControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\CmdDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\CmdDialog.Designer.cs">
+      <DependentUpon>CmdDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\ModifyIPDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\ModifyIPDialog.Designer.cs">
+      <DependentUpon>ModifyIPDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\SetAdressDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\SetAdressDialog.Designer.cs">
+      <DependentUpon>SetAdressDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TagPlugin.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\GlobalStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GlobalStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\SelectControl.resx">
+      <DependentUpon>SelectControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\SetControl.resx">
+      <DependentUpon>SetControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\CmdDialog.resx">
+      <DependentUpon>CmdDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\ModifyIPDialog.resx">
+      <DependentUpon>ModifyIPDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\SetAdressDialog.resx">
+      <DependentUpon>SetAdressDialog.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\PLC.xml" />
+    <Content Include="Resources\cmd_16x16.png" />
+    <Content Include="Resources\cmd_32x32.png" />
+    <Content Include="Resources\show_16x16.png" />
+    <Content Include="Resources\show_32x32.png" />
+    <Content Include="Resources\show_stop_16x16.png" />
+    <Content Include="Resources\show_stop_32x32.png" />
+    <Content Include="Resources\tag_set_16x16.png" />
+    <Content Include="Resources\tag_set_32x32.png" />
+    <Content Include="Serialize\Readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AiPlugControl">
+      <Guid>{C1F7FC6F-64FF-455A-A49B-C0B6F94AD82A}</Guid>
+      <VersionMajor>3</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AxAiPlugControl">
+      <Guid>{C1F7FC6F-64FF-455A-A49B-C0B6F94AD82A}</Guid>
+      <VersionMajor>3</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Nuget\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

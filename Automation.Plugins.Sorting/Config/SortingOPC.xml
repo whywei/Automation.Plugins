@@ -1,0 +1,83 @@
+﻿<?xml version='1.0' ?>
+<Config>
+  <OPCServer OPCServerHostIP="127.0.0.1" OPCServerHostName="" OPCServerName="OPC.SimaticNET">
+    <OPCGroups>
+      <OPCGroup GroupName="SortingOPC" GroupString="S7:[FJ-01]" Prefix="" FromSymbol="@" ToSymbol="@" IsTest="false" UpdateRate="350">
+        <!--A线订单请求位-->
+        <OPCItem ItemName="A_Order_Process_Request" ClientHandler="1" OPCItemName="DB2,INT0,1"  ItemType="READ" IsActive="true" />
+        <!--A线订单当前流水号-->
+        <OPCItem ItemName="A_Order_Process_Current" ClientHandler="2" OPCItemName="DB2,INT2,1"  ItemType="READ" IsActive="true" />
+        <!--A线订单校正流水号-->
+        <OPCItem ItemName="A_Order_Process_Check" ClientHandler="3" OPCItemName="DB2,INT4,1"  ItemType="READ" IsActive="true" />
+        <!--A线订单缺烟烟仓地址-->
+        <OPCItem ItemName="A_Order_Process_Lack" ClientHandler="4" OPCItemName="DB2,INT6,1"  ItemType="READ" IsActive="true" />
+        <!--A线订单下个流水号-->
+        <OPCItem ItemName="A_Order_Process_Next" ClientHandler="5" OPCItemName="DB2,INT8,1"  ItemType="READ" IsActive="false" />
+        <!--A线订单缓存段信息-->
+        <OPCItem ItemName="A_Order_Process_Cache" ClientHandler="6" OPCItemName="DB2,INT10,3"  ItemType="READ" IsActive="false" />
+        <!--A线订单更新流水号-->
+        <OPCItem ItemName="A_Order_Update" ClientHandler="7" OPCItemName="DB2,INT16,1"  ItemType="WRITE" IsActive="true" />
+        <!--A线烟仓交换信息-->
+        <OPCItem ItemName="A_Channel_Change" ClientHandler="8" OPCItemName="DB2,INT18,3"  ItemType="WRITE" IsActive="true" />
+        <!--A线LED盘点烟仓出烟量-->
+        <OPCItem ItemName="A_Led_Process_Check" ClientHandler="9" OPCItemName="DB7,INT0,70"  ItemType="READ" IsActive="false" />
+        <!--A线烟仓空仓流水号-->
+        <OPCItem ItemName="A_Channel_SortNo" ClientHandler="10" OPCItemName="DB8,INT0,70"  ItemType="WRITE" IsActive="true" />
+        <!--A线订单下单信息-->
+        <OPCItem ItemName="A_Order_Data" ClientHandler="11" OPCItemName="DB10,INT0,97"  ItemType="WRITE" IsActive="true" />
+
+        <!--B线订单请求位-->
+        <OPCItem ItemName="B_Order_Process_Request" ClientHandler="12" OPCItemName="DB22,INT0,1"  ItemType="READ" IsActive="true" />
+        <!--B线订单当前流水号-->
+        <OPCItem ItemName="B_Order_Process_Current" ClientHandler="13" OPCItemName="DB22,INT2,1"  ItemType="READ" IsActive="true" />
+        <!--B线订单校正流水号-->
+        <OPCItem ItemName="B_Order_Process_Check" ClientHandler="14" OPCItemName="DB22,INT4,1"  ItemType="READ" IsActive="true" />
+        <!--B线订单缺烟烟仓地址-->
+        <OPCItem ItemName="B_Order_Process_Lack" ClientHandler="15" OPCItemName="DB22,INT6,1"  ItemType="READ" IsActive="true" />
+        <!--B线订单下个流水号-->
+        <OPCItem ItemName="B_Order_Process_Next" ClientHandler="16" OPCItemName="DB22,INT8,1"  ItemType="READ" IsActive="false" />
+        <!--B线订单缓存段信息-->
+        <OPCItem ItemName="B_Order_Process_Cache" ClientHandler="17" OPCItemName="DB22,INT10,3"  ItemType="READ" IsActive="false" />
+        <!--B线订单更新流水号-->
+        <OPCItem ItemName="B_Order_Update" ClientHandler="18" OPCItemName="DB22,INT16,1"  ItemType="WRITE" IsActive="true" />
+        <!--B线烟仓交换信息-->
+        <OPCItem ItemName="B_Channel_Change" ClientHandler="19" OPCItemName="DB22,INT18,3"  ItemType="WRITE" IsActive="true" />
+        <!--B线LED盘点烟仓出烟量-->
+        <OPCItem ItemName="B_Led_Process_Check" ClientHandler="20" OPCItemName="DB27,INT0,70"  ItemType="READ" IsActive="false" />
+        <!--B线烟仓空仓流水号-->
+        <OPCItem ItemName="B_Channel_SortNo" ClientHandler="21" OPCItemName="DB28,INT0,70"  ItemType="WRITE" IsActive="true" />
+        <!--B线订单下单信息-->
+        <OPCItem ItemName="B_Order_Data" ClientHandler="22" OPCItemName="DB30,INT0,97"  ItemType="WRITE" IsActive="true" />
+
+        <!--重新分拣标识位-->
+        <OPCItem ItemName="Picking_Restart" ClientHandler="23" OPCItemName="DB100,INT0,1"  ItemType="WRITE" IsActive="true" />
+        <!--却换线路标识位-->
+        <OPCItem ItemName="Route_Change" ClientHandler="24" OPCItemName="DB100,INT2,1"  ItemType="WRITE" IsActive="true" />
+        <!--设备运行故障位-->
+        <OPCItem ItemName="Devices_Process_Status" ClientHandler="25" OPCItemName="DB100,INT6,1"  ItemType="READ" IsActive="true" />
+        <!--设备运行时间位-->
+        <OPCItem ItemName="Devices_Process_Time" ClientHandler="26" OPCItemName="DB100,INT8,1"  ItemType="READ" IsActive="true" />
+
+        <!--B线订单缓存段信息-->
+        <OPCItem ItemName="Cache_Process_1" ClientHandler="27" OPCItemName="DB100,INT10,2"  ItemType="READ" IsActive="false" />
+        <OPCItem ItemName="Cache_Process_2" ClientHandler="28" OPCItemName="DB100,INT14,2"  ItemType="READ" IsActive="false" />
+        <OPCItem ItemName="Cache_Process_3" ClientHandler="29" OPCItemName="DB100,INT22,2"  ItemType="READ" IsActive="false" />
+        <OPCItem ItemName="Cache_Process_4" ClientHandler="30" OPCItemName="DB100,INT26,2"  ItemType="READ" IsActive="false" />
+
+        <!--包装机请求信息-->
+        <OPCItem ItemName="Pick_Process_Read" ClientHandler="31" OPCItemName="DB100,INT30,2"  ItemType="READ" IsActive="false" />
+        <!--包装机信息-->
+        <OPCItem ItemName="Pick_Process_Write" ClientHandler="32" OPCItemName="DB100,INT34,2"  ItemType="WRITE" IsActive="true" />
+
+        <!--空仓重发请求位-->
+        <OPCItem ItemName="Channel_Process_Request" ClientHandler="33" OPCItemName="DB100,INT38,1"  ItemType="READ" IsActive="false" />
+
+        <!--A线卷烟宽度-->
+        <!--<OPCItem ItemName="A_Channel_CigaretteWidth" ClientHandler="34" OPCItemName="DB200,INT0,70"  ItemType="WRITE" IsActive="true" />-->
+        <!--B线卷烟宽度-->
+        <!--<OPCItem ItemName="B_Channel_CigaretteWidth" ClientHandler="35" OPCItemName="DB201,INT0,70"  ItemType="WRITE" IsActive="true" />-->
+
+      </OPCGroup>
+    </OPCGroups>
+  </OPCServer>
+</Config>

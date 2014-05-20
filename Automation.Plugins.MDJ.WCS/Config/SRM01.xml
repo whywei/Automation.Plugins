@@ -1,0 +1,68 @@
+﻿<?xml version='1.0' ?>
+<Config>
+  <OPCServer OPCServerHostIP="127.0.0.1" OPCServerHostName="" OPCServerName="OPC.SimaticNET" HasHeartbeat="true">
+    <OPCGroups>
+      <OPCGroup GroupName="SRM01" GroupString="S7:[SRM01]" Prefix="" FromSymbol="," ToSymbol="," IsTest="false" UpdateRate="350">
+        <!--连接检查-->
+        <OPCItem ItemName="b_O_HandShake" ClientHandler="1" OPCItemName="DB540,X0.0"  ItemType="WRITE" />
+        <!--堆垛机操作-->
+        <OPCItem ItemName="b_O_Reset" ClientHandler="2" OPCItemName="DB540,X0.2"  ItemType="WRITE" />
+        <OPCItem ItemName="b_O_Initialize" ClientHandler="3" OPCItemName="DB540,X0.4"  ItemType="WRITE" />
+        <OPCItem ItemName="b_O_Auto" ClientHandler="4" OPCItemName="DB540,X0.1"  ItemType="WRITE" />
+        <!--报警与警告-->
+        <OPCItem ItemName="b_O_Acknowledge" ClientHandler="5" OPCItemName="DB540,X0.3"  ItemType="WRITE" />
+        <!--任务执行交互-->
+        <OPCItem ItemName="n_O_Task_Data_Position1" ClientHandler="6" OPCItemName="DB540,DINT4,2"  ItemType="WRITE" />
+        <OPCItem ItemName="n_O_Task_Data_Type1" ClientHandler="7" OPCItemName="DB540,INT12"  ItemType="WRITE" />
+        <OPCItem ItemName="n_O_Task_Data_Position2" ClientHandler="8" OPCItemName="DB540,DINT14,2"  ItemType="WRITE" />
+        <OPCItem ItemName="n_O_Task_Data_Type2" ClientHandler="9" OPCItemName="DB540,INT22"  ItemType="WRITE" />
+        <OPCItem ItemName="b_O_New_Task" ClientHandler="10" OPCItemName="DB540,X0.5"  ItemType="WRITE" />
+        <OPCItem ItemName="b_O_Cancel_Task" ClientHandler="11" OPCItemName="DB540,X0.6"  ItemType="WRITE" />
+        <OPCItem ItemName="b_O_Get_Permit" ClientHandler="12" OPCItemName="DB540,X0.7"  ItemType="WRITE" />
+        <OPCItem ItemName="b_O_Put_Permit" ClientHandler="13" OPCItemName="DB540,X1.0"  ItemType="WRITE" />
+        <!--连接检查-->
+        <OPCItem ItemName="b_I_HandShake" ClientHandler="14" OPCItemName="DB541,X0.0"  ItemType="READ" />
+        <!--堆垛机操作模式指示-->
+        <OPCItem ItemName="b_I_Local" ClientHandler="15" OPCItemName="DB541,X0.5"  ItemType="READ" />
+        <OPCItem ItemName="b_I_Manual_Control" ClientHandler="16" OPCItemName="DB541,X0.6"  ItemType="READ" />
+        <OPCItem ItemName="b_I_Auto" ClientHandler="17" OPCItemName="DB541,X0.7"  ItemType="READ" />
+        <!--报警与警告-->
+        <OPCItem ItemName="b_I_Alarm" ClientHandler="18" OPCItemName="DB541,X1.0"  ItemType="READ" />
+        <OPCItem ItemName="b_I_Warning" ClientHandler="19" OPCItemName="DB541,X1.1"  ItemType="READ" />
+        <OPCItem ItemName="n_I_AlarmCode" ClientHandler="20" OPCItemName="DB541,INT6"  ItemType="READ" />
+        <!--任务执行交互-->
+        <OPCItem ItemName="b_I_Get_Request" ClientHandler="21" OPCItemName="DB541,X0.1"  ItemType="READ" />
+        <OPCItem ItemName="b_I_Put_Request" ClientHandler="22" OPCItemName="DB541,X0.2"  ItemType="READ" />
+        <OPCItem ItemName="b_I_Get_Finish" ClientHandler="23" OPCItemName="DB541,X0.3"  ItemType="READ" />
+        <OPCItem ItemName="b_I_Put_Finish" ClientHandler="24" OPCItemName="DB541,X0.4"  ItemType="READ" />
+        <OPCItem ItemName="b_I_Task_Finish" ClientHandler="25" OPCItemName="DB541,X1.2"  ItemType="READ" />
+        <OPCItem ItemName="n_I_State" ClientHandler="26" OPCItemName="DB541,INT8"  ItemType="READ" />
+        <!--设备位置状态信息-->
+        <OPCItem ItemName="b_I_Loaded" ClientHandler="27" OPCItemName="DB541,X1.3"  ItemType="READ" />
+        <OPCItem ItemName="b_I_Fork_Zero" ClientHandler="28" OPCItemName="DB541,X1.4"  ItemType="READ" />
+        <OPCItem ItemName="b_I_UpFork_SW_Left" ClientHandler="29" OPCItemName="DB541,X1.5"  ItemType="READ" />
+        <OPCItem ItemName="b_I_UpFork_SW_Right" ClientHandler="30" OPCItemName="DB541,X1.6"  ItemType="READ" />
+        <OPCItem ItemName="b_I_Fork_SW_Left" ClientHandler="31" OPCItemName="DB541,X1.7"  ItemType="READ" />
+        <OPCItem ItemName="b_I_Fork_SW_Right" ClientHandler="32" OPCItemName="DB541,X2.0"  ItemType="READ" />
+        <OPCItem ItemName="n_I_TravelPos" ClientHandler="33" OPCItemName="DB541,DINT10"  ItemType="READ" />
+        <OPCItem ItemName="n_I_LiftPos" ClientHandler="34" OPCItemName="DB541,DINT14"  ItemType="READ" />
+        <OPCItem ItemName="n_I_ForkPos_Single" ClientHandler="35" OPCItemName="DB541,INT18"  ItemType="READ" />
+        <OPCItem ItemName="n_I_ForkPos_Double" ClientHandler="36" OPCItemName="DB541,INT20"  ItemType="READ" />
+        <OPCItem ItemName="n_I_ForkType" ClientHandler="37" OPCItemName="DB541,INT22"  ItemType="READ" />
+        <!--设备运行信息-->
+        <OPCItem ItemName="r_I_Speed_Travel" ClientHandler="38" OPCItemName="DB541,REAL30"  ItemType="READ" />
+        <OPCItem ItemName="r_I_Frequency_Travel" ClientHandler="39" OPCItemName="DB541,REAL34"  ItemType="READ" />
+        <OPCItem ItemName="r_I_Current_Travel" ClientHandler="40" OPCItemName="DB541,REAL38"  ItemType="READ" />
+        <OPCItem ItemName="r_I_Torque_Travel" ClientHandler="41" OPCItemName="DB541,REAL42"  ItemType="READ" />
+        <OPCItem ItemName="r_I_Speed_Lift" ClientHandler="42" OPCItemName="DB541,REAL46"  ItemType="READ" />
+        <OPCItem ItemName="r_I_Frequency_Lift" ClientHandler="43" OPCItemName="DB541,REAL50"  ItemType="READ" />
+        <OPCItem ItemName="r_I_Current_Lift" ClientHandler="44" OPCItemName="DB541,REAL54"  ItemType="READ" />
+        <OPCItem ItemName="r_I_Torque_Lift" ClientHandler="45" OPCItemName="DB541,REAL58"  ItemType="READ" />
+        <OPCItem ItemName="r_I_Speed_Fork" ClientHandler="46" OPCItemName="DB541,REAL62"  ItemType="READ" />
+        <OPCItem ItemName="r_I_Frequency_Fork" ClientHandler="47" OPCItemName="DB541,REAL66"  ItemType="READ" />
+        <OPCItem ItemName="r_I_Current_Fork" ClientHandler="48" OPCItemName="DB541,REAL70"  ItemType="READ" />
+        <OPCItem ItemName="r_I_Torque_Fork" ClientHandler="49" OPCItemName="DB541,REAL74"  ItemType="READ" />
+      </OPCGroup>
+    </OPCGroups>
+  </OPCServer>
+</Config>

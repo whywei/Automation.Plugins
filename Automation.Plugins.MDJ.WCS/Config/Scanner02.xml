@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<Config>
+  <Scanner>
+    <SerialPort PortName="COM1" BaudRate="9600" Parity="None" DataBits="8" StopBits="One" IsHex="false" />
+    <Parse Type="Automation.Service.BarcodeReader.BarcodeParse" HeadChar="0" TailChar="13" Separator="}" />
+  </Scanner>
+</Config>

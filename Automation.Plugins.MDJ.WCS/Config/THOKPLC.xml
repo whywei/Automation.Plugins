@@ -1,0 +1,89 @@
+﻿<?xml version='1.0' ?>
+<Config>
+  <OPCServer OPCServerHostIP="192.168.2.56" OPCServerHostName="" OPCServerName="OPC.SimaticNET" Real="OPC.SimaticNET" Test="Matrikon.OPC.Simulation.1">
+    <OPCGroups>
+      <OPCGroup GroupName="THOKPLC" GroupString="S7:[THOK]" Prefix="" FromSymbol="," ToSymbol="," IsTest="false" UpdateRate="350">
+        <!--空托盘回收叠垛请求-->
+        <OPCItem ItemName="I_Empty_Pallet_Stack_Request" OPCItemName="DB1,INT500,1"  ItemType="READ" IsActive="true"/>
+        <OPCItem ItemName="O_Empty_Pallet_Stack_Process_Complete" OPCItemName="DB1,INT502,1" ItemType="WRITE"/>
+        <!--空托盘出库请求、空托盘移库请求-->
+        <OPCItem ItemName="I_Empty_Pallet_Supply_Request" OPCItemName="DB1,INT504,1"  ItemType="READ" IsActive="true"/>
+        <OPCItem ItemName="O_Empty_Pallet_Supply_Process_Complete" OPCItemName="DB1,INT506,1" ItemType="WRITE"/>
+        <!--申报任务到位-->
+        <OPCItem ItemName="I_Task_Arrive_Process_Request1" OPCItemName="DB1,INT510,2"  ItemType="READ" IsActive="true"/>
+        <OPCItem ItemName="O_Task_Arrive_Process_Complete1" OPCItemName="DB1,INT514,2" ItemType="WRITE"/>
+        <OPCItem ItemName="I_Task_Arrive_Process_Request2" OPCItemName="DB1,INT518,2"  ItemType="READ" IsActive="true"/>
+        <OPCItem ItemName="O_Task_Arrive_Process_Complete2" OPCItemName="DB1,INT522,2" ItemType="WRITE"/>
+        <OPCItem ItemName="I_Task_Arrive_Process_Request3" OPCItemName="DB1,INT526,2"  ItemType="READ" IsActive="true"/>
+        <OPCItem ItemName="O_Task_Arrive_Process_Complete3" OPCItemName="DB1,INT530,2" ItemType="WRITE"/>
+        <OPCItem ItemName="I_Task_Arrive_Process_Request4" OPCItemName="DB1,INT534,2"  ItemType="READ" IsActive="true"/>
+        <OPCItem ItemName="O_Task_Arrive_Process_Complete4" OPCItemName="DB1,INT538,2" ItemType="WRITE"/>
+        <OPCItem ItemName="I_Task_Arrive_Process_Request5" OPCItemName="DB1,INT542,2"  ItemType="READ" IsActive="true"/>
+        <OPCItem ItemName="O_Task_Arrive_Process_Complete5" OPCItemName="DB1,INT546,2" ItemType="WRITE"/>
+        <OPCItem ItemName="I_Task_Arrive_Process_Request6" OPCItemName="DB1,INT550,2"  ItemType="READ" IsActive="true"/>
+        <OPCItem ItemName="O_Task_Arrive_Process_Complete6" OPCItemName="DB1,INT554,2" ItemType="WRITE"/>
+        <OPCItem ItemName="I_Task_Arrive_Process_Request7" OPCItemName="DB1,INT558,2"  ItemType="READ" IsActive="true"/>
+        <OPCItem ItemName="O_Task_Arrive_Process_Complete7" OPCItemName="DB1,INT562,2" ItemType="WRITE"/>
+        <OPCItem ItemName="I_Task_Arrive_Process_Request8" OPCItemName="DB1,INT566,2"  ItemType="READ" IsActive="true"/>
+        <OPCItem ItemName="O_Task_Arrive_Process_Complete8" OPCItemName="DB1,INT570,2" ItemType="WRITE"/>
+        <!--申请分配任务-->
+        <OPCItem ItemName="I_StockIn_Task_Info_Request" OPCItemName="DB1,INT222,2"  ItemType="READ" IsActive="true"/>
+        <OPCItem ItemName="O_StockIn_Task_Info" OPCItemName="DB1,INT226,3" ItemType="WRITE"/>
+        <OPCItem ItemName="I_StockIn_Task_Info" OPCItemName="DB1,INT232,3"  ItemType="READ"/>
+        <OPCItem ItemName="O_StockIn_Task_Info_Complete" OPCItemName="DB1,INT238,1" ItemType="WRITE"/>
+        <!--请求整盘入库扫码-->
+        <OPCItem ItemName="I_Whole_Pallet_StockIn_Scan_Request" OPCItemName="DB1,INT240,1"  ItemType="READ" IsActive="true"/>
+        <OPCItem ItemName="O_Whole_Pallet_StockIn_Task_Info" OPCItemName="DB1,INT242,3" ItemType="WRITE"/>
+        <OPCItem ItemName="I_Whole_Pallet_StockIn_Task_Info" OPCItemName="DB1,INT248,3"  ItemType="READ"/>
+        <OPCItem ItemName="O_Whole_Pallet_StockIn_Task_Info_Complete" OPCItemName="DB1,INT254,1" ItemType="WRITE"/>
+        <!--件烟扫码-->
+        <OPCItem ItemName="O_StockIn_Scan_Info" OPCItemName="DB1,INT600,7" ItemType="WRITE"/>
+        <OPCItem ItemName="I_StockIn_Scan_Info" OPCItemName="DB1,INT620,7"  ItemType="READ"/>
+        <OPCItem ItemName="O_StockIn_Scan_Complete" OPCItemName="DB1,INT640,1" ItemType="WRITE"/>
+        <OPCItem ItemName="O_StockIn_Scan_Cancel" OPCItemName="DB1,INT642,1" ItemType="WRITE"/>
+        <OPCItem ItemName="O_Stockin_Scan_Alarm" OPCItemName="DB1,INT644,1" ItemType="WRITE"/>
+        <!--1号堆垛机-->
+        <OPCItem ItemName="O_S01_Get_Request" OPCItemName="DB1,INT300,2" ItemType="WRITE"/>
+        <OPCItem ItemName="I_S01_Get_Allow" OPCItemName="DB1,INT304,2"  ItemType="READ"/>
+        <OPCItem ItemName="O_S01_Get_Complete" OPCItemName="DB1,INT308,2" ItemType="WRITE"/>
+        <OPCItem ItemName="O_S01_Put_Request" OPCItemName="DB1,INT312,2" ItemType="WRITE"/>
+        <OPCItem ItemName="I_S01_Put_Allow" OPCItemName="DB1,INT316,2"  ItemType="READ"/>
+        <OPCItem ItemName="O_S01_Put_Complete" OPCItemName="DB1,INT320,8" ItemType="WRITE"/>
+        <OPCItem ItemName="O_S01_Task_Cancel" OPCItemName="DB1,INT336,1" ItemType="WRITE"/>
+        <!--2号堆垛机-->
+        <OPCItem ItemName="O_S02_Get_Request" OPCItemName="DB1,INT350,2" ItemType="WRITE"/>
+        <OPCItem ItemName="I_S02_Get_Allow" OPCItemName="DB1,INT354,2"  ItemType="READ"/>
+        <OPCItem ItemName="O_S02_Get_Complete" OPCItemName="DB1,INT358,2" ItemType="WRITE"/>
+        <OPCItem ItemName="O_S02_Put_Request" OPCItemName="DB1,INT362,2" ItemType="WRITE"/>
+        <OPCItem ItemName="I_S02_Put_Allow" OPCItemName="DB1,INT366,2"  ItemType="READ"/>
+        <OPCItem ItemName="O_S02_Put_Complete" OPCItemName="DB1,INT370,8" ItemType="WRITE"/>
+        <OPCItem ItemName="O_S02_Task_Cancel" OPCItemName="DB1,INT386,1" ItemType="WRITE"/>
+        <!--3号堆垛机-->
+        <OPCItem ItemName="O_S03_Get_Request" OPCItemName="DB1,INT400,2" ItemType="WRITE"/>
+        <OPCItem ItemName="I_S03_Get_Allow" OPCItemName="DB1,INT404,2"  ItemType="READ"/>
+        <OPCItem ItemName="O_S03_Get_Complete" OPCItemName="DB1,INT408,2" ItemType="WRITE"/>
+        <OPCItem ItemName="O_S03_Put_Request" OPCItemName="DB1,INT412,2" ItemType="WRITE"/>
+        <OPCItem ItemName="I_S03_Put_Allow" OPCItemName="DB1,INT416,2"  ItemType="READ"/>
+        <OPCItem ItemName="O_S03_Put_Complete" OPCItemName="DB1,INT420,8" ItemType="WRITE"/>
+        <OPCItem ItemName="O_S03_Task_Cancel" OPCItemName="DB1,INT436,1" ItemType="WRITE"/>
+        <!--4号堆垛机-->
+        <OPCItem ItemName="O_S04_Get_Request" OPCItemName="DB1,INT450,2" ItemType="WRITE"/>
+        <OPCItem ItemName="I_S04_Get_Allow" OPCItemName="DB1,INT454,2"  ItemType="READ"/>
+        <OPCItem ItemName="O_S04_Get_Complete" OPCItemName="DB1,INT458,2" ItemType="WRITE"/>
+        <OPCItem ItemName="O_S04_Put_Request" OPCItemName="DB1,INT462,2" ItemType="WRITE"/>
+        <OPCItem ItemName="I_S04_Put_Allow" OPCItemName="DB1,INT466,2"  ItemType="READ"/>
+        <OPCItem ItemName="O_S04_Put_Complete" OPCItemName="DB1,INT470,8" ItemType="WRITE"/>
+        <OPCItem ItemName="O_S04_Task_Cancel" OPCItemName="DB1,INT486,1" ItemType="WRITE"/>
+        <!--1号堆垛机 out 1005-->
+        <OPCItem ItemName="O_S01_Path_Request" OPCItemName="DB1,INT264,2" ItemType="WRITE"/>
+        <OPCItem ItemName="I_S01_Path_Allow" OPCItemName="DB1,INT268,2" ItemType="READ"/>
+        <!--3号堆垛机 out 1002-->
+        <OPCItem ItemName="O_S03_Path_Request" OPCItemName="DB1,INT272,2" ItemType="WRITE"/>
+        <OPCItem ItemName="I_S03_Path_Allow" OPCItemName="DB1,INT276,2" ItemType="READ"/>
+        <!--缺烟紧急拆盘位，请求提高任务优先级-->
+        <OPCItem ItemName="I_Upgrade_Task_Level_Request1" OPCItemName="DB1,INT574,1"  ItemType="READ" IsActive="true"/>
+        <OPCItem ItemName="I_Upgrade_Task_Level_Request2" OPCItemName="DB1,INT576,1"  ItemType="READ" IsActive="true"/>
+      </OPCGroup>
+    </OPCGroups>
+  </OPCServer>
+</Config>

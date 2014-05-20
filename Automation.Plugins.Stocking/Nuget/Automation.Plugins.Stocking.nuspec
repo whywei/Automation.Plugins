@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Automation.Plugins.Stocking</id>
+    <version>1.0.0.0</version>
+    <title>Automation.Plugins.Stocking</title>
+    <authors>thok</authors>
+    <owners>thok</owners>
+    <licenseUrl>https://www.myget.org/gallery/thok</licenseUrl>
+    <projectUrl>https://www.myget.org/gallery/thok</projectUrl>
+    <iconUrl>https://www.myget.org/gallery/thok</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Automation.Plugins.Stocking</description>
+    <releaseNotes />
+    <copyright>Copyright 2014</copyright>
+    <tags>Automation Plugins Stocking</tags>
+    <dependencies>
+      <dependency id="Automation.Plugins.MainPlugin" version="1.0.0.0" />
+      <dependency id="Automation.Service.OPC" version="1.0.0.0" />
+      <dependency id="DBRabbit" version="1.0.4" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\..\..\..\bin\Release\Extensions\Packages\Automation.Plugins.Stocking\Automation.Plugins.Stocking.dll" target=""/>
+  </files>
+</package>

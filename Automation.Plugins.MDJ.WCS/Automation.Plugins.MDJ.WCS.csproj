@@ -1,0 +1,601 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A43932D2-68E8-476D-9AF9-59A20170EE58}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Automation.Plugins.MDJ.WCS</RootNamespace>
+    <AssemblyName>Automation.Plugins.MDJ.WCS</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\bin\Debug\Extensions\Packages\Automation.Plugins.MDJ.WCS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\bin\Release\Extensions\Packages\Automation.Plugins.MDJ.WCS\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Automation.Core">
+      <HintPath>..\packages\Automation.Core.1.0.0.0\lib\net40-Client\Automation.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Automation.Service.OPC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Automation.Service.OPC.1.0.0.0\lib\net40\Automation.Service.OPC.dll</HintPath>
+    </Reference>
+    <Reference Include="DBRabbit, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DBRabbit.1.0.3\lib\DBRabbit.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Docs.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v13.1.Core, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v13.1.Core, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v13.1.Core, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpf.Core.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPivotGrid.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v13.1.Core, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DotSpatial.Controls">
+      <HintPath>..\packages\DotSpatial.Controls.1.6.0.0\lib\net40-Client\DotSpatial.Controls.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Data">
+      <HintPath>..\packages\DotSpatial.Data.1.6.0.0\lib\net40-Client\DotSpatial.Data.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Data.Forms">
+      <HintPath>..\packages\DotSpatial.Data.Forms.1.6.0.0\lib\net40-Client\DotSpatial.Data.Forms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Extensions">
+      <HintPath>..\packages\DotSpatial.Extensions.1.6.0.0\lib\net40-Client\DotSpatial.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Modeling.Forms">
+      <HintPath>..\packages\DotSpatial.Modeling.Forms.1.6.0.0\lib\net40-Client\DotSpatial.Modeling.Forms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Mono">
+      <HintPath>..\packages\DotSpatial.Mono.1.6.0.0\lib\net40-Client\DotSpatial.Mono.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Projections">
+      <HintPath>..\packages\DotSpatial.Projections.1.6.0.0\lib\net40-Client\DotSpatial.Projections.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Projections.Forms">
+      <HintPath>..\packages\DotSpatial.Projections.Forms.1.6.0.0\lib\net40-Client\DotSpatial.Projections.Forms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Serialization">
+      <HintPath>..\packages\DotSpatial.Serialization.1.6.0.0\lib\net40-Client\DotSpatial.Serialization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Symbology">
+      <HintPath>..\packages\DotSpatial.Symbology.1.6.0.0\lib\net40-Client\DotSpatial.Symbology.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Symbology.Forms">
+      <HintPath>..\packages\DotSpatial.Symbology.Forms.1.6.0.0\lib\net40-Client\DotSpatial.Symbology.Forms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Topology">
+      <HintPath>..\packages\DotSpatial.Topology.1.6.0.0\lib\net40-Client\DotSpatial.Topology.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="EnvDTE80, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESBasic, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DBRabbit.1.0.3\lib\ESBasic.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Spring.Rest, Version=1.1.1.35040, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spring.Rest.1.1.1\lib\net40-client\Spring.Rest.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Action\FileMenuAction.cs" />
+    <Compile Include="Action\HelpMenuAction.cs" />
+    <Compile Include="Action\SRMManagerAction.cs" />
+    <Compile Include="Action\ScanManagerAction.cs" />
+    <Compile Include="Dal\AlarmInfoDal.cs" />
+    <Compile Include="Dal\PositionDal.cs" />
+    <Compile Include="Dal\ProductDal.cs" />
+    <Compile Include="Dal\SRMDal.cs" />
+    <Compile Include="Dal\StorageDal.cs" />
+    <Compile Include="Dal\SupplyDal.cs" />
+    <Compile Include="Dal\TaskDal.cs" />
+    <Compile Include="Device\SRM.cs" />
+    <Compile Include="Device\TaskFactory\AbnormityTaskFactory.cs" />
+    <Compile Include="Device\TaskFactory\DefaultTaskFactory.cs" />
+    <Compile Include="Device\TaskFactory\ITaskFactory.cs" />
+    <Compile Include="Device\TaskFactory\SmallSpeciesTaskFactory.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Model\AlarmInfo.cs" />
+    <Compile Include="Model\CigaretteScanInfo.cs" />
+    <Compile Include="Model\SRMInfo.cs" />
+    <Compile Include="Model\SupplyInfo.cs" />
+    <Compile Include="Model\TagTaskInfo.cs" />
+    <Compile Include="Model\TaskInfo.cs" />
+    <Compile Include="FaultAlarm\SRMFaultAlarm.cs" />
+    <Compile Include="Options\Controls\HTTPParameterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Options\Controls\HTTPParameterControl.Designer.cs">
+      <DependentUpon>HTTPParameterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Options\Controls\StockDatabaseConnectionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Options\Controls\StockDatabaseConnectionPanel.Designer.cs">
+      <DependentUpon>StockDatabaseConnectionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Options\Controls\WCSDatabaseConnectionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Options\Controls\WCSDatabaseConnectionPanel.Designer.cs">
+      <DependentUpon>WCSDatabaseConnectionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Options\HTTPParameterOption.cs" />
+    <Compile Include="Options\StockDatabaseConnectionOption.cs" />
+    <Compile Include="Options\WCSDatabaseConnectionOption.cs" />
+    <Compile Include="Options\WCSParameterOption.cs" />
+    <Compile Include="Process\Pallet\EmptyPalletStackRequestProcess.cs" />
+    <Compile Include="Process\Pallet\EmptyPalletSupplyRequestProcess.cs" />
+    <Compile Include="Process\Scan\PiecesOfTobaccoScanProcess.cs" />
+    <Compile Include="Process\Scan\WholePalletScanProcess.cs" />
+    <Compile Include="Process\Scan\WholePalletScanRFIDProcess.cs" />
+    <Compile Include="Process\Scan\InventoryWholePalletScanProcess.cs" />
+    <Compile Include="Process\Scan\StockOutWholePalletScanProcess.cs" />
+    <Compile Include="Process\Scan\ScanCodeFaultResetProcess.cs" />
+    <Compile Include="Process\SRM\SRM01HeartbeatRequstProcess.cs" />
+    <Compile Include="Process\SRM\SRM02HeartbeatRequstProcess.cs" />
+    <Compile Include="Process\SRM\SRM03HeartbeatRequstProcess.cs" />
+    <Compile Include="Process\SRM\SRM04HeartbeatRequstProcess.cs" />
+    <Compile Include="Process\Task\AutoCreateMoveCellRequestProcess.cs" />
+    <Compile Include="Process\Task\TaskArriveDataProcess.cs" />
+    <Compile Include="Process\Task\TaskRequestProcess.cs" />
+    <Compile Include="Process\Task\WholePalletTaskRequestProcess.cs" />
+    <Compile Include="Process\Task\AutoCreateMoveBillRequestProcess.cs" />
+    <Compile Include="Process\Task\TaskArriveRequestProcess.cs" />
+    <Compile Include="Process\Task\UpgradeTaskLevelProcess.cs" />
+    <Compile Include="Process\Task\TaskFinishDataProcess.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Rest\RestClient.cs" />
+    <Compile Include="Rest\RestReturn.cs" />
+    <Compile Include="Service\BarcodeReaderSickService.cs" />
+    <Compile Include="Service\SRM01OPCService.cs" />
+    <Compile Include="Service\SRM02OPCService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Service\SRM03OPCService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Service\SRM04OPCService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Service\THOKOPCService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Service\BarcodeReaderSymbolService.cs" />
+    <Compile Include="View\Controls\ScanManagerPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\ScanManagerPanel.Designer.cs">
+      <DependentUpon>ScanManagerPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\SRMControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\SRMControl.Designer.cs">
+      <DependentUpon>SRMControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\SRMManagerPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\SRMManagerPanel.Designer.cs">
+      <DependentUpon>SRMManagerPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialogs\CreateScanTaskDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialogs\CreateScanTaskDialog.Designer.cs">
+      <DependentUpon>CreateScanTaskDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialogs\ScanDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialogs\ScanDialog.Designer.cs">
+      <DependentUpon>ScanDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialogs\UpdateBarcodeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialogs\UpdateBarcodeDialog.Designer.cs">
+      <DependentUpon>UpdateBarcodeDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialogs\InventoryDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialogs\InventoryDialog.Designer.cs">
+      <DependentUpon>InventoryDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialogs\StockOutDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialogs\StockOutDialog.Designer.cs">
+      <DependentUpon>StockOutDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SRMManagerView.cs" />
+    <Compile Include="View\ScanManagerView.cs" />
+    <Compile Include="WCSPlugin.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Automation.Service.AiOiTag\Automation.Service.AiOiTag.csproj">
+      <Project>{70B8C8D5-6279-40C7-847C-914D74A5DB6D}</Project>
+      <Name>Automation.Service.AiOiTag</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Automation.Service.BarcodeReader\Automation.Service.BarcodeReader.csproj">
+      <Project>{15498D63-D8E5-403B-A033-D87C48C3D6A6}</Project>
+      <Name>Automation.Service.BarcodeReader</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Options\Controls\HTTPParameterControl.resx">
+      <DependentUpon>HTTPParameterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Options\Controls\StockDatabaseConnectionPanel.resx">
+      <DependentUpon>StockDatabaseConnectionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Options\Controls\WCSDatabaseConnectionPanel.resx">
+      <DependentUpon>WCSDatabaseConnectionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\ScanManagerPanel.resx">
+      <DependentUpon>ScanManagerPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\SRMControl.resx">
+      <DependentUpon>SRMControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\SRMManagerPanel.resx">
+      <DependentUpon>SRMManagerPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialogs\CreateScanTaskDialog.resx">
+      <DependentUpon>CreateScanTaskDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialogs\ScanDialog.resx">
+      <DependentUpon>ScanDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialogs\UpdateBarcodeDialog.resx">
+      <DependentUpon>UpdateBarcodeDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialogs\InventoryDialog.resx">
+      <DependentUpon>InventoryDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialogs\StockOutDialog.resx">
+      <DependentUpon>StockOutDialog.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cursor_arrow_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cursor_arrow_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\deselect_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\deselect_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disk_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disk_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document_empty_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document_empty_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hand_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hand_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info_rhombus_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info_rhombus_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layer_add_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layer_add_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layer_remove_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layer_remove_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layer_save_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layer_save_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layout_delete_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layout_delete_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\measure_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\measure_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_as_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_as_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\select_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\select_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\table_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\table_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wms.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom_coordinate_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom_coordinate_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom_extend_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom_extend_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom_in_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom_in_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom_layer_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom_layer_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom_out_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom_out_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom_selection_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom_selection_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom_to_next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom_to_next_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom_to_previous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom_to_previous_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Readme\Spring.Rest.txt" />
+    <Content Include="Config\AiOiTagServer.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\PLC.xml" />
+    <Content Include="Config\Scanner01.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\Scanner02.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\SRM01.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\SRM02.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\SRM03.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\SRM04.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\THOKPLC.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Serialize\Readme.txt" />
+    <Content Include="TransactionScopeFactoryProviderConfig.xml" />
+    <None Include="Resources\add_16x16.png" />
+    <None Include="Resources\add_32x32.png" />
+    <None Include="Resources\pause_16x16.png" />
+    <None Include="Resources\pause_32x32.png" />
+    <None Include="Resources\refresh_16x16.png" />
+    <None Include="Resources\refresh_32x32.png" />
+    <None Include="Resources\scan_16x16.png" />
+    <None Include="Resources\scan_32x32.png" />
+    <None Include="Resources\scan_hand_16x16.png" />
+    <None Include="Resources\scan_hand_32x32.png" />
+    <None Include="Resources\stop_blue_32x32.png" />
+    <None Include="Resources\stop_blue_16x16.png" />
+    <None Include="Resources\scan_update_16x16.png" />
+    <None Include="Resources\scan_update_32x32.png" />
+    <None Include="Resources\auto_full_16x16.png" />
+    <None Include="Resources\auto_full_32x32.png" />
+    <None Include="Resources\auto_semi_16x16.png" />
+    <None Include="Resources\auto_semi_32x32.png" />
+    <None Include="Resources\init_16x16.png" />
+    <None Include="Resources\init_32x32.png" />
+    <None Include="Resources\reset_32x32.png" />
+    <None Include="Resources\cancel_16x16.png" />
+    <None Include="Resources\cancel_32x32.png" />
+    <None Include="Resources\reset_16x16.png" />
+    <None Include="Resources\cmd_16x16.png" />
+    <None Include="Resources\cmd_32x32.png" />
+    <None Include="Resources\cmd_test_16x16.png" />
+    <None Include="Resources\cmd_test_32x32.png" />
+    <None Include="Resources\show_16x16.png" />
+    <None Include="Resources\show_32x32.png" />
+    <None Include="Resources\show_stop_16x16.png" />
+    <None Include="Resources\show_stop_32x32.png" />
+    <None Include="Resources\tag_set_16x16.png" />
+    <None Include="Resources\tag_set_32x32.png" />
+    <None Include="Resources\help_32x32.png" />
+    <None Include="Resources\help_16x16.png" />
+    <None Include="Resources\help2_32x32.png" />
+    <None Include="Resources\help1_16x16.png" />
+    <None Include="Resources\help1_32x32.png" />
+    <None Include="Resources\help2_16x16.png" />
+    <None Include="Resources\position_32x32.png" />
+    <None Include="Resources\position_16x16.png" />
+    <None Include="Resources\position2_32x32.png" />
+    <None Include="Resources\position2_16x16.png" />
+    <None Include="Resources\set_16x16.png" />
+    <None Include="Resources\set_32x32.png" />
+    <None Include="Resources\param_set_16x16.png" />
+    <None Include="Resources\param_set_32x32.png" />
+    <None Include="Resources\warehouse_32x32.png" />
+    <None Include="Resources\warehouse_16x16.png" />
+    <None Include="Resources\update_size_32x32.png" />
+    <None Include="Resources\read_16x16.png" />
+    <None Include="Resources\read_32x32.png" />
+    <None Include="Resources\update_size_16x16.png" />
+    <None Include="Resources\stop_black_32x32.png" />
+    <None Include="Resources\stop_black_16x16.png" />
+    <None Include="Resources\scan_stop_32x32.png" />
+    <None Include="Resources\scan_stop_16x16.png" />
+    <None Include="Resources\error_reset_32x32.png" />
+    <None Include="Resources\error_reset_16x16.png" />
+    <None Include="Resources\finish_16x16.png" />
+    <None Include="Resources\finish_32x32.png" />
+    <None Include="Resources\refresh_stop_16x16.png" />
+    <None Include="Resources\refresh_stop_32x32.png" />
+    <None Include="Resources\unlocked_16x16.png" />
+    <Content Include="Resources\database_16.png" />
+    <None Include="Resources\HTTPParameter_16.png" />
+    <Content Include="Sql\stock\pro_get_supply_Info.sql" />
+    <Content Include="Sql\stock\pro_update_supply_Info.sql" />
+    <Content Include="Sql\wcs\pro_get_new_task_for_abnormity_stock_out.sql" />
+    <Content Include="Sql\wcs\pro_get_new_task_for_general.sql" />
+    <Content Include="Sql\wcs\pro_get_new_task_for_small_stock_out.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Nuget\" />
+    <Folder Include="Sql\data\" />
+    <Folder Include="View\Forms\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

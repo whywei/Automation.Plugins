@@ -1,0 +1,7 @@
+﻿<?xml version="1.0"?>
+<Config>
+  <AiOiTag>
+    <Controller IP="192.168.2.240" Port="5003"/>
+    <Parse Type="THOK.MCP.Service.Tag.AiOiTag.MessageParse" />
+  </AiOiTag>
+</Config>
