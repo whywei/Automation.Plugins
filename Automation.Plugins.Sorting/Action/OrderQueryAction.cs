@@ -23,16 +23,9 @@ namespace Automation.Plugins.Sorting.Action
 
         public override void Activate()
         {
-            IHeaderControl header = App.HeaderControl;
-            header.Add(new RootItem(rootKey, "订单查询") { SortOrder = 10001 });
-            App.HeaderControl.Add(new SimpleActionItem(rootKey,"刷新", OrderQueryRefresh_Click) { Key = "001" ,ToolTipText = "刷新分拣订单", GroupCaption = "分拣订单查询", LargeImage = Resources.refresh_32x32 });
+            this.Add(new RootItem(rootKey, "订单查询") { SortOrder = 10001 });
+            this.Add(new SimpleActionItem(rootKey,"刷新", OrderQueryRefresh_Click) { ToolTipText = "刷新分拣订单", GroupCaption = "分拣订单查询", LargeImage = Resources.refresh_32x32 });
             base.Activate();
-        }
-
-        public override void Deactivate()
-        {
-            App.HeaderControl.Remove("001");
-            base.Deactivate();
         }
 
         private void OrderQueryRefresh_Click(object sender, EventArgs e)
