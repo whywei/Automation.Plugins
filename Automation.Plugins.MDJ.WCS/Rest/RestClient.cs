@@ -11,11 +11,7 @@ namespace Automation.Plugins.MDJ.WCS.Rest
 {
     public class RestClient
     {
-        private const string memoryServiceName = "MemoryPermanentSingleDataService";
-        private const string memoryHttpUrl = "HttpUrl";
-        private const string httpUrl = "http://10.57.64.171:8080/TaskRest/";
-
-        XmlDocument doc = new XmlDocument();
+        public const string httpUrl = "http://10.57.64.171:8080/TaskRest/";
 
         private RestTemplate restTemplate;
 
@@ -27,15 +23,16 @@ namespace Automation.Plugins.MDJ.WCS.Rest
         public RestClient(string url = null)
         {
             string BaseUrl = string.Empty;
-            var state = Ops.Read<string>(memoryServiceName, memoryHttpUrl);
-            if (state != null)
+            var httpUrl = Properties.Settings.Default.HttpUrl;
+            if (!string.IsNullOrEmpty(httpUrl))
             {
-                BaseUrl = state;
+                BaseUrl = httpUrl;
             }
             else
             {
-                BaseUrl = httpUrl;
-                Ops.Write(memoryServiceName, memoryHttpUrl, BaseUrl);
+                BaseUrl = RestClient.httpUrl;
+                Properties.Settings.Default.HttpUrl = RestClient.httpUrl;
+                Properties.Settings.Default.Save();
             }
 
             BaseUrl = url ?? BaseUrl;

@@ -8,15 +8,12 @@ using Automation.Plugins.MDJ.WCS.Options.Controls;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using Automation.Core;
+using Automation.Plugins.MDJ.WCS.Rest;
 
 namespace Automation.Plugins.MDJ.WCS.Options
 {
     public class HTTPParameterOption:AbstractOption
     {
-        private const string memoryServiceName = "MemoryPermanentSingleDataService";
-        private const string memoryHttpUrl = "HttpUrl";
-        private const string httpUrl = "http://10.57.64.171:8080/TaskRest/";
-
         private Control control = null;
 
         public override void Initialize()
@@ -35,15 +32,16 @@ namespace Automation.Plugins.MDJ.WCS.Options
         private void LoadInfo()
         {
             string BaseUrl = string.Empty;
-            var state = Ops.Read<string>(memoryServiceName, memoryHttpUrl);
-            if (state != null)
+            var httpUrl = Properties.Settings.Default.HttpUrl;
+            if (!string.IsNullOrEmpty(httpUrl))
             {
-                BaseUrl = state;
+                BaseUrl = httpUrl;
             }
             else
             {
-                BaseUrl = httpUrl;
-                Ops.Write(memoryServiceName, memoryHttpUrl, BaseUrl);
+                BaseUrl = RestClient.httpUrl;
+                Properties.Settings.Default.HttpUrl = RestClient.httpUrl;
+                Properties.Settings.Default.Save();
             }
 
             ((HTTPParameterControl)control).txtHTTP.Text = BaseUrl;
@@ -53,7 +51,8 @@ namespace Automation.Plugins.MDJ.WCS.Options
         private void txtHTTP_EditValueChanged(object sender, EventArgs e)
         {
             string BaseUrl = ((HTTPParameterControl)control).txtHTTP.Text.Trim();
-            Ops.Write(memoryServiceName, memoryHttpUrl, BaseUrl);
+            Properties.Settings.Default.HttpUrl = BaseUrl;
+            Properties.Settings.Default.Save();
         }
     }
 }
