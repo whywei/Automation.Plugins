@@ -13,6 +13,7 @@ namespace Automation.Plugins.MDJ.WCS.Options
         {
             this.NodeName = "WCSParameterOption";
             this.Caption = "WCS系统参数";
+            this.Order = 2;
             this.NodeImage = Resources.set_address_16x16;
             this.ParentNodeName = "";
             base.Initialize();

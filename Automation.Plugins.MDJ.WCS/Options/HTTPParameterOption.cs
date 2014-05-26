@@ -7,11 +7,16 @@ using Automation.Plugins.MDJ.WCS.Properties;
 using Automation.Plugins.MDJ.WCS.Options.Controls;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Automation.Core;
 
 namespace Automation.Plugins.MDJ.WCS.Options
 {
     public class HTTPParameterOption:AbstractOption
     {
+        private const string memoryServiceName = "MemoryPermanentSingleDataService";
+        private const string memoryHttpUrl = "HttpUrl";
+        private const string httpUrl = "http://10.57.64.171:8080/TaskRest/";
+
         private Control control = null;
 
         public override void Initialize()
@@ -29,24 +34,26 @@ namespace Automation.Plugins.MDJ.WCS.Options
 
         private void LoadInfo()
         {
-            XElement doc = XElement.Load(@"TransactionScopeFactoryProviderConfig.xml");
-            var el = (from d in doc.Elements("HttpConnection") select new { HTTP = d.Element("HttpUrl") }).ToList();
-            if (el != null)
+            string BaseUrl = string.Empty;
+            var state = Ops.Read<string>(memoryServiceName, memoryHttpUrl);
+            if (state != null)
             {
-                ((HTTPParameterControl)control).txtHTTP.Text = el[0].HTTP.Attribute("value").Value;
-                ((HTTPParameterControl)control).txtHTTP.EditValueChanged += new EventHandler(txtHTTP_EditValueChanged);
+                BaseUrl = state;
             }
+            else
+            {
+                BaseUrl = httpUrl;
+                Ops.Write(memoryServiceName, memoryHttpUrl, BaseUrl);
+            }
+
+            ((HTTPParameterControl)control).txtHTTP.Text = BaseUrl;
+            ((HTTPParameterControl)control).txtHTTP.EditValueChanged += new EventHandler(txtHTTP_EditValueChanged);
         }
 
         private void txtHTTP_EditValueChanged(object sender, EventArgs e)
         {
-            XElement doc = XElement.Load(@"TransactionScopeFactoryProviderConfig.xml");
-            var el = (from d in doc.Elements("HttpConnection") select new { HTTP = d.Element("HttpUrl") }).ToList();
-            if (el != null)
-            {
-                el[0].HTTP.Attribute("value").Value = ((HTTPParameterControl)control).txtHTTP.Text.Trim();
-                doc.Save(@"TransactionScopeFactoryProviderConfig.xml");
-            }
+            string BaseUrl = ((HTTPParameterControl)control).txtHTTP.Text.Trim();
+            Ops.Write(memoryServiceName, memoryHttpUrl, BaseUrl);
         }
     }
 }

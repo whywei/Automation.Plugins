@@ -12,7 +12,8 @@ namespace Automation.Plugins.MDJ.WCS.Rest
     public class RestClient
     {
         private const string memoryServiceName = "MemoryPermanentSingleDataService";
-        private const string memoryHttpIP = "HttpIP";
+        private const string memoryHttpUrl = "HttpUrl";
+        private const string httpUrl = "http://10.57.64.171:8080/TaskRest/";
 
         XmlDocument doc = new XmlDocument();
 
@@ -25,16 +26,19 @@ namespace Automation.Plugins.MDJ.WCS.Rest
 
         public RestClient(string url = null)
         {
-            doc.Load(@"./TransactionScopeFactoryProviderConfig.xml");
-            XmlNodeList node = doc.GetElementsByTagName("HttpUrl");
-            string BaseUrl = node[0].Attributes["value"].Value;
-
-            BaseUrl = url ?? BaseUrl;
-            var state = Ops.Read(memoryServiceName, memoryHttpIP);
+            string BaseUrl = string.Empty;
+            var state = Ops.Read<string>(memoryServiceName, memoryHttpUrl);
             if (state != null)
             {
-                BaseUrl = state.ToString();
+                BaseUrl = state;
             }
+            else
+            {
+                BaseUrl = httpUrl;
+                Ops.Write(memoryServiceName, memoryHttpUrl, BaseUrl);
+            }
+
+            BaseUrl = url ?? BaseUrl;
 
             restTemplate = new RestTemplate(BaseUrl);
             IHttpMessageConverter jsonConverter = new DataContractJsonHttpMessageConverter();
