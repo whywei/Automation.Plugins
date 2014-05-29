@@ -64,14 +64,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MDJ", "MDJ", "{37832A23-820
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WCS", "WCS", "{546DC573-C335-4E91-AD1A-F0CF17319C89}"
 	ProjectSection(SolutionItems) = preProject
-		Setup\MDJ.AutomationDesktop.WCS.Setup\AutomationDesktop.exe.config = Setup\MDJ.AutomationDesktop.WCS.Setup\AutomationDesktop.exe.config
-		Setup\MDJ.AutomationDesktop.WCS.Setup\AutomationDesktop.ico = Setup\MDJ.AutomationDesktop.WCS.Setup\AutomationDesktop.ico
-		Setup\MDJ.AutomationDesktop.WCS.Setup\AutomationDesktop.jpg = Setup\MDJ.AutomationDesktop.WCS.Setup\AutomationDesktop.jpg
-		Setup\MDJ.AutomationDesktop.WCS.Setup\HomePanelImage.jpg = Setup\MDJ.AutomationDesktop.WCS.Setup\HomePanelImage.jpg
-		Setup\MDJ.AutomationDesktop.WCS.Setup\TransactionScopeFactoryProviderConfig.xml = Setup\MDJ.AutomationDesktop.WCS.Setup\TransactionScopeFactoryProviderConfig.xml
+		Setup\AutomationDesktop.Setup.MDJ.WCS\AutomationDesktop.exe.config = Setup\AutomationDesktop.Setup.MDJ.WCS\AutomationDesktop.exe.config
+		Setup\AutomationDesktop.Setup.MDJ.WCS\AutomationDesktop.ico = Setup\AutomationDesktop.Setup.MDJ.WCS\AutomationDesktop.ico
+		Setup\AutomationDesktop.Setup.MDJ.WCS\AutomationDesktop.jpg = Setup\AutomationDesktop.Setup.MDJ.WCS\AutomationDesktop.jpg
+		Setup\AutomationDesktop.Setup.MDJ.WCS\HomePanelImage.jpg = Setup\AutomationDesktop.Setup.MDJ.WCS\HomePanelImage.jpg
+		Setup\AutomationDesktop.Setup.MDJ.WCS\TransactionScopeFactoryProviderConfig.xml = Setup\AutomationDesktop.Setup.MDJ.WCS\TransactionScopeFactoryProviderConfig.xml
 	EndProjectSection
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "MDJ.AutomationDesktop.WCS.Setup", "Setup\MDJ.AutomationDesktop.WCS.Setup\MDJ.AutomationDesktop.WCS.Setup.vdproj", "{86E074FC-68EE-4587-8B36-3E8592C4B2A4}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AutomationDesktop.Setup.MDJ.WCS", "Setup\AutomationDesktop.Setup.MDJ.WCS\AutomationDesktop.Setup.MDJ.WCS.vdproj", "{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -233,18 +233,18 @@ Global
 		{8D601693-F226-47B4-8453-5E751FB03C25}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{8D601693-F226-47B4-8453-5E751FB03C25}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{8D601693-F226-47B4-8453-5E751FB03C25}.Release|x86.ActiveCfg = Release|Any CPU
-		{86E074FC-68EE-4587-8B36-3E8592C4B2A4}.Debug|Any CPU.ActiveCfg = Debug
-		{86E074FC-68EE-4587-8B36-3E8592C4B2A4}.Debug|Any CPU.Build.0 = Debug
-		{86E074FC-68EE-4587-8B36-3E8592C4B2A4}.Debug|Mixed Platforms.ActiveCfg = Debug
-		{86E074FC-68EE-4587-8B36-3E8592C4B2A4}.Debug|Mixed Platforms.Build.0 = Debug
-		{86E074FC-68EE-4587-8B36-3E8592C4B2A4}.Debug|x86.ActiveCfg = Debug
-		{86E074FC-68EE-4587-8B36-3E8592C4B2A4}.Debug|x86.Build.0 = Debug
-		{86E074FC-68EE-4587-8B36-3E8592C4B2A4}.Release|Any CPU.ActiveCfg = Release
-		{86E074FC-68EE-4587-8B36-3E8592C4B2A4}.Release|Any CPU.Build.0 = Release
-		{86E074FC-68EE-4587-8B36-3E8592C4B2A4}.Release|Mixed Platforms.ActiveCfg = Release
-		{86E074FC-68EE-4587-8B36-3E8592C4B2A4}.Release|Mixed Platforms.Build.0 = Release
-		{86E074FC-68EE-4587-8B36-3E8592C4B2A4}.Release|x86.ActiveCfg = Release
-		{86E074FC-68EE-4587-8B36-3E8592C4B2A4}.Release|x86.Build.0 = Release
+		{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA}.Debug|Any CPU.ActiveCfg = Debug
+		{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA}.Debug|Any CPU.Build.0 = Debug
+		{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA}.Debug|Mixed Platforms.Build.0 = Debug
+		{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA}.Debug|x86.ActiveCfg = Debug
+		{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA}.Debug|x86.Build.0 = Debug
+		{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA}.Release|Any CPU.ActiveCfg = Release
+		{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA}.Release|Any CPU.Build.0 = Release
+		{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA}.Release|Mixed Platforms.ActiveCfg = Release
+		{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA}.Release|Mixed Platforms.Build.0 = Release
+		{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA}.Release|x86.ActiveCfg = Release
+		{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA}.Release|x86.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -275,6 +275,6 @@ Global
 		{8D601693-F226-47B4-8453-5E751FB03C25} = {B113C174-CBB7-4275-B379-3B45FF6156EB}
 		{37832A23-8204-41FD-A036-287140428775} = {19CD1D5D-9EFD-4112-B57E-0C4B8415103D}
 		{546DC573-C335-4E91-AD1A-F0CF17319C89} = {37832A23-8204-41FD-A036-287140428775}
-		{86E074FC-68EE-4587-8B36-3E8592C4B2A4} = {546DC573-C335-4E91-AD1A-F0CF17319C89}
+		{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA} = {546DC573-C335-4E91-AD1A-F0CF17319C89}
 	EndGlobalSection
 EndGlobal
