@@ -43,6 +43,13 @@
     <Reference Include="DBRabbit, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DBRabbit.1.0.3\lib\DBRabbit.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.Data.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v13.1.Core, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DotSpatial.Controls">
       <HintPath>..\packages\DotSpatial.Controls.1.6.0.0\lib\net40-Client\DotSpatial.Controls.dll</HintPath>
       <Private>False</Private>
@@ -97,6 +104,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -105,16 +113,172 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Action\FileMenuAction.cs" />
+    <Compile Include="Action\HelpMenuAction.cs" />
+    <Compile Include="Action\SRMManagerAction.cs" />
+    <Compile Include="Process\CigaretteInformationProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\SRMPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\SRMPanel.Designer.cs">
+      <DependentUpon>SRMPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SRMManagerView.cs" />
     <Compile Include="WCSPlugin.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\PLC.xml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\add_16x16.png" />
+    <None Include="Resources\add_32x32.png" />
+    <None Include="Resources\auto_full_16x16.png" />
+    <None Include="Resources\auto_full_32x32.png" />
+    <None Include="Resources\auto_semi_16x16.png" />
+    <None Include="Resources\auto_semi_32x32.png" />
+    <None Include="Resources\cancel_16x16.png" />
+    <None Include="Resources\cancel_32x32.png" />
+    <None Include="Resources\cmd_16x16.png" />
+    <None Include="Resources\cmd_32x32.png" />
+    <None Include="Resources\cmd_test_16x16.png" />
+    <None Include="Resources\cmd_test_32x32.png" />
+    <None Include="Resources\cursor_arrow_16x16.png" />
+    <None Include="Resources\cursor_arrow_32x32.png" />
+    <None Include="Resources\database_16.png" />
+    <None Include="Resources\deselect_16x16.png" />
+    <None Include="Resources\deselect_32x32.png" />
+    <None Include="Resources\disk_16x16.png" />
+    <None Include="Resources\disk_32x32.png" />
+    <None Include="Resources\document_empty_16x16.png" />
+    <None Include="Resources\document_empty_32x32.png" />
+    <None Include="Resources\error_reset_16x16.png" />
+    <None Include="Resources\error_reset_32x32.png" />
+    <None Include="Resources\finish_16x16.png" />
+    <None Include="Resources\finish_32x32.png" />
+    <None Include="Resources\folder_16x16.png" />
+    <None Include="Resources\folder_32x32.png" />
+    <None Include="Resources\hand_16x16.png" />
+    <None Include="Resources\hand_32x32.png" />
+    <None Include="Resources\help1_16x16.png" />
+    <None Include="Resources\help1_32x32.png" />
+    <None Include="Resources\help2_16x16.png" />
+    <None Include="Resources\help2_32x32.png" />
+    <None Include="Resources\HTTPParameter_16.png" />
+    <None Include="Resources\info_rhombus_16x16.png" />
+    <None Include="Resources\info_rhombus_32x32.png" />
+    <None Include="Resources\init_16x16.png" />
+    <None Include="Resources\init_32x32.png" />
+    <None Include="Resources\layer_add_16x16.png" />
+    <None Include="Resources\layer_add_32x32.png" />
+    <None Include="Resources\layer_remove_16x16.png" />
+    <None Include="Resources\layer_remove_32x32.png" />
+    <None Include="Resources\layer_save_16x16.png" />
+    <None Include="Resources\layer_save_32x32.png" />
+    <None Include="Resources\layout_delete_16x16.png" />
+    <None Include="Resources\layout_delete_32x32.png" />
+    <None Include="Resources\measure_16x16.png" />
+    <None Include="Resources\measure_32x32.png" />
+    <None Include="Resources\pause_16x16.png" />
+    <None Include="Resources\pause_32x32.png" />
+    <None Include="Resources\stop_black_16x16.png" />
+    <None Include="Resources\stop_black_32x32.png" />
+    <None Include="Resources\position_16x16.png" />
+    <None Include="Resources\position_32x32.png" />
+    <None Include="Resources\position2_16x16.png" />
+    <None Include="Resources\position2_32x32.png" />
+    <None Include="Resources\printer_16x16.png" />
+    <None Include="Resources\printer_32x32.png" />
+    <None Include="Resources\read_16x16.png" />
+    <None Include="Resources\read_32x32.png" />
+    <None Include="Resources\refresh_16x16.png" />
+    <None Include="Resources\refresh_32x32.png" />
+    <None Include="Resources\refresh_stop_16x16.png" />
+    <None Include="Resources\refresh_stop_32x32.png" />
+    <None Include="Resources\reset_16x16.png" />
+    <None Include="Resources\reset_32x32.png" />
+    <None Include="Resources\save_as_16x16.png" />
+    <None Include="Resources\save_as_32x32.png" />
+    <None Include="Resources\scan_16x16.png" />
+    <None Include="Resources\scan_32x32.png" />
+    <None Include="Resources\scan_hand_16x16.png" />
+    <None Include="Resources\scan_hand_32x32.png" />
+    <None Include="Resources\scan_stop_16x16.png" />
+    <None Include="Resources\scan_stop_32x32.png" />
+    <None Include="Resources\scan_update_16x16.png" />
+    <None Include="Resources\scan_update_32x32.png" />
+    <None Include="Resources\select_16x16.png" />
+    <None Include="Resources\select_32x32.png" />
+    <None Include="Resources\set_16x16.png" />
+    <None Include="Resources\set_32x32.png" />
+    <None Include="Resources\tag_set_16x16.png" />
+    <None Include="Resources\tag_set_32x32.png" />
+    <None Include="Resources\show_16x16.png" />
+    <None Include="Resources\show_32x32.png" />
+    <None Include="Resources\show_stop_16x16.png" />
+    <None Include="Resources\show_stop_32x32.png" />
+    <None Include="Resources\stop_blue_16x16.png" />
+    <None Include="Resources\stop_blue_32x32.png" />
+    <None Include="Resources\table_16x16.png" />
+    <None Include="Resources\table_32x32.png" />
+    <None Include="Resources\unlocked_16x16.png" />
+    <None Include="Resources\update_size_16x16.png" />
+    <None Include="Resources\update_size_32x32.png" />
+    <None Include="Resources\warehouse_32x32.png" />
+    <None Include="Resources\warehouse_16x16.png" />
+    <None Include="Resources\wms.jpg" />
+    <None Include="Resources\zoom_16x16.png" />
+    <None Include="Resources\zoom_32x32.png" />
+    <None Include="Resources\zoom_coordinate_16x16.png" />
+    <None Include="Resources\zoom_coordinate_32x32.png" />
+    <None Include="Resources\zoom_extend_16x16.png" />
+    <None Include="Resources\zoom_extend_32x32.png" />
+    <None Include="Resources\zoom_in_16x16.png" />
+    <None Include="Resources\zoom_in_32x32.png" />
+    <None Include="Resources\zoom_layer_16x16.png" />
+    <None Include="Resources\zoom_layer_32x32.png" />
+    <None Include="Resources\zoom_out_16x16.png" />
+    <None Include="Resources\zoom_out_32x32.png" />
+    <None Include="Resources\zoom_selection_16x16.png" />
+    <None Include="Resources\zoom_selection_32x32.png" />
+    <None Include="Resources\zoom_to_next.png" />
+    <None Include="Resources\zoom_to_next_16.png" />
+    <None Include="Resources\zoom_to_previous.png" />
+    <None Include="Resources\zoom_to_previous_16.png" />
     <Content Include="Serialize\Readme.txt" />
     <Content Include="TransactionScopeFactoryProviderConfig.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\SRMPanel.resx">
+      <DependentUpon>SRMPanel.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="FaultAlarm\" />
+    <Folder Include="Service\" />
+    <Folder Include="View\Dialogs\" />
+    <Folder Include="View\Forms\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

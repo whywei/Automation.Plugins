@@ -24,6 +24,7 @@ namespace Automation.Plugins.YZ.WCS
 
         public override void Deactivate()
         {
+            AutomationContext.DeactivateAction();
             AutomationContext.DeactivateView();
             App.HeaderControl.RemoveAll();
             base.Deactivate();
@@ -32,8 +33,7 @@ namespace Automation.Plugins.YZ.WCS
         private void AddHeaderRootItems()
         {
             IHeaderControl header = App.HeaderControl;            
-            header.Add(new RootItem("kScan", "扫码") { SortOrder = 101 });
-            header.Add(new RootItem("kSRM", "堆垛机") { SortOrder = 102 });
+            header.Add(new RootItem("kSRM", "堆垛机") { SortOrder = 101 });
         }
     }
 }

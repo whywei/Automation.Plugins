@@ -41,6 +41,7 @@ namespace Automation.Plugins.MDJ.WCS
 
         public override void Deactivate()
         {
+            AutomationContext.DeactivateAction();
             AutomationContext.DeactivateView();
             App.HeaderControl.RemoveAll();
             base.Deactivate();
