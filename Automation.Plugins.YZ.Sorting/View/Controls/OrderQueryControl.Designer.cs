@@ -50,12 +50,12 @@
             this.gridDetail = new DevExpress.XtraGrid.GridControl();
             this.viewDetail = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.PackNo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ChannelName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ProductName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Quantity = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.customer_deliver_order = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ChannelName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Quantity1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.customer_deliver_order = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ExportNo1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Quantity = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridMaster)).BeginInit();
@@ -310,62 +310,72 @@
             this.PackNo.Caption = "包号";
             this.PackNo.FieldName = "pack_no";
             this.PackNo.Name = "PackNo";
+            this.PackNo.OptionsColumn.AllowEdit = false;
             this.PackNo.OptionsColumn.AllowFocus = false;
             this.PackNo.Visible = true;
             this.PackNo.VisibleIndex = 0;
-            // 
-            // ChannelName
-            // 
-            this.ChannelName.Caption = "烟道名称";
-            this.ChannelName.FieldName = "channel_name";
-            this.ChannelName.Name = "ChannelName";
-            this.ChannelName.OptionsColumn.AllowFocus = false;
-            this.ChannelName.Visible = true;
-            this.ChannelName.VisibleIndex = 2;
             // 
             // ProductName
             // 
             this.ProductName.Caption = "商品名称";
             this.ProductName.FieldName = "product_name";
             this.ProductName.Name = "ProductName";
+            this.ProductName.OptionsColumn.AllowEdit = false;
             this.ProductName.OptionsColumn.AllowFocus = false;
             this.ProductName.Visible = true;
             this.ProductName.VisibleIndex = 1;
             // 
-            // Quantity
+            // ChannelName
             // 
-            this.Quantity.Caption = "数量";
-            this.Quantity.FieldName = "quantity";
-            this.Quantity.Name = "Quantity";
-            this.Quantity.OptionsColumn.AllowFocus = false;
-            this.Quantity.Visible = true;
-            this.Quantity.VisibleIndex = 6;
-            // 
-            // customer_deliver_order
-            // 
-            this.customer_deliver_order.Caption = "客户配送顺序";
-            this.customer_deliver_order.FieldName = "customer_deliver_order";
-            this.customer_deliver_order.Name = "customer_deliver_order";
-            this.customer_deliver_order.Visible = true;
-            this.customer_deliver_order.VisibleIndex = 4;
-            this.customer_deliver_order.Width = 90;
+            this.ChannelName.Caption = "烟道名称";
+            this.ChannelName.FieldName = "channel_name";
+            this.ChannelName.Name = "ChannelName";
+            this.ChannelName.OptionsColumn.AllowEdit = false;
+            this.ChannelName.OptionsColumn.AllowFocus = false;
+            this.ChannelName.Visible = true;
+            this.ChannelName.VisibleIndex = 2;
             // 
             // Quantity1
             // 
             this.Quantity1.Caption = "烟包数量";
             this.Quantity1.FieldName = "quantity1";
             this.Quantity1.Name = "Quantity1";
+            this.Quantity1.OptionsColumn.AllowEdit = false;
+            this.Quantity1.OptionsColumn.AllowFocus = false;
             this.Quantity1.Visible = true;
             this.Quantity1.VisibleIndex = 3;
+            // 
+            // customer_deliver_order
+            // 
+            this.customer_deliver_order.Caption = "客户配送顺序";
+            this.customer_deliver_order.FieldName = "customer_deliver_order";
+            this.customer_deliver_order.Name = "customer_deliver_order";
+            this.customer_deliver_order.OptionsColumn.AllowEdit = false;
+            this.customer_deliver_order.OptionsColumn.AllowFocus = false;
+            this.customer_deliver_order.Visible = true;
+            this.customer_deliver_order.VisibleIndex = 4;
+            this.customer_deliver_order.Width = 90;
             // 
             // ExportNo1
             // 
             this.ExportNo1.Caption = "包装机方向";
             this.ExportNo1.FieldName = "Export_No";
             this.ExportNo1.Name = "ExportNo1";
+            this.ExportNo1.OptionsColumn.AllowEdit = false;
+            this.ExportNo1.OptionsColumn.AllowFocus = false;
             this.ExportNo1.Visible = true;
             this.ExportNo1.VisibleIndex = 5;
             this.ExportNo1.Width = 80;
+            // 
+            // Quantity
+            // 
+            this.Quantity.Caption = "数量";
+            this.Quantity.FieldName = "quantity";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.OptionsColumn.AllowEdit = false;
+            this.Quantity.OptionsColumn.AllowFocus = false;
+            this.Quantity.Visible = true;
+            this.Quantity.VisibleIndex = 6;
             // 
             // OrderQueryControl
             // 

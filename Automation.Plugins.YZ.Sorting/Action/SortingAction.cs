@@ -31,6 +31,10 @@ namespace Automation.Plugins.YZ.Sorting.Action
             header.Add(new SimpleActionItem(rootKey, "效率查询1", btn_click) { ToolTipText = "分拣效率查询", GroupCaption = "作业查询", LargeImage = Resources.Customer_Query_32 });
             header.Add(new SimpleActionItem(rootKey, "补货作业1", HandleStock_Click) { ToolTipText = "补货任务作业", SortOrder = 1, GroupCaption = "操作", LargeImage = Resources.HandleStock_32 });
             header.Add(new SimpleActionItem(rootKey, "参数设置1", btn_click) { ToolTipText = "参数设置", SortOrder = 1, GroupCaption = "操作", LargeImage = Resources.Customer_Query_32 });
+
+            header.Add(new SimpleActionItem(rootKey, "数据下载", DataDownLoad_click) { ToolTipText = "数据下载", GroupCaption = "分拣操作", LargeImage = Resources.Customer_Query_32 });
+            header.Add(new SimpleActionItem(rootKey, "开始分拣", StartSort_Click) { ToolTipText = "开始分拣", SortOrder = 1, GroupCaption = "分拣操作", LargeImage = Resources.HandleStock_32 });
+            header.Add(new SimpleActionItem(rootKey, "停止分拣", StopSort_click) { ToolTipText = "停止分拣", SortOrder = 1, GroupCaption = "分拣操作", LargeImage = Resources.Customer_Query_32 });
         }
 
         private void CustomerQuery_Click(object sender, EventArgs e)
@@ -67,6 +71,19 @@ namespace Automation.Plugins.YZ.Sorting.Action
         private void btn_click(object sender, EventArgs e)
         {
 
+        }
+
+        private void DataDownLoad_click(object sender, EventArgs e)
+        {
+            AutomationContext.ActivateView<CustomerQueryView>();
+        }
+        private void StartSort_Click(object sender, EventArgs e)
+        {
+            AutomationContext.ActivateView<CustomerQueryView>();
+        }
+        private void StopSort_click(object sender, EventArgs e)
+        {
+            AutomationContext.ActivateView<CustomerQueryView>();
         }
     }
 }

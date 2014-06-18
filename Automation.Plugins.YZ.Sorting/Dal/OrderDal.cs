@@ -14,7 +14,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
 
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
             string sql = @"select [order_date],[batch_no],[line_code],[pack_no],[order_id],[dist_code],
-       [dist_name],[deliver_line_code],[deliver_line_name],[customer_code],[customer_name],[license_no]
+       [dist_name],[deliver_line_code],[deliver_line_name],[customer_code],[customer_name],[license_no],
        [address],[customer_order],[customer_deliver_order],[quantity],[export_no],[start_time],[finish_time],
        CASE status WHEN '0' THEN '未下单' ELSE '已下单' END status FROM SORT_ORDER_ALLOT_MASTER";
             return ra.DoQuery(sql).Tables[0];

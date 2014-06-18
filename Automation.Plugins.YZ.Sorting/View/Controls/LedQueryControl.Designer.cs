@@ -114,6 +114,7 @@
             this.led_code.FieldName = "led_code";
             this.led_code.Name = "led_code";
             this.led_code.OptionsColumn.AllowEdit = false;
+            this.led_code.OptionsColumn.AllowFocus = false;
             this.led_code.Visible = true;
             this.led_code.VisibleIndex = 0;
             // 
@@ -123,6 +124,7 @@
             this.led_name.FieldName = "led_name";
             this.led_name.Name = "led_name";
             this.led_name.OptionsColumn.AllowEdit = false;
+            this.led_name.OptionsColumn.AllowFocus = false;
             this.led_name.Visible = true;
             this.led_name.VisibleIndex = 1;
             // 
@@ -132,6 +134,7 @@
             this.led_type.FieldName = "led_type";
             this.led_type.Name = "led_type";
             this.led_type.OptionsColumn.AllowEdit = false;
+            this.led_type.OptionsColumn.AllowFocus = false;
             this.led_type.Visible = true;
             this.led_type.VisibleIndex = 2;
             // 
@@ -140,6 +143,8 @@
             this.led_ip.Caption = "IP地址";
             this.led_ip.FieldName = "led_ip";
             this.led_ip.Name = "led_ip";
+            this.led_ip.OptionsColumn.AllowEdit = false;
+            this.led_ip.OptionsColumn.AllowFocus = false;
             this.led_ip.Visible = true;
             this.led_ip.VisibleIndex = 9;
             // 
@@ -149,6 +154,7 @@
             this.xaxes.FieldName = "xaxes";
             this.xaxes.Name = "xaxes";
             this.xaxes.OptionsColumn.AllowEdit = false;
+            this.xaxes.OptionsColumn.AllowFocus = false;
             this.xaxes.Visible = true;
             this.xaxes.VisibleIndex = 3;
             // 
@@ -158,6 +164,7 @@
             this.yaxes.FieldName = "yaxes";
             this.yaxes.Name = "yaxes";
             this.yaxes.OptionsColumn.AllowEdit = false;
+            this.yaxes.OptionsColumn.AllowFocus = false;
             this.yaxes.Visible = true;
             this.yaxes.VisibleIndex = 4;
             // 
@@ -167,6 +174,7 @@
             this.width.FieldName = "width";
             this.width.Name = "width";
             this.width.OptionsColumn.AllowEdit = false;
+            this.width.OptionsColumn.AllowFocus = false;
             this.width.Visible = true;
             this.width.VisibleIndex = 5;
             // 
@@ -176,6 +184,7 @@
             this.height.FieldName = "height";
             this.height.Name = "height";
             this.height.OptionsColumn.AllowEdit = false;
+            this.height.OptionsColumn.AllowFocus = false;
             this.height.Visible = true;
             this.height.VisibleIndex = 6;
             // 
@@ -192,6 +201,7 @@
             this.order_no.FieldName = "order_no";
             this.order_no.Name = "order_no";
             this.order_no.OptionsColumn.AllowEdit = false;
+            this.order_no.OptionsColumn.AllowFocus = false;
             this.order_no.Visible = true;
             this.order_no.VisibleIndex = 7;
             // 
@@ -201,6 +211,7 @@
             this.status.FieldName = "status";
             this.status.Name = "status";
             this.status.OptionsColumn.AllowEdit = false;
+            this.status.OptionsColumn.AllowFocus = false;
             this.status.Visible = true;
             this.status.VisibleIndex = 8;
             // 
@@ -239,6 +250,7 @@
             this.gridColumn1.FieldName = "led_code";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.AllowEdit = false;
+            this.gridColumn1.OptionsColumn.AllowFocus = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
             // 
@@ -248,6 +260,7 @@
             this.gridColumn2.FieldName = "led_name";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
+            this.gridColumn2.OptionsColumn.AllowFocus = false;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
             // 
@@ -257,6 +270,7 @@
             this.gridColumn3.FieldName = "led_type";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsColumn.AllowEdit = false;
+            this.gridColumn3.OptionsColumn.AllowFocus = false;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
             // 
@@ -265,6 +279,7 @@
             this.gridColumn4.Caption = "IP地址";
             this.gridColumn4.FieldName = "led_ip";
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsColumn.AllowFocus = false;
             // 
             // gridColumn5
             // 
@@ -272,6 +287,7 @@
             this.gridColumn5.FieldName = "xaxes";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowEdit = false;
+            this.gridColumn5.OptionsColumn.AllowFocus = false;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 3;
             // 
@@ -281,6 +297,7 @@
             this.gridColumn6.FieldName = "yaxes";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.OptionsColumn.AllowEdit = false;
+            this.gridColumn6.OptionsColumn.AllowFocus = false;
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 4;
             // 
@@ -290,6 +307,7 @@
             this.gridColumn7.FieldName = "width";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.OptionsColumn.AllowEdit = false;
+            this.gridColumn7.OptionsColumn.AllowFocus = false;
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 5;
             // 
@@ -299,6 +317,7 @@
             this.gridColumn8.FieldName = "height";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.OptionsColumn.AllowEdit = false;
+            this.gridColumn8.OptionsColumn.AllowFocus = false;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 6;
             // 
@@ -308,6 +327,7 @@
             this.gridColumn9.FieldName = "led_group_code";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.OptionsColumn.AllowEdit = false;
+            this.gridColumn9.OptionsColumn.AllowFocus = false;
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 7;
             // 
@@ -317,6 +337,7 @@
             this.gridColumn10.FieldName = "order_no";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.OptionsColumn.AllowEdit = false;
+            this.gridColumn10.OptionsColumn.AllowFocus = false;
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 8;
             // 
@@ -326,6 +347,7 @@
             this.gridColumn11.FieldName = "status";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.OptionsColumn.AllowEdit = false;
+            this.gridColumn11.OptionsColumn.AllowFocus = false;
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 9;
             // 

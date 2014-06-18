@@ -116,9 +116,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Action\ChannelAllotAction.cs" />
     <Compile Include="Action\LedQueryAction.cs" />
     <Compile Include="Action\OrderQueryAction.cs" />
     <Compile Include="Action\SortingAction.cs" />
+    <Compile Include="Dal\ChannelAllotDal.cs" />
     <Compile Include="Dal\LedDal.cs" />
     <Compile Include="Dal\OrderDal.cs" />
     <Compile Include="Global.cs" />
@@ -130,6 +132,12 @@
     </Compile>
     <Compile Include="SortingPlugin.cs" />
     <Compile Include="View\CacheOrderQueryView.cs" />
+    <Compile Include="View\Controls\ChannelAllotQueryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\ChannelAllotQueryControl.Designer.cs">
+      <DependentUpon>ChannelAllotQueryControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\LedQueryControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -179,6 +187,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\ChannelAllotQueryControl.resx">
+      <DependentUpon>ChannelAllotQueryControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\LedQueryControl.resx">
       <DependentUpon>LedQueryControl.cs</DependentUpon>
