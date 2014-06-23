@@ -9,7 +9,7 @@ namespace Automation.Plugins.YZ.Sorting
     {
 
        public const string yzSorting_DB_NAME="master5";
-       public const string yzServiceName = "zyService";
+       public const string yzServiceName = "master";
 
     }
 }

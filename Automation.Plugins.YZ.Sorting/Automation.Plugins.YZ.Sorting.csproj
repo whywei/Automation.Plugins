@@ -47,6 +47,7 @@
       <HintPath>..\packages\Automation.Service.OPC.1.0.0.0\lib\net40\Automation.Service.OPC.dll</HintPath>
     </Reference>
     <Reference Include="DBRabbit, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\DBRabbit.1.0.3\lib\DBRabbit.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Data.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -114,6 +115,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="THOK.MCP">
+      <HintPath>..\..\..\Reference     .DLL\THOK.MCP.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Action\ChannelAllotAction.cs" />
@@ -121,9 +125,13 @@
     <Compile Include="Action\OrderQueryAction.cs" />
     <Compile Include="Action\SortingAction.cs" />
     <Compile Include="Dal\ChannelAllotDal.cs" />
+    <Compile Include="Dal\ChannelDal.cs" />
     <Compile Include="Dal\LedDal.cs" />
     <Compile Include="Dal\OrderDal.cs" />
+    <Compile Include="Dal\ServerDal.cs" />
     <Compile Include="Global.cs" />
+    <Compile Include="Model\ChannelAllot.cs" />
+    <Compile Include="Process\DataDownLoadProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -162,8 +170,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Device\" />
-    <Folder Include="Model\" />
-    <Folder Include="Process\" />
     <Folder Include="Service\" />
   </ItemGroup>
   <ItemGroup>
@@ -183,7 +189,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

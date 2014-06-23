@@ -39,6 +39,14 @@
       <HintPath>..\packages\Automation.Core.1.0.0.0\lib\net40-Client\Automation.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Automation.Service.AiOiTag, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Reference     .DLL\Automation.Service.AiOiTag.dll</HintPath>
+    </Reference>
+    <Reference Include="Automation.Service.BarcodeReader, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Reference     .DLL\Automation.Service.BarcodeReader.dll</HintPath>
+    </Reference>
     <Reference Include="Automation.Service.OPC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Automation.Service.OPC.1.0.0.0\lib\net40\Automation.Service.OPC.dll</HintPath>
     </Reference>
@@ -284,16 +292,6 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Automation.Service.AiOiTag\Automation.Service.AiOiTag.csproj">
-      <Project>{70B8C8D5-6279-40C7-847C-914D74A5DB6D}</Project>
-      <Name>Automation.Service.AiOiTag</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Automation.Service.BarcodeReader\Automation.Service.BarcodeReader.csproj">
-      <Project>{15498D63-D8E5-403B-A033-D87C48C3D6A6}</Project>
-      <Name>Automation.Service.BarcodeReader</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Options\Controls\HTTPParameterControl.resx">

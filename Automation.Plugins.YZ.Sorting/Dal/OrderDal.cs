@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using DBRabbit;
 using System.Data;
+using THOK.Util;
+using Automation.Core.Util;
 
 namespace Automation.Plugins.YZ.Sorting.Dal
 {
@@ -116,6 +118,60 @@ namespace Automation.Plugins.YZ.Sorting.Dal
                            FROM AS_SC_HANDLESUPPLY A LEFT JOIN AS_SC_CHANNELUSED B ON A.CHANNELCODE = B.CHANNELCODE 
                            {0} ORDER BY A.SUPPLYNO", condition);
             return ra.DoQuery(sql).Tables[0];
+        }
+
+        //判断是否存在未分拣数据
+        public bool FindUnsortCount()
+        {
+            var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
+            string sql = string.Format(@"SELECT COUNT(*) FROM sms_sort_order_allot_master WHERE STATUS='0'");
+            var r = ra.DoScalar(sql);
+            return Convert.ToInt32(DBNullUtil.Convert(r)) > 0;
+        }
+
+        /// <summary>
+        /// 删除贴标机数据
+        /// </summary>
+        public void DeleteExportData()
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+
+            ra.DoScalar("TRUNCATE TABLE sort_supply");
+            //ra.DoScalar("TRUNCATE TABLE AS_SC_EXPORTPACK1");
+            //ra.DoScalar("TRUNCATE TABLE AS_SC_EXPORTPACK2");
+            //ra.DoScalar("TRUNCATE TABLE AS_SC_PACKTEAR1");
+            //ra.DoScalar("TRUNCATE TABLE AS_SC_PACKTEAR2");
+        }
+ 
+
+        public void InsertMaster(DataTable ordermasterTable)
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            ra.DoScalar("TRUNCATE TABLE sort_order_allot_master");
+
+            foreach (DataRow row in ordermasterTable.Rows)
+            {
+                string sql = string.Format(@"insert into sort_order_allot_master values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}','{19}')",
+                row["order_date"], row["batch_no"], row["sorting_line_code"], row["pack_no"],
+                row["order_id"], row["dist_code"], row["dist_name"], row["deliver_line_code"],
+                row["deliver_line_name"], row["custom_code"], row["customer_name"], row["license_code"],
+                row["address"], row["customer_order"], row["customer_deliver_order"], row["quantity"], row["export_no"] , 
+                row["start_time"], row["finish_time"], row["status"]);
+                ra.DoCommand(sql);
+            }
+        }
+
+        public void InsertOrderDetail(DataTable orderdetailTable)
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            ra.DoScalar("TRUNCATE TABLE sort_order_allot_detail");
+
+            foreach (DataRow row in orderdetailTable.Rows)
+            {
+                string sql = string.Format(@"insert into sort_order_allot_detail values('{0}','{1}','{2}','{3}','{4}')",
+                row["pack_no"], row["channel_code"], row["product_code"], row["product_name"], row["quantity"]);
+                ra.DoCommand(sql);
+            }
         }
     }
 }
