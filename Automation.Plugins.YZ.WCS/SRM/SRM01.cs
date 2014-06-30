@@ -16,17 +16,17 @@ namespace Automation.Plugins.YZ.WCS.SRM
             Name = "1号堆垛机";
         }
 
+        protected override bool CancelCurrentTask()
+        {
+            throw new NotImplementedException();
+        }
+
         protected override void FinishCurrentTask()
         {
             throw new NotImplementedException();
         }
 
         protected override SRMTask RequestNewTask()
-        {
-            throw new NotImplementedException();
-        }
-
-        protected override bool UpdateTaskStateToWaiting()
         {
             throw new NotImplementedException();
         }
