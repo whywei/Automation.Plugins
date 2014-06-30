@@ -32,7 +32,7 @@ namespace Automation.Plugins.YZ.WCS
         private void AddHeaderRootItems()
         {
             IHeaderControl header = App.HeaderControl;
-            header.Add(new RootItem("kSorting", "分拣") { SortOrder = 105 });
+            header.Add(new RootItem("yzSorting", "分拣") { SortOrder = 105 });
         }
     }
 }
