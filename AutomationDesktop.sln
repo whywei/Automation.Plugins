@@ -58,6 +58,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.Plugins.YB.WCS",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.Plugins.YB.Vehicular", "Automation.Plugins.YB.Vehicular\Automation.Plugins.YB.Vehicular.csproj", "{8D601693-F226-47B4-8453-5E751FB03C25}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Setup", "Setup", "{19CD1D5D-9EFD-4112-B57E-0C4B8415103D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MDJ", "MDJ", "{37832A23-8204-41FD-A036-287140428775}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WCS", "WCS", "{546DC573-C335-4E91-AD1A-F0CF17319C89}"
+	ProjectSection(SolutionItems) = preProject
+		Setup\AutomationDesktop.Setup.MDJ.WCS\AutomationDesktop.exe.config = Setup\AutomationDesktop.Setup.MDJ.WCS\AutomationDesktop.exe.config
+		Setup\AutomationDesktop.Setup.MDJ.WCS\AutomationDesktop.ico = Setup\AutomationDesktop.Setup.MDJ.WCS\AutomationDesktop.ico
+		Setup\AutomationDesktop.Setup.MDJ.WCS\AutomationDesktop.jpg = Setup\AutomationDesktop.Setup.MDJ.WCS\AutomationDesktop.jpg
+		Setup\AutomationDesktop.Setup.MDJ.WCS\HomePanelImage.jpg = Setup\AutomationDesktop.Setup.MDJ.WCS\HomePanelImage.jpg
+		Setup\AutomationDesktop.Setup.MDJ.WCS\TransactionScopeFactoryProviderConfig.xml = Setup\AutomationDesktop.Setup.MDJ.WCS\TransactionScopeFactoryProviderConfig.xml
+	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AutomationDesktop.Setup.MDJ.WCS", "Setup\AutomationDesktop.Setup.MDJ.WCS\AutomationDesktop.Setup.MDJ.WCS.vdproj", "{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -218,6 +233,18 @@ Global
 		{8D601693-F226-47B4-8453-5E751FB03C25}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{8D601693-F226-47B4-8453-5E751FB03C25}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{8D601693-F226-47B4-8453-5E751FB03C25}.Release|x86.ActiveCfg = Release|Any CPU
+		{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA}.Debug|Any CPU.ActiveCfg = Debug
+		{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA}.Debug|Any CPU.Build.0 = Debug
+		{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA}.Debug|Mixed Platforms.Build.0 = Debug
+		{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA}.Debug|x86.ActiveCfg = Debug
+		{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA}.Debug|x86.Build.0 = Debug
+		{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA}.Release|Any CPU.ActiveCfg = Release
+		{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA}.Release|Any CPU.Build.0 = Release
+		{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA}.Release|Mixed Platforms.ActiveCfg = Release
+		{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA}.Release|Mixed Platforms.Build.0 = Release
+		{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA}.Release|x86.ActiveCfg = Release
+		{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA}.Release|x86.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -246,5 +273,8 @@ Global
 		{7305AF4A-FE03-4232-8322-1A6764E5C8DE} = {1234D176-B395-47FD-AA94-4B8608AF41FA}
 		{B81D8D90-8CE4-4F16-B4B9-5FC27A7435FF} = {B113C174-CBB7-4275-B379-3B45FF6156EB}
 		{8D601693-F226-47B4-8453-5E751FB03C25} = {B113C174-CBB7-4275-B379-3B45FF6156EB}
+		{37832A23-8204-41FD-A036-287140428775} = {19CD1D5D-9EFD-4112-B57E-0C4B8415103D}
+		{546DC573-C335-4E91-AD1A-F0CF17319C89} = {37832A23-8204-41FD-A036-287140428775}
+		{BDA14C2F-CEC9-49A8-9AF3-56192DF9FCAA} = {546DC573-C335-4E91-AD1A-F0CF17319C89}
 	EndGlobalSection
 EndGlobal

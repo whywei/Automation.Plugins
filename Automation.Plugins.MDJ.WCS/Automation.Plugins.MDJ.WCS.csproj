@@ -39,13 +39,8 @@
       <HintPath>..\packages\Automation.Core.1.0.0.0\lib\net40-Client\Automation.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Automation.Service.AiOiTag, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Reference     .DLL\Automation.Service.AiOiTag.dll</HintPath>
-    </Reference>
     <Reference Include="Automation.Service.BarcodeReader, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Reference     .DLL\Automation.Service.BarcodeReader.dll</HintPath>
+      <HintPath>..\packages\Automation.Service.BarcodeReader.1.0.0.0\lib\net40\Automation.Service.BarcodeReader.dll</HintPath>
     </Reference>
     <Reference Include="Automation.Service.OPC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Automation.Service.OPC.1.0.0.0\lib\net40\Automation.Service.OPC.dll</HintPath>
@@ -496,6 +491,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Config\PLC.xml" />
+    <Content Include="Config\Scanner.xml" />
     <Content Include="Config\Scanner01.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

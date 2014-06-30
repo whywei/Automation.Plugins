@@ -37,12 +37,6 @@
       <HintPath>..\packages\Automation.Core.1.0.0.0\lib\net40-Client\Automation.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Automation.Service.AiOiTag">
-      <HintPath>..\..\..\Reference     .DLL\Automation.Service.AiOiTag.dll</HintPath>
-    </Reference>
-    <Reference Include="Automation.Service.BarcodeReader">
-      <HintPath>..\..\..\Reference     .DLL\Automation.Service.BarcodeReader.dll</HintPath>
-    </Reference>
     <Reference Include="Automation.Service.OPC">
       <HintPath>..\packages\Automation.Service.OPC.1.0.0.0\lib\net40\Automation.Service.OPC.dll</HintPath>
     </Reference>
@@ -115,9 +109,6 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="THOK.MCP">
-      <HintPath>..\..\..\Reference     .DLL\THOK.MCP.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Action\ChannelAllotAction.cs" />
