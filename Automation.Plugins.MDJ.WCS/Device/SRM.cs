@@ -36,6 +36,7 @@ namespace Automation.Plugins.MDJ.WCS.Device
         {
             get { return DateTime.Now.Subtract(handShakeTime) < (new TimeSpan(0,0,4)); }
         }
+
         private bool handShake = false;
         [DescriptionAttribute(@"WCS与堆垛机握手信号，堆垛机每个周期将b_O_HandShake的值取反写入b_I_HandShake,3秒内握手信号未发生改变认为通讯中断")]
         public bool HandShake
@@ -318,6 +319,7 @@ namespace Automation.Plugins.MDJ.WCS.Device
 
                 HandShake = Convert.ToBoolean(Read("b_I_HandShake"));
                 Auto = Convert.ToBoolean(Read("b_I_Auto"));
+
                 State = Convert.ToInt32(Read("n_I_State"));
                 GetRequest = Convert.ToBoolean(Read("b_I_Get_Request"));
                 PutRequest = Convert.ToBoolean(Read("b_I_Put_Request"));

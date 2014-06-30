@@ -8,7 +8,7 @@ using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
-namespace Automation.Plugins.YZ.WCS.View.Controls
+namespace Automation.Plugins.YZ.WCS.SRM.View.Controls
 {
     public partial class SRMPanel : DevExpress.XtraEditors.XtraUserControl
     {

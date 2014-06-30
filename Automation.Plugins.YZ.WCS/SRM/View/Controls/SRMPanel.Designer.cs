@@ -1,4 +1,4 @@
-﻿namespace Automation.Plugins.YZ.WCS.View.Controls
+﻿namespace Automation.Plugins.YZ.WCS.SRM.View.Controls
 {
     partial class SRMPanel
     {

@@ -115,8 +115,9 @@
   <ItemGroup>
     <Compile Include="Action\FileMenuAction.cs" />
     <Compile Include="Action\HelpMenuAction.cs" />
-    <Compile Include="Action\SRMManagerAction.cs" />
+    <Compile Include="SRM\Action\SRMManagerAction.cs" />
     <Compile Include="Process\CigaretteInformationProcess.cs" />
+    <Compile Include="SRM\Process\SRM01HeartbeatRequstProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -128,13 +129,15 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\SRMPanel.cs">
+    <Compile Include="SRM\Service\SRM01OPCService.cs" />
+    <Compile Include="SRM\SRM01.cs" />
+    <Compile Include="SRM\View\Controls\SRMPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Controls\SRMPanel.Designer.cs">
+    <Compile Include="SRM\View\Controls\SRMPanel.Designer.cs">
       <DependentUpon>SRMPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\SRMManagerView.cs" />
+    <Compile Include="SRM\View\SRMManagerView.cs" />
     <Compile Include="WCSPlugin.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -142,7 +145,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config\PLC.xml" />
+    <Content Include="Config\PLC.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -261,6 +266,10 @@
     <None Include="Resources\zoom_to_next_16.png" />
     <None Include="Resources\zoom_to_previous.png" />
     <None Include="Resources\zoom_to_previous_16.png" />
+    <Content Include="Config\1号堆垛机.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Serialize\Readme.txt" />
     <Content Include="TransactionScopeFactoryProviderConfig.xml" />
   </ItemGroup>
@@ -270,13 +279,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Controls\SRMPanel.resx">
+    <EmbeddedResource Include="SRM\View\Controls\SRMPanel.resx">
       <DependentUpon>SRMPanel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="FaultAlarm\" />
     <Folder Include="Service\" />
+    <Folder Include="View\Controls\" />
     <Folder Include="View\Dialogs\" />
     <Folder Include="View\Forms\" />
   </ItemGroup>

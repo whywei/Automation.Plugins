@@ -3,9 +3,9 @@ using Automation.Core;
 using System.Windows.Forms;
 using System.ComponentModel.Composition;
 using Automation.Plugins.YZ.WCS.Properties;
-using Automation.Plugins.YZ.WCS.View.Controls;
+using Automation.Plugins.YZ.WCS.SRM.View.Controls;
 
-namespace Automation.Plugins.YZ.WCS.View
+namespace Automation.Plugins.YZ.WCS.SRM.View
 {
     public class SRMManagerView : AbstractView, IPartImportsSatisfiedNotification
     {
