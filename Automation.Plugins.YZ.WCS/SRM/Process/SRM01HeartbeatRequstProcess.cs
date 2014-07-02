@@ -1,6 +1,6 @@
 ﻿using Automation.Core;
 using System.ComponentModel.Composition;
-using Automation.Core.SRM;
+using Automation.Common.SRM;
 
 namespace Automation.Plugins.YZ.WCS.SRM.Process
 {

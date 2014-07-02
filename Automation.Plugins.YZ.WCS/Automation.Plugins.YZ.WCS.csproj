@@ -33,8 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Automation.Core">
-      <HintPath>..\packages\Automation.Core.1.0.0.1\lib\net40-Client\Automation.Core.dll</HintPath>
+    <Reference Include="Automation.Common.SRM">
+      <HintPath>..\packages\Automation.Common.SRM.1.0.0.0\lib\net40\Automation.Common.SRM.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Automation.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Automation.Core.1.0.0.2\lib\net40-Client\Automation.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Automation.Service.OPC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -145,6 +149,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Serialize\Readme.txt" />
     <Content Include="TransactionScopeFactoryProviderConfig.xml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -269,7 +274,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Config\PLC.xml" />
-    <Content Include="Serialize\Readme.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -1,12 +1,11 @@
 ﻿using System;
 using Automation.Core;
 using DotSpatial.Controls.Header;
-using System.Windows.Forms;
 using System.ComponentModel.Composition;
 using Automation.Plugins.YZ.WCS.Properties;
-using Automation.Core.SRM;
-using System.Linq;
 using DevExpress.XtraEditors;
+using Automation.Common.SRM;
+using System.Linq;
 
 namespace Automation.Plugins.YZ.WCS.SRM.Action
 {
