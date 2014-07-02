@@ -13,8 +13,8 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         public DataTable FindBatch()
         {
             var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
-            string sql = string.Format(@"SELECT TOP 1 batch_sort_id,batch_id,sorting_line_code,status
-            FROM sms_batch_sort where status='01'");
+            string sql = string.Format(@"SELECT TOP 1 batch_no,sorting_line_code,status
+            FROM sms_sort_batch where status='01'");
             return ra.DoQuery(sql).Tables[0];
         }
 
@@ -23,32 +23,30 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         public DataTable FindChannel(string batchsortid)
         {
             var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
-            string sql = string.Format(@"SELECT a.channel_allot_code
-                                              ,a.batch_sort_id
-                                              ,a.channel_code
-                                              ,a.product_code
-                                              ,a.product_name
-                                              ,a.in_quantity
-                                              ,a.out_quantity
-                                              ,a.real_quantity
-                                              ,a.remain_quantity  
-                                              ,b.channel_code
-                                              ,b.sorting_line_code
-                                              ,b.channel_name
-                                              ,b.channel_type
-                                              ,b.led_code
-                                              ,b.default_product_code
-                                              ,b.remain_quantity
-                                              ,b.middle_quantity
-                                              ,b.max_quantity
-                                              ,b.group_no
-                                              ,b.order_no
-                                              ,b.address
-                                              ,b.cell_code
-                                              ,b.status 
-                                               FROM sms_channel_allot a 
-                                               left join dbo.sms_channel b on a.channel_code=b.channel_code
-                                               WHERE batch_sort_id='{0}'", batchsortid);
+            string sql = string.Format(@"SELECT a.channel_code,
+                                                a.sort_batch_id,
+                                                a.product_code,
+                                                a.product_name,
+                                                a.quantity,
+                                                b.channel_type,
+                                                b.channel_name,
+                                                b.sorting_line_code,
+                                                b.default_product_code,
+                                                b.default_product_name,
+                                                b.remain_quantity,
+                                                b.channel_capacity,
+                                                b.group_no,
+                                                b.order_no,
+                                                b.sort_address,
+                                                b.supply_address,
+                                                b.x,
+                                                b.y,
+                                                b.width,
+                                                b.height,
+                                                b.status 
+                                                FROM sms_channel_allot a 
+                                                left join dbo.sms_channel b on a.channel_code=b.channel_code
+                                                WHERE batch_sort_id='{0}'", batchsortid);
             return ra.DoQuery(sql).Tables[0];
         }
 
