@@ -40,9 +40,6 @@
     <Reference Include="Automation.Service.OPC">
       <HintPath>..\packages\Automation.Service.OPC.1.0.0.0\lib\net40\Automation.Service.OPC.dll</HintPath>
     </Reference>
-    <Reference Include="Common.Logging">
-      <HintPath>..\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>
-    </Reference>
     <Reference Include="DBRabbit">
       <HintPath>..\packages\DBRabbit.1.0.3\lib\DBRabbit.dll</HintPath>
     </Reference>
