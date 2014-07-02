@@ -7,14 +7,11 @@ using System.Data;
 using Automation.Plugins.YZ.Sorting.Dal;
 using Automation.Core;
 using System.Windows.Forms;
-using THOK.MCP;
 
 namespace Automation.Plugins.YZ.Sorting.Process
 {
     class DataDownLoadProcess
     {
-
-        public Context Context { get; set; }
         public void Data()
         {
             lock (this)
@@ -49,7 +46,7 @@ namespace Automation.Plugins.YZ.Sorting.Process
                         if (table.Rows.Count != 0)
                         {
 
-                            string batchsortid = table.Rows[0]["batch_sort_id"].ToString();
+                            string batchsortid = table.Rows[0]["batch_no"].ToString();
                           
                             
 
@@ -91,7 +88,7 @@ namespace Automation.Plugins.YZ.Sorting.Process
             }
             catch (Exception e)
             {
-                THOK.MCP.Logger.Error("下载数据失败！原因：" + e.Message);
+              Logger.Error("下载数据失败！原因：" + e.Message);
             }
         }
 

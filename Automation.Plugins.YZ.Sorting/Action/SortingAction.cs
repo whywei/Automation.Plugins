@@ -25,7 +25,6 @@ namespace Automation.Plugins.YZ.Sorting.Action
         {
             IHeaderControl header = App.HeaderControl;
             header.Add(new SimpleActionItem(rootKey, "订单查询", OrderQuery_Click) { ToolTipText = "分拣订单查询", GroupCaption = "作业查询", LargeImage = Resources.Sorting_Query_32 });
-            header.Add(new SimpleActionItem(rootKey, "LED", LedQuery_Click) { ToolTipText = "led查询", GroupCaption = "查询", LargeImage = Resources.Customer_Query_32 });
             header.Add(new SimpleActionItem(rootKey, "客户查询", CustomerQuery_Click) { ToolTipText = "客户订单查询", GroupCaption = "作业查询", LargeImage = Resources.Customer_Query_32 });
             header.Add(new SimpleActionItem(rootKey, "缓存订单", CacheOrderQuery_Click) { ToolTipText = "缓存订单查询", GroupCaption = "作业查询", LargeImage = Resources.CacheOrderQuery_32 });
             header.Add(new SimpleActionItem(rootKey, "烟道盘点", SortChannelCheck_Click) { ToolTipText = "分拣烟道盘点", GroupCaption = "作业查询", LargeImage = Resources.SortChannelCheck_32 });
@@ -44,10 +43,7 @@ namespace Automation.Plugins.YZ.Sorting.Action
         }
 
 
-        private void LedQuery_Click(object sender, EventArgs e)
-        {
-            AutomationContext.ActivateView<LedQueryView>();
-        }
+      
 
         private void OrderQuery_Click(object sender, EventArgs e)
         {
