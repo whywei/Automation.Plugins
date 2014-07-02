@@ -2,13 +2,13 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Automation.Plugins.Stocking</id>
-    <version>1.0.0.0</version>
+    <version>1.0.0.1-alpha1</version>
     <title>Automation.Plugins.Stocking</title>
     <authors>thok</authors>
     <owners>thok</owners>
-    <licenseUrl>https://www.myget.org/gallery/thok</licenseUrl>
-    <projectUrl>https://www.myget.org/gallery/thok</projectUrl>
-    <iconUrl>https://www.myget.org/gallery/thok</iconUrl>
+    <licenseUrl>http://nuget.wicp.net/license</licenseUrl>
+    <projectUrl>https://github.com/thok-sw</projectUrl>
+    <iconUrl>http://nuget.wicp.net/content/icon/package.ico</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Automation.Plugins.Stocking</description>
     <releaseNotes />
