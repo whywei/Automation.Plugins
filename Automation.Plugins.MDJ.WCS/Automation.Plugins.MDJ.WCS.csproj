@@ -36,17 +36,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Automation.Core">
-      <HintPath>..\packages\Automation.Core.1.0.0.0\lib\net40-Client\Automation.Core.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\packages\Automation.Core.1.0.0.1\lib\net40-Client\Automation.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Automation.Service.BarcodeReader, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Automation.Service.BarcodeReader.1.0.0.0\lib\net40\Automation.Service.BarcodeReader.dll</HintPath>
+    <Reference Include="Automation.Service.BarcodeReader">
+      <HintPath>..\packages\Automation.Service.BarcodeReader.1.0.0.1\lib\net40\Automation.Service.BarcodeReader.dll</HintPath>
     </Reference>
-    <Reference Include="Automation.Service.OPC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Automation.Service.OPC.1.0.0.0\lib\net40\Automation.Service.OPC.dll</HintPath>
+    <Reference Include="Automation.Service.OPC">
+      <HintPath>..\packages\Automation.Service.OPC.1.0.0.1\lib\net40\Automation.Service.OPC.dll</HintPath>
     </Reference>
-    <Reference Include="DBRabbit, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DBRabbit.1.0.3\lib\DBRabbit.dll</HintPath>
+    <Reference Include="DBRabbit">
+      <HintPath>..\packages\DBRabbit.1.0.6\lib\net20\DBRabbit.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Data.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Docs.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -115,8 +114,8 @@
     <Reference Include="EnvDTE80, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="ESBasic, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DBRabbit.1.0.3\lib\ESBasic.dll</HintPath>
+    <Reference Include="ESBasic">
+      <HintPath>..\packages\DBRabbit.1.0.6\lib\net20\ESBasic.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
