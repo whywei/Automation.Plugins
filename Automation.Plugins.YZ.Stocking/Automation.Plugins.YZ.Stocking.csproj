@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="Automation.Core">
       <HintPath>..\packages\Automation.Core.1.0.0.1\lib\net40-Client\Automation.Core.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Automation.Service.OPC">
       <HintPath>..\packages\Automation.Service.OPC.1.0.0.1\lib\net40\Automation.Service.OPC.dll</HintPath>
