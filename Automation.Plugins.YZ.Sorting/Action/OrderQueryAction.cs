@@ -23,7 +23,7 @@ namespace Automation.Plugins.YZ.Sorting.Action
         public override void Activate()
         {
             this.Add(new RootItem(rootKey, "订单查询") { SortOrder = 10001 });
-            this.Add(new SimpleActionItem(rootKey, "刷新", OrderQueryRefresh_Click) { ToolTipText = "刷新分拣订单", GroupCaption = "分拣订单查询", LargeImage = Resources.refresh_32x32 });
+            this.Add(new SimpleActionItem(rootKey, "刷新", OrderQueryRefresh_Click) { ToolTipText = "刷新分拣订单", LargeImage = Resources.refresh_32x32 });
             base.Activate();
         }
 
