@@ -24,24 +24,33 @@ namespace AutomationDesktop
 
         public MainForm()
         {
-            this.InitializeComponent();
-
-            LoadCustomBranding(Properties.Settings.Default);            
-
-            this.Height = Screen.PrimaryScreen.Bounds.Height;
-            this.Width = Screen.PrimaryScreen.Bounds.Width;
-            this.WindowState = FormWindowState.Maximized;
-            appName = Process.GetCurrentProcess().ProcessName;
-            if (Process.GetProcessesByName(appName).Length == 1)
+            try
             {
-                Shell = this;
-                AppManager.UseBaseDirectoryForExtensionsDirectory = true;
-                this.appManager.ExtensionsActivating += (object sender, EventArgs e) =>
-                {
-                    this.appManager.CompositionAutomationExtension();
-                };
+                this.InitializeComponent();
 
-                this.appManager.LoadExtensions();
+                LoadCustomBranding(Properties.Settings.Default);
+
+                this.Height = Screen.PrimaryScreen.Bounds.Height;
+                this.Width = Screen.PrimaryScreen.Bounds.Width;
+                this.WindowState = FormWindowState.Maximized;
+                appName = Process.GetCurrentProcess().ProcessName;
+                if (Process.GetProcessesByName(appName).Length == 1)
+                {
+                    Shell = this;
+                    AppManager.UseBaseDirectoryForExtensionsDirectory = true;
+                    this.appManager.ExtensionsActivating += (object sender, EventArgs e) =>
+                    {
+                        this.appManager.CompositionAutomationExtension();
+                    };
+
+                    this.appManager.LoadExtensions();
+                }
+            }
+            catch (Exception ex)
+            {
+                string msg = string.Format("MainForm 构造方法执行出错，原因详情：{1}{2}", ex.Message, ex.StackTrace);
+                Logger.Error(msg);
+                XtraMessageBox.Show(msg, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
