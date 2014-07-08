@@ -19,18 +19,24 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         }
 
 
-        //下载烟道表
+        //下载烟道表  a.sort_batch_id,
         public DataTable FindChannel(string batchsortid)
         {
             var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
-            string sql = string.Format(@"SELECT a.channel_code,
-                                                a.sort_batch_id,
+            string sql = string.Format(@"SELECT 
+
+                                                a.channel_code,
                                                 a.product_code,
                                                 a.product_name,
                                                 a.quantity,
                                                 b.channel_type,
                                                 b.channel_name,
                                                 b.sorting_line_code,
+                                                b.led_no,
+                                                b.x,
+                                                b.y,
+                                                b.width,
+                                                b.height,
                                                 b.default_product_code,
                                                 b.default_product_name,
                                                 b.remain_quantity,
@@ -38,52 +44,48 @@ namespace Automation.Plugins.YZ.Sorting.Dal
                                                 b.group_no,
                                                 b.order_no,
                                                 b.sort_address,
-                                                b.supply_address,
-                                                b.x,
-                                                b.y,
-                                                b.width,
-                                                b.height,
+                                                b.supply_address,                                             
                                                 b.status 
                                                 FROM sms_channel_allot a 
                                                 left join dbo.sms_channel b on a.channel_code=b.channel_code
-                                                WHERE batch_sort_id='{0}'", batchsortid);
+                                                WHERE sort_batch_id='{0}'", batchsortid);
             return ra.DoQuery(sql).Tables[0];
         }
 
-        //下载订单主表 
+        //下载订单主表  
         public DataTable FindOrderMaster(string batchsortid)
         {
             var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
-            string sql = string.Format(@"SELECT a.batch_sort_id,
-                                                pack_no,
-                                                d.order_id,
-                                                customer_order,
-                                                customer_deliver_order,
-                                                quantity,
-                                                export_no,
-                                                start_time,
-                                                finish_time,
+            string sql = string.Format(@"SELECT a.sort_batch_id,
+                                                a.pack_no,
+                                                a.order_id,
+                                                a.deliver_line_code,
+                                                a.customer_code,
+                                                a.customer_name,
+                                                a.customer_order,
+                                                a.customer_deliver_order,
+                                                a.customer_info,
+                                                a.quantity,
+                                                a.export_no,
+                                                a.start_time,
+                                                a.finish_time,
                                                 a.status,
-                                                c.order_date,
-                                                c.batch_no,
-                                                e.custom_code,
-                                                e.customer_name,
-                                                g.deliver_line_code,
-                                                g.deliver_line_name,
-                                                h.sorting_line_code,
-                                                e.license_code,
-                                                e.address,
-                                                f.dist_code,
-                                                f.dist_name
+                                                b.order_date,
+                                                b.batch_no,
+                                                b.sorting_line_code,
+                                                c.master_id,
+                                                d.dist_code,
+                                                d.dist_name,
+                                                e.deliver_line_name,
+                                                f.license_code,
+                                                f.address  
                                                 FROM sms_sort_order_allot_master a
-                                                left join sms_batch_sort b on a.batch_sort_id=b.batch_sort_id
-                                                left join sms_batch c on b.batch_id=c.batch_id
-                                                left join wms_sort_order d on a.order_id=d.order_id
-                                                left join wms_customer e on d.customer_code=e.custom_code
-                                                left join wms_deliver_dist f on d.customer_code=f.custom_code 
-                                                left join dbo.wms_deliver_line g on e.custom_code=g.custom_code
-                                                left join dbo.sms_batch_sort h on a.batch_sort_id=h.batch_sort_id
-                                                WHERE a.batch_sort_id='{0}'", batchsortid);
+                                                left join sms_sort_batch b on a.sort_batch_id=b.batch_no
+                                                left join sms_sort_order_allot_detail c on a.id=c.master_id
+                                                left join wms_deliver_dist d on a.customer_code=d.custom_code
+                                                left join wms_deliver_line e on a.deliver_line_code=e.deliver_line_code
+                                                left join wms_customer f on a.customer_code=f.custom_code
+                                                WHERE a.sort_batch_id='{0}'", batchsortid);
             return ra.DoQuery(sql).Tables[0];
         }
         //下载订单细表
@@ -96,17 +98,15 @@ namespace Automation.Plugins.YZ.Sorting.Dal
                                                 a.quantity,
                                                 b.pack_no as pack_no
                                                 from sms_sort_order_allot_detail a
-                                                left join sms_sort_order_allot_master b on b.order_master_code=a.order_master_code where b.batch_sort_id='{0}'", batchsortid);
+                                                left join sms_sort_order_allot_master b on b.id=a.master_id where b.sort_batch_id='{0}'", batchsortid);
             return ra.DoQuery(sql).Tables[0];
         }
-        //下载手工补货订单明细表   //未实现功能模块
+        //下载手工补货订单明细表
         public DataTable FindHandleSupply(string batchsortid)
         {
             var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
-            string sql = string.Format(@"select 
-
-
-                                        where b.batch_sort_id='{0}')", batchsortid);
+            string sql = string.Format(@"SELECT supply_id,supply_batch,pack_no,channel_code,product_code,product_name,quantity
+                                                FROM sms_hand_supply where sort_batch_id='{0}'", batchsortid);
             return ra.DoQuery(sql).Tables[0];
         }
 
@@ -114,7 +114,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         public void UpdateBatchStatus(string batchsortid)
         {
             var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
-            ra.DoCommand(string.Format("update sms_batch_sort set status ='02' where batch_sort_id = '{0}'", batchsortid));
+            ra.DoCommand(string.Format("update sms_sort_batch set status ='02' where batch_no = '{0}'", batchsortid));
         }
     }
 }
