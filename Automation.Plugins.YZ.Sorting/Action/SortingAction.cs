@@ -6,7 +6,7 @@ using Automation.Core;
 using DotSpatial.Controls.Header;
 using Automation.Plugins.YZ.Sorting.Properties;
 using Automation.Plugins.YZ.Sorting.View;
-using Automation.Plugins.YZ.Sorting.Process;
+using Automation.Plugins.YZ.Sorting.Action;
 
 
 namespace Automation.Plugins.YZ.Sorting.Action
@@ -14,11 +14,19 @@ namespace Automation.Plugins.YZ.Sorting.Action
     public class SortingAction : AbstractAction
     {
         private const string rootKey = "yzSorting";
-        private DataDownLoadProcess download = new DataDownLoadProcess();
+
+        private SimpleActionItem[] btnDown = new SimpleActionItem[4];
+        private SimpleActionItem[] btnStart = new SimpleActionItem[4];
+        private SimpleActionItem[] btnStop = new SimpleActionItem[4];
+
+        private DataDownLoad download = new DataDownLoad();
         public override void Initialize()
         {
+
             DefaultSortOrder = 1;
             RootKey = rootKey;
+
+
         }
 
         public override void Activate()
@@ -39,9 +47,6 @@ namespace Automation.Plugins.YZ.Sorting.Action
         {
             AutomationContext.ActivateView<CustomerQueryView>();
         }
-
-
-      
 
         private void OrderQuery_Click(object sender, EventArgs e)
         {
@@ -69,7 +74,7 @@ namespace Automation.Plugins.YZ.Sorting.Action
         }
         private void DataDownLoad_click(object sender, EventArgs e)
         {
-            download.Data();
+            download.Data();           
         }
         private void StartSort_Click(object sender, EventArgs e)
         {

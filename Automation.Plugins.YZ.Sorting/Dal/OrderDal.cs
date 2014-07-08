@@ -123,8 +123,10 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         //判断是否存在未分拣数据
         public bool FindUnsortCount()
         {
+
+            //01未完成 02已完成
             var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
-            string sql = string.Format(@"SELECT COUNT(*) FROM sms_sort_order_allot_master WHERE STATUS='0'");
+            string sql = string.Format(@"SELECT COUNT(*) FROM sms_sort_order_allot_master WHERE STATUS='01'");
             var r = ra.DoScalar(sql);
             return Convert.ToInt32(DBNullUtil.Convert(r)) > 0;
         }
@@ -136,7 +138,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         {
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
 
-            ra.DoScalar("TRUNCATE TABLE sort_supply");
+            //ra.DoScalar("TRUNCATE TABLE sort_supply");
             //ra.DoScalar("TRUNCATE TABLE AS_SC_EXPORTPACK1");
             //ra.DoScalar("TRUNCATE TABLE AS_SC_EXPORTPACK2");
             //ra.DoScalar("TRUNCATE TABLE AS_SC_PACKTEAR1");
@@ -151,12 +153,12 @@ namespace Automation.Plugins.YZ.Sorting.Dal
 
             foreach (DataRow row in ordermasterTable.Rows)
             {
-                string sql = string.Format(@"insert into sort_order_allot_master values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}','{19}')",
-                row["order_date"], row["batch_no"], row["sorting_line_code"], row["pack_no"],
+                string sql = string.Format(@"insert into sort_order_allot_master values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}','{19}','{20}','{21}')",
+                row["order_date"], row["batch_no"], row["sorting_line_code"], row["pack_no"], row["master_id"],
                 row["order_id"], row["dist_code"], row["dist_name"], row["deliver_line_code"],
-                row["deliver_line_name"], row["custom_code"], row["customer_name"], row["license_code"],
-                row["address"], row["customer_order"], row["customer_deliver_order"], row["quantity"], row["export_no"] , 
-                row["start_time"], row["finish_time"], row["status"]);
+                row["deliver_line_name"], row["customer_code"], row["customer_name"], row["license_code"],
+                row["address"], row["customer_order"], row["customer_deliver_order"], row["customer_Info"],row["quantity"], 
+                row["export_no"],row["start_time"], row["finish_time"], row["status"]);
                 ra.DoCommand(sql);
             }
         }
@@ -173,6 +175,20 @@ namespace Automation.Plugins.YZ.Sorting.Dal
                 ra.DoCommand(sql);
             }
         }
+
+        public void InsertHandleSupply(DataTable handSupplyTable)
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            ra.DoScalar("TRUNCATE TABLE handle_supply");
+
+            foreach (DataRow row in handSupplyTable.Rows)
+            {
+                string sql = string.Format(@"insert into handle_supply values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')",
+                row["supply_id"], row["supply_batch"], row["pack_no"], row["channel_code"], row["product_code"], row["product_name"], row["quantity"], '0');
+                ra.DoCommand(sql);
+            }
+        }
+        
     }
 }
 
