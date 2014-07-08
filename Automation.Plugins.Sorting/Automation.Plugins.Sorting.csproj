@@ -33,12 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Automation.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Automation.Core.1.0.0.2\lib\net40-Client\Automation.Core.dll</HintPath>
+    <Reference Include="Automation.Core">
+      <HintPath>..\packages\Automation.Core.1.0.0.5\lib\net40-Client\Automation.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Automation.Service.OPC">
-      <HintPath>..\packages\Automation.Service.OPC.1.0.0.1\lib\net40\Automation.Service.OPC.dll</HintPath>
+    <Reference Include="Automation.Service.OPC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Automation.Service.OPC.1.0.0.2\lib\net40\Automation.Service.OPC.dll</HintPath>
     </Reference>
     <Reference Include="DBRabbit">
       <HintPath>..\packages\DBRabbit.1.0.6\lib\net20\DBRabbit.dll</HintPath>
@@ -93,6 +93,9 @@
     </Reference>
     <Reference Include="ESBasic">
       <HintPath>..\packages\DBRabbit.1.0.6\lib\net20\ESBasic.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Spring.Rest, Version=1.1.1.35040, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
       <HintPath>..\packages\Spring.Rest.1.1.1\lib\net40-client\Spring.Rest.dll</HintPath>

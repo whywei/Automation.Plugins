@@ -34,12 +34,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Automation.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Automation.Core.1.0.0.2\lib\net40-Client\Automation.Core.dll</HintPath>
+    <Reference Include="Automation.Core">
+      <HintPath>..\packages\Automation.Core.1.0.0.5\lib\net40-Client\Automation.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Automation.Service.OPC">
-      <HintPath>..\packages\Automation.Service.OPC.1.0.0.1\lib\net40\Automation.Service.OPC.dll</HintPath>
+    <Reference Include="Automation.Service.OPC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Automation.Service.OPC.1.0.0.2\lib\net40\Automation.Service.OPC.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Data.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v13.1.Core, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -93,6 +93,9 @@
     <Reference Include="DotSpatial.Topology">
       <HintPath>..\packages\DotSpatial.Topology.1.6.0.0\lib\net40-Client\DotSpatial.Topology.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-client\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />

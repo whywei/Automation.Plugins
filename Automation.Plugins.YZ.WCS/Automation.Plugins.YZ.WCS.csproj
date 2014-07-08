@@ -33,16 +33,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Automation.Common.SRM">
-      <HintPath>..\packages\Automation.Common.SRM.1.0.0.0\lib\net40\Automation.Common.SRM.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Automation.Common.SRM, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Automation.Common.SRM.1.0.0.1\lib\net40\Automation.Common.SRM.dll</HintPath>
     </Reference>
-    <Reference Include="Automation.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Automation.Core.1.0.0.2\lib\net40-Client\Automation.Core.dll</HintPath>
+    <Reference Include="Automation.Core">
+      <HintPath>..\packages\Automation.Core.1.0.0.5\lib\net40-Client\Automation.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Automation.Service.OPC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Automation.Service.OPC.1.0.0.1\lib\net40\Automation.Service.OPC.dll</HintPath>
+      <HintPath>..\packages\Automation.Service.OPC.1.0.0.2\lib\net40\Automation.Service.OPC.dll</HintPath>
     </Reference>
     <Reference Include="DBRabbit, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DBRabbit.1.0.6\lib\net20\DBRabbit.dll</HintPath>
@@ -105,6 +104,9 @@
     <Reference Include="ESBasic, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DBRabbit.1.0.6\lib\net20\ESBasic.dll</HintPath>
     </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
@@ -149,6 +151,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Config\PLC.xml" />
     <Content Include="Serialize\Readme.txt" />
     <Content Include="TransactionScopeFactoryProviderConfig.xml" />
     <None Include="Properties\Settings.settings">
@@ -273,7 +276,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Config\PLC.xml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
