@@ -10,6 +10,23 @@ namespace Automation.Plugins.YZ.Sorting.Dal
 {
     public class ChannelDal : AbstractBaseDal
     {
+
+
+        /// <summary>
+        /// 查询烟道信息
+        /// </summary>
+        /// <returns>烟道信息表</returns>
+        public DataTable FindSortChannel()
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = @"SELECT channel_code ,channel_name,product_code,product_name,quantity,
+                           remain_quantity,channel_capacity,group_no,order_no,sort_address,supply_address,led_no,x,y,
+                           width,height,case channel_type when '1' then '立式机(人工)' when '2' then '立式机(自动)' when '3' then '通道机'when '4' then '卧式机' else  '混合烟道' end channel_type,
+                           case status when '1' then '可用' else  '不可用' end status FROM Channel_Allot";
+            return ra.DoQuery(string.Format(sql)).Tables[0];
+        }
+
+
       
         public void InsertChannel(DataTable channelTable)
         {
@@ -22,7 +39,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
                 row["channel_code"], row["channel_type"], row["channel_name"], row["product_code"], row["product_name"],
                 row["quantity"], row["remain_quantity"], row["channel_capacity"],row["group_no"], row["order_no"],
                 row["sort_address"], row["supply_address"], row["led_no"], row["x"],
-                row["y"], row["width"], row["height"], row["status"]);
+                row["y"], row["width"], row["height"], row["is_active"]);
                 ra.DoCommand(sql);
             }
         }

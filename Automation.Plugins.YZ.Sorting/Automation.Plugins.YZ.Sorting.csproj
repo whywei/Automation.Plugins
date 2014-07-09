@@ -113,12 +113,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Action\ChannelAllotAction.cs" />
-    <Compile Include="Action\OrderQueryAction.cs" />
     <Compile Include="Action\SortingAction.cs" />
-    <Compile Include="Dal\ChannelAllotDal.cs" />
     <Compile Include="Dal\ChannelDal.cs" />
+    <Compile Include="Dal\CustomerDal.cs" />
     <Compile Include="Dal\OrderDal.cs" />
+    <Compile Include="Dal\PackNoDal.cs" />
     <Compile Include="Dal\ServerDal.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Model\ChannelAllot.cs" />
@@ -131,14 +130,25 @@
     </Compile>
     <Compile Include="SortingPlugin.cs" />
     <Compile Include="View\CacheOrderQueryView.cs" />
-    <Compile Include="View\Controls\ChannelAllotQueryControl.cs">
+    <Compile Include="View\Controls\ChannelQueryControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Controls\ChannelAllotQueryControl.Designer.cs">
-      <DependentUpon>ChannelAllotQueryControl.cs</DependentUpon>
+    <Compile Include="View\Controls\ChannelQueryControl.Designer.cs">
+      <DependentUpon>ChannelQueryControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\CustomerQueryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\CustomerQueryControl.Designer.cs">
+      <DependentUpon>CustomerQueryControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\PackNoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\PackNoControl.Designer.cs">
+      <DependentUpon>PackNoControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\CustomerQueryView.cs" />
-    <Compile Include="View\HandleStockView.cs" />
     <Compile Include="View\Controls\OrderQueryControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -146,7 +156,8 @@
       <DependentUpon>OrderQueryControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\OrderQueryView.cs" />
-    <Compile Include="View\SortChannelCheckView.cs" />
+    <Compile Include="View\ChannelQueryView.cs" />
+    <Compile Include="View\PackNoView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -173,15 +184,22 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Controls\ChannelAllotQueryControl.resx">
-      <DependentUpon>ChannelAllotQueryControl.cs</DependentUpon>
+    <EmbeddedResource Include="View\Controls\ChannelQueryControl.resx">
+      <DependentUpon>ChannelQueryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\CustomerQueryControl.resx">
+      <DependentUpon>CustomerQueryControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\OrderQueryControl.resx">
       <DependentUpon>OrderQueryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\PackNoControl.resx">
+      <DependentUpon>PackNoControl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

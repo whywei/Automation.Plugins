@@ -75,7 +75,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.gridDetail);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(863, 450);
+            this.splitContainerControl1.Size = new System.Drawing.Size(860, 450);
             this.splitContainerControl1.SplitterPosition = 193;
             this.splitContainerControl1.TabIndex = 1;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -86,7 +86,7 @@
             this.gridMaster.Location = new System.Drawing.Point(0, 0);
             this.gridMaster.MainView = this.viewMaster;
             this.gridMaster.Name = "gridMaster";
-            this.gridMaster.Size = new System.Drawing.Size(863, 193);
+            this.gridMaster.Size = new System.Drawing.Size(860, 193);
             this.gridMaster.TabIndex = 0;
             this.gridMaster.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.viewMaster});
@@ -285,7 +285,7 @@
             this.gridDetail.Location = new System.Drawing.Point(0, 0);
             this.gridDetail.MainView = this.viewDetail;
             this.gridDetail.Name = "gridDetail";
-            this.gridDetail.Size = new System.Drawing.Size(863, 252);
+            this.gridDetail.Size = new System.Drawing.Size(860, 252);
             this.gridDetail.TabIndex = 0;
             this.gridDetail.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.viewDetail});
@@ -383,7 +383,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainerControl1);
             this.Name = "OrderQueryControl";
-            this.Size = new System.Drawing.Size(863, 450);
+            this.Size = new System.Drawing.Size(860, 450);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridMaster)).EndInit();

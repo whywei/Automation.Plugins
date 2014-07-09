@@ -4,51 +4,52 @@ using System.Linq;
 using System.Text;
 using Automation.Core;
 using DevExpress.XtraGrid;
-using DevExpress.XtraGrid.Views.Grid;
-using Automation.Plugins.YZ.Sorting.Dal;
 using Automation.Plugins.YZ.Sorting.View.Controls;
 using System.Windows.Forms;
 using Automation.Plugins.YZ.Sorting.Properties;
+using DevExpress.XtraGrid.Views.Grid;
+using Automation.Plugins.YZ.Sorting.Dal;
 
 namespace Automation.Plugins.YZ.Sorting.View
 {
-   public class CustomerQueryView:AbstractView
+  public class PackNoView:AbstractView
     {
        private GridControl gridControl = null;
        private GridView gridMasterView = null;
        private GridControl gridDetailControl = null;
 
-       private CustomerDal customerDal = new CustomerDal();
+       private PackNoDal packNoDal = new PackNoDal();
 
 
         public override void Initialize()
         {
-            this.DefaultSortOrder = 103;
+            this.DefaultSortOrder = 104;
             IsPreload = false;
         }
 
         public override void Activate()
         {
-            this.Key = "kCustomerQuery";
-            this.Caption = "客户查询";
-            this.InnerControl = new CustomerQueryControl();
+            this.Key = "kPackNoQuery";
+            this.Caption = "烟包查询";
+            this.InnerControl = new PackNoControl();
             this.Dock = DockStyle.Fill;
             this.SmallImage = Resources.refresh_32x32;
 
-            gridControl = ((CustomerQueryControl)this.InnerControl).gridMaster;
-            gridMasterView = ((CustomerQueryControl)this.InnerControl).viewMaster;
-            gridDetailControl = ((CustomerQueryControl)this.InnerControl).gridDetail;
+            gridControl = ((PackNoControl)this.InnerControl).gridMaster;
+            gridMasterView = ((PackNoControl)this.InnerControl).viewMaster;
+            gridDetailControl = ((PackNoControl)this.InnerControl).gridDetail;
             gridMasterView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(GridMasterView_RowClick);
     
         }
 
         public void Refresh()
         {
-            gridControl.DataSource = customerDal.FindMaster();                       
+            gridControl.DataSource = packNoDal.FindMaster();                       
         }
         private void GridMasterView_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
-            gridDetailControl.DataSource = customerDal.FindDetail(gridMasterView.GetRowCellValue(gridMasterView.GetSelectedRows()[0], "customer_code").ToString());
+          
+            gridDetailControl.DataSource = packNoDal.FindDetail(gridMasterView.GetRowCellValue(gridMasterView.GetSelectedRows()[0], "pack_no").ToString());
         }
     }
 }

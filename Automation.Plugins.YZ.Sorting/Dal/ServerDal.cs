@@ -23,9 +23,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         public DataTable FindChannel(string batchsortid)
         {
             var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
-            string sql = string.Format(@"SELECT 
-
-                                                a.channel_code,
+            string sql = string.Format(@"SELECT a.channel_code,
                                                 a.product_code,
                                                 a.product_name,
                                                 a.quantity,
@@ -36,16 +34,14 @@ namespace Automation.Plugins.YZ.Sorting.Dal
                                                 b.x,
                                                 b.y,
                                                 b.width,
-                                                b.height,
-                                                b.default_product_code,
-                                                b.default_product_name,
+                                                b.height,                                           
                                                 b.remain_quantity,
                                                 b.channel_capacity,
                                                 b.group_no,
                                                 b.order_no,
                                                 b.sort_address,
                                                 b.supply_address,                                             
-                                                b.status 
+                                                b.is_active
                                                 FROM sms_channel_allot a 
                                                 left join dbo.sms_channel b on a.channel_code=b.channel_code
                                                 WHERE sort_batch_id='{0}'", batchsortid);

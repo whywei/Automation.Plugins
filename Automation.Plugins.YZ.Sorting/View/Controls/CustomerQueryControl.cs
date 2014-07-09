@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace Automation.Plugins.YZ.Sorting.View.Controls
 {
-    public partial class ChannelAllotQueryControl : UserControl
+    public partial class CustomerQueryControl : UserControl
     {
-        public ChannelAllotQueryControl()
+        public CustomerQueryControl()
         {
             InitializeComponent();
         }
