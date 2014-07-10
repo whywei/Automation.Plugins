@@ -82,18 +82,28 @@ namespace Automation.Plugins.YZ.Sorting.Action
         }
 
         private void SortingRecordQuery_Click(object sender, EventArgs e)
-        { }
+        {
+            AutomationContext.ActivateView<SortingRecordView>();
+        }
 
         private void HandSuppyQuery_Click(object sender, EventArgs e)
-        { }
+        {
+            AutomationContext.ActivateView<HandSuppyView>();
+        }
 
         private void PackDataQuery_Click(object sender, EventArgs e)
-        { }
+        {
+            AutomationContext.ActivateView<PackDataView>();
+        }
 
         private void SortingProgressQuery_Click(object sender, EventArgs e)
-        { }
+        {
+            AutomationContext.ActivateView<SortingProgressView>();
+        }
 
         private void SortingEfficiencyQuery_Click(object sender, EventArgs e)
-        { }
+        {
+            AutomationContext.ActivateView<SortingEfficiencyView>();
+        }
     }
 }
