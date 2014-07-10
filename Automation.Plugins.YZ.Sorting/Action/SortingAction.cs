@@ -37,9 +37,11 @@ namespace Automation.Plugins.YZ.Sorting.Action
             header.Add(new SimpleActionItem(rootKey, "烟包查询", PackNoQuery_Click) { ToolTipText = "分拣订单查询", GroupCaption = "查询", SortOrder = 2, LargeImage = Resources.Sorting_Query_32 });
             header.Add(new SimpleActionItem(rootKey, "客户查询", CustomerQuery_Click) { ToolTipText = "客户订单查询", GroupCaption = "查询", SortOrder = 3, LargeImage = Resources.Customer_Query_32 });
             header.Add(new SimpleActionItem(rootKey, "缓存订单", CacheOrderQuery_Click) { ToolTipText = "缓存订单查询", GroupCaption = "查询", SortOrder = 4, LargeImage = Resources.CacheOrderQuery_32 });
-
-        
-        
+            header.Add(new SimpleActionItem(rootKey, "下单记录", SortingRecordQuery_Click) { ToolTipText = "下单记录查询", GroupCaption = "查询", SortOrder = 5, LargeImage = Resources.CacheOrderQuery_32 });
+            header.Add(new SimpleActionItem(rootKey, "手工补货", HandSuppyQuery_Click) { ToolTipText = "手工补货查询", GroupCaption = "查询", SortOrder = 6, LargeImage = Resources.CacheOrderQuery_32 });
+            header.Add(new SimpleActionItem(rootKey, "包装机数据", PackDataQuery_Click) { ToolTipText = "包装机数据查询", GroupCaption = "查询", SortOrder = 7, LargeImage = Resources.CacheOrderQuery_32 });
+            header.Add(new SimpleActionItem(rootKey, "分拣进度", SortingProgressQuery_Click) { ToolTipText = "分拣进度查询", GroupCaption = "查询", SortOrder = 8, LargeImage = Resources.CacheOrderQuery_32 });
+            header.Add(new SimpleActionItem(rootKey, "分拣效率", SortingEfficiencyQuery_Click) { ToolTipText = "分拣效率查询", GroupCaption = "查询", SortOrder = 9, LargeImage = Resources.CacheOrderQuery_32 });
         }
 
         private void DataDownLoad_click(object sender, EventArgs e)
@@ -78,5 +80,20 @@ namespace Automation.Plugins.YZ.Sorting.Action
         {
             AutomationContext.ActivateView<CacheOrderQueryView>();
         }
+
+        private void SortingRecordQuery_Click(object sender, EventArgs e)
+        { }
+
+        private void HandSuppyQuery_Click(object sender, EventArgs e)
+        { }
+
+        private void PackDataQuery_Click(object sender, EventArgs e)
+        { }
+
+        private void SortingProgressQuery_Click(object sender, EventArgs e)
+        { }
+
+        private void SortingEfficiencyQuery_Click(object sender, EventArgs e)
+        { }
     }
 }
