@@ -16,19 +16,12 @@ namespace Automation.Plugins.YZ.Sorting.Action
     {
         private const string rootKey = "yzSorting";
 
-        private bool channelViewIsOpen = false;
-        private ChannelQueryView ChannelQueryView = new ChannelQueryView();
-        private bool customerQueryIsOpen = false;
-        private bool cacheorderQueryIsOpen = false;
-        private bool packnoQueryIsOpen = false;
-      
-        ActionItem[] actionItem = new ActionItem[4];
-
         private DataDownLoad download = new DataDownLoad();
         public override void Initialize()
         {
 
             DefaultSortOrder = 1;
+            RootKey = rootKey;
     
         }
 
@@ -45,103 +38,9 @@ namespace Automation.Plugins.YZ.Sorting.Action
             header.Add(new SimpleActionItem(rootKey, "客户查询", CustomerQuery_Click) { ToolTipText = "客户订单查询", GroupCaption = "查询", SortOrder = 3, LargeImage = Resources.Customer_Query_32 });
             header.Add(new SimpleActionItem(rootKey, "缓存订单", CacheOrderQuery_Click) { ToolTipText = "缓存订单查询", GroupCaption = "查询", SortOrder = 4, LargeImage = Resources.CacheOrderQuery_32 });
 
-            actionItem[0] = new SimpleActionItem(rootKey, "刷新", ChannelRefresh_Click) { ToolTipText = "刷新烟道", GroupCaption = "烟道查询", LargeImage = Resources.refresh_32x32 };
-            actionItem[1] = new SimpleActionItem(rootKey, "刷新", PackNoRefresh_Click) { ToolTipText = "刷新分烟包", GroupCaption = "烟包查询", LargeImage = Resources.refresh_32x32 };
-            actionItem[2] = new SimpleActionItem(rootKey, "刷新", CustomerRefresh_Click) { ToolTipText = "刷新客户", GroupCaption = "客户查询", LargeImage = Resources.refresh_32x32 };
-            actionItem[3] = new SimpleActionItem(rootKey, "刷新", CacheOrderRefresh_Click) { ToolTipText = "刷新缓存", GroupCaption = "缓存订单", LargeImage = Resources.refresh_32x32 };
-
-
-            App.DockManager.PanelClosed += new EventHandler<DockablePanelEventArgs>(DockManager_PanelClosed);
-            App.DockManager.ActivePanelChanged += new EventHandler<DockablePanelEventArgs>(DockManager_ActivePanelChanged);
-      
+        
         
         }
-
-        private void DockManager_PanelClosed(object sender, DockablePanelEventArgs e)
-        {
-            switch (e.ActivePanelKey)
-            {
-                case "kChannelQuery":
-                    channelViewIsOpen = false;                 
-                    App.HeaderControl.Remove(actionItem[0].Key);
-                    App.DockManager.Remove("kChannelQuery");
-                    return;
-                case "kPackNoQuery":
-                    packnoQueryIsOpen = false;               
-                    App.HeaderControl.Remove(actionItem[1].Key);
-                    App.DockManager.Remove("kPackNoQuery");
-                    return;
-                case "kCustomerQuery":
-                    customerQueryIsOpen = false;             
-                    App.HeaderControl.Remove(actionItem[2].Key);
-                    App.DockManager.Remove("kCustomerQuery");
-                    return;
-                case "kCacheOrderQuery":
-                    cacheorderQueryIsOpen = false;
-                    App.HeaderControl.Remove(actionItem[3].Key);
-                    App.DockManager.Remove(AutomationContext.GetView<CacheOrderQueryView>().Key);
-                    return;
-            }
-        }
-
-        private void DockManager_ActivePanelChanged(object sender, DockablePanelEventArgs e)
-        {
-            if (e.ActivePanelKey == "kChannelQuery")
-            {
-                try
-                {
-                    App.HeaderControl.Add((SimpleActionItem)actionItem[0]);
-                }
-                catch { }
-                App.HeaderControl.SelectRoot("yzSorting");
-            }else{
-                App.HeaderControl.Remove(actionItem[0].Key);
-            }
-
-            if (e.ActivePanelKey == "kPackNoQuery")
-            {
-                try
-                {
-                    App.HeaderControl.Add((SimpleActionItem)actionItem[1]);
-                }
-                catch
-                { }
-                App.HeaderControl.SelectRoot("yzSorting");
-            }else{
-                App.HeaderControl.Remove(actionItem[1].Key);
-            }
-
-            if (e.ActivePanelKey == "kCustomerQuery")
-            {
-                try
-                {
-                    App.HeaderControl.Add((SimpleActionItem)actionItem[2]);
-                }
-                catch { }
-                App.HeaderControl.SelectRoot("yzSorting");
-            }
-            else
-            {
-                App.HeaderControl.Remove(actionItem[2].Key);
-            }
-            if (e.ActivePanelKey == "kCacheOrderQuery")
-            {
-                try
-                {
-                    App.HeaderControl.Add((SimpleActionItem)actionItem[3]);
-                }
-                catch
-                { }
-                App.HeaderControl.SelectRoot("yzSorting");
-            }
-            else
-            {
-                App.HeaderControl.Remove(actionItem[3].Key);
-            }
-
-        }
-       
-
 
         private void DataDownLoad_click(object sender, EventArgs e)
         {
@@ -165,59 +64,19 @@ namespace Automation.Plugins.YZ.Sorting.Action
         }
         private void ChannelQuery_Click(object sender, EventArgs e)
         {
-            if (!channelViewIsOpen)
-            {
-                AddDockablePanel(ChannelQueryView);
-                channelViewIsOpen = true;
-            }
-            App.DockManager.SelectPanel("kChannelQuery");
+            AutomationContext.ActivateView<ChannelQueryView>();
         }
         private void PackNoQuery_Click(object sender, EventArgs e)
         {
-            if (!packnoQueryIsOpen)
-            {
-                AddDockablePanel(AutomationContext.GetView<PackNoView>());
-                packnoQueryIsOpen = true;
-            }
-            App.DockManager.SelectPanel("kPackNoQuery");
+            AutomationContext.ActivateView<PackNoView>();
         }
         private void CustomerQuery_Click(object sender, EventArgs e)
         {
-            if (!customerQueryIsOpen)
-            {
-                AddDockablePanel(AutomationContext.GetView<CustomerQueryView>());
-                customerQueryIsOpen = true;
-            }
-            App.DockManager.SelectPanel("kCustomerQuery");
+            AutomationContext.ActivateView<CustomerQueryView>();
         }
         private void CacheOrderQuery_Click(object sender, EventArgs e)
         {
-            if (!cacheorderQueryIsOpen)
-            {
-                AddDockablePanel(AutomationContext.GetView<CacheOrderQueryView>());
-                cacheorderQueryIsOpen = true;
-            }
-            App.DockManager.SelectPanel("kCacheOrderQuery");
+            AutomationContext.ActivateView<CacheOrderQueryView>();
         }
-
-
-        #region  刷新功能
-        private void ChannelRefresh_Click(object sender, EventArgs e)
-        {
-            ChannelQueryView.Refresh();
-        }
-        private void PackNoRefresh_Click(object sender, EventArgs e)
-        {
-            AutomationContext.GetView<PackNoView>().Refresh();
-        }
-        private void CustomerRefresh_Click(object sender, EventArgs e)
-        {
-            AutomationContext.GetView<CustomerQueryView>().Refresh();
-        }
-        private void CacheOrderRefresh_Click(object sender, EventArgs e)
-        {
-            AutomationContext.GetView<CacheOrderQueryView>().Refresh();
-        }
-        #endregion
     }
 }

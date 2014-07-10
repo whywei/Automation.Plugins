@@ -113,6 +113,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Action\CacheOrderAction.cs" />
+    <Compile Include="Action\ChannelAction.cs" />
+    <Compile Include="Action\CustomerAction.cs" />
+    <Compile Include="Action\PackNoAction.cs" />
     <Compile Include="Action\SortingAction.cs" />
     <Compile Include="Dal\ChannelDal.cs" />
     <Compile Include="Dal\CustomerDal.cs" />
