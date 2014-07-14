@@ -21,12 +21,10 @@ namespace Automation.Plugins.YZ.Sorting.Action
 
         public override void Activate()
         {
-            this.Add(new RootItem(rootKey, "分拣进度") { SortOrder = 10001 });
-            this.Add(new SimpleActionItem(rootKey, "刷新", SortingProgressRefresh_Click) { ToolTipText = "分拣进度查询", GroupCaption = "分拣进度", LargeImage = Resources.refresh_32x32 });
             base.Activate();
         }
 
-        private void SortingProgressRefresh_Click(object sender, EventArgs e)
+        public override void RefreshAction()
         {
             (View as SortingProgressView).Refresh();
         }

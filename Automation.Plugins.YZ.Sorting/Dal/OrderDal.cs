@@ -188,7 +188,21 @@ namespace Automation.Plugins.YZ.Sorting.Dal
                 ra.DoCommand(sql);
             }
         }
-        
+
+        public DataTable FindOrderInfo(string sortNo)
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = "";
+            if (sortNo != "all")
+                sql = @"SELECT COUNT(DISTINCT customer_code) customer_num, COUNT(DISTINCT deliver_line_code) deliver_line_num,
+                         (SELECT ISNULL(SUM(quantity),0) FROM sort_order_allot_master WHERE finish_time <= GETDATE() AND STATUS=1 ) quantity
+                         FROM sort_order_allot_master WHERE finish_time <= GETDATE()";
+            else
+                sql = @"SELECT COUNT(DISTINCT customer_code) customer_num, COUNT(DISTINCT deliver_line_code) deliver_line_num,
+                         (SELECT ISNULL(SUM(quantity),0) FROM sort_order_allot_master) quantity
+                         FROM sort_order_allot_master";
+            return ra.DoQuery(sql).Tables[0];
+        }
     }
 }
 
