@@ -19,7 +19,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
             if (dt1.Rows.Count == 0)
             {
                 DataTable dt2 = ra.DoQuery(max).Tables[0];
-                
+
                 if (dt2.Rows[0]["supply_batch"].ToString() == "")
                 {
                     throw new Exception("手工补货表无数据");
@@ -35,15 +35,15 @@ namespace Automation.Plugins.YZ.Sorting.Dal
             }
         }
 
-        public DataTable GetHandSupplyBySupplyBatch(int supplyBatch)
+        public DataTable GetAllHandSupply()
         {
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
             string sql = string.Format(@"select a.supply_id,a.supply_batch,a.pack_no,a.channel_code,a.product_code
-                                        ,a.product_name,a.quantity
+                                        ,a.product_name,a.quantity,b.channel_name
                                         ,case when a.status = 1 then '已补货' else '未补货' end status 
                                         from handle_supply a 
                                         left join channel_allot b on a.channel_code = b.channel_code 
-                                        where a.supply_batch='{0}' order by a.supply_id, a.quantity desc", supplyBatch);
+                                        order by a.supply_id, a.quantity desc");
             return ra.DoQuery(sql).Tables[0];
         }
     }

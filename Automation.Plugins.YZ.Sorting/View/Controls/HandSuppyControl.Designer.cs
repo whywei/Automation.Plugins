@@ -34,6 +34,7 @@
             this.supply_batch = new DevExpress.XtraGrid.Columns.GridColumn();
             this.pack_no = new DevExpress.XtraGrid.Columns.GridColumn();
             this.channel_code = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.channel_name = new DevExpress.XtraGrid.Columns.GridColumn();
             this.product_code = new DevExpress.XtraGrid.Columns.GridColumn();
             this.product_name = new DevExpress.XtraGrid.Columns.GridColumn();
             this.quantity = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -60,6 +61,7 @@
             this.supply_batch,
             this.pack_no,
             this.channel_code,
+            this.channel_name,
             this.product_code,
             this.product_name,
             this.quantity,
@@ -108,6 +110,16 @@
             this.channel_code.Visible = true;
             this.channel_code.VisibleIndex = 3;
             // 
+            // channel_name
+            // 
+            this.channel_name.Caption = "烟道名称";
+            this.channel_name.FieldName = "channel_name";
+            this.channel_name.Name = "channel_name";
+            this.channel_name.OptionsColumn.AllowEdit = false;
+            this.channel_name.OptionsColumn.AllowFocus = false;
+            this.channel_name.Visible = true;
+            this.channel_name.VisibleIndex = 4;
+            // 
             // product_code
             // 
             this.product_code.Caption = "卷烟编号";
@@ -116,7 +128,7 @@
             this.product_code.OptionsColumn.AllowEdit = false;
             this.product_code.OptionsColumn.AllowFocus = false;
             this.product_code.Visible = true;
-            this.product_code.VisibleIndex = 4;
+            this.product_code.VisibleIndex = 5;
             // 
             // product_name
             // 
@@ -126,7 +138,7 @@
             this.product_name.OptionsColumn.AllowEdit = false;
             this.product_name.OptionsColumn.AllowFocus = false;
             this.product_name.Visible = true;
-            this.product_name.VisibleIndex = 5;
+            this.product_name.VisibleIndex = 6;
             // 
             // quantity
             // 
@@ -136,7 +148,7 @@
             this.quantity.OptionsColumn.AllowEdit = false;
             this.quantity.OptionsColumn.AllowFocus = false;
             this.quantity.Visible = true;
-            this.quantity.VisibleIndex = 6;
+            this.quantity.VisibleIndex = 7;
             // 
             // status
             // 
@@ -146,7 +158,7 @@
             this.status.OptionsColumn.AllowEdit = false;
             this.status.OptionsColumn.AllowFocus = false;
             this.status.Visible = true;
-            this.status.VisibleIndex = 7;
+            this.status.VisibleIndex = 8;
             // 
             // HandSuppyControl
             // 
@@ -173,5 +185,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn status;
         public DevExpress.XtraGrid.GridControl gridControl1;
         public DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn channel_name;
     }
 }
