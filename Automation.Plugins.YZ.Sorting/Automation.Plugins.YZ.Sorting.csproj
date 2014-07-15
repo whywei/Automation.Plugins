@@ -125,6 +125,7 @@
     <Compile Include="Action\SortingRecordAction.cs" />
     <Compile Include="Dal\ChannelDal.cs" />
     <Compile Include="Dal\CustomerDal.cs" />
+    <Compile Include="Dal\HandSupplyDal.cs" />
     <Compile Include="Dal\OrderDal.cs" />
     <Compile Include="Dal\PackNoDal.cs" />
     <Compile Include="Dal\ServerDal.cs" />
@@ -260,6 +261,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\CustomerQueryControl.resx">
       <DependentUpon>CustomerQueryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\HandSuppyControl.resx">
+      <DependentUpon>HandSuppyControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\OrderQueryControl.resx">
       <DependentUpon>OrderQueryControl.cs</DependentUpon>
