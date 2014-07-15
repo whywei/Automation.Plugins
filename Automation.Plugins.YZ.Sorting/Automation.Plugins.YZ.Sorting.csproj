@@ -137,6 +137,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Service\YZSortingOPCService.cs" />
     <Compile Include="SortingPlugin.cs" />
     <Compile Include="View\CacheOrderQueryView.cs" />
     <Compile Include="View\Controls\ChannelQueryControl.cs">
@@ -209,7 +210,6 @@
   <ItemGroup>
     <Folder Include="Device\" />
     <Folder Include="Process\" />
-    <Folder Include="Service\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\sorting_query_32.png" />
@@ -221,7 +221,9 @@
     <None Include="Resources\sortchannelcheck_32.png" />
     <None Include="Resources\sortchannelswap_32.png" />
     <None Include="Resources\sorting_query_16.png" />
-    <Content Include="Config\PLC.xml" />
+    <Content Include="Config\YZ_FJ_PLC.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Serialize\Readme.txt" />
     <Content Include="TransactionScopeFactoryProviderConfig.xml">
       <SubType>Designer</SubType>
