@@ -131,6 +131,7 @@
     <Compile Include="Global.cs" />
     <Compile Include="Model\ChannelAllot.cs" />
     <Compile Include="Action\DataDownLoad.cs" />
+    <Compile Include="Process\SortingInfoProgress.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -209,7 +210,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Device\" />
-    <Folder Include="Process\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\sorting_query_32.png" />
@@ -221,6 +221,7 @@
     <None Include="Resources\sortchannelcheck_32.png" />
     <None Include="Resources\sortchannelswap_32.png" />
     <None Include="Resources\sorting_query_16.png" />
+    <Content Include="Config\YZ_FJ_OPC.xml" />
     <Content Include="Config\YZ_FJ_PLC.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -17,6 +17,7 @@ namespace Automation.Plugins.YZ.Sorting.View
         public override void Initialize()
         {
             this.DefaultSortOrder = 201;
+            IsPreload = true;
         }
 
         public override void Activate()
