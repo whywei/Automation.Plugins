@@ -37,10 +37,9 @@ namespace Automation.Plugins.YZ.Sorting.View
             
         }
 
-        public void Refresh()
+        public void Refresh(string channelName)
         {
-            int currentSupplyBatch = handSupplyDal.GetCurrentSupplyBatch();
-            gridControl.DataSource = handSupplyDal.GetAllHandSupply();
+            gridControl.DataSource = handSupplyDal.GetHandSupply(channelName);
         }
     }
 }

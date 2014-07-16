@@ -35,15 +35,25 @@ namespace Automation.Plugins.YZ.Sorting.Dal
             }
         }
 
-        public DataTable GetAllHandSupply()
+        public DataTable GetHandSupply(string channelName)
         {
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string condition = null;
+            if (string.IsNullOrEmpty(channelName))
+            {
+                condition = null;
+            }
+            else
+            {
+                condition = "where channel_name = '" + channelName + "'";
+            }
             string sql = string.Format(@"select a.supply_id,a.supply_batch,a.pack_no,a.channel_code,a.product_code
                                         ,a.product_name,a.quantity,b.channel_name
                                         ,case when a.status = 1 then '已补货' else '未补货' end status 
                                         from handle_supply a 
-                                        left join channel_allot b on a.channel_code = b.channel_code 
-                                        order by a.supply_id, a.quantity desc");
+                                        left join channel_allot b on a.channel_code = b.channel_code
+                                        {0}
+                                        order by a.supply_id, a.quantity desc", condition);
             return ra.DoQuery(sql).Tables[0];
         }
     }
