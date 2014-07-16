@@ -47,25 +47,35 @@ namespace Automation.Plugins.YZ.Sorting.View
             }
         }
 
+        private delegate void RefreshSortingInfo();
+
         public void Refresh()
         {
-            OrderDal orderDal = new OrderDal();
-            DataTable totalInfo=orderDal.FindOrderInfo("all");
-            DataTable completeInfo=orderDal.FindOrderInfo("");
-            if (totalInfo.Rows.Count > 0&&completeInfo.Rows.Count>0)
+            if (control.InvokeRequired)
             {
-                //当前分拣信息
-                control.lblCompleteRoute.Text = completeInfo.Rows[0]["deliver_line_num"].ToString();
-                control.lblCompleteCustomer.Text = completeInfo.Rows[0]["customer_num"].ToString();
-                control.lblCompleteQuantity.Text = completeInfo.Rows[0]["quantity"].ToString();
-                //未分拣信息
-                control.lblRoute.Text = (Convert.ToInt32(totalInfo.Rows[0]["deliver_line_num"]) - Convert.ToInt32(completeInfo.Rows[0]["deliver_line_num"])).ToString();
-                control.lblCustomer.Text = (Convert.ToInt32(totalInfo.Rows[0]["customer_num"]) - Convert.ToInt32(completeInfo.Rows[0]["customer_num"])).ToString();
-                control.lblQuantity.Text = (Convert.ToInt32(totalInfo.Rows[0]["quantity"]) - Convert.ToInt32(completeInfo.Rows[0]["quantity"])).ToString();
-                //总
-                control.lblTotalRoute.Text = totalInfo.Rows[0]["deliver_line_num"].ToString();
-                control.lblTotalCustomer.Text = totalInfo.Rows[0]["customer_num"].ToString();
-                control.lblTotalQuantity.Text = totalInfo.Rows[0]["quantity"].ToString();
+                RefreshSortingInfo refreshSortingInfo = new RefreshSortingInfo(Refresh);
+                control.Invoke(refreshSortingInfo);
+            }
+            else
+            {
+                OrderDal orderDal = new OrderDal();
+                DataTable totalInfo = orderDal.FindOrderInfo("all");
+                DataTable completeInfo = orderDal.FindOrderInfo("");
+                if (totalInfo.Rows.Count > 0 && completeInfo.Rows.Count > 0)
+                {
+                    //当前分拣信息
+                    control.lblCompleteRoute.Text = completeInfo.Rows[0]["deliver_line_num"].ToString();
+                    control.lblCompleteCustomer.Text = completeInfo.Rows[0]["customer_num"].ToString();
+                    control.lblCompleteQuantity.Text = completeInfo.Rows[0]["quantity"].ToString();
+                    //未分拣信息
+                    control.lblRoute.Text = (Convert.ToInt32(totalInfo.Rows[0]["deliver_line_num"]) - Convert.ToInt32(completeInfo.Rows[0]["deliver_line_num"])).ToString();
+                    control.lblCustomer.Text = (Convert.ToInt32(totalInfo.Rows[0]["customer_num"]) - Convert.ToInt32(completeInfo.Rows[0]["customer_num"])).ToString();
+                    control.lblQuantity.Text = (Convert.ToInt32(totalInfo.Rows[0]["quantity"]) - Convert.ToInt32(completeInfo.Rows[0]["quantity"])).ToString();
+                    //总
+                    control.lblTotalRoute.Text = totalInfo.Rows[0]["deliver_line_num"].ToString();
+                    control.lblTotalCustomer.Text = totalInfo.Rows[0]["customer_num"].ToString();
+                    control.lblTotalQuantity.Text = totalInfo.Rows[0]["quantity"].ToString();
+                }
             }
         }
     }
