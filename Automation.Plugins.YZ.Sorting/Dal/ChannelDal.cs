@@ -43,5 +43,19 @@ namespace Automation.Plugins.YZ.Sorting.Dal
                 ra.DoCommand(sql);
             }
         }
+
+        public string[] GetChannel()
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = "select channel_name from channel_allot ";
+            DataTable dt = ra.DoQuery(sql).Tables[0];
+            string[] array = new string[dt.Rows.Count];
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                DataRow dr = dt.Rows[i];
+                array[i] = Convert.ToString(dr["channel_name"]);
+            }
+            return array;
+        }
     }
 }
