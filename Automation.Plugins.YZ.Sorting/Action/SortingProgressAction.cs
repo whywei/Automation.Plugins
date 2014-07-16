@@ -23,10 +23,5 @@ namespace Automation.Plugins.YZ.Sorting.Action
         {
             base.Activate();
         }
-
-        public override void RefreshAction()
-        {
-            (View as SortingProgressView).Refresh();
-        }
     }
 }
