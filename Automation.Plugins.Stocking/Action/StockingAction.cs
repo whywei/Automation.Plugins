@@ -35,10 +35,10 @@ namespace Automation.Plugins.Stocking.Action
         public override void Activate()
         {
             IHeaderControl header = App.HeaderControl;
-            header.Add(new SimpleActionItem(rootKey, "补货烟道", StockChannelQuery_Click) { ToolTipText = "仓库补货烟道查询", GroupCaption = "作业查询", LargeImage = Resources.SconQuery_32 });
-            header.Add(new SimpleActionItem(rootKey, "分拣烟道", SortChannelQuery_Click) { ToolTipText = "分拣烟道查询", GroupCaption = "作业查询", LargeImage = Resources.SconQuery_32 });
+            header.Add(new SimpleActionItem(rootKey, "补货烟道", StockChannelQuery_Click) { ToolTipText = "仓库补货烟道查询", GroupCaption = "作业查询", LargeImage = Resources.ware_32x32 });
+            header.Add(new SimpleActionItem(rootKey, "分拣烟道", SortChannelQuery_Click) { ToolTipText = "分拣烟道查询", GroupCaption = "作业查询", LargeImage = Resources.screen_32x32 });
             header.Add(new SimpleActionItem(rootKey, "扫码状态", ScanQuery_Click) { ToolTipText = "扫码状态查询", GroupCaption = "状态查询", LargeImage = Resources.SconQuery_32 });
-            header.Add(new SimpleActionItem(rootKey, "订单状态", OrderQuery_Click) { ToolTipText = "订单状态查询", GroupCaption = "状态查询", LargeImage = Resources.SconQuery_32 });
+            header.Add(new SimpleActionItem(rootKey, "订单状态", OrderQuery_Click) { ToolTipText = "订单状态查询", GroupCaption = "状态查询", LargeImage = Resources.Replenishment2_32x32 });
             actionItem[0]= new SimpleActionItem(rootKey, "刷新", StockChannelRefresh_Click) { ToolTipText = "刷新补货烟道",GroupCaption="补货烟道操作", LargeImage = Resources.refresh_32x32 };
             actionItem[1] = new SimpleActionItem(rootKey, "刷新", SortChannelRefresh_Click) { ToolTipText = "刷新分拣烟道", GroupCaption = "分拣烟道操作", LargeImage = Resources.refresh_32x32 };
             actionItem[2] = new SimpleActionItem(rootKey, "交换烟道", SortChannelSwap_Click) { GroupCaption = "交换分拣烟道", LargeImage = Resources.SortChannelSwap_32 };

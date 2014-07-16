@@ -171,9 +171,13 @@
   <ItemGroup>
     <Content Include="App_Readme\Spring.Rest.txt" />
     <Content Include="Config\PLC.xml" />
+    <None Include="Resources\20140714044007259_easyicon_net_32.png" />
     <Content Include="Resources\refresh_32x32.png" />
+    <None Include="Resources\Replenishment2_32x32.png" />
     <Content Include="Resources\ScanQuery_16.png" />
     <Content Include="Resources\SconQuery_32.png" />
+    <None Include="Resources\screen_32x32.png" />
+    <None Include="Resources\ware_32x32.png" />
     <Content Include="Serialize\Readme.txt" />
     <Content Include="TransactionScopeFactoryProviderConfig.xml" />
     <None Include="Resources\SortChannelSwap_16.png" />
