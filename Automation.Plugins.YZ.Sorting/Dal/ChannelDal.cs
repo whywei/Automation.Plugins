@@ -10,24 +10,19 @@ namespace Automation.Plugins.YZ.Sorting.Dal
 {
     public class ChannelDal : AbstractBaseDal
     {
-
-
-        /// <summary>
-        /// 查询烟道信息
-        /// </summary>
-        /// <returns>烟道信息表</returns>
-        public DataTable FindSortChannel()
+        /// <summary>查询烟道信息</summary>
+        public DataTable FindChannel()
         {
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
-            string sql = @"SELECT channel_code ,channel_name,product_code,product_name,quantity,
-                           remain_quantity,channel_capacity,group_no,order_no,sort_address,supply_address,led_no,x,y,
-                           width,height,case channel_type when '1' then '立式机(人工)' when '2' then '立式机(自动)' when '3' then '通道机'when '4' then '卧式机' else  '混合烟道' end channel_type,
-                           case status when '1' then '可用' else  '不可用' end status FROM Channel_Allot";
-            return ra.DoQuery(string.Format(sql)).Tables[0];
+            string sql = string.Format(@"select a.channel_code, a.channel_name
+                                        ,case a.channel_type when '1' then '立式机(人工)' when '2' then '立式机(自动)' when '3' then '通道机'when '4' then '卧式机' else  '混合烟道' end channel_type
+                                        ,a.sort_address, a.supply_address
+                                        ,a.product_code, a.product_name, a.quantity, a.remain_quantity, a.group_no
+                                        ,case a.status when '1' then '可用' else  '不可用' end status
+                                        from channel_allot a");
+            return ra.DoQuery(sql).Tables[0];
         }
-
-
-      
+        
         public void InsertChannel(DataTable channelTable)
         {
 
@@ -55,6 +50,22 @@ namespace Automation.Plugins.YZ.Sorting.Dal
                 DataRow dr = dt.Rows[i];
                 array[i] = Convert.ToString(dr["channel_name"]);
             }
+            return array;
+        }
+
+        public string[] GetChannel(string channelName)
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = string.Format(@" select channel_name from dbo.Channel_Allot where channel_type 
+                         = (select distinct channel_type from Channel_Allot where channel_name='{0}')", channelName);
+            DataTable dt = ra.DoQuery(sql).Tables[0];
+            string[] array = new string[dt.Rows.Count];
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                DataRow dr = dt.Rows[i];
+                array[i] = Convert.ToString(dr["channel_name"]);
+            }
+            System.Windows.Forms.MessageBox.Show(array+",");
             return array;
         }
     }

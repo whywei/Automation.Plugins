@@ -30,13 +30,13 @@ namespace Automation.Plugins.YZ.Sorting.View
             this.Dock = DockStyle.Fill;
             this.SmallImage = Resources.refresh_32x32;
 
-            gridControl = ((ChannelQueryControl)this.InnerControl).gridChannelQuery;      
+            gridControl = ((ChannelQueryControl)this.InnerControl).gridChannelQuery;
         }
 
         public void Refresh()
         {
             ChannelDal channelDal = new ChannelDal();
-            gridControl.DataSource = channelDal.FindSortChannel();                       
+            gridControl.DataSource = channelDal.FindChannel();                       
         }
     }
 }
