@@ -46,12 +46,19 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         public DataTable FindDetail(string pack_no)
         {
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
-            string sql = string.Format(@"SELECT pack_no
-      ,channel_code
-      ,product_code
-      ,product_name
-      ,quantity as dquantity
-  FROM sort_order_allot_detail where pack_no={0}", pack_no);
+            string sql = string.Format(@"SELECT A.pack_no
+      ,C.order_id
+      ,A.channel_code
+      ,A.product_code
+      ,A.product_name
+      ,A.quantity as dquantity
+      ,CASE WHEN B.group_no=1 THEN 'A线' ELSE 'B线' END  channelline
+      ,B.channel_name
+      ,B.channel_type
+      ,B.sort_address
+  FROM sort_order_allot_detail A LEFT JOIN Channel_Allot B ON A.channel_code=B.channel_code
+  LEFT JOIN sort_order_allot_master C ON A.pack_no=C.pack_no
+  where A.pack_no={0}", pack_no);
             return ra.DoQuery(string.Format(sql)).Tables[0];
         }
 
