@@ -129,6 +129,7 @@
     <Compile Include="Dal\OrderDal.cs" />
     <Compile Include="Dal\PackNoDal.cs" />
     <Compile Include="Dal\ServerDal.cs" />
+    <Compile Include="Dal\SortingDal.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Model\ChannelAllot.cs" />
     <Compile Include="Action\DataDownLoad.cs" />

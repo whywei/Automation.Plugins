@@ -203,6 +203,49 @@ namespace Automation.Plugins.YZ.Sorting.Dal
                          FROM sort_order_allot_master";
             return ra.DoQuery(sql).Tables[0];
         }
+
+        /// <summary>
+        /// 获取主单最大的包号
+        /// </summary>
+        /// <returns>包号</returns>
+        public int FindMaxPackNoFromMaster()
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = "SELECT ISNULL(MAX(pack_no),0) pack_no FROM sort_order_allot_master";
+            return Convert.ToInt32(ra.DoScalar(sql));
+        }
+
+        /// <summary>
+        /// 获取主单卷烟总条数
+        /// </summary>
+        /// <returns>条数</returns>
+        public int FindSumQuantityFromMaster()
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = "SELECT ISNULL(MAX(quantity),0) quantity FROM sort_order_allot_master";
+            return Convert.ToInt32(ra.DoScalar(sql));
+        }
+
+        public void UpdateMasterStatus(int packNo)
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = "UPDATE sort_order_allot_master SET status='1',start_time=GETDATE() WHERE pack_no={0}";
+            ra.DoCommand(string.Format(sql, packNo));
+        }
+
+        public DataTable FindOrderDetailByPackNo(int packNo)
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = @"SELECT A.pack_no,A.channel_code,C.sort_address,C.group_no,B.export_no,B.customer_order,A.product_code,A.product_name,A.quantity
+                        ,(SELECT ISNULL(SUM(D.quantity),0) FROM sort_order_allot_detail D LEFT JOIN Channel_Allot E 
+                        ON D.channel_code=E.channel_code WHERE D.pack_no={0} AND E.group_no=C.group_no) TOTALQUANTITY
+                        ,(SELECT ISNULL(SUM(D.quantity),0) FROM sort_order_allot_detail D LEFT JOIN Channel_Allot E 
+                        ON D.channel_code=E.channel_code WHERE D.pack_no>={0} AND E.channel_code=C.channel_code) REMAINQUANTITY
+                        FROM sort_order_allot_detail A LEFT JOIN sort_order_allot_master B ON A.pack_no=B.pack_no
+                        LEFT JOIN Channel_Allot C ON A.channel_code=C.channel_code 
+                        where A.pack_no={0} ORDER BY A.pack_no ASC,C.group_no DESC,C.sort_address";
+            return ra.DoQuery(string.Format(sql, packNo)).Tables[0];
+        }
     }
 }
 
