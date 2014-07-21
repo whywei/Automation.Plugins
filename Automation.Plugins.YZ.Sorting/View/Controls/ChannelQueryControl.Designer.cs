@@ -30,18 +30,16 @@
         {
             this.gridChannelQuery = new DevExpress.XtraGrid.GridControl();
             this.viewChannelQuery = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.ChannelCode = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ChannelName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ChannelType = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ProductName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Quantity = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.RemainQuantity = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ChannelCapacity = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.GroupNo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.OrderNo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.SortAddress = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.SupplyAddress = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.IsActive = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.channel_code = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.channel_name = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.channel_type = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.product_name = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.quantity = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.remain_quantity = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.group_no = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.sort_address = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.supply_address = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.status = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridChannelQuery)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewChannelQuery)).BeginInit();
             this.SuspendLayout();
@@ -52,7 +50,7 @@
             this.gridChannelQuery.Location = new System.Drawing.Point(0, 0);
             this.gridChannelQuery.MainView = this.viewChannelQuery;
             this.gridChannelQuery.Name = "gridChannelQuery";
-            this.gridChannelQuery.Size = new System.Drawing.Size(730, 311);
+            this.gridChannelQuery.Size = new System.Drawing.Size(917, 403);
             this.gridChannelQuery.TabIndex = 2;
             this.gridChannelQuery.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.viewChannelQuery});
@@ -60,142 +58,120 @@
             // viewChannelQuery
             // 
             this.viewChannelQuery.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.ChannelCode,
-            this.ChannelName,
-            this.ChannelType,
-            this.ProductName,
-            this.Quantity,
-            this.RemainQuantity,
-            this.ChannelCapacity,
-            this.GroupNo,
-            this.OrderNo,
-            this.SortAddress,
-            this.SupplyAddress,
-            this.IsActive});
+            this.channel_code,
+            this.channel_name,
+            this.channel_type,
+            this.product_name,
+            this.quantity,
+            this.remain_quantity,
+            this.group_no,
+            this.sort_address,
+            this.supply_address,
+            this.status});
             this.viewChannelQuery.GridControl = this.gridChannelQuery;
             this.viewChannelQuery.Name = "viewChannelQuery";
             this.viewChannelQuery.OptionsView.ColumnAutoWidth = false;
             this.viewChannelQuery.OptionsView.ShowGroupPanel = false;
             // 
-            // ChannelCode
+            // channel_code
             // 
-            this.ChannelCode.Caption = "烟道代码";
-            this.ChannelCode.FieldName = "channel_code";
-            this.ChannelCode.Name = "ChannelCode";
-            this.ChannelCode.OptionsColumn.AllowEdit = false;
-            this.ChannelCode.OptionsColumn.AllowFocus = false;
-            this.ChannelCode.Visible = true;
-            this.ChannelCode.VisibleIndex = 0;
+            this.channel_code.Caption = "烟道代码";
+            this.channel_code.FieldName = "channel_code";
+            this.channel_code.Name = "channel_code";
+            this.channel_code.OptionsColumn.AllowEdit = false;
+            this.channel_code.OptionsColumn.AllowFocus = false;
+            this.channel_code.Visible = true;
+            this.channel_code.VisibleIndex = 0;
             // 
-            // ChannelName
+            // channel_name
             // 
-            this.ChannelName.Caption = "烟道名称";
-            this.ChannelName.FieldName = "channel_name";
-            this.ChannelName.Name = "ChannelName";
-            this.ChannelName.OptionsColumn.AllowEdit = false;
-            this.ChannelName.OptionsColumn.AllowFocus = false;
-            this.ChannelName.Visible = true;
-            this.ChannelName.VisibleIndex = 1;
+            this.channel_name.Caption = "烟道名称";
+            this.channel_name.FieldName = "channel_name";
+            this.channel_name.Name = "channel_name";
+            this.channel_name.OptionsColumn.AllowEdit = false;
+            this.channel_name.OptionsColumn.AllowFocus = false;
+            this.channel_name.Visible = true;
+            this.channel_name.VisibleIndex = 1;
             // 
-            // ChannelType
+            // channel_type
             // 
-            this.ChannelType.Caption = "烟道类型";
-            this.ChannelType.FieldName = "channel_type";
-            this.ChannelType.Name = "ChannelType";
-            this.ChannelType.OptionsColumn.AllowEdit = false;
-            this.ChannelType.OptionsColumn.AllowFocus = false;
-            this.ChannelType.Visible = true;
-            this.ChannelType.VisibleIndex = 2;
+            this.channel_type.Caption = "烟道类型";
+            this.channel_type.FieldName = "channel_type";
+            this.channel_type.Name = "channel_type";
+            this.channel_type.OptionsColumn.AllowEdit = false;
+            this.channel_type.OptionsColumn.AllowFocus = false;
+            this.channel_type.Visible = true;
+            this.channel_type.VisibleIndex = 2;
             // 
-            // ProductName
+            // product_name
             // 
-            this.ProductName.Caption = "商品名称";
-            this.ProductName.FieldName = "product_name";
-            this.ProductName.Name = "ProductName";
-            this.ProductName.OptionsColumn.AllowEdit = false;
-            this.ProductName.OptionsColumn.AllowFocus = false;
-            this.ProductName.Visible = true;
-            this.ProductName.VisibleIndex = 3;
+            this.product_name.Caption = "商品名称";
+            this.product_name.FieldName = "product_name";
+            this.product_name.Name = "product_name";
+            this.product_name.OptionsColumn.AllowEdit = false;
+            this.product_name.OptionsColumn.AllowFocus = false;
+            this.product_name.Visible = true;
+            this.product_name.VisibleIndex = 3;
             // 
-            // Quantity
+            // quantity
             // 
-            this.Quantity.Caption = "商品数量";
-            this.Quantity.FieldName = "quantity";
-            this.Quantity.Name = "Quantity";
-            this.Quantity.OptionsColumn.AllowEdit = false;
-            this.Quantity.OptionsColumn.AllowFocus = false;
-            this.Quantity.Visible = true;
-            this.Quantity.VisibleIndex = 4;
+            this.quantity.Caption = "商品数量";
+            this.quantity.FieldName = "quantity";
+            this.quantity.Name = "quantity";
+            this.quantity.OptionsColumn.AllowEdit = false;
+            this.quantity.OptionsColumn.AllowFocus = false;
+            this.quantity.Visible = true;
+            this.quantity.VisibleIndex = 4;
             // 
-            // RemainQuantity
+            // remain_quantity
             // 
-            this.RemainQuantity.Caption = "剩余数量";
-            this.RemainQuantity.FieldName = "remain_quantity";
-            this.RemainQuantity.Name = "RemainQuantity";
-            this.RemainQuantity.OptionsColumn.AllowEdit = false;
-            this.RemainQuantity.OptionsColumn.AllowFocus = false;
-            this.RemainQuantity.Visible = true;
-            this.RemainQuantity.VisibleIndex = 5;
+            this.remain_quantity.Caption = "剩余数量";
+            this.remain_quantity.FieldName = "remain_quantity";
+            this.remain_quantity.Name = "remain_quantity";
+            this.remain_quantity.OptionsColumn.AllowEdit = false;
+            this.remain_quantity.OptionsColumn.AllowFocus = false;
+            this.remain_quantity.Visible = true;
+            this.remain_quantity.VisibleIndex = 5;
             // 
-            // ChannelCapacity
+            // group_no
             // 
-            this.ChannelCapacity.Caption = "烟道容量";
-            this.ChannelCapacity.FieldName = "channel_capacity";
-            this.ChannelCapacity.Name = "ChannelCapacity";
-            this.ChannelCapacity.OptionsColumn.AllowEdit = false;
-            this.ChannelCapacity.OptionsColumn.AllowFocus = false;
-            this.ChannelCapacity.Visible = true;
-            this.ChannelCapacity.VisibleIndex = 6;
+            this.group_no.Caption = "分拣线组号";
+            this.group_no.FieldName = "group_no";
+            this.group_no.Name = "group_no";
+            this.group_no.OptionsColumn.AllowEdit = false;
+            this.group_no.OptionsColumn.AllowFocus = false;
+            this.group_no.Visible = true;
+            this.group_no.VisibleIndex = 6;
             // 
-            // GroupNo
+            // sort_address
             // 
-            this.GroupNo.Caption = "分拣线组号";
-            this.GroupNo.FieldName = "group_no";
-            this.GroupNo.Name = "GroupNo";
-            this.GroupNo.OptionsColumn.AllowEdit = false;
-            this.GroupNo.OptionsColumn.AllowFocus = false;
-            this.GroupNo.Visible = true;
-            this.GroupNo.VisibleIndex = 7;
+            this.sort_address.Caption = "分拣地址";
+            this.sort_address.FieldName = "sort_address";
+            this.sort_address.Name = "sort_address";
+            this.sort_address.OptionsColumn.AllowEdit = false;
+            this.sort_address.OptionsColumn.AllowFocus = false;
+            this.sort_address.Visible = true;
+            this.sort_address.VisibleIndex = 7;
             // 
-            // OrderNo
+            // supply_address
             // 
-            this.OrderNo.Caption = "顺序号";
-            this.OrderNo.FieldName = "order_no";
-            this.OrderNo.Name = "OrderNo";
-            this.OrderNo.OptionsColumn.AllowEdit = false;
-            this.OrderNo.OptionsColumn.AllowFocus = false;
-            this.OrderNo.Visible = true;
-            this.OrderNo.VisibleIndex = 8;
+            this.supply_address.Caption = "补货地址";
+            this.supply_address.FieldName = "supply_address";
+            this.supply_address.Name = "supply_address";
+            this.supply_address.OptionsColumn.AllowEdit = false;
+            this.supply_address.OptionsColumn.AllowFocus = false;
+            this.supply_address.Visible = true;
+            this.supply_address.VisibleIndex = 8;
             // 
-            // SortAddress
+            // status
             // 
-            this.SortAddress.Caption = "分拣地址";
-            this.SortAddress.FieldName = "sort_address";
-            this.SortAddress.Name = "SortAddress";
-            this.SortAddress.OptionsColumn.AllowEdit = false;
-            this.SortAddress.OptionsColumn.AllowFocus = false;
-            this.SortAddress.Visible = true;
-            this.SortAddress.VisibleIndex = 9;
-            // 
-            // SupplyAddress
-            // 
-            this.SupplyAddress.Caption = "补货地址";
-            this.SupplyAddress.FieldName = "supply_address";
-            this.SupplyAddress.Name = "SupplyAddress";
-            this.SupplyAddress.OptionsColumn.AllowEdit = false;
-            this.SupplyAddress.OptionsColumn.AllowFocus = false;
-            this.SupplyAddress.Visible = true;
-            this.SupplyAddress.VisibleIndex = 10;
-            // 
-            // IsActive
-            // 
-            this.IsActive.Caption = "是否可用";
-            this.IsActive.FieldName = "is_active";
-            this.IsActive.Name = "IsActive";
-            this.IsActive.OptionsColumn.AllowEdit = false;
-            this.IsActive.OptionsColumn.AllowFocus = false;
-            this.IsActive.Visible = true;
-            this.IsActive.VisibleIndex = 11;
+            this.status.Caption = "是否可用";
+            this.status.FieldName = "status";
+            this.status.Name = "status";
+            this.status.OptionsColumn.AllowEdit = false;
+            this.status.OptionsColumn.AllowFocus = false;
+            this.status.Visible = true;
+            this.status.VisibleIndex = 9;
             // 
             // ChannelQueryControl
             // 
@@ -203,7 +179,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gridChannelQuery);
             this.Name = "ChannelQueryControl";
-            this.Size = new System.Drawing.Size(730, 311);
+            this.Size = new System.Drawing.Size(917, 403);
             ((System.ComponentModel.ISupportInitialize)(this.gridChannelQuery)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewChannelQuery)).EndInit();
             this.ResumeLayout(false);
@@ -214,17 +190,15 @@
 
         public DevExpress.XtraGrid.GridControl gridChannelQuery;
         public DevExpress.XtraGrid.Views.Grid.GridView viewChannelQuery;
-        private DevExpress.XtraGrid.Columns.GridColumn ChannelCode;
-        private DevExpress.XtraGrid.Columns.GridColumn ChannelName;
-        private DevExpress.XtraGrid.Columns.GridColumn ChannelType;
-        private DevExpress.XtraGrid.Columns.GridColumn ProductName;
-        private DevExpress.XtraGrid.Columns.GridColumn Quantity;
-        private DevExpress.XtraGrid.Columns.GridColumn RemainQuantity;
-        private DevExpress.XtraGrid.Columns.GridColumn ChannelCapacity;
-        private DevExpress.XtraGrid.Columns.GridColumn GroupNo;
-        private DevExpress.XtraGrid.Columns.GridColumn OrderNo;
-        private DevExpress.XtraGrid.Columns.GridColumn SortAddress;
-        private DevExpress.XtraGrid.Columns.GridColumn SupplyAddress;
-        private DevExpress.XtraGrid.Columns.GridColumn IsActive;
+        private DevExpress.XtraGrid.Columns.GridColumn channel_code;
+        private DevExpress.XtraGrid.Columns.GridColumn channel_name;
+        private DevExpress.XtraGrid.Columns.GridColumn channel_type;
+        private DevExpress.XtraGrid.Columns.GridColumn product_name;
+        private DevExpress.XtraGrid.Columns.GridColumn quantity;
+        private DevExpress.XtraGrid.Columns.GridColumn remain_quantity;
+        private DevExpress.XtraGrid.Columns.GridColumn group_no;
+        private DevExpress.XtraGrid.Columns.GridColumn sort_address;
+        private DevExpress.XtraGrid.Columns.GridColumn supply_address;
+        private DevExpress.XtraGrid.Columns.GridColumn status;
     }
 }

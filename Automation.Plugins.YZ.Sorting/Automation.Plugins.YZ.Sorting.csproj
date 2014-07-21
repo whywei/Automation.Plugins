@@ -125,18 +125,29 @@
     <Compile Include="Action\SortingRecordAction.cs" />
     <Compile Include="Dal\ChannelDal.cs" />
     <Compile Include="Dal\CustomerDal.cs" />
+    <Compile Include="Dal\HandSupplyDal.cs" />
     <Compile Include="Dal\OrderDal.cs" />
     <Compile Include="Dal\PackNoDal.cs" />
     <Compile Include="Dal\ServerDal.cs" />
+    <Compile Include="Dal\SortingDal.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Model\ChannelAllot.cs" />
     <Compile Include="Action\DataDownLoad.cs" />
+    <Compile Include="Process\DeviceRunStateProcess.cs" />
+    <Compile Include="Process\FaultAlarmInformationProcess.cs" />
+    <Compile Include="Process\LackCigaretteChannelInformationProcess.cs" />
+    <Compile Include="Process\LedInformationProcess.cs" />
+    <Compile Include="Process\PackageNumbersInformationProcess.cs" />
+    <Compile Include="Process\SortingInfoProgress.cs" />
+    <Compile Include="Process\SortOrderInformationProcess.cs" />
+    <Compile Include="Process\SortStateInformationProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Service\YZSortingOPCService.cs" />
     <Compile Include="SortingPlugin.cs" />
     <Compile Include="View\CacheOrderQueryView.cs" />
     <Compile Include="View\Controls\ChannelQueryControl.cs">
@@ -208,8 +219,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Device\" />
-    <Folder Include="Process\" />
-    <Folder Include="Service\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\sorting_query_32.png" />
@@ -221,7 +230,32 @@
     <None Include="Resources\sortchannelcheck_32.png" />
     <None Include="Resources\sortchannelswap_32.png" />
     <None Include="Resources\sorting_query_16.png" />
-    <Content Include="Config\PLC.xml" />
+    <Content Include="Config\YZ_FJ_OPC.xml" />
+    <Content Include="Config\YZ_FJ_PLC.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\bar_16x16.png" />
+    <None Include="Resources\bar_32x32.png" />
+    <None Include="Resources\customer_16x16.png" />
+    <None Include="Resources\customer_32x32.png" />
+    <None Include="Resources\Efficiency_16x16.png" />
+    <None Include="Resources\Efficiency_32x32.png" />
+    <None Include="Resources\Efficiency2_16x16.png" />
+    <None Include="Resources\Efficiency2_32x32.png" />
+    <None Include="Resources\handwork_16x16.png" />
+    <None Include="Resources\handwork_32x32.png" />
+    <None Include="Resources\package_16x16.png" />
+    <None Include="Resources\package_32x32.png" />
+    <None Include="Resources\package_data_16x16.png" />
+    <None Include="Resources\package_data_32x32.png" />
+    <None Include="Resources\yandao_16x16.png" />
+    <None Include="Resources\yandao_32x32.png" />
+    <None Include="Resources\spouse_16x16.png" />
+    <None Include="Resources\spouse_32x32.png" />
+    <None Include="Resources\start_16x16.png" />
+    <None Include="Resources\start_32x32.png" />
+    <None Include="Resources\download_32x32.png" />
+    <None Include="Resources\download_16x16.png" />
     <Content Include="Serialize\Readme.txt" />
     <Content Include="TransactionScopeFactoryProviderConfig.xml">
       <SubType>Designer</SubType>
@@ -238,6 +272,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\CustomerQueryControl.resx">
       <DependentUpon>CustomerQueryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\HandSuppyControl.resx">
+      <DependentUpon>HandSuppyControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\OrderQueryControl.resx">
       <DependentUpon>OrderQueryControl.cs</DependentUpon>

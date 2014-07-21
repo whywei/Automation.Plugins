@@ -119,10 +119,6 @@
     <Compile Include="VehicularPlugin.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\cmd_test_16x16.png" />
-    <None Include="Resources\cmd_test_32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +134,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\PLC.xml" />
+    <None Include="Resources\run_right_32x32.png" />
+    <None Include="Resources\apply_16x16.png" />
+    <None Include="Resources\apply_32x32.png" />
+    <None Include="Resources\batch_16x16.png" />
+    <None Include="Resources\batch_32x32.png" />
+    <None Include="Resources\cannel_16x16.png" />
+    <None Include="Resources\cannel_32x32.png" />
+    <None Include="Resources\hand_16x16.png" />
+    <None Include="Resources\hand_32x32.png" />
+    <None Include="Resources\ok_16x16.png" />
+    <None Include="Resources\ok_32x32.png" />
+    <None Include="Resources\run_right_16x16.png" />
     <Content Include="Serialize\Readme.txt" />
     <Content Include="TransactionScopeFactoryProviderConfig.xml" />
   </ItemGroup>

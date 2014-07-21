@@ -290,78 +290,222 @@
     <Content Include="AutomationDesktop.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="zh-CN\DevExpress.Dashboard.v13.1.Core.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Dashboard.v13.1.Web.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Dashboard.v13.1.Win.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Data.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.DataAccess.v13.1.UI.resources.dll" />
-    <Content Include="zh-CN\DevExpress.ExpressApp.ConditionalEditorState.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.ExpressApp.HtmlPropertyEditor.Win.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.ExpressApp.PivotChart.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.ExpressApp.Reports.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.ExpressApp.Scheduler.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.ExpressApp.Scheduler.Web.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.ExpressApp.Security.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.ExpressApp.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.ExpressApp.Validation.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.ExpressApp.Web.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.ExpressApp.Win.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Office.v13.1.Core.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Pdf.v13.1.Core.resources.dll" />
-    <Content Include="zh-CN\DevExpress.PivotGrid.v13.1.Core.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Printing.v13.1.Core.resources.dll" />
-    <Content Include="zh-CN\DevExpress.RichEdit.v13.1.Core.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Snap.v13.1.Core.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Snap.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Spreadsheet.v13.1.Core.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Utils.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Utils.v13.1.UI.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Web.ASPxHtmlEditor.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Web.ASPxScheduler.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Web.ASPxSpellChecker.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Web.ASPxTreeList.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Web.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Xpf.Charts.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Xpf.Core.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Xpf.Docking.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Xpf.Gauges.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Xpf.Grid.v13.1.Core.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Xpf.LayoutControl.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Xpf.NavBar.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Xpf.Printing.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Xpf.ReportDesigner.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Xpf.Ribbon.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Xpf.RichEdit.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Xpf.Scheduler.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.Xpo.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraBars.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraCharts.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraCharts.v13.1.Wizard.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraDashboard.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraDashboard.v13.1.Web.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraEditors.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraGauges.v13.1.Core.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraGauges.v13.1.Presets.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraGrid.v13.1.Design.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraGrid.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraLayout.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraNavBar.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraPdfViewer.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraPivotGrid.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraPrinting.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraReports.v13.1.Extensions.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraReports.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraReports.v13.1.Web.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraRichEdit.v13.1.Extensions.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraRichEdit.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraScheduler.v13.1.Core.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraScheduler.v13.1.Extensions.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraScheduler.v13.1.Reporting.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraScheduler.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraSpellChecker.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraTreeList.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraVerticalGrid.v13.1.resources.dll" />
-    <Content Include="zh-CN\DevExpress.XtraWizard.v13.1.resources.dll" />
+    <Content Include="zh-CN\DevExpress.Dashboard.v13.1.Core.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Dashboard.v13.1.Web.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Dashboard.v13.1.Win.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Data.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.DataAccess.v13.1.UI.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.ExpressApp.ConditionalEditorState.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.ExpressApp.HtmlPropertyEditor.Win.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.ExpressApp.PivotChart.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.ExpressApp.Reports.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.ExpressApp.Scheduler.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.ExpressApp.Scheduler.Web.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.ExpressApp.Security.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.ExpressApp.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.ExpressApp.Validation.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.ExpressApp.Web.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.ExpressApp.Win.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Office.v13.1.Core.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Pdf.v13.1.Core.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.PivotGrid.v13.1.Core.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Printing.v13.1.Core.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.RichEdit.v13.1.Core.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Snap.v13.1.Core.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Snap.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Spreadsheet.v13.1.Core.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Utils.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Utils.v13.1.UI.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Web.ASPxHtmlEditor.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Web.ASPxScheduler.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Web.ASPxSpellChecker.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Web.ASPxTreeList.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Web.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Xpf.Charts.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Xpf.Core.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Xpf.Docking.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Xpf.Gauges.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Xpf.Grid.v13.1.Core.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Xpf.LayoutControl.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Xpf.NavBar.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Xpf.Printing.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Xpf.ReportDesigner.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Xpf.Ribbon.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Xpf.RichEdit.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Xpf.Scheduler.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.Xpo.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraBars.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraCharts.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraCharts.v13.1.Wizard.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraDashboard.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraDashboard.v13.1.Web.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraEditors.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraGauges.v13.1.Core.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraGauges.v13.1.Presets.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraGrid.v13.1.Design.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraGrid.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraLayout.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraNavBar.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraPdfViewer.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraPivotGrid.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraPrinting.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraReports.v13.1.Extensions.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraReports.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraReports.v13.1.Web.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraRichEdit.v13.1.Extensions.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraRichEdit.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraScheduler.v13.1.Core.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraScheduler.v13.1.Extensions.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraScheduler.v13.1.Reporting.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraScheduler.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraSpellChecker.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraTreeList.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraVerticalGrid.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="zh-CN\DevExpress.XtraWizard.v13.1.resources.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <PublishFile Include="DotSpatial.Controls">
