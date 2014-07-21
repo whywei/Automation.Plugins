@@ -34,7 +34,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
       ,export_no
       ,start_time
       ,finish_time
-      ,status
+      ,CASE STATUS WHEN '0' THEN '未下单' ELSE '已下单' END status
   FROM sort_order_allot_master";
             return ra.DoQuery(string.Format(sql)).Tables[0];
         }
@@ -53,8 +53,8 @@ namespace Automation.Plugins.YZ.Sorting.Dal
       ,A.product_name
       ,A.quantity as dquantity
       ,CASE WHEN B.group_no=1 THEN 'A线' ELSE 'B线' END  channelline
-      ,B.channel_name
-      ,B.channel_type
+      ,B.channel_name 
+      ,channel_type=CASE B.channel_type WHEN '1'THEN '立式机（人工）' WHEN '2'THEN '立式机（自动）' WHEN '3'THEN '通道机' WHEN '4' THEN '卧式机' WHEN '5' THEN '混合道' END
       ,B.sort_address
   FROM sort_order_allot_detail A LEFT JOIN Channel_Allot B ON A.channel_code=B.channel_code
   LEFT JOIN sort_order_allot_master C ON A.pack_no=C.pack_no

@@ -232,6 +232,7 @@
             this.PackNo.OptionsColumn.AllowFocus = false;
             this.PackNo.Visible = true;
             this.PackNo.VisibleIndex = 0;
+            this.PackNo.Width = 50;
             // 
             // OrderId
             // 
@@ -242,7 +243,7 @@
             this.OrderId.OptionsColumn.AllowEdit = false;
             this.OrderId.OptionsColumn.AllowFocus = false;
             this.OrderId.Visible = true;
-            this.OrderId.VisibleIndex = 0;
+            this.OrderId.VisibleIndex = 1;
             this.OrderId.Width = 150;
             // 
             // ProductCode
@@ -254,7 +255,7 @@
             this.ProductCode.OptionsColumn.AllowEdit = false;
             this.ProductCode.OptionsColumn.AllowFocus = false;
             this.ProductCode.Visible = true;
-            this.ProductCode.VisibleIndex = 1;
+            this.ProductCode.VisibleIndex = 2;
             // 
             // ProductName
             // 
@@ -265,7 +266,7 @@
             this.ProductName.OptionsColumn.AllowEdit = false;
             this.ProductName.OptionsColumn.AllowFocus = false;
             this.ProductName.Visible = true;
-            this.ProductName.VisibleIndex = 2;
+            this.ProductName.VisibleIndex = 3;
             this.ProductName.Width = 120;
             // 
             // Quantity1
@@ -277,7 +278,7 @@
             this.Quantity1.OptionsColumn.AllowEdit = false;
             this.Quantity1.OptionsColumn.AllowFocus = false;
             this.Quantity1.Visible = true;
-            this.Quantity1.VisibleIndex = 3;
+            this.Quantity1.VisibleIndex = 4;
             // 
             // ChannelLine
             // 
@@ -288,7 +289,8 @@
             this.ChannelLine.OptionsColumn.AllowEdit = false;
             this.ChannelLine.OptionsColumn.AllowFocus = false;
             this.ChannelLine.Visible = true;
-            this.ChannelLine.VisibleIndex = 4;
+            this.ChannelLine.VisibleIndex = 5;
+            this.ChannelLine.Width = 50;
             // 
             // ChannelName
             // 
@@ -299,7 +301,7 @@
             this.ChannelName.OptionsColumn.AllowEdit = false;
             this.ChannelName.OptionsColumn.AllowFocus = false;
             this.ChannelName.Visible = true;
-            this.ChannelName.VisibleIndex = 5;
+            this.ChannelName.VisibleIndex = 6;
             // 
             // ChannelType
             // 
@@ -310,7 +312,8 @@
             this.ChannelType.OptionsColumn.AllowEdit = false;
             this.ChannelType.OptionsColumn.AllowFocus = false;
             this.ChannelType.Visible = true;
-            this.ChannelType.VisibleIndex = 6;
+            this.ChannelType.VisibleIndex = 7;
+            this.ChannelType.Width = 100;
             // 
             // ChannelAddress
             // 
@@ -321,7 +324,7 @@
             this.ChannelAddress.OptionsColumn.AllowEdit = false;
             this.ChannelAddress.OptionsColumn.AllowFocus = false;
             this.ChannelAddress.Visible = true;
-            this.ChannelAddress.VisibleIndex = 7;
+            this.ChannelAddress.VisibleIndex = 8;
             // 
             // PackNoControl
             // 
