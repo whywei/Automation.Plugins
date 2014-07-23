@@ -48,12 +48,6 @@ namespace Automation.Plugins.YZ.Sorting.View
             gridControl.DataSource = channelDal.FindChannel();                       
         }
 
-        public void ChannelExchange()
-        {
-
-            return;
-        }
-
         public void gridChannelQuery_DoubleClick(object sender, EventArgs e)
         {
             ChannelQueryControl cqc = new ChannelQueryControl();
@@ -69,8 +63,9 @@ namespace Automation.Plugins.YZ.Sorting.View
                 ChannelExchangeDialog channelExchangeDialog = new ChannelExchangeDialog(table);
                 if (channelExchangeDialog.ShowDialog() == DialogResult.OK)
                 {
-                    DataRow channelRow = channelDal.FindChannelInfo().Select(string.Format("channel_code='{0}'", channelExchangeDialog.comboBoxEdit1.Text))[0];
-                    string targetChannelCode = channelExchangeDialog.SelectedChannelCode.ToString();
+                    string lookUpEditValue = channelExchangeDialog.lookUpEdit1.EditValue.ToString();
+                    DataRow channelRow = channelDal.FindChannelInfo().Select(string.Format("channel_code='{0}'", lookUpEditValue))[0];
+                    string targetChannelCode = lookUpEditValue;
                     orderDal.UpdateOrderDetailByChannelCode(sourceChannelCode, "000000");
                     orderDal.UpdateOrderDetailByChannelCode(targetChannelCode, sourceChannelCode);
                     orderDal.UpdateOrderDetailByChannelCode("000000", targetChannelCode);
@@ -78,13 +73,7 @@ namespace Automation.Plugins.YZ.Sorting.View
                                                       channelRow["product_code"].ToString(),
                                                       channelRow["product_name"].ToString(),
                                                       channelRow["quantity"].ToString()); //更新源数据
-
-                    string a = channelExchangeDialog.SelectedChannelCode;
-                    string b = gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["product_code"]).ToString();
-                    string c = gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["product_name"]).ToString();
-                    string d = gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["quantity"]).ToString();
-
-                    channelDal.UpdateChannelByChannelCode(channelExchangeDialog.SelectedChannelCode,
+                    channelDal.UpdateChannelByChannelCode(lookUpEditValue,
                         gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["product_code"]).ToString(),
                         gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["product_name"]).ToString(),
                         gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["quantity"]).ToString());//更新目标数据
@@ -101,7 +90,7 @@ namespace Automation.Plugins.YZ.Sorting.View
                         Ops.Write(plcServiceName, "Channel_Interchange_Information_B", data);
                     }
                     //THOK.MCP.Logger.Info(string.Format("{0}号烟道与{1}号烟道交换！", data[0], data[1]));
-
+                    MessageBox.Show(string.Format("{0}号烟道与{1}号烟道交换！", data[0], data[1]));
                 }
             }
         }

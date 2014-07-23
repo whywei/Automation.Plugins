@@ -39,7 +39,7 @@ namespace Automation.Plugins.YZ.Sorting.Action
 
         public void ChannelExchange_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.MessageBox.Show("你来写吧！");
+            (View as ChannelQueryView).gridChannelQuery_DoubleClick(sender, e);
         }
     }
 }

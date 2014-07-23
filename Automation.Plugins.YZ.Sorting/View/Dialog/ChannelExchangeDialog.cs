@@ -15,21 +15,18 @@ namespace Automation.Plugins.YZ.Sorting.View.Dialog
     {
         ChannelDal channelDal = new ChannelDal();
 
-        public ChannelExchangeDialog(DataTable Datatable)
+        public ChannelExchangeDialog(DataTable datatable)
         {
             InitializeComponent();
-            string[] array = new string[Datatable.Rows.Count];
-            for (int i = 0; i < Datatable.Rows.Count; i++)
-            {
-                DataRow dr = Datatable.Rows[i];
-                array[i] = Convert.ToString(dr["channel_code"]);
-            }
-            comboBoxEdit1.Properties.Items.AddRange(array);
-        }
+            
+            lookUpEdit1.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("channel_code", 20, "烟道编码"));
+            lookUpEdit1.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("channel_name", 20, "烟道名称"));
 
-        public string SelectedChannelCode
-        {
-            get { return comboBoxEdit1.SelectedIndex.ToString(); }
+            lookUpEdit1.EditValue = "channel_code";
+            lookUpEdit1.Properties.ValueMember = "channel_code";
+            lookUpEdit1.Properties.DisplayMember = "channel_name";
+            lookUpEdit1.Properties.NullText = null;
+            lookUpEdit1.Properties.DataSource = datatable;
         }
     }
 }
