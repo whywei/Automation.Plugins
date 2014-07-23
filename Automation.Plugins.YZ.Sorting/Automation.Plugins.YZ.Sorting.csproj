@@ -215,6 +215,7 @@
     </Compile>
     <Compile Include="View\Dialogs\ChannelExchangeDialog.Designer.cs">
       <DependentUpon>ChannelExchangeDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Dialog\DownLoadDataDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -305,6 +306,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Dialogs\ChannelExchangeDialog.resx">
       <DependentUpon>ChannelExchangeDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Dialog\DownLoadDataDialog.resx">
       <DependentUpon>DownLoadDataDialog.cs</DependentUpon>
     </EmbeddedResource>
