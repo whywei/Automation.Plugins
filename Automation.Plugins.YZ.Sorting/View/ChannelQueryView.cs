@@ -21,6 +21,8 @@ namespace Automation.Plugins.YZ.Sorting.View
 
        ChannelDal channelDal = new ChannelDal();
        OrderDal orderDal = new OrderDal();
+       SortingDal sortingDal = new SortingDal();
+
        const string plcServiceName = "VerticalPicking";
 
         public override void Initialize()
@@ -69,6 +71,7 @@ namespace Automation.Plugins.YZ.Sorting.View
                     orderDal.UpdateOrderDetailByChannelCode(sourceChannelCode, "000000");
                     orderDal.UpdateOrderDetailByChannelCode(targetChannelCode, sourceChannelCode);
                     orderDal.UpdateOrderDetailByChannelCode("000000", targetChannelCode);
+
                     channelDal.UpdateChannelByChannelCode(sourceChannelCode,
                                                       channelRow["product_code"].ToString(),
                                                       channelRow["product_name"].ToString(),
@@ -77,6 +80,12 @@ namespace Automation.Plugins.YZ.Sorting.View
                         gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["product_code"]).ToString(),
                         gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["product_name"]).ToString(),
                         gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["quantity"]).ToString());//更新目标数据
+
+                    sortingDal.UpdateSortingByChannelCode(lookUpEditValue,
+                        gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["product_code"]).ToString(),
+                        gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["product_name"]).ToString(),
+                        gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["quantity"]).ToString());
+
                     int[] data = new int[3];
                     data[0] = channelDal.FindChannelAddressByChannelCode(sourceChannelCode);
                     data[1] = channelDal.FindChannelAddressByChannelCode(targetChannelCode);
@@ -89,7 +98,6 @@ namespace Automation.Plugins.YZ.Sorting.View
                     {
                         Ops.Write(plcServiceName, "Channel_Interchange_Information_B", data);
                     }
-                    //THOK.MCP.Logger.Info(string.Format("{0}号烟道与{1}号烟道交换！", data[0], data[1]));
                     MessageBox.Show(string.Format("{0}号烟道与{1}号烟道交换！", data[0], data[1]));
                 }
             }
