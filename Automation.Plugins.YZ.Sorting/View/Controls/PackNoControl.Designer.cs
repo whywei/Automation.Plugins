@@ -32,18 +32,24 @@
             this.gridMaster = new DevExpress.XtraGrid.GridControl();
             this.viewMaster = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.OrderDate = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.pack_no = new DevExpress.XtraGrid.Columns.GridColumn();
             this.batch_no = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.deliverLine_name = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.pack_no = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dist_name = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.deliverLine_name = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CustomerName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.mquantity = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridDetail = new DevExpress.XtraGrid.GridControl();
             this.viewDetail = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.PackNo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.OrderId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ProductCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ProductName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Quantity1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ChannelLine = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ChannelName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ChannelType = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ChannelAddress = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridMaster)).BeginInit();
@@ -83,10 +89,10 @@
             // 
             this.viewMaster.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.OrderDate,
-            this.pack_no,
             this.batch_no,
-            this.deliverLine_name,
+            this.pack_no,
             this.dist_name,
+            this.deliverLine_name,
             this.CustomerName,
             this.mquantity,
             this.Status});
@@ -99,66 +105,78 @@
             // 
             this.OrderDate.Caption = "订单日期";
             this.OrderDate.FieldName = "order_date";
+            this.OrderDate.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.OrderDate.Name = "OrderDate";
             this.OrderDate.OptionsColumn.AllowEdit = false;
             this.OrderDate.OptionsColumn.AllowFocus = false;
             this.OrderDate.Visible = true;
-            this.OrderDate.VisibleIndex = 1;
-            // 
-            // pack_no
-            // 
-            this.pack_no.Caption = "烟包包号";
-            this.pack_no.FieldName = "pack_no";
-            this.pack_no.Name = "pack_no";
-            this.pack_no.OptionsColumn.AllowEdit = false;
-            this.pack_no.OptionsColumn.AllowFocus = false;
-            this.pack_no.Visible = true;
-            this.pack_no.VisibleIndex = 0;
+            this.OrderDate.VisibleIndex = 0;
+            this.OrderDate.Width = 120;
             // 
             // batch_no
             // 
             this.batch_no.Caption = "批次号";
             this.batch_no.FieldName = "batch_no";
+            this.batch_no.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.batch_no.Name = "batch_no";
             this.batch_no.OptionsColumn.AllowEdit = false;
             this.batch_no.OptionsColumn.AllowFocus = false;
             this.batch_no.Visible = true;
-            this.batch_no.VisibleIndex = 2;
+            this.batch_no.VisibleIndex = 1;
+            this.batch_no.Width = 50;
             // 
-            // deliverLine_name
+            // pack_no
             // 
-            this.deliverLine_name.Caption = "线路名称";
-            this.deliverLine_name.FieldName = "deliver_line_name";
-            this.deliverLine_name.Name = "deliverLine_name";
-            this.deliverLine_name.OptionsColumn.AllowEdit = false;
-            this.deliverLine_name.OptionsColumn.AllowFocus = false;
-            this.deliverLine_name.Visible = true;
-            this.deliverLine_name.VisibleIndex = 3;
+            this.pack_no.Caption = "烟包包号";
+            this.pack_no.FieldName = "pack_no";
+            this.pack_no.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.pack_no.Name = "pack_no";
+            this.pack_no.OptionsColumn.AllowEdit = false;
+            this.pack_no.OptionsColumn.AllowFocus = false;
+            this.pack_no.Visible = true;
+            this.pack_no.VisibleIndex = 2;
             // 
             // dist_name
             // 
             this.dist_name.Caption = "区域名称";
             this.dist_name.FieldName = "dist_name";
+            this.dist_name.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.dist_name.Name = "dist_name";
             this.dist_name.OptionsColumn.AllowEdit = false;
             this.dist_name.OptionsColumn.AllowFocus = false;
             this.dist_name.Visible = true;
-            this.dist_name.VisibleIndex = 4;
+            this.dist_name.VisibleIndex = 3;
+            this.dist_name.Width = 150;
+            // 
+            // deliverLine_name
+            // 
+            this.deliverLine_name.Caption = "线路名称";
+            this.deliverLine_name.FieldName = "deliver_line_name";
+            this.deliverLine_name.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.deliverLine_name.Name = "deliverLine_name";
+            this.deliverLine_name.OptionsColumn.AllowEdit = false;
+            this.deliverLine_name.OptionsColumn.AllowFocus = false;
+            this.deliverLine_name.Visible = true;
+            this.deliverLine_name.VisibleIndex = 4;
+            this.deliverLine_name.Width = 150;
             // 
             // CustomerName
             // 
             this.CustomerName.Caption = "客户名称";
             this.CustomerName.FieldName = "customer_name";
+            this.CustomerName.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.CustomerName.Name = "CustomerName";
             this.CustomerName.OptionsColumn.AllowEdit = false;
             this.CustomerName.OptionsColumn.AllowFocus = false;
             this.CustomerName.Visible = true;
             this.CustomerName.VisibleIndex = 5;
+            this.CustomerName.Width = 150;
             // 
             // mquantity
             // 
             this.mquantity.Caption = "烟包数量";
             this.mquantity.FieldName = "mquantity";
+            this.mquantity.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.mquantity.Name = "mquantity";
             this.mquantity.OptionsColumn.AllowEdit = false;
             this.mquantity.OptionsColumn.AllowFocus = false;
@@ -169,6 +187,7 @@
             // 
             this.Status.Caption = " 任务状态";
             this.Status.FieldName = "status";
+            this.Status.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.Status.Name = "Status";
             this.Status.OptionsColumn.AllowEdit = false;
             this.Status.OptionsColumn.AllowFocus = false;
@@ -190,8 +209,14 @@
             // 
             this.viewDetail.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.PackNo,
+            this.OrderId,
+            this.ProductCode,
             this.ProductName,
-            this.Quantity1});
+            this.Quantity1,
+            this.ChannelLine,
+            this.ChannelName,
+            this.ChannelType,
+            this.ChannelAddress});
             this.viewDetail.GridControl = this.gridDetail;
             this.viewDetail.Name = "viewDetail";
             this.viewDetail.OptionsView.ColumnAutoWidth = false;
@@ -201,31 +226,102 @@
             // 
             this.PackNo.Caption = "包号";
             this.PackNo.FieldName = "pack_no";
+            this.PackNo.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.PackNo.Name = "PackNo";
             this.PackNo.OptionsColumn.AllowEdit = false;
             this.PackNo.OptionsColumn.AllowFocus = false;
             this.PackNo.Visible = true;
             this.PackNo.VisibleIndex = 0;
             // 
+            // OrderId
+            // 
+            this.OrderId.Caption = "订单号";
+            this.OrderId.FieldName = "order_id";
+            this.OrderId.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.OrderId.Name = "OrderId";
+            this.OrderId.OptionsColumn.AllowEdit = false;
+            this.OrderId.OptionsColumn.AllowFocus = false;
+            this.OrderId.Visible = true;
+            this.OrderId.VisibleIndex = 0;
+            this.OrderId.Width = 150;
+            // 
+            // ProductCode
+            // 
+            this.ProductCode.Caption = "卷烟代码";
+            this.ProductCode.FieldName = "product_code";
+            this.ProductCode.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.ProductCode.Name = "ProductCode";
+            this.ProductCode.OptionsColumn.AllowEdit = false;
+            this.ProductCode.OptionsColumn.AllowFocus = false;
+            this.ProductCode.Visible = true;
+            this.ProductCode.VisibleIndex = 1;
+            // 
             // ProductName
             // 
-            this.ProductName.Caption = "商品名称";
+            this.ProductName.Caption = "卷烟名称";
             this.ProductName.FieldName = "product_name";
+            this.ProductName.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.ProductName.Name = "ProductName";
             this.ProductName.OptionsColumn.AllowEdit = false;
             this.ProductName.OptionsColumn.AllowFocus = false;
             this.ProductName.Visible = true;
-            this.ProductName.VisibleIndex = 1;
+            this.ProductName.VisibleIndex = 2;
+            this.ProductName.Width = 120;
             // 
             // Quantity1
             // 
             this.Quantity1.Caption = "数量";
             this.Quantity1.FieldName = "dquantity";
+            this.Quantity1.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.Quantity1.Name = "Quantity1";
             this.Quantity1.OptionsColumn.AllowEdit = false;
             this.Quantity1.OptionsColumn.AllowFocus = false;
             this.Quantity1.Visible = true;
-            this.Quantity1.VisibleIndex = 2;
+            this.Quantity1.VisibleIndex = 3;
+            // 
+            // ChannelLine
+            // 
+            this.ChannelLine.Caption = "线组";
+            this.ChannelLine.FieldName = "channelline";
+            this.ChannelLine.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.ChannelLine.Name = "ChannelLine";
+            this.ChannelLine.OptionsColumn.AllowEdit = false;
+            this.ChannelLine.OptionsColumn.AllowFocus = false;
+            this.ChannelLine.Visible = true;
+            this.ChannelLine.VisibleIndex = 4;
+            // 
+            // ChannelName
+            // 
+            this.ChannelName.Caption = "烟道名称";
+            this.ChannelName.FieldName = "channel_name";
+            this.ChannelName.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.ChannelName.Name = "ChannelName";
+            this.ChannelName.OptionsColumn.AllowEdit = false;
+            this.ChannelName.OptionsColumn.AllowFocus = false;
+            this.ChannelName.Visible = true;
+            this.ChannelName.VisibleIndex = 5;
+            // 
+            // ChannelType
+            // 
+            this.ChannelType.Caption = "烟道类型";
+            this.ChannelType.FieldName = "channel_type";
+            this.ChannelType.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.ChannelType.Name = "ChannelType";
+            this.ChannelType.OptionsColumn.AllowEdit = false;
+            this.ChannelType.OptionsColumn.AllowFocus = false;
+            this.ChannelType.Visible = true;
+            this.ChannelType.VisibleIndex = 6;
+            // 
+            // ChannelAddress
+            // 
+            this.ChannelAddress.Caption = "烟道地址";
+            this.ChannelAddress.FieldName = "sort_address";
+            this.ChannelAddress.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.ChannelAddress.Name = "ChannelAddress";
+            this.ChannelAddress.OptionsColumn.AllowEdit = false;
+            this.ChannelAddress.OptionsColumn.AllowFocus = false;
+            this.ChannelAddress.Visible = true;
+            this.ChannelAddress.VisibleIndex = 7;
             // 
             // PackNoControl
             // 
@@ -262,5 +358,11 @@
         private DevExpress.XtraGrid.Columns.GridColumn CustomerName;
         private DevExpress.XtraGrid.Columns.GridColumn mquantity;
         private DevExpress.XtraGrid.Columns.GridColumn Status;
+        private DevExpress.XtraGrid.Columns.GridColumn ChannelLine;
+        private DevExpress.XtraGrid.Columns.GridColumn ChannelName;
+        private DevExpress.XtraGrid.Columns.GridColumn OrderId;
+        private DevExpress.XtraGrid.Columns.GridColumn ProductCode;
+        private DevExpress.XtraGrid.Columns.GridColumn ChannelType;
+        private DevExpress.XtraGrid.Columns.GridColumn ChannelAddress;
     }
 }
