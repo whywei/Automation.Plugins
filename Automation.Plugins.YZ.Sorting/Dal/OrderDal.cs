@@ -134,59 +134,38 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         /// <summary>
         /// 删除贴标机数据
         /// </summary>
-        public void DeleteExportData()
+        public void DeleteTable(string tableName)
         {
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
-
-            //ra.DoScalar("TRUNCATE TABLE sort_supply");
-            //ra.DoScalar("TRUNCATE TABLE AS_SC_EXPORTPACK1");
-            //ra.DoScalar("TRUNCATE TABLE AS_SC_EXPORTPACK2");
-            //ra.DoScalar("TRUNCATE TABLE AS_SC_PACKTEAR1");
-            //ra.DoScalar("TRUNCATE TABLE AS_SC_PACKTEAR2");
-        }
- 
-
-        public void InsertMaster(DataTable ordermasterTable)
-        {
-            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
-            ra.DoScalar("TRUNCATE TABLE sort_order_allot_master");
-
-            foreach (DataRow row in ordermasterTable.Rows)
-            {
-                string sql = string.Format(@"insert into sort_order_allot_master values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}','{19}','{20}','{21}')",
-                row["order_date"], row["batch_no"], row["sorting_line_code"], row["pack_no"], row["master_id"],
-                row["order_id"], row["dist_code"], row["dist_name"], row["deliver_line_code"],
-                row["deliver_line_name"], row["customer_code"], row["customer_name"], row["license_code"],
-                row["address"], row["customer_order"], row["customer_deliver_order"], row["customer_Info"],row["quantity"], 
-                row["export_no"],row["start_time"], row["finish_time"], row["status"]);
-                ra.DoCommand(sql);
-            }
+            ra.DoScalar(string.Format("TRUNCATE TABLE {0}",tableName));
         }
 
-        public void InsertOrderDetail(DataTable orderdetailTable)
+
+        public void InsertMaster(DataRow row)
         {
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
-            ra.DoScalar("TRUNCATE TABLE sort_order_allot_detail");
-
-            foreach (DataRow row in orderdetailTable.Rows)
-            {
-                string sql = string.Format(@"insert into sort_order_allot_detail values('{0}','{1}','{2}','{3}','{4}')",
-                row["pack_no"], row["channel_code"], row["product_code"], row["product_name"], row["quantity"]);
-                ra.DoCommand(sql);
-            }
+            string sql = @"insert into sort_order_allot_master values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}','{19}','{20}')";
+            ra.DoCommand(string.Format(sql,row["order_date"], row["batch_no"], row["sorting_line_code"], row["pack_no"]
+                ,row["order_id"], row["dist_code"], row["dist_name"], row["deliver_line_code"],row["deliver_line_name"]
+                , row["customer_code"], row["customer_name"], row["license_code"],row["address"], row["customer_order"]
+                , row["customer_deliver_order"], row["customer_Info"],row["quantity"],row["export_no"],row["start_time"]
+                , row["finish_time"], row["status"]));
         }
 
-        public void InsertHandleSupply(DataTable handSupplyTable)
+        public void InsertOrderDetail(DataRow row)
         {
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
-            ra.DoScalar("TRUNCATE TABLE handle_supply");
+            string sql = string.Format(@"insert into sort_order_allot_detail values('{0}','{1}','{2}','{3}','{4}')",
+            row["pack_no"], row["channel_code"], row["product_code"], row["product_name"], row["quantity"]);
+            ra.DoCommand(sql);
+        }
 
-            foreach (DataRow row in handSupplyTable.Rows)
-            {
-                string sql = string.Format(@"insert into handle_supply values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')",
-                row["supply_id"], row["supply_batch"], row["pack_no"], row["channel_code"], row["product_code"], row["product_name"], row["quantity"], '0');
-                ra.DoCommand(sql);
-            }
+        public void InsertHandleSupply(DataRow row)
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = string.Format(@"insert into handle_supply values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')",
+            row["supply_id"], row["supply_batch"], row["pack_no"], row["channel_code"], row["product_code"], row["product_name"], row["quantity"], '0');
+            ra.DoCommand(sql);
         }
 
         public DataTable FindOrderInfo(string sortNo)
@@ -202,6 +181,49 @@ namespace Automation.Plugins.YZ.Sorting.Dal
                          (SELECT ISNULL(SUM(quantity),0) FROM sort_order_allot_master) quantity
                          FROM sort_order_allot_master";
             return ra.DoQuery(sql).Tables[0];
+        }
+
+        /// <summary>
+        /// 获取主单最大的包号
+        /// </summary>
+        /// <returns>包号</returns>
+        public int FindMaxPackNoFromMaster()
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = "SELECT ISNULL(MAX(pack_no),0) pack_no FROM sort_order_allot_master";
+            return Convert.ToInt32(ra.DoScalar(sql));
+        }
+
+        /// <summary>
+        /// 获取主单卷烟总条数
+        /// </summary>
+        /// <returns>条数</returns>
+        public int FindSumQuantityFromMaster()
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = "SELECT ISNULL(SUM(quantity),0) quantity FROM sort_order_allot_master";
+            return Convert.ToInt32(ra.DoScalar(sql));
+        }
+
+        public void UpdateMasterStatus(int packNo)
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = "UPDATE sort_order_allot_master SET status='1',start_time=GETDATE() WHERE pack_no<={0} AND status='0'";
+            ra.DoCommand(string.Format(sql, packNo));
+        }
+
+        public DataTable FindOrderDetailByPackNo(int packNo)
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = @"SELECT A.pack_no,A.channel_code,C.sort_address,C.group_no,B.export_no,B.customer_order,A.product_code,A.product_name,A.quantity
+                        ,(SELECT ISNULL(SUM(D.quantity),0) FROM sort_order_allot_detail D LEFT JOIN Channel_Allot E 
+                        ON D.channel_code=E.channel_code WHERE D.pack_no={0} AND E.group_no=C.group_no) TOTALQUANTITY
+                        ,(SELECT ISNULL(SUM(D.quantity),0) FROM sort_order_allot_detail D LEFT JOIN Channel_Allot E 
+                        ON D.channel_code=E.channel_code WHERE D.pack_no>={0} AND E.channel_code=C.channel_code) REMAINQUANTITY
+                        FROM sort_order_allot_detail A LEFT JOIN sort_order_allot_master B ON A.pack_no=B.pack_no
+                        LEFT JOIN Channel_Allot C ON A.channel_code=C.channel_code 
+                        where A.pack_no={0} ORDER BY A.pack_no ASC,C.group_no DESC,C.sort_address";
+            return ra.DoQuery(string.Format(sql, packNo)).Tables[0];
         }
     }
 }

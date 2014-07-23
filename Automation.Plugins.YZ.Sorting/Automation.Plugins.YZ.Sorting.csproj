@@ -129,6 +129,7 @@
     <Compile Include="Dal\OrderDal.cs" />
     <Compile Include="Dal\PackNoDal.cs" />
     <Compile Include="Dal\ServerDal.cs" />
+    <Compile Include="Dal\SortingDal.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Model\ChannelAllot.cs" />
     <Compile Include="Action\DataDownLoad.cs" />
@@ -147,6 +148,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Service\YZSortingOPCService.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="SortingPlugin.cs" />
     <Compile Include="View\CacheOrderQueryView.cs" />
     <Compile Include="View\Controls\ChannelQueryControl.cs">
@@ -209,6 +215,11 @@
     </Compile>
     <Compile Include="View\Dialogs\ChannelExchangeDialog.Designer.cs">
       <DependentUpon>ChannelExchangeDialog.cs</DependentUpon>
+    <Compile Include="View\Dialog\DownLoadDataDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\DownLoadDataDialog.Designer.cs">
+      <DependentUpon>DownLoadDataDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="View\HandSuppyView.cs" />
     <Compile Include="View\OrderQueryView.cs" />
@@ -220,7 +231,12 @@
     <Compile Include="View\SortingRecordView.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Device\" />
@@ -289,6 +305,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Dialogs\ChannelExchangeDialog.resx">
       <DependentUpon>ChannelExchangeDialog.cs</DependentUpon>
+    <EmbeddedResource Include="View\Dialog\DownLoadDataDialog.resx">
+      <DependentUpon>DownLoadDataDialog.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

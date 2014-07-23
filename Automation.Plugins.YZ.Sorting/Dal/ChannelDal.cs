@@ -23,20 +23,15 @@ namespace Automation.Plugins.YZ.Sorting.Dal
             return ra.DoQuery(sql).Tables[0];
         }
         
-        public void InsertChannel(DataTable channelTable)
+        public void InsertChannel(DataRow row)
         {
-
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
-            ra.DoScalar("TRUNCATE TABLE Channel_Allot");
-            
-            foreach (DataRow row in channelTable.Rows) {
-                string sql = string.Format(@"insert into Channel_Allot values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}')",
-                row["channel_code"], row["channel_type"], row["channel_name"], row["product_code"], row["product_name"],
-                row["quantity"], row["remain_quantity"], row["channel_capacity"],row["group_no"], row["order_no"],
-                row["sort_address"], row["supply_address"], row["led_no"], row["x"],
-                row["y"], row["width"], row["height"], row["is_active"]);
-                ra.DoCommand(sql);
-            }
+            string sql = string.Format(@"insert into Channel_Allot values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}')",
+            row["channel_code"], row["channel_type"], row["channel_name"], row["product_code"], row["product_name"],
+            row["quantity"], row["remain_quantity"], row["channel_capacity"], row["group_no"], row["order_no"],
+            row["sort_address"], row["supply_address"], row["led_no"], row["x"],
+            row["y"], row["width"], row["height"], row["is_active"]);
+            ra.DoCommand(sql);
         }
 
         /// <summary>查询存在的烟道数组</summary>
