@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Automation.Plugins.YZ.Sorting.Dal;
-using Automation.Plugins.YZ.Sorting.View.Dialogs;
+using Automation.Plugins.YZ.Sorting.View.Dialog;
 using Automation.Plugins.YZ.Sorting.Action;
 
 namespace Automation.Plugins.YZ.Sorting.View.Controls

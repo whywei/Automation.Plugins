@@ -1,4 +1,4 @@
-﻿namespace Automation.Plugins.YZ.Sorting.View.Dialogs
+﻿namespace Automation.Plugins.YZ.Sorting.View.Dialog
 {
     partial class ChannelExchangeDialog
     {

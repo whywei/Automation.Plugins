@@ -210,10 +210,10 @@
     <Compile Include="View\Controls\OrderQueryControl.Designer.cs">
       <DependentUpon>OrderQueryControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Dialogs\ChannelExchangeDialog.cs">
+    <Compile Include="View\Dialog\ChannelExchangeDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Dialogs\ChannelExchangeDialog.Designer.cs">
+    <Compile Include="View\Dialog\ChannelExchangeDialog.Designer.cs">
       <DependentUpon>ChannelExchangeDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Dialog\DownLoadDataDialog.cs">
@@ -304,7 +304,7 @@
     <EmbeddedResource Include="View\Controls\PackNoControl.resx">
       <DependentUpon>PackNoControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Dialogs\ChannelExchangeDialog.resx">
+    <EmbeddedResource Include="View\Dialog\ChannelExchangeDialog.resx">
       <DependentUpon>ChannelExchangeDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Dialog\DownLoadDataDialog.resx">

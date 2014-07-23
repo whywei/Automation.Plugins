@@ -7,7 +7,7 @@ using DotSpatial.Controls.Header;
 using Automation.Plugins.YZ.Sorting.View;
 using Automation.Plugins.YZ.Sorting.Properties;
 using Automation.Plugins.YZ.Sorting.Dal;
-using Automation.Plugins.YZ.Sorting.View.Dialogs;
+using Automation.Plugins.YZ.Sorting.View.Dialog;
 using Automation.Plugins.YZ.Sorting.View.Controls;
 
 namespace Automation.Plugins.YZ.Sorting.Action

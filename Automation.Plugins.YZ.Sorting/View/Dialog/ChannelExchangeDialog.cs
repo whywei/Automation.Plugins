@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using Automation.Plugins.YZ.Sorting.View.Controls;
 using Automation.Plugins.YZ.Sorting.Dal;
 
-namespace Automation.Plugins.YZ.Sorting.View.Dialogs
+namespace Automation.Plugins.YZ.Sorting.View.Dialog
 {
     public partial class ChannelExchangeDialog : DevExpress.XtraEditors.XtraForm
     {

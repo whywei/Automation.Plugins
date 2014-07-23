@@ -10,7 +10,7 @@ using Automation.Plugins.YZ.Sorting.View.Controls;
 using System.Windows.Forms;
 using Automation.Plugins.YZ.Sorting.Properties;
 using System.Data;
-using Automation.Plugins.YZ.Sorting.View.Dialogs;
+using Automation.Plugins.YZ.Sorting.View.Dialog;
 
 namespace Automation.Plugins.YZ.Sorting.View
 {
