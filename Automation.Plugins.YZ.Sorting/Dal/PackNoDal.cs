@@ -17,8 +17,11 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         public DataTable FindMaster()
         {
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
-            string sql = @"SELECT order_date,batch_no,line_code,pack_no
-      ,master_Id,order_id
+            string sql = @"SELECT order_date
+      ,batch_no
+      ,line_code
+      ,pack_no
+      ,order_id
       ,dist_code
       ,dist_name
       ,deliver_line_code
@@ -35,7 +38,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
       ,start_time
       ,finish_time
       ,CASE STATUS WHEN '0' THEN '未下单' ELSE '已下单' END status
-  FROM sort_order_allot_master";
+      FROM sort_order_allot_master";
             return ra.DoQuery(string.Format(sql)).Tables[0];
         }
 
@@ -56,9 +59,9 @@ namespace Automation.Plugins.YZ.Sorting.Dal
       ,B.channel_name 
       ,channel_type=CASE B.channel_type WHEN '1'THEN '立式机（人工）' WHEN '2'THEN '立式机（自动）' WHEN '3'THEN '通道机' WHEN '4' THEN '卧式机' WHEN '5' THEN '混合道' END
       ,B.sort_address
-  FROM sort_order_allot_detail A LEFT JOIN Channel_Allot B ON A.channel_code=B.channel_code
-  LEFT JOIN sort_order_allot_master C ON A.pack_no=C.pack_no
-  where A.pack_no={0}", pack_no);
+      FROM sort_order_allot_detail A LEFT JOIN Channel_Allot B ON A.channel_code=B.channel_code
+      LEFT JOIN sort_order_allot_master C ON A.pack_no=C.pack_no
+      where A.pack_no={0}", pack_no);
             return ra.DoQuery(string.Format(sql)).Tables[0];
         }
 
