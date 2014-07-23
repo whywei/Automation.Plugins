@@ -37,7 +37,7 @@
             // btnExchange
             // 
             this.btnExchange.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnExchange.Location = new System.Drawing.Point(193, 23);
+            this.btnExchange.Location = new System.Drawing.Point(193, 22);
             this.btnExchange.Name = "btnExchange";
             this.btnExchange.Size = new System.Drawing.Size(87, 27);
             this.btnExchange.TabIndex = 1;
@@ -45,7 +45,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(13, 30);
+            this.labelControl1.Location = new System.Drawing.Point(13, 29);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(60, 14);
             this.labelControl1.TabIndex = 2;
@@ -53,7 +53,7 @@
             // 
             // lookUpEdit1
             // 
-            this.lookUpEdit1.Location = new System.Drawing.Point(70, 27);
+            this.lookUpEdit1.Location = new System.Drawing.Point(70, 26);
             this.lookUpEdit1.Name = "lookUpEdit1";
             this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});

@@ -96,7 +96,7 @@ namespace Automation.Plugins.YZ.Sorting.View
                             data[1] = channelDal.FindChannelAddressByChannelCode(targetChannelCode);
                             data[2] = 1;
 
-                            tryError = "[写入PLC" + plcServiceName + "]";
+                            tryError = "[写入PLC-" + plcServiceName + "]";
                             if (Convert.ToInt32(channeltable.Rows[0]["group_no"].ToString()) == 1)
                             {
                                 Ops.Write(plcServiceName, "Channel_Interchange_Information_A", data);
@@ -113,7 +113,7 @@ namespace Automation.Plugins.YZ.Sorting.View
                     }
                     catch (Exception ex)
                     {
-                        DevExpress.XtraEditors.XtraMessageBox.Show("[From-ChannelQueryView]" + tryError + ":" + ex.Message);
+                        DevExpress.XtraEditors.XtraMessageBox.Show("[From-ChannelQueryView]" + tryError + ":" + ex.Message, "异常0x00001");
                     }
                 }
             }
