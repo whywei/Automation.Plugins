@@ -204,6 +204,12 @@
     <Compile Include="View\Controls\OrderQueryControl.Designer.cs">
       <DependentUpon>OrderQueryControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Dialogs\ChannelExchangeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialogs\ChannelExchangeDialog.Designer.cs">
+      <DependentUpon>ChannelExchangeDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\HandSuppyView.cs" />
     <Compile Include="View\OrderQueryView.cs" />
     <Compile Include="View\ChannelQueryView.cs" />
@@ -280,6 +286,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\PackNoControl.resx">
       <DependentUpon>PackNoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialogs\ChannelExchangeDialog.resx">
+      <DependentUpon>ChannelExchangeDialog.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

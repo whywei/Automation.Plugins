@@ -33,6 +33,7 @@
             this.channel_code = new DevExpress.XtraGrid.Columns.GridColumn();
             this.channel_name = new DevExpress.XtraGrid.Columns.GridColumn();
             this.channel_type = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.product_code = new DevExpress.XtraGrid.Columns.GridColumn();
             this.product_name = new DevExpress.XtraGrid.Columns.GridColumn();
             this.quantity = new DevExpress.XtraGrid.Columns.GridColumn();
             this.remain_quantity = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -61,6 +62,7 @@
             this.channel_code,
             this.channel_name,
             this.channel_type,
+            this.product_code,
             this.product_name,
             this.quantity,
             this.remain_quantity,
@@ -103,6 +105,16 @@
             this.channel_type.Visible = true;
             this.channel_type.VisibleIndex = 2;
             // 
+            // product_code
+            // 
+            this.product_code.Caption = "商品编码";
+            this.product_code.FieldName = "product_code";
+            this.product_code.Name = "product_code";
+            this.product_code.OptionsColumn.AllowEdit = false;
+            this.product_code.OptionsColumn.AllowFocus = false;
+            this.product_code.Visible = true;
+            this.product_code.VisibleIndex = 3;
+            // 
             // product_name
             // 
             this.product_name.Caption = "商品名称";
@@ -111,7 +123,7 @@
             this.product_name.OptionsColumn.AllowEdit = false;
             this.product_name.OptionsColumn.AllowFocus = false;
             this.product_name.Visible = true;
-            this.product_name.VisibleIndex = 3;
+            this.product_name.VisibleIndex = 4;
             // 
             // quantity
             // 
@@ -121,7 +133,7 @@
             this.quantity.OptionsColumn.AllowEdit = false;
             this.quantity.OptionsColumn.AllowFocus = false;
             this.quantity.Visible = true;
-            this.quantity.VisibleIndex = 4;
+            this.quantity.VisibleIndex = 5;
             // 
             // remain_quantity
             // 
@@ -131,7 +143,7 @@
             this.remain_quantity.OptionsColumn.AllowEdit = false;
             this.remain_quantity.OptionsColumn.AllowFocus = false;
             this.remain_quantity.Visible = true;
-            this.remain_quantity.VisibleIndex = 5;
+            this.remain_quantity.VisibleIndex = 6;
             // 
             // group_no
             // 
@@ -141,7 +153,7 @@
             this.group_no.OptionsColumn.AllowEdit = false;
             this.group_no.OptionsColumn.AllowFocus = false;
             this.group_no.Visible = true;
-            this.group_no.VisibleIndex = 6;
+            this.group_no.VisibleIndex = 7;
             // 
             // sort_address
             // 
@@ -151,7 +163,7 @@
             this.sort_address.OptionsColumn.AllowEdit = false;
             this.sort_address.OptionsColumn.AllowFocus = false;
             this.sort_address.Visible = true;
-            this.sort_address.VisibleIndex = 7;
+            this.sort_address.VisibleIndex = 8;
             // 
             // supply_address
             // 
@@ -161,7 +173,7 @@
             this.supply_address.OptionsColumn.AllowEdit = false;
             this.supply_address.OptionsColumn.AllowFocus = false;
             this.supply_address.Visible = true;
-            this.supply_address.VisibleIndex = 8;
+            this.supply_address.VisibleIndex = 9;
             // 
             // status
             // 
@@ -171,7 +183,7 @@
             this.status.OptionsColumn.AllowEdit = false;
             this.status.OptionsColumn.AllowFocus = false;
             this.status.Visible = true;
-            this.status.VisibleIndex = 9;
+            this.status.VisibleIndex = 10;
             // 
             // ChannelQueryControl
             // 
@@ -200,5 +212,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn sort_address;
         private DevExpress.XtraGrid.Columns.GridColumn supply_address;
         private DevExpress.XtraGrid.Columns.GridColumn status;
+        private DevExpress.XtraGrid.Columns.GridColumn product_code;
     }
 }
