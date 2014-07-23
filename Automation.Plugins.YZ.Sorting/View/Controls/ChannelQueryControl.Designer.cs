@@ -104,6 +104,7 @@
             this.channel_type.OptionsColumn.AllowFocus = false;
             this.channel_type.Visible = true;
             this.channel_type.VisibleIndex = 2;
+            this.channel_type.Width = 85;
             // 
             // product_code
             // 
@@ -124,6 +125,7 @@
             this.product_name.OptionsColumn.AllowFocus = false;
             this.product_name.Visible = true;
             this.product_name.VisibleIndex = 4;
+            this.product_name.Width = 200;
             // 
             // quantity
             // 

@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Automation.Plugins.YZ.Sorting.Properties;
 using System.Data;
 using Automation.Plugins.YZ.Sorting.View.Dialog;
+using System.Transactions;
 
 namespace Automation.Plugins.YZ.Sorting.View
 {
@@ -46,7 +47,6 @@ namespace Automation.Plugins.YZ.Sorting.View
 
         public void Refresh()
         {
-            ChannelDal channelDal = new ChannelDal();
             gridControl.DataSource = channelDal.FindChannel();                       
         }
 
@@ -65,40 +65,56 @@ namespace Automation.Plugins.YZ.Sorting.View
                 ChannelExchangeDialog channelExchangeDialog = new ChannelExchangeDialog(table);
                 if (channelExchangeDialog.ShowDialog() == DialogResult.OK)
                 {
-                    string lookUpEditValue = channelExchangeDialog.lookUpEdit1.EditValue.ToString();
-                    DataRow channelRow = channelDal.FindChannelInfo().Select(string.Format("channel_code='{0}'", lookUpEditValue))[0];
-                    string targetChannelCode = lookUpEditValue;
-                    orderDal.UpdateOrderDetailByChannelCode(sourceChannelCode, "000000");
-                    orderDal.UpdateOrderDetailByChannelCode(targetChannelCode, sourceChannelCode);
-                    orderDal.UpdateOrderDetailByChannelCode("000000", targetChannelCode);
-
-                    channelDal.UpdateChannelByChannelCode(sourceChannelCode,
-                                                      channelRow["product_code"].ToString(),
-                                                      channelRow["product_name"].ToString(),
-                                                      channelRow["quantity"].ToString()); //更新源数据
-                    channelDal.UpdateChannelByChannelCode(lookUpEditValue,
-                        gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["product_code"]).ToString(),
-                        gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["product_name"]).ToString(),
-                        gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["quantity"]).ToString());//更新目标数据
-
-                    sortingDal.UpdateSortingByChannelCode(lookUpEditValue,
-                        gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["product_code"]).ToString(),
-                        gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["product_name"]).ToString(),
-                        gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["quantity"]).ToString());
-
-                    int[] data = new int[3];
-                    data[0] = channelDal.FindChannelAddressByChannelCode(sourceChannelCode);
-                    data[1] = channelDal.FindChannelAddressByChannelCode(targetChannelCode);
-                    data[2] = 1;
-                    if (Convert.ToInt32(channeltable.Rows[0]["group_no"].ToString()) == 1)
+                    string tryError = null;
+                    try
                     {
-                        Ops.Write(plcServiceName, "Channel_Interchange_Information_A", data);
+                        using (TransactionScope scope = new TransactionScope())
+                        {
+                            string lookUpEditValue = channelExchangeDialog.lookUpEdit1.EditValue.ToString();
+                            DataRow channelRow = channelDal.FindChannelInfo().Select(string.Format("channel_code='{0}'", lookUpEditValue))[0];
+                            string targetChannelCode = lookUpEditValue;
+                            orderDal.UpdateOrderDetailByChannelCode(sourceChannelCode, "000000");
+                            orderDal.UpdateOrderDetailByChannelCode(targetChannelCode, sourceChannelCode);
+                            orderDal.UpdateOrderDetailByChannelCode("000000", targetChannelCode);
+
+                            channelDal.UpdateChannelByChannelCode(sourceChannelCode,
+                                                              channelRow["product_code"].ToString(),
+                                                              channelRow["product_name"].ToString(),
+                                                              channelRow["quantity"].ToString()); //更新源数据
+                            channelDal.UpdateChannelByChannelCode(lookUpEditValue,
+                                gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["product_code"]).ToString(),
+                                gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["product_name"]).ToString(),
+                                gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["quantity"]).ToString());//更新目标数据
+
+                            sortingDal.UpdateSortingByChannelCode(lookUpEditValue,
+                                gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["product_code"]).ToString(),
+                                gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["product_name"]).ToString(),
+                                gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["quantity"]).ToString());
+
+                            int[] data = new int[3];
+                            data[0] = channelDal.FindChannelAddressByChannelCode(sourceChannelCode);
+                            data[1] = channelDal.FindChannelAddressByChannelCode(targetChannelCode);
+                            data[2] = 1;
+
+                            tryError = "[写入PLC" + plcServiceName + "]";
+                            if (Convert.ToInt32(channeltable.Rows[0]["group_no"].ToString()) == 1)
+                            {
+                                Ops.Write(plcServiceName, "Channel_Interchange_Information_A", data);
+                            }
+                            else
+                            {
+                                Ops.Write(plcServiceName, "Channel_Interchange_Information_B", data);
+                            }
+                            DevExpress.XtraEditors.XtraMessageBox.Show(string.Format("{0}号烟道与{1}号烟道交换！", data[0], data[1]));
+                            this.Refresh();
+                            
+                            scope.Complete();
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        Ops.Write(plcServiceName, "Channel_Interchange_Information_B", data);
+                        DevExpress.XtraEditors.XtraMessageBox.Show("[From-ChannelQueryView]" + tryError + ":" + ex.Message);
                     }
-                    MessageBox.Show(string.Format("{0}号烟道与{1}号烟道交换！", data[0], data[1]));
                 }
             }
         }

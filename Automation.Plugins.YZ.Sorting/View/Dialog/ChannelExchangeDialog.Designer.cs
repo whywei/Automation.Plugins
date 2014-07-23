@@ -37,7 +37,7 @@
             // btnExchange
             // 
             this.btnExchange.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnExchange.Location = new System.Drawing.Point(287, 22);
+            this.btnExchange.Location = new System.Drawing.Point(193, 23);
             this.btnExchange.Name = "btnExchange";
             this.btnExchange.Size = new System.Drawing.Size(87, 27);
             this.btnExchange.TabIndex = 1;
@@ -57,14 +57,14 @@
             this.lookUpEdit1.Name = "lookUpEdit1";
             this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEdit1.Size = new System.Drawing.Size(211, 20);
+            this.lookUpEdit1.Size = new System.Drawing.Size(118, 20);
             this.lookUpEdit1.TabIndex = 3;
             // 
             // ChannelExchangeDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(391, 72);
+            this.ClientSize = new System.Drawing.Size(296, 82);
             this.Controls.Add(this.lookUpEdit1);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.btnExchange);
