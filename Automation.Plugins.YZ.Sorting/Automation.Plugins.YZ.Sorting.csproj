@@ -106,6 +106,7 @@
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -212,6 +213,12 @@
     <Compile Include="View\Controls\OrderQueryControl.Designer.cs">
       <DependentUpon>OrderQueryControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Dialog\ChannelExchangeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\ChannelExchangeDialog.Designer.cs">
+      <DependentUpon>ChannelExchangeDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Dialog\DownLoadDataDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -302,6 +309,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\PackNoControl.resx">
       <DependentUpon>PackNoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\ChannelExchangeDialog.resx">
+      <DependentUpon>ChannelExchangeDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Dialog\DownLoadDataDialog.resx">
       <DependentUpon>DownLoadDataDialog.cs</DependentUpon>

@@ -102,10 +102,10 @@ namespace Automation.Plugins.YZ.Sorting.Dal
             return result == null ? "0" : result.ToString();
         }
 
-        public void UpdateOrderDetailByChannelCode(string sourceChannel, string targetChannel)
+        public void UpdateOrderDetailByChannelCode(string sourceChannelCode, string targetChannelCode)
         {
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
-            string sql = string.Format("UPDATE AS_SC_ORDER SET CHANNELCODE='{0}' WHERE CHANNELCODE='{1}'", targetChannel, sourceChannel);
+            string sql = string.Format("update sort_order_allot_detail set channel_code='{0}' where channel_code='{1}'", targetChannelCode, sourceChannelCode);
             ra.DoCommand(sql);
         }
 
