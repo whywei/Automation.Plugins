@@ -37,6 +37,7 @@
       <HintPath>..\packages\Automation.Core.1.0.0.6\lib\net40-Client\Automation.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Automation.Plugins.YZ.Sorting, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Automation.Service.OPC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Automation.Service.OPC.1.0.0.2\lib\net40\Automation.Service.OPC.dll</HintPath>
     </Reference>
@@ -125,6 +126,7 @@
     <Compile Include="Action\SortingRecordAction.cs" />
     <Compile Include="Dal\ChannelDal.cs" />
     <Compile Include="Dal\CustomerDal.cs" />
+    <Compile Include="Dal\ExportPackDal.cs" />
     <Compile Include="Dal\HandSupplyDal.cs" />
     <Compile Include="Dal\OrderDal.cs" />
     <Compile Include="Dal\PackNoDal.cs" />
@@ -294,6 +296,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\OrderQueryControl.resx">
       <DependentUpon>OrderQueryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\PackDataControl.resx">
+      <DependentUpon>PackDataControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\PackNoControl.resx">
       <DependentUpon>PackNoControl.cs</DependentUpon>
