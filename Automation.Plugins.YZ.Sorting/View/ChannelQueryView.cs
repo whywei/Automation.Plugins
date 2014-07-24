@@ -12,6 +12,8 @@ using Automation.Plugins.YZ.Sorting.Properties;
 using System.Data;
 using Automation.Plugins.YZ.Sorting.View.Dialog;
 using System.Transactions;
+using System.Drawing;
+using System.Reflection;
 
 namespace Automation.Plugins.YZ.Sorting.View
 {
@@ -23,8 +25,6 @@ namespace Automation.Plugins.YZ.Sorting.View
        ChannelDal channelDal = new ChannelDal();
        OrderDal orderDal = new OrderDal();
        SortingDal sortingDal = new SortingDal();
-
-       const string plcServiceName = "VerticalPicking";
 
         public override void Initialize()
         {
@@ -63,6 +63,8 @@ namespace Automation.Plugins.YZ.Sorting.View
             if (table.Rows.Count != 0)
             {
                 ChannelExchangeDialog channelExchangeDialog = new ChannelExchangeDialog(table);
+                Assembly assembly = Assembly.GetEntryAssembly();
+                channelExchangeDialog.Icon = ((Form)Shell).Icon ?? Icon.ExtractAssociatedIcon(assembly.Location);
                 if (channelExchangeDialog.ShowDialog() == DialogResult.OK)
                 {
                     string tryError = null;
@@ -96,14 +98,14 @@ namespace Automation.Plugins.YZ.Sorting.View
                             data[1] = channelDal.FindChannelAddressByChannelCode(targetChannelCode);
                             data[2] = 1;
 
-                            tryError = "[写入PLC-" + plcServiceName + "]";
+                            tryError = "[写入PLC-" + Global.plcServiceName + "]";
                             if (Convert.ToInt32(channeltable.Rows[0]["group_no"].ToString()) == 1)
                             {
-                                Ops.Write(plcServiceName, "Channel_Interchange_Information_A", data);
+                                Ops.Write(Global.plcServiceName, "Channel_Interchange_Information_A", data);
                             }
                             else
                             {
-                                Ops.Write(plcServiceName, "Channel_Interchange_Information_B", data);
+                                Ops.Write(Global.plcServiceName, "Channel_Interchange_Information_B", data);
                             }
                             DevExpress.XtraEditors.XtraMessageBox.Show(string.Format("{0}号烟道与{1}号烟道交换！", data[0], data[1]));
                             this.Refresh();
