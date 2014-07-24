@@ -225,6 +225,29 @@ namespace Automation.Plugins.YZ.Sorting.Dal
                         where A.pack_no={0} ORDER BY A.pack_no ASC,C.group_no DESC,C.sort_address";
             return ra.DoQuery(string.Format(sql, packNo)).Tables[0];
         }
+
+        public DataTable FindExporNoFromMaster()
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = "SELECT DISTINCT export_no,CONVERT(VARCHAR(100),order_date,23) order_date FROM sort_order_allot_master";
+            return ra.DoQuery(sql).Tables[0];
+        }
+
+        public DataTable FindPackData(string condition)
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = @"SELECT row_number() over(ORDER BY A.pack_no,C.group_no DESC,C.sort_address,D.supply_batch,D.supply_id) id
+                        ,A.pack_no,(SELECT ISNULL(SUM(E.quantity),0) FROM sort_order_allot_master E WHERE E.customer_code=B.customer_code) TOTAL_QUANTITY
+                        ,B.quantity BAG_QUANTITY,A.quantity,B.export_no,CONVERT(VARCHAR(100),B.order_date,23) order_date,B.batch_no,B.line_code
+                        ,B.order_id,B.deliver_line_code,B.deliver_line_name,B.customer_code,B.customer_name,B.address,B.customer_order
+                        ,B.customer_deliver_order,B.customer_Info,A.product_code,A.product_name,B.dist_code,B.dist_name
+                        FROM sort_order_allot_detail A LEFT JOIN sort_order_allot_master B ON A.pack_no=B.pack_no
+                        LEFT JOIN Channel_Allot C ON A.channel_code=C.channel_code
+                        LEFT JOIN handle_supply D ON A.channel_code =D.channel_code
+                        {0}
+                        ORDER BY A.pack_no,C.group_no DESC,C.sort_address,D.supply_batch,D.supply_id";
+            return ra.DoQuery(string.Format(sql,condition)).Tables[0];
+        }
     }
 }
 
