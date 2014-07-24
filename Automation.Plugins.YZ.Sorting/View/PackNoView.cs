@@ -17,9 +17,7 @@ namespace Automation.Plugins.YZ.Sorting.View
        private GridControl gridControl = null;
        private GridView gridMasterView = null;
        private GridControl gridDetailControl = null;
-
        private PackNoDal packNoDal = new PackNoDal();
-
 
         public override void Initialize()
         {
@@ -39,12 +37,12 @@ namespace Automation.Plugins.YZ.Sorting.View
             gridMasterView = ((PackNoControl)this.InnerControl).viewMaster;
             gridDetailControl = ((PackNoControl)this.InnerControl).gridDetail;
             gridMasterView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(GridMasterView_RowClick);
-    
         }
 
         public void Refresh()
         {
-            gridControl.DataSource = packNoDal.FindMaster();                       
+            gridControl.DataSource = packNoDal.FindMaster();
+            gridDetailControl.DataSource = null;          
         }
         private void GridMasterView_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
