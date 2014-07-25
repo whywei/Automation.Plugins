@@ -51,7 +51,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
                                         ,a.product_name,a.quantity,b.channel_name
                                         ,case when a.status = 1 then '已补货' else '未补货' end status 
                                         from handle_supply a 
-                                        left join channel_allot b on a.channel_code = b.channel_code
+                                        left join channel_allot b on a.channel_code = b.channel_code AND a.product_code=b.product_code
                                         {0}
                                         order by a.supply_id, a.quantity desc", condition);
             return ra.DoQuery(sql).Tables[0];
