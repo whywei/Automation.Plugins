@@ -30,7 +30,7 @@ namespace Automation.Plugins.YZ.Sorting.Action
             this.Add(new RootItem(rootKey, "手工补货") { SortOrder = 10001 });
             this.Add(new SimpleActionItem(rootKey, "刷新", HandSuppyRefresh_Click) { ToolTipText = "手工补货查询", GroupCaption = "手工补货", LargeImage = Resources.refresh_32x32 });
 
-            dropItem = new DropDownActionItem { RootKey = rootKey, GroupCaption = "烟道名称", Width = 170 };
+            dropItem = new DropDownActionItem { RootKey = rootKey, GroupCaption = "烟道名称", Width = 100 };
             dropItem.Items.AddRange(channelDal.GetChannel());
             dropItem.SelectedValueChanged += new EventHandler<SelectedValueChangedEventArgs>(dropItem_SelectedValueChanged);
             this.Add(dropItem);

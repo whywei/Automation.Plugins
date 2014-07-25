@@ -44,23 +44,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 DataRow dr = dt.Rows[i];
-                array[i] = Convert.ToString(dr["channel_code"]);
-            }
-            return array;
-        }
-
-        /// <summary>根据烟道编码查询分配的烟道</summary>
-        public string[] GetChannel(string channelCode)
-        {
-            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
-            string sql = string.Format(@" select channel_code,channel_name from dbo.channel_allot where channel_type <> 5 and channel_type 
-                         = (select distinct channel_type from channel_allot where channel_code='{0}')", channelCode);
-            DataTable dt = ra.DoQuery(sql).Tables[0];
-            string[] array = new string[dt.Rows.Count];
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                DataRow dr = dt.Rows[i];
-                array[i] = Convert.ToString(dr["channel_code"]);
+                array[i] = Convert.ToString(dr["channel_name"]);
             }
             return array;
         }
