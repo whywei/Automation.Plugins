@@ -81,6 +81,8 @@ namespace Automation.Plugins.YZ.Sorting.Action
                 else
                     XtraMessageBox.Show("请输入正确的卷烟数量！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);//弹出提示框
             }
+            dropItem.SelectedItem = "请选择卷烟名称";
+            _txtQuantity.Text = "";
         }
 
         private void dropItem_SelectedValueChanged(object sender, SelectedValueChangedEventArgs e)
