@@ -17,7 +17,6 @@ namespace Automation.Plugins.YZ.Sorting.View
        private GridControl gridControl = null;
        private GridView gridMasterView = null;
        private GridControl gridDetailControl = null;
-       private GridView gridDetailView = null;
        private CustomerDal customerDal = new CustomerDal();
 
         public override void Initialize()
@@ -29,7 +28,7 @@ namespace Automation.Plugins.YZ.Sorting.View
         public override void Activate()
         {
             this.Key = "kCustomerQuery";
-            this.Caption = "客户查询";
+            this.Caption = "订单查询";
             this.InnerControl = new CustomerQueryControl();
             this.Dock = DockStyle.Fill;
             this.SmallImage = Resources.refresh_32x32;

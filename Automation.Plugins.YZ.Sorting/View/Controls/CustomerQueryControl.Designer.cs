@@ -45,6 +45,9 @@
             this.PackNo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ProductName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Quantity = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ProductCode = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ChannelName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ChannelType = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridMaster)).BeginInit();
@@ -209,8 +212,11 @@
             // 
             this.viewDetail.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.PackNo,
+            this.ProductCode,
             this.ProductName,
-            this.Quantity});
+            this.Quantity,
+            this.ChannelName,
+            this.ChannelType});
             this.viewDetail.GridControl = this.gridDetail;
             this.viewDetail.Name = "viewDetail";
             this.viewDetail.OptionsView.ColumnAutoWidth = false;
@@ -235,7 +241,7 @@
             this.ProductName.OptionsColumn.AllowEdit = false;
             this.ProductName.OptionsColumn.AllowFocus = false;
             this.ProductName.Visible = true;
-            this.ProductName.VisibleIndex = 1;
+            this.ProductName.VisibleIndex = 2;
             this.ProductName.Width = 125;
             // 
             // Quantity
@@ -246,7 +252,39 @@
             this.Quantity.OptionsColumn.AllowEdit = false;
             this.Quantity.OptionsColumn.AllowFocus = false;
             this.Quantity.Visible = true;
-            this.Quantity.VisibleIndex = 2;
+            this.Quantity.VisibleIndex = 3;
+            // 
+            // ProductCode
+            // 
+            this.ProductCode.Caption = "卷烟代码";
+            this.ProductCode.FieldName = "product_code";
+            this.ProductCode.Name = "ProductCode";
+            this.ProductCode.OptionsColumn.AllowEdit = false;
+            this.ProductCode.OptionsColumn.AllowFocus = false;
+            this.ProductCode.Visible = true;
+            this.ProductCode.VisibleIndex = 1;
+            // 
+            // ChannelName
+            // 
+            this.ChannelName.Caption = "烟道名称";
+            this.ChannelName.FieldName = "channel_name";
+            this.ChannelName.Name = "ChannelName";
+            this.ChannelName.OptionsColumn.AllowEdit = false;
+            this.ChannelName.OptionsColumn.AllowFocus = false;
+            this.ChannelName.Visible = true;
+            this.ChannelName.VisibleIndex = 4;
+            this.ChannelName.Width = 100;
+            // 
+            // ChannelType
+            // 
+            this.ChannelType.Caption = "烟道类型";
+            this.ChannelType.FieldName = "channel_type";
+            this.ChannelType.Name = "ChannelType";
+            this.ChannelType.OptionsColumn.AllowEdit = false;
+            this.ChannelType.OptionsColumn.AllowFocus = false;
+            this.ChannelType.Visible = true;
+            this.ChannelType.VisibleIndex = 5;
+            this.ChannelType.Width = 100;
             // 
             // CustomerQueryControl
             // 
@@ -284,5 +322,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn customer_Info;
         private DevExpress.XtraGrid.Columns.GridColumn pack_no;
         private DevExpress.XtraGrid.Columns.GridColumn status;
+        private DevExpress.XtraGrid.Columns.GridColumn ProductCode;
+        private DevExpress.XtraGrid.Columns.GridColumn ChannelName;
+        private DevExpress.XtraGrid.Columns.GridColumn ChannelType;
     }
 }

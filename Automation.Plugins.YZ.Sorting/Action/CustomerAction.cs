@@ -30,8 +30,8 @@ namespace Automation.Plugins.YZ.Sorting.Action
         {
             IHeaderControl header = App.HeaderControl;
 
-            this.Add(new RootItem(rootKey, "客户查询") { SortOrder = 10001 });
-            this.Add(new SimpleActionItem(rootKey, "刷新", CustomerQueryRefresh_Click) { ToolTipText = "刷新客户查询", GroupCaption = "客户查询", LargeImage = Resources.refresh_32x32 });
+            this.Add(new RootItem(rootKey, "订单查询") { SortOrder = 10001 });
+            this.Add(new SimpleActionItem(rootKey, "刷新", CustomerQueryRefresh_Click) { ToolTipText = "刷新订单查询", GroupCaption = "订单查询", LargeImage = Resources.refresh_32x32 });
 
             dropItem = new DropDownActionItem { RootKey = rootKey, GroupCaption = "查询", Width = 170 };
             dropItem.Caption = "卷烟名称：";
@@ -68,7 +68,18 @@ namespace Automation.Plugins.YZ.Sorting.Action
             {
                 string product_name = dropItem.SelectedItem.ToString();
                 string quantity = _txtQuantity.Text;
-                (View as CustomerQueryView).Select(product_name, quantity);
+                bool judge = false;
+                for (int i = 0; i < quantity.Length; i++)
+                {
+                    if (Char.IsDigit(quantity[i]))
+                        judge = true;
+                }
+                if(judge)
+                    (View as CustomerQueryView).Select(product_name, quantity);
+                else if(quantity=="")
+                    (View as CustomerQueryView).Select(product_name, quantity);
+                else
+                    XtraMessageBox.Show("请输入正确的卷烟数量！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);//弹出提示框
             }
         }
 
