@@ -37,6 +37,7 @@
       <HintPath>..\packages\Automation.Core.1.0.0.6\lib\net40-Client\Automation.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Automation.Plugins.YZ.Sorting, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Automation.Service.OPC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Automation.Service.OPC.1.0.0.2\lib\net40\Automation.Service.OPC.dll</HintPath>
     </Reference>
@@ -105,6 +106,7 @@
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -125,6 +127,7 @@
     <Compile Include="Action\SortingRecordAction.cs" />
     <Compile Include="Dal\ChannelDal.cs" />
     <Compile Include="Dal\CustomerDal.cs" />
+    <Compile Include="Dal\ExportPackDal.cs" />
     <Compile Include="Dal\HandSupplyDal.cs" />
     <Compile Include="Dal\OrderDal.cs" />
     <Compile Include="Dal\PackNoDal.cs" />
@@ -148,6 +151,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Service\YZSortingOPCService.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="SortingPlugin.cs" />
     <Compile Include="View\CacheOrderQueryView.cs" />
     <Compile Include="View\Controls\ChannelQueryControl.cs">
@@ -205,6 +213,24 @@
     <Compile Include="View\Controls\OrderQueryControl.Designer.cs">
       <DependentUpon>OrderQueryControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Dialog\ChannelExchangeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\ChannelExchangeDialog.Designer.cs">
+      <DependentUpon>ChannelExchangeDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\DownLoadDataDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\DownLoadDataDialog.Designer.cs">
+      <DependentUpon>DownLoadDataDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\GeneratePackDataDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\GeneratePackDataDialog.Designer.cs">
+      <DependentUpon>GeneratePackDataDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\HandSuppyView.cs" />
     <Compile Include="View\OrderQueryView.cs" />
     <Compile Include="View\ChannelQueryView.cs" />
@@ -215,7 +241,12 @@
     <Compile Include="View\SortingRecordView.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Device\" />
@@ -279,8 +310,20 @@
     <EmbeddedResource Include="View\Controls\OrderQueryControl.resx">
       <DependentUpon>OrderQueryControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\PackDataControl.resx">
+      <DependentUpon>PackDataControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\PackNoControl.resx">
       <DependentUpon>PackNoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\ChannelExchangeDialog.resx">
+      <DependentUpon>ChannelExchangeDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\DownLoadDataDialog.resx">
+      <DependentUpon>DownLoadDataDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\GeneratePackDataDialog.resx">
+      <DependentUpon>GeneratePackDataDialog.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

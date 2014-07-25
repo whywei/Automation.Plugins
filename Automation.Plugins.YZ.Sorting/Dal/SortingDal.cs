@@ -62,5 +62,14 @@ namespace Automation.Plugins.YZ.Sorting.Dal
             string sql = "SELECT ISNULL(MAX(sort_no),0) sort_no FROM sorting";
             return Convert.ToInt32(ra.DoScalar(sql));
         }
+
+        public void UpdateSortingByChannelCode(string channelCode, string cigaretteCode, string cigaretteName, string quantity)
+        { 
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = string.Format(@"update sorting
+                                        set product_code = '{0}',product_name = '{1}',quantity = {2}
+                                        where channel_code='{3}' and status = 0 ", cigaretteCode, cigaretteName, quantity, channelCode);
+            ra.DoCommand(sql);
+        }
     }
 }

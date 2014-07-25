@@ -23,12 +23,24 @@ namespace Automation.Plugins.YZ.Sorting.Action
         {
             this.Add(new RootItem(rootKey, "包装机数据") { SortOrder = 10001 });
             this.Add(new SimpleActionItem(rootKey, "刷新", PackDataRefresh_Click) { ToolTipText = "包装机数据查询", GroupCaption = "包装机数据", LargeImage = Resources.refresh_32x32 });
+            this.Add(new SimpleActionItem(rootKey, "生成数据", GeneratePackData_Click) { ToolTipText = "手动生成包装机数据", GroupCaption = "操作", LargeImage = Resources.refresh_32x32 });
+            this.Add(new SimpleActionItem(rootKey, "导出数据", PackDataExport_Click) { ToolTipText = "导出包装机数据", GroupCaption = "操作", LargeImage = Resources.refresh_32x32 });
             base.Activate();
         }
 
         private void PackDataRefresh_Click(object sender, EventArgs e)
         {
             (View as PackDataView).Refresh();
+        }
+
+        private void GeneratePackData_Click(object sender, EventArgs e)
+        {
+            (View as PackDataView).GeneratePackData();
+        }
+
+        private void PackDataExport_Click(object sender, EventArgs e)
+        {
+            (View as PackDataView).ExportData();
         }
     }
 }
