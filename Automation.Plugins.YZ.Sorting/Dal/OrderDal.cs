@@ -222,7 +222,8 @@ namespace Automation.Plugins.YZ.Sorting.Dal
                         ON D.channel_code=E.channel_code WHERE D.pack_no>={0} AND E.channel_code=C.channel_code) REMAINQUANTITY
                         FROM sort_order_allot_detail A LEFT JOIN sort_order_allot_master B ON A.pack_no=B.pack_no
                         LEFT JOIN Channel_Allot C ON A.channel_code=C.channel_code 
-                        where A.pack_no={0} ORDER BY A.pack_no ASC,C.group_no DESC,C.sort_address";
+                        LEFT JOIN handle_supply D ON A.channel_code=D.channel_code
+                        where A.pack_no={0} ORDER BY A.pack_no ASC,C.group_no DESC,C.sort_address,D.supply_batch,D.supply_id";
             return ra.DoQuery(string.Format(sql, packNo)).Tables[0];
         }
 
