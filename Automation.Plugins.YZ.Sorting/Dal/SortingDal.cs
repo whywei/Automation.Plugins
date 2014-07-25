@@ -71,5 +71,37 @@ namespace Automation.Plugins.YZ.Sorting.Dal
                                         where channel_code='{3}' and status = 0 ", cigaretteCode, cigaretteName, quantity, channelCode);
             ra.DoCommand(sql);
         }
+
+        public DataTable FindSortingForCacheQuery(int sortNo, int groupNo, int quantity)
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = @"SELECT TOP {2} sort_no,A.pack_no,B.customer_name,A.product_name,1 quantity,B.quantity bag_quantity,C.channel_name
+                        ,CASE A.group_no WHEN '1' THEN 'A线' ELSE 'B线' END group_no,A.remain_quantity,A.export_no
+                        FROM sorting A LEFT JOIN sort_order_allot_master B ON A.pack_no=B.pack_no
+                        LEFT JOIN Channel_Allot C ON A.channel_code=C.channel_code AND A.product_code=C.product_code
+                        WHERE A.group_no={1} AND sort_no>={0}
+                        ORDER BY A.pack_no,A.sort_no";
+            return ra.DoQuery(string.Format(sql, sortNo, groupNo, quantity)).Tables[0];
+        }
+
+        public DataTable FindSortingForCacheQuery(string packNo)
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = @"SELECT sort_no,A.pack_no,B.customer_name,A.product_name,1 quantity,B.quantity bag_quantity,C.channel_name
+                        ,CASE A.group_no WHEN '1' THEN 'A线' ELSE 'B线' END group_no,A.remain_quantity,A.export_no
+                        FROM sorting A LEFT JOIN sort_order_allot_master B ON A.pack_no=B.pack_no
+                        LEFT JOIN Channel_Allot C ON A.channel_code=C.channel_code AND A.product_code=C.product_code
+                        WHERE A.pack_no={0}
+                        ORDER BY A.pack_no,A.sort_no";
+            return ra.DoQuery(string.Format(sql, packNo)).Tables[0];
+        }
+
+        public string FindPackNoBySortNo(string sortNo)
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = @"SELECT DISTINCT pack_no FROM sorting WHERE sort_no={0}";
+            object obj = ra.DoScalar(string.Format(sql, sortNo));
+            return obj == null ? "0" : obj.ToString();
+        }
     }
 }

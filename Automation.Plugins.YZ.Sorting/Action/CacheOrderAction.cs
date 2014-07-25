@@ -9,7 +9,7 @@ using Automation.Plugins.YZ.Sorting.Properties;
 
 namespace Automation.Plugins.YZ.Sorting.Action
 {
-  public class CacheOrderAction : AbstractAction
+    public class CacheOrderAction : AbstractAction
     {
         private const string rootKey = "kCacheOrderQuery";
 
@@ -23,13 +23,43 @@ namespace Automation.Plugins.YZ.Sorting.Action
         public override void Activate()
         {
             this.Add(new RootItem(rootKey, "缓存订单") { SortOrder = 10001 });
-            this.Add(new SimpleActionItem(rootKey, "刷新", CacheOrderQueryRefresh_Click) { ToolTipText = "缓存订单查询", GroupCaption = "缓存订单", LargeImage = Resources.refresh_32x32 });
+            this.Add(new SimpleActionItem(rootKey, "A-前", A_FrontCacheRefresh_Click) { ToolTipText = "A线小皮带缓存订单查询", GroupCaption = "缓存订单查询", LargeImage = Resources.refresh_32x32 });
+            this.Add(new SimpleActionItem(rootKey, "A-后", A_LaterCacheRefresh_Click) { ToolTipText = "A线多沟带缓存订单查询", GroupCaption = "缓存订单查询", LargeImage = Resources.refresh_32x32 });
+            this.Add(new SimpleActionItem(rootKey, "B-前", B_FrontCacheRefresh_Click) { ToolTipText = "B线小皮带缓存订单查询", GroupCaption = "缓存订单查询", LargeImage = Resources.refresh_32x32 });
+            this.Add(new SimpleActionItem(rootKey, "B-后", B_LaterCacheRefresh_Click) { ToolTipText = "A线多沟带缓存订单查询", GroupCaption = "缓存订单查询", LargeImage = Resources.refresh_32x32 });
+            this.Add(new SimpleActionItem(rootKey, "打码订单", BarcodePrintingCacheRefresh_Click) { ToolTipText = "打码订单查询", GroupCaption = "打码订单查询", LargeImage = Resources.refresh_32x32 });
+            this.Add(new SimpleActionItem(rootKey, "摆动订单", SwingCacheRefresh_Click) { ToolTipText = "摆动订单查询", GroupCaption = "摆动订单查询", LargeImage = Resources.refresh_32x32 });
             base.Activate();
         }
 
-        private void CacheOrderQueryRefresh_Click(object sender, EventArgs e)
+        private void A_FrontCacheRefresh_Click(object sender, EventArgs e)
         {
-            (View as CacheOrderQueryView).Refresh();
+            (View as CacheOrderQueryView).Refresh("A","F");
+        }
+
+        private void A_LaterCacheRefresh_Click(object sender, EventArgs e)
+        {
+            (View as CacheOrderQueryView).Refresh("A","L");
+        }
+
+        private void B_FrontCacheRefresh_Click(object sender, EventArgs e)
+        {
+            (View as CacheOrderQueryView).Refresh("B", "F");
+        }
+
+        private void B_LaterCacheRefresh_Click(object sender, EventArgs e)
+        {
+            (View as CacheOrderQueryView).Refresh("B", "L");
+        }
+
+        private void BarcodePrintingCacheRefresh_Click(object sender, EventArgs e)
+        {
+            (View as CacheOrderQueryView).Refresh("P");
+        }
+
+        private void SwingCacheRefresh_Click(object sender, EventArgs e)
+        {
+            (View as CacheOrderQueryView).Refresh("S");
         }
     }
 }
