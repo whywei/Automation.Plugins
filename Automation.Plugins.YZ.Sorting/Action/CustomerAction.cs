@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Automation.Plugins.YZ.Sorting.Action
 {
-  public class CustomerAction : AbstractAction
+    public class CustomerAction : AbstractAction
     {
         private const string rootKey = "kCustomerQuery";
         private TextEntryActionItem _txtQuantity = new TextEntryActionItem();
