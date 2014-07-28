@@ -125,6 +125,7 @@
     <Compile Include="Action\SortingProgressAction.cs" />
     <Compile Include="Action\SortingRecordAction.cs" />
     <Compile Include="Dal\ChannelDal.cs" />
+    <Compile Include="Dal\SortingRecordDal.cs" />
     <Compile Include="Dal\CustomerDal.cs" />
     <Compile Include="Dal\ExportPackDal.cs" />
     <Compile Include="Dal\HandSupplyDal.cs" />
@@ -302,6 +303,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\PackNoControl.resx">
       <DependentUpon>PackNoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\SortingRecordControl.resx">
+      <DependentUpon>SortingRecordControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Dialog\DownLoadDataDialog.resx">
       <DependentUpon>DownLoadDataDialog.cs</DependentUpon>
