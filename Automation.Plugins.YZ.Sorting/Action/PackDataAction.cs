@@ -25,6 +25,7 @@ namespace Automation.Plugins.YZ.Sorting.Action
             this.Add(new SimpleActionItem(rootKey, "刷新", PackDataRefresh_Click) { ToolTipText = "包装机数据查询", GroupCaption = "包装机数据", LargeImage = Resources.refresh_32x32 });
             this.Add(new SimpleActionItem(rootKey, "生成数据", GeneratePackData_Click) { ToolTipText = "手动生成包装机数据", GroupCaption = "操作", LargeImage = Resources.refresh_32x32 });
             this.Add(new SimpleActionItem(rootKey, "导出数据", PackDataExport_Click) { ToolTipText = "导出包装机数据", GroupCaption = "操作", LargeImage = Resources.refresh_32x32 });
+            this.Add(new SimpleActionItem(rootKey, "打印", Print_Click) { ToolTipText = "打印烟道信息", GroupCaption = "打印", LargeImage = Resources.Print_32 });
             base.Activate();
         }
 
@@ -41,6 +42,11 @@ namespace Automation.Plugins.YZ.Sorting.Action
         private void PackDataExport_Click(object sender, EventArgs e)
         {
             (View as PackDataView).ExportData();
+        }
+
+        public void Print_Click(object sender, EventArgs e)
+        {
+            (View as PackDataView).Print();
         }
     }
 }

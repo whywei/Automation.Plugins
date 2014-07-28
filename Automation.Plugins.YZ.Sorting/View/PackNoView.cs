@@ -48,5 +48,12 @@ namespace Automation.Plugins.YZ.Sorting.View
         {
             gridDetailControl.DataSource = packNoDal.FindDetail(gridMasterView.GetRowCellValue(gridMasterView.GetSelectedRows()[0], "pack_no").ToString());
         }
+
+        public void Print()
+        {
+            PrintSettingView controller = new PrintSettingView(this.gridDetailControl);
+            controller.PrintHeader = "烟包信息";
+            controller.Preview();
+        }
     }
 }

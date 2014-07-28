@@ -29,6 +29,7 @@ namespace Automation.Plugins.YZ.Sorting.Action
             this.Add(new SimpleActionItem(rootKey, "B-后", B_LaterCacheRefresh_Click) { ToolTipText = "A线多沟带缓存订单查询", GroupCaption = "缓存订单查询", LargeImage = Resources.refresh_32x32 });
             this.Add(new SimpleActionItem(rootKey, "打码订单", BarcodePrintingCacheRefresh_Click) { ToolTipText = "打码订单查询", GroupCaption = "打码订单查询", LargeImage = Resources.refresh_32x32 });
             this.Add(new SimpleActionItem(rootKey, "摆动订单", SwingCacheRefresh_Click) { ToolTipText = "摆动订单查询", GroupCaption = "摆动订单查询", LargeImage = Resources.refresh_32x32 });
+            this.Add(new SimpleActionItem(rootKey, "打印", Print_Click) { ToolTipText = "打印烟道信息", GroupCaption = "打印", LargeImage = Resources.Print_32 });
             base.Activate();
         }
 
@@ -60,6 +61,11 @@ namespace Automation.Plugins.YZ.Sorting.Action
         private void SwingCacheRefresh_Click(object sender, EventArgs e)
         {
             (View as CacheOrderQueryView).Refresh("S");
+        }
+
+        public void Print_Click(object sender, EventArgs e)
+        {
+            (View as CacheOrderQueryView).Print();
         }
     }
 }
