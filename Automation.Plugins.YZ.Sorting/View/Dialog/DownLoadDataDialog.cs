@@ -9,17 +9,23 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using Automation.Plugins.YZ.Sorting.Dal;
 using Automation.Plugins.YZ.Sorting.Action;
+using System.ComponentModel.Composition;
 
 namespace Automation.Plugins.YZ.Sorting.View.Dialog
 {
     public partial class DownLoadDataDialog : DevExpress.XtraEditors.XtraForm
     {
+        [Import("Shell", typeof(ContainerControl))]
+        public ContainerControl Shell { get; set; }
+
         private DataTable table = null;
+        private System.Threading.Thread thread;
 
         public DownLoadDataDialog(DataTable table)
         {
             InitializeComponent();
             this.table = table;
+            this.Shell = this;
             List<string> listOrderDate = new List<string>();
             string item = "";
             foreach (DataRow row in table.Rows)
@@ -42,7 +48,9 @@ namespace Automation.Plugins.YZ.Sorting.View.Dialog
             }
             cmbBatchNo.Enabled = false;
             cmbOrderDate.Enabled = false;
-            new System.Threading.Thread(new System.Threading.ThreadStart(StartDownload)).Start();
+            btnDaowmLoad.Enabled = false;
+            thread= new System.Threading.Thread(new System.Threading.ThreadStart(StartDownload));
+            thread.Start();
         }
 
         //开始下载
@@ -51,7 +59,7 @@ namespace Automation.Plugins.YZ.Sorting.View.Dialog
             DataDownLoad downloader = new DataDownLoad();
             downloader.onDownLoadProgress += new DataDownLoad.dDownloadProgress(downloader_onDownLoadProgress);
             downloader.Start(cmbBatchNo.EditValue.ToString());
-            this.Close();
+            Shell.BeginInvoke(( MethodInvoker)this.Close);
         }
 
         //同步更新UI
@@ -87,6 +95,15 @@ namespace Automation.Plugins.YZ.Sorting.View.Dialog
             cmbBatchNo.Properties.ValueMember = "Key";
             cmbBatchNo.Properties.DisplayMember = "Value";
             cmbBatchNo.Properties.DataSource = dic;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            if (thread != null)
+            {
+                thread.Abort();
+            }
+            this.Close();
         }
     }
 }

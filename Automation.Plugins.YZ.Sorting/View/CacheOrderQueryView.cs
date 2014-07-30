@@ -85,5 +85,12 @@ namespace Automation.Plugins.YZ.Sorting.View
             }
             this.gridControl.DataSource = sortingDal.FindSortingForCacheQuery(packNo);
         }
+
+        public void Print()
+        {
+            PrintSettingView controller = new PrintSettingView(this.gridControl);
+            controller.PrintHeader = "缓存订单信息";
+            controller.Preview();
+        }
     }
 }

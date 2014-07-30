@@ -41,5 +41,12 @@ namespace Automation.Plugins.YZ.Sorting.View
         {
             gridControl.DataSource = handSupplyDal.GetHandSupply(channelName);
         }
+
+        public void Print()
+        {
+            PrintSettingView controller = new PrintSettingView(this.gridControl);
+            controller.PrintHeader = "手工补货信息";
+            controller.Preview();
+        }
     }
 }

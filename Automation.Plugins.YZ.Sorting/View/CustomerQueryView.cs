@@ -54,5 +54,12 @@ namespace Automation.Plugins.YZ.Sorting.View
             gridControl.DataSource = customerDal.FindProduct(product_name,quantity);
             gridDetailControl.DataSource = null;
         }
+
+        public void Print()
+        {
+            PrintSettingView controller = new PrintSettingView(this.gridDetailControl);
+            controller.PrintHeader = "客户订单信息";
+            controller.Preview();
+        }
     }
 }

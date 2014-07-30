@@ -120,5 +120,12 @@ namespace Automation.Plugins.YZ.Sorting.View
                 }
             }
         }
+
+        public void Print()
+        {
+            PrintSettingView controller = new PrintSettingView(this.gridControl);
+            controller.PrintHeader = "分拣烟道信息";
+            controller.Preview();
+        }
     }
 }

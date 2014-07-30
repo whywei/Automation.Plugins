@@ -37,7 +37,6 @@
       <HintPath>..\packages\Automation.Core.1.0.0.6\lib\net40-Client\Automation.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Automation.Plugins.YZ.Sorting, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Automation.Service.OPC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Automation.Service.OPC.1.0.0.2\lib\net40\Automation.Service.OPC.dll</HintPath>
     </Reference>
@@ -47,6 +46,7 @@
     <Reference Include="DevExpress.Data.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v13.1.Core, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -126,6 +126,7 @@
     <Compile Include="Action\SortingProgressAction.cs" />
     <Compile Include="Action\SortingRecordAction.cs" />
     <Compile Include="Dal\ChannelDal.cs" />
+    <Compile Include="Dal\SortingRecordDal.cs" />
     <Compile Include="Dal\CustomerDal.cs" />
     <Compile Include="Dal\ExportPackDal.cs" />
     <Compile Include="Dal\HandSupplyDal.cs" />
@@ -235,6 +236,7 @@
     <Compile Include="View\ChannelQueryView.cs" />
     <Compile Include="View\PackDataView.cs" />
     <Compile Include="View\PackNoView.cs" />
+    <Compile Include="View\PrintSettingView.cs" />
     <Compile Include="View\SortingEfficiencyView.cs" />
     <Compile Include="View\SortingProgressView.cs" />
     <Compile Include="View\SortingRecordView.cs" />
@@ -286,6 +288,8 @@
     <None Include="Resources\start_32x32.png" />
     <None Include="Resources\download_32x32.png" />
     <None Include="Resources\download_16x16.png" />
+    <None Include="Resources\Print_16.png" />
+    <None Include="Resources\Print_32.png" />
     <Content Include="Serialize\Readme.txt" />
     <Content Include="TransactionScopeFactoryProviderConfig.xml">
       <SubType>Designer</SubType>
@@ -317,6 +321,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Dialog\ChannelExchangeDialog.resx">
       <DependentUpon>ChannelExchangeDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\SortingRecordControl.resx">
+      <DependentUpon>SortingRecordControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Dialog\DownLoadDataDialog.resx">
       <DependentUpon>DownLoadDataDialog.cs</DependentUpon>

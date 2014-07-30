@@ -34,6 +34,7 @@ namespace Automation.Plugins.YZ.Sorting.Action
             dropItem.Items.AddRange(channelDal.GetChannel());
             dropItem.SelectedValueChanged += new EventHandler<SelectedValueChangedEventArgs>(dropItem_SelectedValueChanged);
             this.Add(dropItem);
+            this.Add(new SimpleActionItem(rootKey, "打印", Print_Click) { ToolTipText = "打印烟道信息", GroupCaption = "打印", LargeImage = Resources.Print_32 });
             base.Activate();
         }
 
@@ -45,6 +46,11 @@ namespace Automation.Plugins.YZ.Sorting.Action
         private void dropItem_SelectedValueChanged(object sender, SelectedValueChangedEventArgs e)
         {
             (View as HandSuppyView).Refresh(e.SelectedItem.ToString());
+        }
+
+        public void Print_Click(object sender, EventArgs e)
+        {
+            (View as HandSuppyView).Print();
         }
     }
 }

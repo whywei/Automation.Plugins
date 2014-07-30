@@ -49,6 +49,7 @@ namespace Automation.Plugins.YZ.Sorting.Action
             _txtQuantity.Text = "";
 
             this.Add(new SimpleActionItem(rootKey, "查询", Select_Click) { GroupCaption = "查询", SmallImage = Resources.Sorting_Query_16, LargeImage = Resources.Sorting_Query_16 });
+            this.Add(new SimpleActionItem(rootKey, "打印", Print_Click) { ToolTipText = "打印烟道信息", GroupCaption = "打印", LargeImage = Resources.Print_32 });
             base.Activate();
         }
 
@@ -88,6 +89,11 @@ namespace Automation.Plugins.YZ.Sorting.Action
         private void dropItem_SelectedValueChanged(object sender, SelectedValueChangedEventArgs e)
         {
             //(View as CustomerQueryView).Refresh(e.SelectedItem.ToString());
+        }
+
+        public void Print_Click(object sender, EventArgs e)
+        {
+            (View as CustomerQueryView).Print();
         }
     }
 }
