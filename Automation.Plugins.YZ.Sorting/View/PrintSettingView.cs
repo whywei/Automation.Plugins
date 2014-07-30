@@ -5,6 +5,7 @@ using System.Text;
 using Automation.Core;
 using DevExpress.XtraPrinting;
 using System.Windows.Forms;
+using DevExpress.XtraPrinting.Native.WinControls;
 
 namespace Automation.Plugins.YZ.Sorting.View
 {
@@ -15,8 +16,10 @@ namespace Automation.Plugins.YZ.Sorting.View
         private DevExpress.XtraBars.Bar bar;
         private DevExpress.XtraBars.BarSubItem barSetting;
         private DevExpress.XtraBars.BarSubItem barLandScape;
+        private DevExpress.XtraBars.BarButtonItem barHeaderAndFooter;
         private DevExpress.XtraBars.BarCheckItem barLandScape_Horizontal;
         private DevExpress.XtraBars.BarCheckItem barLandScape_Vertical;
+        private PageHeaderFooter editValue;
 
         string _PrintHeader = null;
         /// <summary>
@@ -58,7 +61,6 @@ namespace Automation.Plugins.YZ.Sorting.View
             Control c = (Control)control;
             InitializeComponent();
             link = new DevExpress.XtraPrinting.PrintableComponentLink(ps);
-            LoadPageSetting();
             link.Component = control;
         }
 
@@ -68,6 +70,7 @@ namespace Automation.Plugins.YZ.Sorting.View
             this.bar = ps.PreviewFormEx.PrintBarManager.Bars[2];
             this.barSetting = new DevExpress.XtraBars.BarSubItem(ps.PreviewFormEx.PrintBarManager, "设置");
             this.barLandScape = new DevExpress.XtraBars.BarSubItem();
+            this.barHeaderAndFooter = new DevExpress.XtraBars.BarButtonItem();
             this.barLandScape_Horizontal = new DevExpress.XtraBars.BarCheckItem();
             this.barLandScape_Vertical = new DevExpress.XtraBars.BarCheckItem();
             bar.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
@@ -75,7 +78,9 @@ namespace Automation.Plugins.YZ.Sorting.View
             // barSetting
             // 
             this.barSetting.Id = 4;
-            this.barSetting.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] { new DevExpress.XtraBars.LinkPersistInfo(this.barLandScape) });
+            this.barSetting.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] { 
+                new DevExpress.XtraBars.LinkPersistInfo(this.barLandScape), 
+                new DevExpress.XtraBars.LinkPersistInfo(this.barHeaderAndFooter) });
             this.barSetting.Name = "barSetting";
             this.bar.AddItem(barSetting);
             // 
@@ -88,6 +93,14 @@ namespace Automation.Plugins.YZ.Sorting.View
             new DevExpress.XtraBars.LinkPersistInfo(this.barLandScape_Vertical)});
             this.barLandScape.Name = "barLandScape";
             this.barSetting.AddItem(barLandScape);
+            //
+            //barHeaderAndFooter
+            //
+            this.barHeaderAndFooter.Caption = "页眉和页脚";
+            this.barHeaderAndFooter.Id = 4;
+            this.barHeaderAndFooter.Name = "barHeaderAndFooter";
+            this.barHeaderAndFooter.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barHeaderAndFooter_ItemClick);
+            this.barSetting.AddItem(this.barHeaderAndFooter);
             // 
             // barLandScape_Horizontal
             // 
@@ -141,9 +154,34 @@ namespace Automation.Plugins.YZ.Sorting.View
             }
         }
 
+        private void barHeaderAndFooter_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            HeaderFooterForm headerFooterForm = new HeaderFooterForm();
+            editValue = Ops.ReadSingle<PageHeaderFooter>(Global.memoryServiceName_PSD, "PageHeaderFooter");
+            if (editValue == null)
+            {
+                editValue = new PageHeaderFooter();
+            }
+            headerFooterForm.EditValue = this.editValue;
+            if (headerFooterForm.ShowDialog() == DialogResult.OK)
+            {
+                this.editValue = (PageHeaderFooter)headerFooterForm.EditValue;
+                bool result= Ops.Write(Global.memoryServiceName_PSD, "PageHeaderFooter", this.editValue);
+                if (result)
+                {
+                    Logger.Info("页眉页脚信息保存成功！");
+                }
+                else
+                {
+                    Logger.Error("页眉页脚信息写入永久保存的队列失败！");
+                }
+            }
+        }
+
         //获取页面设置信息
         public void LoadPageSetting()
         {
+            //页面方向
             string landScape = Ops.ReadSingle<string>(Global.memoryServiceName_PSD, "PrintLandScape");
             if (landScape != null && landScape != "")
             {
@@ -158,7 +196,33 @@ namespace Automation.Plugins.YZ.Sorting.View
                     ChangeStatus(true);
                 }
             }
-            System.Drawing.Printing.Margins margins = new System.Drawing.Printing.Margins(30, 30, 30, 30);
+            //页眉页脚
+            editValue = Ops.ReadSingle<PageHeaderFooter>(Global.memoryServiceName_PSD, "PageHeaderFooter");
+            if (editValue != null)
+            {
+                if (editValue.Header.Content.Count >= 3&&editValue.Header.Content[1] == "")
+                {
+                    editValue.Header.Content[1] = _PrintHeader;
+                }
+                link.PageHeaderFooter = editValue;
+            }
+            else
+            {
+                PageHeaderFooter phf = link.PageHeaderFooter as PageHeaderFooter;
+                //设置页眉
+                phf.Header.Content.Clear();
+                phf.Header.Content.AddRange(new string[] { "", _PrintHeader, "" });
+                phf.Header.Font = new System.Drawing.Font("宋体", 14, System.Drawing.FontStyle.Bold);
+                phf.Header.LineAlignment = BrickAlignment.Center;
+
+                //设置页脚
+                phf.Footer.Content.Clear();
+                phf.Footer.Content.AddRange(new string[] { "", "", _PrintFooter });
+                phf.Footer.Font = new System.Drawing.Font("宋体", 9, System.Drawing.FontStyle.Regular);
+                phf.Footer.LineAlignment = BrickAlignment.Center;
+            }
+            //页面边距
+            System.Drawing.Printing.Margins margins = new System.Drawing.Printing.Margins(60, 60, 60, 60);
             ps.PageSettings.Assign(margins, _paperKind, ps.PageSettings.Landscape);
         }
 
@@ -169,25 +233,8 @@ namespace Automation.Plugins.YZ.Sorting.View
         {
             try
             {
+                LoadPageSetting();
                 Cursor.Current = Cursors.AppStarting;
-                if (_PrintHeader != null)
-                {
-                    PageHeaderFooter phf = link.PageHeaderFooter as PageHeaderFooter;
-
-                    //设置页眉
-                    phf.Header.Content.Clear();
-                    phf.Header.Content.AddRange(new string[] { "", _PrintHeader, "" });
-                    phf.Header.Font = new System.Drawing.Font("宋体", 14, System.Drawing.FontStyle.Bold);
-                    phf.Header.LineAlignment = BrickAlignment.Center;
-
-                    //设置页脚
-                    phf.Footer.Content.Clear();
-                    phf.Footer.Content.AddRange(new string[] { "", "", _PrintFooter });
-                    phf.Footer.Font = new System.Drawing.Font("宋体", 9, System.Drawing.FontStyle.Regular);
-                    phf.Footer.LineAlignment = BrickAlignment.Center;
-
-                }
-                link.EnablePageDialog = false;
                 link.PaperKind = ps.PageSettings.PaperKind;
                 link.Margins = ps.PageSettings.Margins;
                 link.Landscape = ps.PageSettings.Landscape;
@@ -211,23 +258,7 @@ namespace Automation.Plugins.YZ.Sorting.View
         {
             try
             {
-                if (_PrintHeader != null)
-                {
-                    PageHeaderFooter phf = link.PageHeaderFooter as PageHeaderFooter;
-
-                    //设置页眉
-                    phf.Header.Content.Clear();
-                    phf.Header.Content.AddRange(new string[] { "", _PrintHeader, "" });
-                    phf.Header.Font = new System.Drawing.Font("宋体", 14, System.Drawing.FontStyle.Bold);
-                    phf.Header.LineAlignment = BrickAlignment.Center;
-
-                    //设置页脚
-                    phf.Footer.Content.Clear();
-                    phf.Footer.Content.AddRange(new string[] { "", "", _PrintFooter });
-                    phf.Footer.Font = new System.Drawing.Font("宋体", 9, System.Drawing.FontStyle.Regular);
-                    phf.Footer.LineAlignment = BrickAlignment.Center;
-
-                }
+                LoadPageSetting();
                 link.PaperKind = ps.PageSettings.PaperKind;
                 link.Margins = ps.PageSettings.Margins;
                 link.Landscape = ps.PageSettings.Landscape;
