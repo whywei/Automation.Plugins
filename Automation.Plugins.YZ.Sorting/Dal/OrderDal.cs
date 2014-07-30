@@ -18,7 +18,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
             string sql = @"select [order_date],[batch_no],[line_code],[pack_no],[order_id],[dist_code],
        [dist_name],[deliver_line_code],[deliver_line_name],[customer_code],[customer_name],[license_no],
        [address],[customer_order],[customer_deliver_order],[quantity],[export_no],[start_time],[finish_time],
-       CASE status WHEN '0' THEN '未下单' ELSE '已下单' END status FROM SORT_ORDER_ALLOT_MASTER";
+       CASE status WHEN '01' THEN '未下单' ELSE '已下单' END status FROM SORT_ORDER_ALLOT_MASTER";
             return ra.DoQuery(sql).Tables[0];
         }
 
@@ -27,7 +27,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
             string sql = string.Format(@"SELECT a.[pack_no],a.[channel_code],b.[channel_name],a.[product_code],a.[product_name],a.[quantity],
             c.[customer_deliver_order],c.[quantity] as quantity1,c.[export_no]
-            FROM [sort_order_allot_detail] a left join Channel_Allot b on a.channel_code=b.channel_code 
+            FROM [sort_order_allot_detail] a left join Channel_Allot b on a.channel_code=b.channel_code AND a.product_code=b.product_code
             left join SORT_ORDER_ALLOT_MASTER c on a.pack_no=c.pack_no 
             WHERE a.pack_no={0} ORDER BY pack_no", pack_no);
             return ra.DoQuery(sql).Tables[0];
@@ -57,7 +57,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
             string sql = @"SELECT ORDERNO,MIN(SORTNO) AS SORTNO,ORDERID,ROUTECODE,ROUTENAME,CUSTOMERCODE,CUSTOMERNAME,BATCHNO,
                         ADDRESS,SUM(QUANTITY)AS QUANTITY,SUM(QUANTITY1) AS QUANTITY1,SUM(QUANTITY) + SUM(QUANTITY1) AS ALLQUANTITY,
-                        CASE MIN(STATUS) WHEN '0' THEN '未下单' ELSE '已下单' END STATUS,MIN(ORDERDATE) AS ORDERDATE 
+                        CASE MIN(STATUS) WHEN '01' THEN '未下单' ELSE '已下单' END STATUS,MIN(ORDERDATE) AS ORDERDATE 
                         FROM AS_SC_PALLETMASTER
                         GROUP BY ORDERNO ,ORDERID,ROUTECODE,ROUTENAME,CUSTOMERCODE,CUSTOMERNAME,BATCHNO,ADDRESS ORDER BY SORTNO";
             return ra.DoQuery(sql).Tables[0];
@@ -82,7 +82,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
             string sql = string.Format(@"SELECT ORDERNO,MIN(SORTNO) AS SORTNO,ORDERID,ROUTECODE,ROUTENAME,CUSTOMERCODE,CUSTOMERNAME,BATCHNO,
                                         ADDRESS,SUM(QUANTITY)AS QUANTITY,SUM(QUANTITY1) AS QUANTITY1,SUM(QUANTITY) + SUM(QUANTITY1) AS ALLQUANTITY,
-                                        CASE MIN(STATUS) WHEN '0' THEN '未下单' ELSE '已下单' END STATUS,MIN(ORDERDATE) AS ORDERDATE 
+                                        CASE MIN(STATUS) WHEN '01' THEN '未下单' ELSE '已下单' END STATUS,MIN(ORDERDATE) AS ORDERDATE 
                                         FROM AS_SC_PALLETMASTER
                                         WHERE ORDERID IN (SELECT ORDERID  FROM AS_SC_ORDER WHERE  CIGARETTECODE = '{0}'  GROUP BY ORDERID,CIGARETTECODE HAVING SUM(QUANTITY) = {1} )
                                          GROUP BY ORDERNO ,ORDERID,ROUTECODE,ROUTENAME,CUSTOMERCODE,CUSTOMERNAME,BATCHNO,ADDRESS ORDER BY SORTNO", cigaretteCode, quantity);
@@ -217,13 +217,37 @@ namespace Automation.Plugins.YZ.Sorting.Dal
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
             string sql = @"SELECT A.pack_no,A.channel_code,C.sort_address,C.group_no,B.export_no,B.customer_order,A.product_code,A.product_name,A.quantity
                         ,(SELECT ISNULL(SUM(D.quantity),0) FROM sort_order_allot_detail D LEFT JOIN Channel_Allot E 
-                        ON D.channel_code=E.channel_code WHERE D.pack_no={0} AND E.group_no=C.group_no) TOTALQUANTITY
+                        ON D.channel_code=E.channel_code AND D.product_code=E.product_code WHERE D.pack_no={0} AND E.group_no=C.group_no) TOTALQUANTITY
                         ,(SELECT ISNULL(SUM(D.quantity),0) FROM sort_order_allot_detail D LEFT JOIN Channel_Allot E 
-                        ON D.channel_code=E.channel_code WHERE D.pack_no>={0} AND E.channel_code=C.channel_code) REMAINQUANTITY
+                        ON D.channel_code=E.channel_code AND D.product_code=E.product_code WHERE D.pack_no>={0} AND E.channel_code=C.channel_code) REMAINQUANTITY
                         FROM sort_order_allot_detail A LEFT JOIN sort_order_allot_master B ON A.pack_no=B.pack_no
-                        LEFT JOIN Channel_Allot C ON A.channel_code=C.channel_code 
-                        where A.pack_no={0} ORDER BY A.pack_no ASC,C.group_no DESC,C.sort_address";
+                        LEFT JOIN Channel_Allot C ON A.channel_code=C.channel_code AND A.product_code=C.product_code
+                        LEFT JOIN handle_supply D ON  A.pack_no=D.pack_no AND A.channel_code=D.channel_code AND A.product_code=D.product_code
+                        where A.pack_no={0} ORDER BY A.pack_no ASC,C.group_no DESC,C.sort_address,D.supply_batch,D.supply_id";
             return ra.DoQuery(string.Format(sql, packNo)).Tables[0];
+        }
+
+        public DataTable FindExporNoFromMaster()
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = "SELECT DISTINCT export_no,CONVERT(VARCHAR(100),order_date,23) order_date FROM sort_order_allot_master";
+            return ra.DoQuery(sql).Tables[0];
+        }
+
+        public DataTable FindPackData(string condition)
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = @"SELECT row_number() over(ORDER BY A.pack_no,C.group_no DESC,C.sort_address,D.supply_batch,D.supply_id) id
+                        ,A.pack_no,(SELECT ISNULL(SUM(E.quantity),0) FROM sort_order_allot_master E WHERE E.customer_code=B.customer_code) TOTAL_QUANTITY
+                        ,B.quantity BAG_QUANTITY,A.quantity,B.export_no,CONVERT(VARCHAR(100),B.order_date,23) order_date,B.batch_no,B.line_code
+                        ,B.order_id,B.deliver_line_code,B.deliver_line_name,B.customer_code,B.customer_name,B.address,B.customer_order
+                        ,B.customer_deliver_order,B.customer_Info,A.product_code,A.product_name,B.dist_code,B.dist_name
+                        FROM sort_order_allot_detail A LEFT JOIN sort_order_allot_master B ON A.pack_no=B.pack_no
+                        LEFT JOIN Channel_Allot C ON A.channel_code=C.channel_code AND A.product_code=C.product_code
+                        LEFT JOIN handle_supply D ON A.pack_no=D.pack_no AND A.channel_code =D.channel_code AND A.product_code=D.product_code
+                        {0}
+                        ORDER BY A.pack_no,C.group_no DESC,C.sort_address,D.supply_batch,D.supply_id";
+            return ra.DoQuery(string.Format(sql,condition)).Tables[0];
         }
     }
 }

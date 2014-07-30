@@ -31,20 +31,24 @@
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.gridMaster = new DevExpress.XtraGrid.GridControl();
             this.viewMaster = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.order_date = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.batch_no = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.pack_no = new DevExpress.XtraGrid.Columns.GridColumn();
             this.customer_code = new DevExpress.XtraGrid.Columns.GridColumn();
             this.customer_name = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.order_date = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.deliver_line_name = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dist_name = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.deliver_line_name = new DevExpress.XtraGrid.Columns.GridColumn();
             this.address = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.customer_Info = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.pack_no = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.SUMQUANTITY = new DevExpress.XtraGrid.Columns.GridColumn();
             this.status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridDetail = new DevExpress.XtraGrid.GridControl();
             this.viewDetail = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.PackNo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ProductCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ProductName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Quantity = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ChannelName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ChannelType = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridMaster)).BeginInit();
@@ -83,39 +87,20 @@
             // viewMaster
             // 
             this.viewMaster.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.order_date,
+            this.batch_no,
+            this.pack_no,
             this.customer_code,
             this.customer_name,
-            this.order_date,
-            this.deliver_line_name,
             this.dist_name,
+            this.deliver_line_name,
             this.address,
-            this.customer_Info,
-            this.pack_no,
+            this.SUMQUANTITY,
             this.status});
             this.viewMaster.GridControl = this.gridMaster;
             this.viewMaster.Name = "viewMaster";
             this.viewMaster.OptionsView.ColumnAutoWidth = false;
             this.viewMaster.OptionsView.ShowGroupPanel = false;
-            // 
-            // customer_code
-            // 
-            this.customer_code.Caption = "客户代码";
-            this.customer_code.FieldName = "customer_code";
-            this.customer_code.Name = "customer_code";
-            this.customer_code.OptionsColumn.AllowEdit = false;
-            this.customer_code.OptionsColumn.AllowFocus = false;
-            this.customer_code.Visible = true;
-            this.customer_code.VisibleIndex = 0;
-            // 
-            // customer_name
-            // 
-            this.customer_name.Caption = "客户名称";
-            this.customer_name.FieldName = "customer_name";
-            this.customer_name.Name = "customer_name";
-            this.customer_name.OptionsColumn.AllowEdit = false;
-            this.customer_name.OptionsColumn.AllowFocus = false;
-            this.customer_name.Visible = true;
-            this.customer_name.VisibleIndex = 1;
             // 
             // order_date
             // 
@@ -125,17 +110,50 @@
             this.order_date.OptionsColumn.AllowEdit = false;
             this.order_date.OptionsColumn.AllowFocus = false;
             this.order_date.Visible = true;
-            this.order_date.VisibleIndex = 2;
+            this.order_date.VisibleIndex = 0;
+            this.order_date.Width = 100;
             // 
-            // deliver_line_name
+            // batch_no
             // 
-            this.deliver_line_name.Caption = "线路名称";
-            this.deliver_line_name.FieldName = "deliver_line_name";
-            this.deliver_line_name.Name = "deliver_line_name";
-            this.deliver_line_name.OptionsColumn.AllowEdit = false;
-            this.deliver_line_name.OptionsColumn.AllowFocus = false;
-            this.deliver_line_name.Visible = true;
-            this.deliver_line_name.VisibleIndex = 3;
+            this.batch_no.Caption = "批次号";
+            this.batch_no.FieldName = "batch_no";
+            this.batch_no.Name = "batch_no";
+            this.batch_no.OptionsColumn.AllowFocus = false;
+            this.batch_no.Visible = true;
+            this.batch_no.VisibleIndex = 1;
+            this.batch_no.Width = 60;
+            // 
+            // pack_no
+            // 
+            this.pack_no.Caption = "最小包号";
+            this.pack_no.FieldName = "pack_no";
+            this.pack_no.Name = "pack_no";
+            this.pack_no.OptionsColumn.AllowFocus = false;
+            this.pack_no.Visible = true;
+            this.pack_no.VisibleIndex = 2;
+            this.pack_no.Width = 70;
+            // 
+            // customer_code
+            // 
+            this.customer_code.Caption = "客户代码";
+            this.customer_code.FieldName = "customer_code";
+            this.customer_code.Name = "customer_code";
+            this.customer_code.OptionsColumn.AllowEdit = false;
+            this.customer_code.OptionsColumn.AllowFocus = false;
+            this.customer_code.Visible = true;
+            this.customer_code.VisibleIndex = 3;
+            this.customer_code.Width = 100;
+            // 
+            // customer_name
+            // 
+            this.customer_name.Caption = "客户名称";
+            this.customer_name.FieldName = "customer_name";
+            this.customer_name.Name = "customer_name";
+            this.customer_name.OptionsColumn.AllowEdit = false;
+            this.customer_name.OptionsColumn.AllowFocus = false;
+            this.customer_name.Visible = true;
+            this.customer_name.VisibleIndex = 4;
+            this.customer_name.Width = 120;
             // 
             // dist_name
             // 
@@ -145,7 +163,19 @@
             this.dist_name.OptionsColumn.AllowEdit = false;
             this.dist_name.OptionsColumn.AllowFocus = false;
             this.dist_name.Visible = true;
-            this.dist_name.VisibleIndex = 4;
+            this.dist_name.VisibleIndex = 5;
+            this.dist_name.Width = 130;
+            // 
+            // deliver_line_name
+            // 
+            this.deliver_line_name.Caption = "线路名称";
+            this.deliver_line_name.FieldName = "deliver_line_name";
+            this.deliver_line_name.Name = "deliver_line_name";
+            this.deliver_line_name.OptionsColumn.AllowEdit = false;
+            this.deliver_line_name.OptionsColumn.AllowFocus = false;
+            this.deliver_line_name.Visible = true;
+            this.deliver_line_name.VisibleIndex = 6;
+            this.deliver_line_name.Width = 130;
             // 
             // address
             // 
@@ -155,27 +185,18 @@
             this.address.OptionsColumn.AllowEdit = false;
             this.address.OptionsColumn.AllowFocus = false;
             this.address.Visible = true;
-            this.address.VisibleIndex = 5;
+            this.address.VisibleIndex = 7;
+            this.address.Width = 100;
             // 
-            // customer_Info
+            // SUMQUANTITY
             // 
-            this.customer_Info.Caption = "客户信息";
-            this.customer_Info.FieldName = "customer_Info";
-            this.customer_Info.Name = "customer_Info";
-            this.customer_Info.OptionsColumn.AllowEdit = false;
-            this.customer_Info.OptionsColumn.AllowFocus = false;
-            this.customer_Info.Visible = true;
-            this.customer_Info.VisibleIndex = 6;
-            // 
-            // pack_no
-            // 
-            this.pack_no.Caption = "烟包数量";
-            this.pack_no.FieldName = "quantity";
-            this.pack_no.Name = "pack_no";
-            this.pack_no.OptionsColumn.AllowEdit = false;
-            this.pack_no.OptionsColumn.AllowFocus = false;
-            this.pack_no.Visible = true;
-            this.pack_no.VisibleIndex = 7;
+            this.SUMQUANTITY.Caption = "总数量";
+            this.SUMQUANTITY.FieldName = "quantity";
+            this.SUMQUANTITY.Name = "SUMQUANTITY";
+            this.SUMQUANTITY.OptionsColumn.AllowEdit = false;
+            this.SUMQUANTITY.OptionsColumn.AllowFocus = false;
+            this.SUMQUANTITY.Visible = true;
+            this.SUMQUANTITY.VisibleIndex = 8;
             // 
             // status
             // 
@@ -185,7 +206,7 @@
             this.status.OptionsColumn.AllowEdit = false;
             this.status.OptionsColumn.AllowFocus = false;
             this.status.Visible = true;
-            this.status.VisibleIndex = 8;
+            this.status.VisibleIndex = 9;
             // 
             // gridDetail
             // 
@@ -202,8 +223,11 @@
             // 
             this.viewDetail.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.PackNo,
+            this.ProductCode,
             this.ProductName,
-            this.Quantity});
+            this.Quantity,
+            this.ChannelName,
+            this.ChannelType});
             this.viewDetail.GridControl = this.gridDetail;
             this.viewDetail.Name = "viewDetail";
             this.viewDetail.OptionsView.ColumnAutoWidth = false;
@@ -218,6 +242,17 @@
             this.PackNo.OptionsColumn.AllowFocus = false;
             this.PackNo.Visible = true;
             this.PackNo.VisibleIndex = 0;
+            this.PackNo.Width = 100;
+            // 
+            // ProductCode
+            // 
+            this.ProductCode.Caption = "卷烟代码";
+            this.ProductCode.FieldName = "product_code";
+            this.ProductCode.Name = "ProductCode";
+            this.ProductCode.OptionsColumn.AllowEdit = false;
+            this.ProductCode.OptionsColumn.AllowFocus = false;
+            this.ProductCode.Visible = true;
+            this.ProductCode.VisibleIndex = 1;
             // 
             // ProductName
             // 
@@ -227,7 +262,8 @@
             this.ProductName.OptionsColumn.AllowEdit = false;
             this.ProductName.OptionsColumn.AllowFocus = false;
             this.ProductName.Visible = true;
-            this.ProductName.VisibleIndex = 1;
+            this.ProductName.VisibleIndex = 2;
+            this.ProductName.Width = 125;
             // 
             // Quantity
             // 
@@ -237,7 +273,29 @@
             this.Quantity.OptionsColumn.AllowEdit = false;
             this.Quantity.OptionsColumn.AllowFocus = false;
             this.Quantity.Visible = true;
-            this.Quantity.VisibleIndex = 2;
+            this.Quantity.VisibleIndex = 3;
+            // 
+            // ChannelName
+            // 
+            this.ChannelName.Caption = "烟道名称";
+            this.ChannelName.FieldName = "channel_name";
+            this.ChannelName.Name = "ChannelName";
+            this.ChannelName.OptionsColumn.AllowEdit = false;
+            this.ChannelName.OptionsColumn.AllowFocus = false;
+            this.ChannelName.Visible = true;
+            this.ChannelName.VisibleIndex = 4;
+            this.ChannelName.Width = 100;
+            // 
+            // ChannelType
+            // 
+            this.ChannelType.Caption = "烟道类型";
+            this.ChannelType.FieldName = "channel_type";
+            this.ChannelType.Name = "ChannelType";
+            this.ChannelType.OptionsColumn.AllowEdit = false;
+            this.ChannelType.OptionsColumn.AllowFocus = false;
+            this.ChannelType.Visible = true;
+            this.ChannelType.VisibleIndex = 5;
+            this.ChannelType.Width = 100;
             // 
             // CustomerQueryControl
             // 
@@ -272,8 +330,12 @@
         private DevExpress.XtraGrid.Columns.GridColumn deliver_line_name;
         private DevExpress.XtraGrid.Columns.GridColumn dist_name;
         private DevExpress.XtraGrid.Columns.GridColumn address;
-        private DevExpress.XtraGrid.Columns.GridColumn customer_Info;
-        private DevExpress.XtraGrid.Columns.GridColumn pack_no;
+        private DevExpress.XtraGrid.Columns.GridColumn SUMQUANTITY;
         private DevExpress.XtraGrid.Columns.GridColumn status;
+        private DevExpress.XtraGrid.Columns.GridColumn ProductCode;
+        private DevExpress.XtraGrid.Columns.GridColumn ChannelName;
+        private DevExpress.XtraGrid.Columns.GridColumn ChannelType;
+        private DevExpress.XtraGrid.Columns.GridColumn batch_no;
+        private DevExpress.XtraGrid.Columns.GridColumn pack_no;
     }
 }

@@ -25,10 +25,19 @@ namespace Automation.Plugins.YZ.Sorting.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("03")]
+        [global::System.Configuration.DefaultSettingValueAttribute("01")]
         public string Sorting_Line_Code {
             get {
                 return ((string)(this["Sorting_Line_Code"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("F:\\PackData\\")]
+        public string PackDataPath {
+            get {
+                return ((string)(this["PackDataPath"]));
             }
         }
     }

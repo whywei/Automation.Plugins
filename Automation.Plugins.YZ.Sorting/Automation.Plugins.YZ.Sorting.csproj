@@ -225,8 +225,13 @@
     <Compile Include="View\Dialog\DownLoadDataDialog.Designer.cs">
       <DependentUpon>DownLoadDataDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Dialog\GeneratePackDataDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\GeneratePackDataDialog.Designer.cs">
+      <DependentUpon>GeneratePackDataDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\HandSuppyView.cs" />
-    <Compile Include="View\OrderQueryView.cs" />
     <Compile Include="View\ChannelQueryView.cs" />
     <Compile Include="View\PackDataView.cs" />
     <Compile Include="View\PackNoView.cs" />
@@ -315,6 +320,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Dialog\DownLoadDataDialog.resx">
       <DependentUpon>DownLoadDataDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\GeneratePackDataDialog.resx">
+      <DependentUpon>GeneratePackDataDialog.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

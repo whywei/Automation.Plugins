@@ -3,7 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="Sorting_Line_Code" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">03</Value>
+      <Value Profile="(Default)">01</Value>
+    </Setting>
+    <Setting Name="PackDataPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">F:\PackData\</Value>
     </Setting>
   </Settings>
 </SettingsFile>

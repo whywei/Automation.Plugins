@@ -17,9 +17,7 @@ namespace Automation.Plugins.YZ.Sorting.View
        private GridControl gridControl = null;
        private GridView gridMasterView = null;
        private GridControl gridDetailControl = null;
-
        private CustomerDal customerDal = new CustomerDal();
-
 
         public override void Initialize()
         {
@@ -30,7 +28,7 @@ namespace Automation.Plugins.YZ.Sorting.View
         public override void Activate()
         {
             this.Key = "kCustomerQuery";
-            this.Caption = "客户查询";
+            this.Caption = "订单查询";
             this.InnerControl = new CustomerQueryControl();
             this.Dock = DockStyle.Fill;
             this.SmallImage = Resources.refresh_32x32;
@@ -39,16 +37,22 @@ namespace Automation.Plugins.YZ.Sorting.View
             gridMasterView = ((CustomerQueryControl)this.InnerControl).viewMaster;
             gridDetailControl = ((CustomerQueryControl)this.InnerControl).gridDetail;
             gridMasterView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(GridMasterView_RowClick);
-    
         }
 
-        public void Refresh()
+        public void Refresh(string product_name)
         {
-            gridControl.DataSource = customerDal.FindMaster();                       
+            gridControl.DataSource = customerDal.FindMaster(product_name);
+            gridDetailControl.DataSource = null;
         }
         private void GridMasterView_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
             gridDetailControl.DataSource = customerDal.FindDetail(gridMasterView.GetRowCellValue(gridMasterView.GetSelectedRows()[0], "customer_code").ToString());
+        }
+
+        public void Select(string product_name, string quantity)
+        {
+            gridControl.DataSource = customerDal.FindProduct(product_name,quantity);
+            gridDetailControl.DataSource = null;
         }
     }
 }

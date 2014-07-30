@@ -7,6 +7,8 @@ using Automation.Core;
 using System.Windows.Forms;
 using Automation.Plugins.YZ.Sorting.Properties;
 using Automation.Plugins.YZ.Sorting.View.Controls;
+using Automation.Plugins.YZ.Sorting.Dal;
+using System.Data;
 
 namespace Automation.Plugins.YZ.Sorting.View
 {
@@ -27,13 +29,61 @@ namespace Automation.Plugins.YZ.Sorting.View
             this.Dock = DockStyle.Fill;
             this.SmallImage = Resources.refresh_32x32;
 
-            gridControl = ((OrderQueryControl)this.InnerControl).gridMaster;
+            gridControl = ((OrderQueryControl)this.InnerControl).gridSorting;
         }
 
-        public void Refresh()
+        public void Refresh(string groupNo,string position)
         {
-           // ChannelDal channelDal = new ChannelDal();
-          //  gridControl.DataSource = channelDal.FindSortChannel();
+            SortingDal sortingDal = new SortingDal();
+            string sortCacheOrderInformation="Sort_Cache_Order_Information_"+groupNo;
+            object obj = AutomationContext.Read(Global.plcServiceName, sortCacheOrderInformation);
+            Array array = (Array)obj;
+            if (array.Length == 3)
+            {
+                int sortNo = Convert.ToInt32(array.GetValue(0));
+                int sumQuantity = Convert.ToInt32(array.GetValue(1));
+                int frountQuantity = Convert.ToInt32(array.GetValue(2));
+                DataTable cacheTable = new DataTable();
+                switch (position)
+                {
+                    case "F":
+                        cacheTable = sortingDal.FindSortingForCacheQuery(sortNo, groupNo == "A" ? 1 : 2, frountQuantity);
+                        break;
+                    case "L":
+                        cacheTable = sortingDal.FindSortingForCacheQuery(sortNo+frountQuantity, groupNo == "A" ? 1 : 2, sumQuantity-frountQuantity);
+                        break;
+                }
+                this.gridControl.DataSource = cacheTable;
+            }
+        }
+
+        public void Refresh(string position)
+        {
+            SortingDal sortingDal = new SortingDal();
+            string packNo="0";
+            Array array = null;
+            switch (position)
+            {
+                case "P":
+                    object obj = AutomationContext.Read(Global.plcServiceName, "Barcode_Printing_Order_Information");
+                    array = (Array)obj;
+                    if (array.Length == 2)
+                    {
+                        string sortNo = array.GetValue(0).ToString();
+                        packNo = sortingDal.FindPackNoBySortNo(sortNo);
+                    }
+                    break;
+                case "S":
+                    obj = AutomationContext.Read(Global.plcServiceName, "Swing_Order_Information");
+                    array = (Array)obj;
+                    if (array.Length == 2)
+                    {
+                        string sortNo = array.GetValue(0).ToString();
+                        packNo = sortingDal.FindPackNoBySortNo(sortNo);
+                    }
+                    break;
+            }
+            this.gridControl.DataSource = sortingDal.FindSortingForCacheQuery(packNo);
         }
     }
 }
