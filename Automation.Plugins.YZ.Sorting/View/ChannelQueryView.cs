@@ -52,6 +52,10 @@ namespace Automation.Plugins.YZ.Sorting.View
 
         public void gridChannelQuery_DoubleClick(object sender, EventArgs e)
         {
+            if (gridView.RowCount <= 0)
+            {
+                return;
+            }
             ChannelQueryControl cqc = new ChannelQueryControl();
             string sourceChannelCode = gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["channel_code"]).ToString();
             DataTable channeltable = channelDal.FindChannelCode(sourceChannelCode);
