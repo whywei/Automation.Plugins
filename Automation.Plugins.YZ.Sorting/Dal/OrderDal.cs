@@ -144,12 +144,11 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         public void InsertMaster(DataRow row)
         {
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
-            string sql = @"insert into sort_order_allot_master values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}','{19}','{20}')";
+            string sql = @"insert into sort_order_allot_master values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}',NULL,NULL,'01')";
             ra.DoCommand(string.Format(sql,row["order_date"], row["batch_no"], row["sorting_line_code"], row["pack_no"]
                 ,row["order_id"], row["dist_code"], row["dist_name"], row["deliver_line_code"],row["deliver_line_name"]
                 , row["customer_code"], row["customer_name"], row["license_code"],row["address"], row["customer_order"]
-                , row["customer_deliver_order"], row["customer_Info"],row["quantity"],row["export_no"],row["start_time"]
-                , row["finish_time"], row["status"]));
+                , row["customer_deliver_order"], row["customer_Info"],row["quantity"],row["export_no"]));
         }
 
         public void InsertOrderDetail(DataRow row)
@@ -174,7 +173,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
             string sql = "";
             if (sortNo != "all")
                 sql = @"SELECT COUNT(DISTINCT customer_code) customer_num, COUNT(DISTINCT deliver_line_code) deliver_line_num,
-                         (SELECT ISNULL(SUM(quantity),0) FROM sort_order_allot_master WHERE finish_time <= GETDATE() AND STATUS=1 ) quantity
+                         (SELECT ISNULL(SUM(quantity),0) FROM sort_order_allot_master WHERE finish_time <= GETDATE() AND STATUS='02' ) quantity
                          FROM sort_order_allot_master WHERE finish_time <= GETDATE()";
             else
                 sql = @"SELECT COUNT(DISTINCT customer_code) customer_num, COUNT(DISTINCT deliver_line_code) deliver_line_num,
@@ -187,11 +186,13 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         /// 获取主单最大的包号
         /// </summary>
         /// <returns>包号</returns>
-        public int FindMaxPackNoFromMaster()
+        public int FindMaxPackNoFromMaster(int groupNo)
         {
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
-            string sql = "SELECT ISNULL(MAX(pack_no),0) pack_no FROM sort_order_allot_master";
-            return Convert.ToInt32(ra.DoScalar(sql));
+            string sql = @"SELECT ISNULL(MAX(pack_no),0) pack_no FROM sort_order_allot_detail A
+                        LEFT JOIN Channel_Allot B ON A.channel_code=B.channel_code AND A.product_code=B.product_code
+                        WHERE group_no={0}";
+            return Convert.ToInt32(ra.DoScalar(string.Format(sql,groupNo)));
         }
 
         /// <summary>
@@ -208,14 +209,14 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         public void UpdateMasterStatus(int packNo)
         {
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
-            string sql = "UPDATE sort_order_allot_master SET status='1',start_time=GETDATE() WHERE pack_no<={0} AND status='0'";
+            string sql = "UPDATE sort_order_allot_master SET status='02',start_time=GETDATE() WHERE pack_no<={0} AND status='01'";
             ra.DoCommand(string.Format(sql, packNo));
         }
 
-        public DataTable FindOrderDetailByPackNo(int packNo)
+        public DataTable FindOrderDetailByPackNo(int packNo,int groupNo)
         {
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
-            string sql = @"SELECT A.pack_no,A.channel_code,C.sort_address,C.group_no,B.export_no,B.customer_order,A.product_code,A.product_name,A.quantity
+            string sql = @"SELECT A.pack_no,A.channel_code,C.sort_address,C.group_no,B.export_no,B.customer_order,A.product_code,A.product_name,A.quantity,C.piece_barcode
                         ,(SELECT ISNULL(SUM(D.quantity),0) FROM sort_order_allot_detail D LEFT JOIN Channel_Allot E 
                         ON D.channel_code=E.channel_code AND D.product_code=E.product_code WHERE D.pack_no={0} AND E.group_no=C.group_no) TOTALQUANTITY
                         ,(SELECT ISNULL(SUM(D.quantity),0) FROM sort_order_allot_detail D LEFT JOIN Channel_Allot E 
@@ -223,8 +224,11 @@ namespace Automation.Plugins.YZ.Sorting.Dal
                         FROM sort_order_allot_detail A LEFT JOIN sort_order_allot_master B ON A.pack_no=B.pack_no
                         LEFT JOIN Channel_Allot C ON A.channel_code=C.channel_code AND A.product_code=C.product_code
                         LEFT JOIN handle_supply D ON  A.pack_no=D.pack_no AND A.channel_code=D.channel_code AND A.product_code=D.product_code
-                        where A.pack_no={0} ORDER BY A.pack_no ASC,C.group_no DESC,C.sort_address,D.supply_batch,D.supply_id";
-            return ra.DoQuery(string.Format(sql, packNo)).Tables[0];
+                        where A.pack_no=(SELECT ISNULL(MIN(pack_no),0) pack_no FROM sort_order_allot_detail E
+							LEFT JOIN Channel_Allot F ON E.channel_code=F.channel_code AND E.product_code=F.product_code
+							WHERE E.pack_no>{0} AND group_no={1}) AND C.group_no={1}
+                       ORDER BY A.pack_no ASC,C.group_no DESC,C.sort_address,D.supply_batch,D.supply_id";
+            return ra.DoQuery(string.Format(sql, packNo,groupNo)).Tables[0];
         }
 
         public DataTable FindExporNoFromMaster()
@@ -248,6 +252,21 @@ namespace Automation.Plugins.YZ.Sorting.Dal
                         {0}
                         ORDER BY A.pack_no,C.group_no DESC,C.sort_address,D.supply_batch,D.supply_id";
             return ra.DoQuery(string.Format(sql,condition)).Tables[0];
+        }
+
+        public int FindMaxPackNoInDeliverLine(int packNo)
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = @"SELECT ISNULL(MAX(pack_no),0) FROM sort_order_allot_master WHERE deliver_line_code=
+                        (SELECT DISTINCT deliver_line_code FROM sort_order_allot_master WHERE pack_no={0})";
+            return Convert.ToInt32(ra.DoScalar(string.Format(sql, packNo)));
+        }
+
+        public void UpdateFinishTime(int packNo)
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = @"UPDATE sort_order_allot_master SET finish_time=GETDATE() WHERE pack_no<={0} AND status='02' AND finish_time IS NULL";
+            ra.DoCommand(string.Format(sql, packNo));
         }
     }
 }

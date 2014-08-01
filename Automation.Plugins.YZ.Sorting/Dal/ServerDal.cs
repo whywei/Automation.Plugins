@@ -23,28 +23,14 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         public DataTable FindChannel(string batchsortid)
         {
             var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
-            string sql = string.Format(@"SELECT a.channel_code,
-                                                a.product_code,
-                                                a.product_name,
-                                                a.quantity,
-                                                b.channel_type,
-                                                b.channel_name,
-                                                b.sorting_line_code,
-                                                b.led_no,
-                                                b.x,
-                                                b.y,
-                                                b.width,
-                                                b.height,                                           
-                                                b.remain_quantity,
-                                                b.channel_capacity,
-                                                b.group_no,
-                                                b.order_no,
-                                                b.sort_address,
-                                                b.supply_address,                                             
-                                                b.is_active
-                                                FROM sms_channel_allot a 
-                                                left join dbo.sms_channel b on a.channel_code=b.channel_code
-                                                WHERE sort_batch_id='{0}'", batchsortid);
+            string sql = string.Format(@"SELECT a.channel_code,a.product_code,a.product_name,c.piece_barcode,a.quantity,
+                                        b.channel_type,b.channel_name,b.sorting_line_code,b.led_no,b.x,b.y,b.width,
+                                        b.height,b.remain_quantity,b.channel_capacity,b.group_no,b.order_no,b.sort_address,
+                                        b.supply_address,b.is_active
+                                        FROM sms_channel_allot a 
+                                        left join sms_channel b on a.channel_code=b.channel_code
+                                        left join wms_product c on a.product_code=c.product_code
+                                        WHERE sort_batch_id={0}", batchsortid);
             return ra.DoQuery(sql).Tables[0];
         }
 
@@ -55,8 +41,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
             string sql = string.Format(@"SELECT b.order_date,b.batch_no,b.sorting_line_code,a.pack_no,
                                     a.order_id,d.dist_code,d.dist_name,a.deliver_line_code,e.deliver_line_name,
                                     a.customer_code,a.customer_name,f.license_code,f.address,a.customer_order,
-                                    a.customer_deliver_order,a.customer_info,a.quantity,a.export_no,
-                                    a.start_time,a.finish_time,a.status
+                                    a.customer_deliver_order,a.customer_info,a.quantity,a.export_no
                                     FROM sms_sort_order_allot_master a
                                     left join sms_sort_batch b on a.sort_batch_id=b.id
                                     left join wms_deliver_line e on a.deliver_line_code=e.deliver_line_code

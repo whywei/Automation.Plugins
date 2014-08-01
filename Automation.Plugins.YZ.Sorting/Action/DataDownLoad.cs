@@ -21,6 +21,11 @@ namespace Automation.Plugins.YZ.Sorting.Action
         public delegate void dDownloadProgress(int total, string title);
         //事件
         public event dDownloadProgress onDownLoadProgress;
+        private ServerDal serverDal = new ServerDal();
+        private OrderDal orderDal = new OrderDal();
+        private DataTable table = new DataTable();
+        private ChannelDal channelDal = new ChannelDal();
+        private SortingDal sortingDal = new SortingDal();
 
         private DownLoadDataDialog dialog = null;
 
@@ -35,13 +40,9 @@ namespace Automation.Plugins.YZ.Sorting.Action
         {
             try
             {
-                OrderDal orderDal = new OrderDal();
                 if (orderDal.FindUnsortCount() == true)
                     if (DialogResult.Cancel == XtraMessageBox.Show("还有未分拣的数据，您确定要重新下载数据吗？", "询问", MessageBoxButtons.OKCancel, MessageBoxIcon.Question))
                         return;
-
-                ChannelDal channelDal = new ChannelDal();
-                ServerDal serverDal = new ServerDal();
                 var lineCode = Properties.Settings.Default.Sorting_Line_Code;
                 if (lineCode == null || lineCode == "")
                 {
@@ -69,11 +70,6 @@ namespace Automation.Plugins.YZ.Sorting.Action
         {
             try
             {
-                ServerDal serverDal = new ServerDal();
-                OrderDal orderDal = new OrderDal();
-                DataTable table = new DataTable();
-                ChannelDal channelDal = new ChannelDal();
-                SortingDal sortingDal = new SortingDal();
                 int total = 0;
                 //给plc写重新分拣标志
                 bool result = Ops.Write(Global.plcServiceName, "Restart_Sign", 1);
@@ -97,6 +93,15 @@ namespace Automation.Plugins.YZ.Sorting.Action
                     channelDal.InsertChannel(table.Rows[i]);
                     onDownLoadProgress(total, "下载烟道信息");
                 }
+                //更新没有条码的卷烟
+                table = channelDal.FindLessBarCodeChannel();
+                for (int i = 0; i < table.Rows.Count;i++ )
+                {
+                    string pieceBarCode = (i.ToString() + table.Rows[i]["product_code"].ToString()).Substring(0, 6);
+                    channelDal.UpdatePieceBarCode(table.Rows[i]["product_code"].ToString(), pieceBarCode);
+                }
+                //将卷烟信息写入PLC
+                WriteProductInfoToPLC();
                 //下载订单主表
                 table = serverDal.FindOrderMaster(batchId);
                 int temp;
@@ -154,15 +159,20 @@ namespace Automation.Plugins.YZ.Sorting.Action
                         onDownLoadProgress(total / temp, "下载手工补货信息");
                 }
                 //生成下单数据
-                for (int i = 1; i <= 10; i++)
+                int[] groupNoArray = new int[2] { 1, 2 };
+                foreach (int groupNo in groupNoArray)
                 {
-                    table = orderDal.FindOrderDetailByPackNo(i);
-                    foreach (DataRow row in table.Rows)
+                    for (int i = 1; i <= 20; i++)
                     {
-                        int sortNo = sortingDal.FindMaxSortNo();
-                        sortingDal.InsertIntoSorting(sortNo + 1, row);
+                        int packNo = sortingDal.FindMaxPackNo(groupNo);
+                        table = orderDal.FindOrderDetailByPackNo(packNo, groupNo);
+                        foreach (DataRow row in table.Rows)
+                        {
+                            int sortNo = sortingDal.FindMaxSortNo();
+                            sortingDal.InsertIntoSorting(sortNo + 1, row);
+                        }
+                        onDownLoadProgress(40, "生成下单数据");
                     }
-                    onDownLoadProgress(10, "生成下单数据");
                 }
                 //更新批次状态（下载完成）
                 serverDal.UpdateBatchStatus(batchId);
@@ -177,6 +187,20 @@ namespace Automation.Plugins.YZ.Sorting.Action
                 XtraMessageBox.Show(msg);
                 Logger.Error(msg + ex.StackTrace);
             }
+        }
+
+        public void WriteProductInfoToPLC()
+        {
+            DataTable table = channelDal.FindAllProduct();
+            int[] barCode = new int[table.Rows.Count];
+            string[] productName = new string[table.Rows.Count];
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                barCode[i] = Convert.ToInt32(table.Rows[i]["piece_barcode"]);
+                productName[i] = table.Rows[i]["product_name"].ToString().Substring(0, 13);
+            }
+            Ops.Write(Global.plcServiceName, "Cigarette_Barcode_Information", barCode);
+            Ops.Write(Global.plcServiceName, "Cigarette_Name_Information", productName);
         }
     }
 }

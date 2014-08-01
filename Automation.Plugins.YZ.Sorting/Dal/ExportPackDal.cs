@@ -33,5 +33,20 @@ namespace Automation.Plugins.YZ.Sorting.Dal
                 , row["product_code"].ToString().Trim(), row["product_name"].ToString().Trim());
             ra.DoQuery(sql);
         }
+
+        public bool PackNoIsExist(int packNo)
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = @"SELECT pack_no FROM export_pack WHERE pack_no={0}";
+            DataTable table = ra.DoQuery(string.Format(sql, packNo)).Tables[0];
+            if (table.Rows.Count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
