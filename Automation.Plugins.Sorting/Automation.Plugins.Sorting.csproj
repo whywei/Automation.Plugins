@@ -34,11 +34,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Automation.Core">
-      <HintPath>..\packages\Automation.Core.1.0.0.6\lib\net40-Client\Automation.Core.dll</HintPath>
+      <HintPath>..\packages\Automation.Core.1.0.0.7\lib\net40-Client\Automation.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Automation.Service.OPC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Automation.Service.OPC.1.0.0.2\lib\net40\Automation.Service.OPC.dll</HintPath>
+    <Reference Include="Automation.Service.OPC">
+      <HintPath>..\packages\Automation.Service.OPC.1.0.0.3\lib\net40\Automation.Service.OPC.dll</HintPath>
     </Reference>
     <Reference Include="DBRabbit">
       <HintPath>..\packages\DBRabbit.1.0.6\lib\net20\DBRabbit.dll</HintPath>
@@ -174,7 +174,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Readme\Spring.Rest.txt" />
-    <Content Include="Config\PLC.xml" />
     <None Include="Resources\Replenishment_16x16.png" />
     <None Include="Resources\Replenishment_32x32.png" />
     <None Include="Resources\customer_16x16.png" />
@@ -183,6 +182,7 @@
     <None Include="Resources\Efficiency_32x32.png" />
     <None Include="Resources\yandao_32x32.png" />
     <None Include="Resources\tag_set_32x32.png" />
+    <Content Include="Config\PLC.xml" />
     <Content Include="Serialize\Readme.txt" />
     <Content Include="TransactionScopeFactoryProviderConfig.xml" />
     <None Include="Resources\refresh_32x32.png" />

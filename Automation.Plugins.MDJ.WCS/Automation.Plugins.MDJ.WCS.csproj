@@ -36,14 +36,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Automation.Core">
-      <HintPath>..\packages\Automation.Core.1.0.0.6\lib\net40-Client\Automation.Core.dll</HintPath>
+      <HintPath>..\packages\Automation.Core.1.0.0.7\lib\net40-Client\Automation.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Automation.Service.BarcodeReader, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Automation.Service.BarcodeReader.1.0.0.2\lib\net40\Automation.Service.BarcodeReader.dll</HintPath>
+      <HintPath>..\packages\Automation.Service.BarcodeReader.1.0.0.3\lib\net40\Automation.Service.BarcodeReader.dll</HintPath>
     </Reference>
     <Reference Include="Automation.Service.OPC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Automation.Service.OPC.1.0.0.2\lib\net40\Automation.Service.OPC.dll</HintPath>
+      <HintPath>..\packages\Automation.Service.OPC.1.0.0.3\lib\net40\Automation.Service.OPC.dll</HintPath>
     </Reference>
     <Reference Include="DBRabbit">
       <HintPath>..\packages\DBRabbit.1.0.6\lib\net20\DBRabbit.dll</HintPath>
