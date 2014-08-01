@@ -34,11 +34,11 @@ namespace Automation.Plugins.YZ.Sorting.Action
             packno.Width = 120;
             packno.GroupCaption = "包号查询";
             packno.RootKey = rootKey;
-            header.Add(packno);
+            this.Add(packno);
 
 
             this.Add(new SimpleActionItem(rootKey, "查询", SortingPackNoRefresh_Click) { ToolTipText = "包号查询", GroupCaption = "包号查询", LargeImage = Resources.Sorting_Query_32 });
-
+            this.Add(new SimpleActionItem(rootKey, "打印", Print_Click) { ToolTipText = "打印烟道信息", GroupCaption = "打印", LargeImage = Resources.Print_32 });
 
             base.Activate();
         }
@@ -55,6 +55,10 @@ namespace Automation.Plugins.YZ.Sorting.Action
 
         }
 
+        public void Print_Click(object sender, EventArgs e)
+        {
+            (View as SortingRecordView).Print();
+        }
 
          public int PackNo
         {

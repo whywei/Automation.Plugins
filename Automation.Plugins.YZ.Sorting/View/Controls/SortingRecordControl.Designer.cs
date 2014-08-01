@@ -34,8 +34,9 @@
             this.pack_no = new DevExpress.XtraGrid.Columns.GridColumn();
             this.quantity = new DevExpress.XtraGrid.Columns.GridColumn();
             this.channel_name = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.group_no = new DevExpress.XtraGrid.Columns.GridColumn();
             this.sort_address = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.qemain_quantity = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.remain_quantity = new DevExpress.XtraGrid.Columns.GridColumn();
             this.export_no = new DevExpress.XtraGrid.Columns.GridColumn();
             this.product_code = new DevExpress.XtraGrid.Columns.GridColumn();
             this.product_name = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -65,8 +66,9 @@
             this.pack_no,
             this.quantity,
             this.channel_name,
+            this.group_no,
             this.sort_address,
-            this.qemain_quantity,
+            this.remain_quantity,
             this.export_no,
             this.product_code,
             this.product_name,
@@ -126,6 +128,16 @@
             this.channel_name.VisibleIndex = 3;
             this.channel_name.Width = 80;
             // 
+            // group_no
+            // 
+            this.group_no.Caption = "烟道组";
+            this.group_no.FieldName = "group_no";
+            this.group_no.Name = "group_no";
+            this.group_no.OptionsColumn.AllowFocus = false;
+            this.group_no.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
+            this.group_no.Visible = true;
+            this.group_no.VisibleIndex = 4;
+            // 
             // sort_address
             // 
             this.sort_address.Caption = "分拣地址";
@@ -135,20 +147,20 @@
             this.sort_address.OptionsColumn.AllowFocus = false;
             this.sort_address.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.sort_address.Visible = true;
-            this.sort_address.VisibleIndex = 4;
+            this.sort_address.VisibleIndex = 5;
             this.sort_address.Width = 80;
             // 
-            // qemain_quantity
+            // remain_quantity
             // 
-            this.qemain_quantity.Caption = "剩余数量";
-            this.qemain_quantity.FieldName = "qemain_quantity";
-            this.qemain_quantity.Name = "qemain_quantity";
-            this.qemain_quantity.OptionsColumn.AllowEdit = false;
-            this.qemain_quantity.OptionsColumn.AllowFocus = false;
-            this.qemain_quantity.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
-            this.qemain_quantity.Visible = true;
-            this.qemain_quantity.VisibleIndex = 5;
-            this.qemain_quantity.Width = 60;
+            this.remain_quantity.Caption = "剩余数量";
+            this.remain_quantity.FieldName = "remain_quantity";
+            this.remain_quantity.Name = "remain_quantity";
+            this.remain_quantity.OptionsColumn.AllowEdit = false;
+            this.remain_quantity.OptionsColumn.AllowFocus = false;
+            this.remain_quantity.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
+            this.remain_quantity.Visible = true;
+            this.remain_quantity.VisibleIndex = 6;
+            this.remain_quantity.Width = 60;
             // 
             // export_no
             // 
@@ -159,7 +171,7 @@
             this.export_no.OptionsColumn.AllowFocus = false;
             this.export_no.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.export_no.Visible = true;
-            this.export_no.VisibleIndex = 6;
+            this.export_no.VisibleIndex = 7;
             this.export_no.Width = 60;
             // 
             // product_code
@@ -171,7 +183,7 @@
             this.product_code.OptionsColumn.AllowFocus = false;
             this.product_code.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.product_code.Visible = true;
-            this.product_code.VisibleIndex = 7;
+            this.product_code.VisibleIndex = 8;
             this.product_code.Width = 80;
             // 
             // product_name
@@ -182,7 +194,7 @@
             this.product_name.OptionsColumn.AllowFocus = false;
             this.product_name.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.product_name.Visible = true;
-            this.product_name.VisibleIndex = 8;
+            this.product_name.VisibleIndex = 9;
             this.product_name.Width = 130;
             // 
             // status
@@ -194,7 +206,7 @@
             this.status.OptionsColumn.AllowFocus = false;
             this.status.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.status.Visible = true;
-            this.status.VisibleIndex = 9;
+            this.status.VisibleIndex = 10;
             this.status.Width = 60;
             // 
             // panelControl2
@@ -231,10 +243,11 @@
         private DevExpress.XtraGrid.Columns.GridColumn quantity;
         private DevExpress.XtraGrid.Columns.GridColumn channel_name;
         private DevExpress.XtraGrid.Columns.GridColumn sort_address;
-        private DevExpress.XtraGrid.Columns.GridColumn qemain_quantity;
+        private DevExpress.XtraGrid.Columns.GridColumn remain_quantity;
         private DevExpress.XtraGrid.Columns.GridColumn export_no;
         private DevExpress.XtraGrid.Columns.GridColumn product_code;
         private DevExpress.XtraGrid.Columns.GridColumn product_name;
         private DevExpress.XtraGrid.Columns.GridColumn status;
+        private DevExpress.XtraGrid.Columns.GridColumn group_no;
     }
 }

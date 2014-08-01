@@ -43,6 +43,12 @@ namespace Automation.Plugins.YZ.Sorting.View
             SortingRecordDal sortingDal = new SortingRecordDal();
             gridControl.DataSource = sortingDal.FindSortingRecordByPackNo(pack);
         }
-       
+
+        public void Print()
+        {
+            PrintSettingView controller = new PrintSettingView(this.gridControl);
+            controller.PrintHeader = "下单记录信息";
+            controller.Preview();
+        }
     }
 }
