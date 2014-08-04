@@ -42,14 +42,16 @@ namespace Automation.Plugins.YZ.Sorting.Process
                                 int[] writeData = new int[226];
                                 int packNo = sortingDal.FindMinUnSortPackNo(groupNo);
                                 int maxPackNo = orderDal.FindMaxPackNoFromMaster(groupNo);
-                                if (packNo <= maxPackNo)
+                                if (packNo>0 && packNo <= maxPackNo)
                                 {
-                                    DataTable table = sortingDal.FindSortingInformation(packNo, groupNo);
+                                    DataTable table = sortingDal.FindSortingInformation(groupNo);
                                     if (table.Rows.Count > 0)
                                     {
                                         int i = 0;
+                                        string sortNoList = "";
                                         foreach (DataRow row in table.Rows)
                                         {
+                                            sortNoList = row["sort_no"].ToString() + ",";
                                             writeData[i++] = Convert.ToInt32(row["sort_no"]);
                                             writeData[i++] = Convert.ToInt32(row["channel_address"]);
                                             writeData[i++] = Convert.ToInt32(row["remain_quantity"]);
@@ -69,11 +71,12 @@ namespace Automation.Plugins.YZ.Sorting.Process
                                             {
                                                 msg += data.ToString() + ",";
                                             }
-                                            Logger.Info(string.Format("{0}线下单成功。包号[{1}]，数据[{2}]。", item, packNo + 1, msg));
+                                            Logger.Info(string.Format("{0}线下单成功。包号[{1}]，数据[{2}]。", item, packNo, msg));
                                             //更新sorting表
-                                            sortingDal.UpdateSoringStatus(packNo, groupNo);
+                                            sortingDal.UpdateSoringStatus(sortNoList);
                                             //更新主表状态
-                                            orderDal.UpdateMasterStatus(packNo);
+                                            int isSortMaxPackNo = sortingDal.FindIsSortMaxPackNo(groupNo);
+                                            orderDal.UpdateMasterStatus(isSortMaxPackNo);
                                             //向sorting表加入数据
                                             InsertIntoSorting(groupNo,maxPackNo);
                                         }
@@ -119,6 +122,10 @@ namespace Automation.Plugins.YZ.Sorting.Process
                         int sortNo = sortingDal.FindMaxSortNo();
                         sortingDal.InsertIntoSorting(sortNo + 1, row);
                     }
+                }
+                else
+                {
+                    break;
                 }
             } while (count < 19);
         }
