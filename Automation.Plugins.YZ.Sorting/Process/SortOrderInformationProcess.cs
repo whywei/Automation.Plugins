@@ -27,7 +27,6 @@ namespace Automation.Plugins.YZ.Sorting.Process
                 bool isStart = Ops.ReadSingle<bool>(Global.memoryServiceName_PSD, Global.memoryItemName_SortingState);
                 if (isStart)
                 {
-                    int maxPackNo = orderDal.FindMaxPackNoFromMaster();
                     int sumQuantity = orderDal.FindSumQuantityFromMaster();
                     foreach (string item in channelGroups)
                     {
@@ -42,14 +41,17 @@ namespace Automation.Plugins.YZ.Sorting.Process
                                 int groupNo = item == "A" ? 1 : item == "B" ? 2 : 0;
                                 int[] writeData = new int[226];
                                 int packNo = sortingDal.FindMinUnSortPackNo(groupNo);
-                                if (packNo <= maxPackNo)
+                                int maxPackNo = orderDal.FindMaxPackNoFromMaster(groupNo);
+                                if (packNo>0 && packNo <= maxPackNo)
                                 {
-                                    DataTable table = sortingDal.FindSortingInformation(packNo, groupNo);
+                                    DataTable table = sortingDal.FindSortingInformation(groupNo);
                                     if (table.Rows.Count > 0)
                                     {
                                         int i = 0;
+                                        string sortNoList = "";
                                         foreach (DataRow row in table.Rows)
                                         {
+                                            sortNoList = row["sort_no"].ToString() + ",";
                                             writeData[i++] = Convert.ToInt32(row["sort_no"]);
                                             writeData[i++] = Convert.ToInt32(row["channel_address"]);
                                             writeData[i++] = Convert.ToInt32(row["remain_quantity"]);
@@ -58,7 +60,7 @@ namespace Automation.Plugins.YZ.Sorting.Process
                                             writeData[i++] = Convert.ToInt32(row["quantity"]);
                                             writeData[i++] = Convert.ToInt32(row["export_no"]);
                                             writeData[i++] = Convert.ToInt32(row["sort_no"]) == sumQuantity ? 1 : 0;
-                                            writeData[i++] = Convert.ToInt32(row["product_code"]);
+                                            writeData[i++] = Convert.ToInt32(row["piece_barcode"]);
                                         }
                                         writeData[225] = 1;
                                         bool result = Ops.Write(Global.plcServiceName, sortOrderInformation, writeData);
@@ -69,22 +71,14 @@ namespace Automation.Plugins.YZ.Sorting.Process
                                             {
                                                 msg += data.ToString() + ",";
                                             }
-                                            Logger.Info(string.Format("{0}线下单成功。包号[{1}]，数据[{2}]。", item, packNo + 1, msg));
+                                            Logger.Info(string.Format("{0}线下单成功。包号[{1}]，数据[{2}]。", item, packNo, msg));
                                             //更新sorting表
-                                            sortingDal.UpdateSoringStatus(packNo, groupNo);
+                                            sortingDal.UpdateSoringStatus(sortNoList);
                                             //更新主表状态
-                                            orderDal.UpdateMasterStatus(packNo);
+                                            int isSortMaxPackNo = sortingDal.FindIsSortMaxPackNo(groupNo);
+                                            orderDal.UpdateMasterStatus(isSortMaxPackNo);
                                             //向sorting表加入数据
-                                            int maxPackNoOnSorting = sortingDal.FindMaxPackNo();
-                                            if ((packNo + 10) >= maxPackNoOnSorting && maxPackNoOnSorting <= maxPackNo)
-                                            {
-                                                DataTable detailTable = orderDal.FindOrderDetailByPackNo(maxPackNoOnSorting + 1);
-                                                foreach (DataRow row in detailTable.Rows)
-                                                {
-                                                    int sortNo = sortingDal.FindMaxSortNo();
-                                                    sortingDal.InsertIntoSorting(sortNo + 1, row);
-                                                }
-                                            }
+                                            InsertIntoSorting(groupNo,maxPackNo);
                                         }
                                         else
                                         {
@@ -101,6 +95,39 @@ namespace Automation.Plugins.YZ.Sorting.Process
             {
                 Logger.Error(string.Format("下单处理失败。原因：{0}。{1}。", ex.Message, ex.StackTrace));
             }
+        }
+
+        public void InsertIntoSorting(int groupNo,int maxPackNo)
+        {
+            int count = 0;
+            do
+            {
+                DataTable unSortPackNoOnSorting = sortingDal.FindUnSortPackNo(groupNo);
+                count = unSortPackNoOnSorting.Rows.Count;
+                int packNo;
+                if (count > 0 )
+                {
+                    packNo = Convert.ToInt32(unSortPackNoOnSorting.Rows[0]["pack_no"]);
+                }
+                else
+                {
+                    packNo = sortingDal.FindMaxPackNo(groupNo);
+
+                }
+                if (packNo < maxPackNo)
+                {
+                    DataTable detailTable = orderDal.FindOrderDetailByPackNo(packNo, groupNo);
+                    foreach (DataRow row in detailTable.Rows)
+                    {
+                        int sortNo = sortingDal.FindMaxSortNo();
+                        sortingDal.InsertIntoSorting(sortNo + 1, row);
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            } while (count < 19);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Automation.Core;
+using Automation.Service.LED;
 
 namespace Automation.Plugins.YZ.Sorting.Process
 {
@@ -16,6 +17,8 @@ namespace Automation.Plugins.YZ.Sorting.Process
 
         public override void Execute()
         {
+            LEDData  LEDData = new LEDData ();
+            Ops.Write("LED","ShowData",LEDData);
         }
     }
 }

@@ -26,11 +26,11 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         public void InsertChannel(DataRow row)
         {
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
-            string sql = string.Format(@"insert into Channel_Allot values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}')",
+            string sql = string.Format(@"insert into Channel_Allot values('{0}','{1}','{2}','{3}','{4}','{18}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}')",
             row["channel_code"], row["channel_type"], row["channel_name"], row["product_code"], row["product_name"],
             row["quantity"], row["remain_quantity"], row["channel_capacity"], row["group_no"], row["order_no"],
             row["sort_address"], row["supply_address"], row["led_no"], row["x"],
-            row["y"], row["width"], row["height"], row["is_active"]);
+            row["y"], row["width"], row["height"], row["is_active"], row["piece_barcode"]);
             ra.DoCommand(sql);
         }
 
@@ -96,6 +96,28 @@ namespace Automation.Plugins.YZ.Sorting.Dal
             string sql = string.Format("select sort_address from channel_allot where channel_code='{0}'", channelCode);
             object result = ra.DoScalar(sql);
             return result == null ? 0 : Convert.ToInt32(result);
+        }
+
+        public DataTable FindLessBarCodeChannel()
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = @"select distinct product_code from channel_allot 
+                         where len(product_code)>0 and (piece_barcode is null or len(piece_barcode)<=0)";
+            return ra.DoQuery(sql).Tables[0];
+        }
+
+        public void UpdatePieceBarCode(string productCode,string pieceBarCode)
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = @"update Channel_Allot set piece_barcode='{1}' where product_code='{0}'";
+            ra.DoQuery(string.Format(sql, productCode, pieceBarCode));
+        }
+
+        public DataTable FindAllProduct()
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = @"select distinct piece_barcode,product_name from Channel_Allot";
+            return ra.DoQuery(sql).Tables[0];
         }
     }
 }
