@@ -26,19 +26,10 @@ namespace Automation.Plugins.YZ.Sorting.Action
 
         public override void Activate()
         {
-
             IHeaderControl header = App.HeaderControl;
             this.Add(new RootItem(rootKey, "下单记录") { SortOrder = 10001 });
-            this.Add(new SimpleActionItem(rootKey, "刷新", SortingRecordRefresh_Click) { ToolTipText = "下单记录查询", GroupCaption = "下单记录", LargeImage = Resources.refresh_32x32 });
-
-            packno.Width = 120;
-            packno.GroupCaption = "包号查询";
-            packno.RootKey = rootKey;
-            this.Add(packno);
-
-
-            this.Add(new SimpleActionItem(rootKey, "查询", SortingPackNoRefresh_Click) { ToolTipText = "包号查询", GroupCaption = "包号查询", LargeImage = Resources.Sorting_Query_32 });
-            this.Add(new SimpleActionItem(rootKey, "打印", Print_Click) { ToolTipText = "打印烟道信息", GroupCaption = "打印", LargeImage = Resources.Print_32 });
+            this.Add(new SimpleActionItem(rootKey, "刷新", SortingRecordRefresh_Click) { ToolTipText = "下单记录查询", LargeImage = Resources.refresh_32x32 });
+            this.Add(new SimpleActionItem(rootKey, "打印", Print_Click) { ToolTipText = "打印烟道信息", LargeImage = Resources.Print_32 });
 
             base.Activate();
         }

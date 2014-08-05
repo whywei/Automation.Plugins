@@ -23,7 +23,7 @@ namespace Automation.Plugins.YZ.Sorting.View
         public override void Activate()
         {
             this.Key = "yzSorting";
-            this.Caption = "分拣进度";
+            this.Caption = "分拣";
             this.InnerControl = new SortingProgressControl();
             this.Dock = DockStyle.Fill;
             this.control = (SortingProgressControl)this.InnerControl;

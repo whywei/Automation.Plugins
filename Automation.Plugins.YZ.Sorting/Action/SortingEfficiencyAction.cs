@@ -22,7 +22,7 @@ namespace Automation.Plugins.YZ.Sorting.Action
         public override void Activate()
         {
             this.Add(new RootItem(rootKey, "分拣效率") { SortOrder = 10001 });
-            this.Add(new SimpleActionItem(rootKey, "刷新", SortingEfficiencyRefresh_Click) { ToolTipText = "分拣效率查询", GroupCaption = "分拣效率", LargeImage = Resources.refresh_32x32 });
+            this.Add(new SimpleActionItem(rootKey, "刷新", SortingEfficiencyRefresh_Click) { ToolTipText = "分拣效率查询", LargeImage = Resources.refresh_32x32 });
             base.Activate();
         }
 
