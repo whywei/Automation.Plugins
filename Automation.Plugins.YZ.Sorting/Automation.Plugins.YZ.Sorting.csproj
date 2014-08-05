@@ -37,6 +37,9 @@
       <HintPath>..\packages\Automation.Core.1.0.0.7\lib\net40-Client\Automation.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Automation.Service.LED">
+      <HintPath>..\packages\Automation.Service.LED.1.0.0.1\lib\net40\Automation.Service.LED.dll</HintPath>
+    </Reference>
     <Reference Include="Automation.Service.OPC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Automation.Service.OPC.1.0.0.3\lib\net40\Automation.Service.OPC.dll</HintPath>
     </Reference>
@@ -139,7 +142,6 @@
     <Compile Include="Action\DataDownLoad.cs" />
     <Compile Include="Process\DeviceRunStateProcess.cs" />
     <Compile Include="Process\FaultAlarmInformationProcess.cs" />
-    <Compile Include="Process\LackCigaretteChannelInformationProcess.cs" />
     <Compile Include="Process\LedInformationProcess.cs" />
     <Compile Include="Process\PackageNumbersInformationProcess.cs" />
     <Compile Include="Process\SortingInfoProgress.cs" />

@@ -119,5 +119,13 @@ namespace Automation.Plugins.YZ.Sorting.Dal
             string sql = @"select distinct piece_barcode,product_name from Channel_Allot";
             return ra.DoQuery(sql).Tables[0];
         }
+
+        public DataTable FindCigaretteChannelInfo(int groupNo)
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = @"SELECT product_name,remain_quantity,sort_address,led_no,x,y,width,height
+                          FROM Channel_Allot WHERE channel_type='2' AND group_no={0}";
+            return ra.DoQuery(string.Format(sql,groupNo)).Tables[0];
+        }
     }
 }

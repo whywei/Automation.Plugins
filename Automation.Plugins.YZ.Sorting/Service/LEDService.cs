@@ -17,7 +17,7 @@ namespace Automation.Plugins.YZ.Sorting.Service
         public override void CreateTargetService()
         {
             Name = "LED";
-            this.TargetService = new LEDService();
+            this.TargetService = new Automation.Service.LED.LEDService();
         }
     }
 }

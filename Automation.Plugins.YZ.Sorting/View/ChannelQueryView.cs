@@ -47,7 +47,23 @@ namespace Automation.Plugins.YZ.Sorting.View
 
         public void Refresh()
         {
-            gridControl.DataSource = channelDal.FindChannel();                       
+            DataTable channelTable= channelDal.FindChannel();
+            List<string> groupNos=new List<string> {"A","B"};
+            foreach(var groupNo in groupNos)
+            {
+                string itemName="Real_Time_Inventory_Data_"+groupNo;
+                object obj = AutomationContext.Read(Global.plcServiceName, itemName);
+                if(obj is Array)
+                {
+                    Array channelRemainQuantityArray=(Array)obj;
+                    DataRow[] channelRows=channelTable.Select(string.Format("group_no={0}",groupNo=="A"?1:2));
+                    foreach (DataRow row in channelRows)
+                    {
+                        row["remain_quantity"] = channelRemainQuantityArray.GetValue(Convert.ToInt32(row["sort_address"]) - 1);
+                    }
+                }
+            }
+            gridControl.DataSource = channelTable;
         }
 
         public void gridChannelQuery_DoubleClick(object sender, EventArgs e)

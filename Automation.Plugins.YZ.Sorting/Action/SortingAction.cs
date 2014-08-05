@@ -50,7 +50,7 @@ namespace Automation.Plugins.YZ.Sorting.Action
             btnStop = new SimpleActionItem(rootKey, "停止分拣", StopSort_click) { Enabled = false, ToolTipText = "停止分拣", GroupCaption = "操作", SortOrder = 3, LargeImage = Resources.spouse_32x32 };
             header.Add(btnStop);
 
-            header.Add(new SimpleActionItem(rootKey, "烟道盘点", ChannelQuery_Click) { ToolTipText = "分拣烟道盘点", GroupCaption = "操作", SortOrder = 4, LargeImage = Resources.yandao_32x32 });
+            header.Add(new SimpleActionItem(rootKey, "烟道盘点", ChannelQuery_Click) { ToolTipText = "分拣烟道盘点", GroupCaption = "查询", SortOrder = 1, LargeImage = Resources.yandao_32x32 });
             header.Add(new SimpleActionItem(rootKey, "烟包查询", PackNoQuery_Click) { ToolTipText = "分拣订单查询", GroupCaption = "查询", SortOrder = 2, LargeImage = Resources.package_32x32 });
             header.Add(new SimpleActionItem(rootKey, "订单查询", CustomerQuery_Click) { ToolTipText = "客户订单查询", GroupCaption = "查询", SortOrder = 3, LargeImage = Resources.customer_32x32 });
             header.Add(new SimpleActionItem(rootKey, "缓存查询", CacheOrderQuery_Click) { ToolTipText = "缓存订单查询", GroupCaption = "查询", SortOrder = 4, LargeImage = Resources.CacheOrderQuery_32 });
