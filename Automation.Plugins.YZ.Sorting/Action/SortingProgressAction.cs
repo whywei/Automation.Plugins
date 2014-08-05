@@ -11,12 +11,12 @@ namespace Automation.Plugins.YZ.Sorting.Action
 {
     public class SortingProgressAction : AbstractAction
     {
-        private const string rootKey = "kSortingProgressQuery";
+        private const string rootKey = "yzSorting";
 
         public override void Initialize()
         {
             RootKey = rootKey;
-            IsPreload = false;
+            IsPreload = true;
         }
 
         public override void Activate()

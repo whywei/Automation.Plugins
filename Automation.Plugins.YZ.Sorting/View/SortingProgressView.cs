@@ -22,10 +22,10 @@ namespace Automation.Plugins.YZ.Sorting.View
 
         public override void Activate()
         {
-            this.Key = "kSortingProgressQuery";
+            this.Key = "yzSorting";
             this.Caption = "分拣进度";
             this.InnerControl = new SortingProgressControl();
-            this.Dock = DockStyle.Bottom;
+            this.Dock = DockStyle.Fill;
             this.control = (SortingProgressControl)this.InnerControl;
             this.App.DockManager.PanelClosed += new EventHandler<DotSpatial.Controls.Docking.DockablePanelEventArgs>(DockManager_PanelClosed);
             this.App.DockManager.ActivePanelChanged += new EventHandler<DotSpatial.Controls.Docking.DockablePanelEventArgs>(DockManager_ActivePanelChanged);

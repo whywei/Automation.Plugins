@@ -24,7 +24,7 @@ namespace Automation.Plugins.YZ.Sorting.Process
         {
             try
             {
-                bool isStart = Ops.ReadSingle<bool>(Global.memoryServiceName_PSD, Global.memoryItemName_SortingState);
+                bool isStart = Ops.ReadSingle<bool>(Global.memoryServiceName_TemporarilySingleData, Global.memoryItemName_SortingState);
                 if (isStart)
                 {
                     int sumQuantity = orderDal.FindSumQuantityFromMaster();

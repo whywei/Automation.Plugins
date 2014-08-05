@@ -79,7 +79,7 @@ namespace Automation.Plugins.YZ.Sorting.Action
             btnDown.Enabled = !isStart;
             btnStart.Enabled = !isStart;
             btnStop.Enabled = isStart;
-            AutomationContext.Write(Global.memoryServiceName_PSD, Global.memoryItemName_SortingState, isStart);
+            AutomationContext.Write(Global.memoryServiceName_TemporarilySingleData, Global.memoryItemName_SortingState, isStart);
         }
 
         private void AddDockablePanel(IView view)
