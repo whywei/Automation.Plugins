@@ -294,6 +294,8 @@
     <None Include="Resources\download_16x16.png" />
     <None Include="Resources\Print_16.png" />
     <None Include="Resources\Print_32.png" />
+    <None Include="Resources\send_16.png" />
+    <None Include="Resources\send_32.png" />
     <Content Include="Serialize\Readme.txt" />
     <Content Include="TransactionScopeFactoryProviderConfig.xml">
       <SubType>Designer</SubType>

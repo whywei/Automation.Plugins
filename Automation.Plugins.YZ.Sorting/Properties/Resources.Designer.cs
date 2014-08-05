@@ -263,6 +263,26 @@ namespace Automation.Plugins.YZ.Sorting.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap send_16 {
+            get {
+                object obj = ResourceManager.GetObject("send_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap send_32 {
+            get {
+                object obj = ResourceManager.GetObject("send_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap SortChannelCheck_32 {
             get {
                 object obj = ResourceManager.GetObject("SortChannelCheck_32", resourceCulture);
