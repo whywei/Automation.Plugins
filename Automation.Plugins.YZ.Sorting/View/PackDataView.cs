@@ -28,7 +28,7 @@ namespace Automation.Plugins.YZ.Sorting.View
         public override void Activate()
         {
             this.Key = "kPackDataQuery";
-            this.Caption = "包装机数据";
+            this.Caption = "包装数据";
             this.InnerControl = new PackDataControl();
             this.gridControl = ((PackDataControl)this.InnerControl).gridPackData;
             this.Dock = DockStyle.Fill;

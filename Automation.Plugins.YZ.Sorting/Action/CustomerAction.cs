@@ -31,11 +31,11 @@ namespace Automation.Plugins.YZ.Sorting.Action
             IHeaderControl header = App.HeaderControl;
 
             this.Add(new RootItem(rootKey, "订单查询") { SortOrder = 10001 });
-            this.Add(new SimpleActionItem(rootKey, "刷新", CustomerQueryRefresh_Click) { ToolTipText = "刷新订单查询", GroupCaption = "订单查询", LargeImage = Resources.refresh_32x32 });
+            this.Add(new SimpleActionItem(rootKey, "刷新", CustomerQueryRefresh_Click) { ToolTipText = "刷新订单查询",  LargeImage = Resources.refresh_32x32 });
 
-            dropItem = new DropDownActionItem { RootKey = rootKey, GroupCaption = "查询", Width = 170 };
+            dropItem = new DropDownActionItem { GroupCaption = "查询", RootKey = rootKey, Width = 170 };
             dropItem.Caption = "卷烟名称：";
-            dropItem.Items.AddRange(customerDal.GetProduct());
+            
             dropItem.SelectedValueChanged += new EventHandler<SelectedValueChangedEventArgs>(dropItem_SelectedValueChanged);
             this.Add(dropItem);
             dropItem.DisplayText = "请选择卷烟名称";
@@ -48,9 +48,11 @@ namespace Automation.Plugins.YZ.Sorting.Action
             this.Add(_txtQuantity);
             _txtQuantity.Text = "";
 
-            this.Add(new SimpleActionItem(rootKey, "查询", Select_Click) { GroupCaption = "查询", SmallImage = Resources.Sorting_Query_16, LargeImage = Resources.Sorting_Query_16 });
-            this.Add(new SimpleActionItem(rootKey, "打印", Print_Click) { ToolTipText = "打印烟道信息", GroupCaption = "打印", LargeImage = Resources.Print_32 });
+            this.Add(new SimpleActionItem(rootKey, "查询", Select_Click) { GroupCaption = "查询",SmallImage = Resources.Sorting_Query_16, LargeImage = Resources.Sorting_Query_16 });
+            this.Add(new SimpleActionItem(rootKey, "打印", Print_Click) { ToolTipText = "打印烟道信息", LargeImage = Resources.Print_32 });
             base.Activate();
+
+            dropItem.Items.AddRange(customerDal.GetProduct());
         }
 
         private void CustomerQueryRefresh_Click(object sender, EventArgs e)
