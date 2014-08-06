@@ -63,7 +63,7 @@
 
         #endregion
 
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        public DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         public DevExpress.XtraGrid.GridControl gridControl1;
     }
 }
