@@ -1,19 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using Automation.Plugins.YZ.Sorting.Dal;
-using Automation.Plugins.YZ.Sorting.Action;
 using System.ComponentModel.Composition;
+using Automation.Plugins.YZ.Sorting.Bll;
 
 namespace Automation.Plugins.YZ.Sorting.View.Dialog
 {
-    public partial class DownLoadDataDialog : DevExpress.XtraEditors.XtraForm
+    public partial class DownLoadDialog : DevExpress.XtraEditors.XtraForm
     {
         [Import("Shell", typeof(ContainerControl))]
         public ContainerControl Shell { get; set; }
@@ -21,7 +16,7 @@ namespace Automation.Plugins.YZ.Sorting.View.Dialog
         private DataTable table = null;
         private System.Threading.Thread thread;
 
-        public DownLoadDataDialog(DataTable table)
+        public DownLoadDialog(DataTable table)
         {
             InitializeComponent();
             this.table = table;
@@ -49,25 +44,26 @@ namespace Automation.Plugins.YZ.Sorting.View.Dialog
             cmbBatchNo.Enabled = false;
             cmbOrderDate.Enabled = false;
             btnDaowmLoad.Enabled = false;
-            thread= new System.Threading.Thread(new System.Threading.ThreadStart(StartDownload));
+            thread= new System.Threading.Thread(new System.Threading.ThreadStart(Start));
             thread.Start();
         }
 
         //开始下载
-        public void StartDownload()
+        public void Start()
         {
-            DataDownLoad downloader = new DataDownLoad();
-            downloader.onDownLoadProgress += new DataDownLoad.dDownloadProgress(downloader_onDownLoadProgress);
+            DownLoaderBll downloader = new DownLoaderBll();
+            downloader.OnDownLoadProgress +=new DownloadProgress(downloader_OnDownLoadProgress);
+
             downloader.Start(cmbBatchNo.EditValue.ToString());
             Shell.BeginInvoke(( MethodInvoker)this.Close);
         }
 
         //同步更新UI
-        void downloader_onDownLoadProgress(int total, string title)
+        void downloader_OnDownLoadProgress(int total, string title)
         {
             if (this.InvokeRequired)
             {
-                this.Invoke(new DataDownLoad.dDownloadProgress(downloader_onDownLoadProgress), new object[] { total, title });
+                this.Invoke(new DownloadProgress(downloader_OnDownLoadProgress), new object[] { total, title });
             }
             else
             {

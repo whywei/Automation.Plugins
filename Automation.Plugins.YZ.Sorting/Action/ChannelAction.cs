@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Automation.Core;
 using DotSpatial.Controls.Header;
 using Automation.Plugins.YZ.Sorting.View;
 using Automation.Plugins.YZ.Sorting.Properties;
 using Automation.Plugins.YZ.Sorting.Dal;
-using Automation.Plugins.YZ.Sorting.View.Dialog;
-using Automation.Plugins.YZ.Sorting.View.Controls;
+using Automation.Plugins.YZ.Sorting.Bll;
 
 namespace Automation.Plugins.YZ.Sorting.Action
 {
@@ -51,8 +47,8 @@ namespace Automation.Plugins.YZ.Sorting.Action
 
         public void SendProductInfoToPLC_Click(object sender, EventArgs e)
         {
-            DataDownLoad dataDownLoad = new DataDownLoad();
-            dataDownLoad.WriteProductInfoToPLC();
+            ProductBll productBll = new ProductBll();
+            productBll.WriteProductInfoToPLC();
         }
     }
 }

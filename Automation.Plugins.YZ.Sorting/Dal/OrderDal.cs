@@ -121,14 +121,12 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         }
 
         //判断是否存在未分拣数据
-        public bool FindUnsortCount()
+        public int FindUnSortCount()
         {
-
-            //01未完成 02已完成
             var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
-            string sql = string.Format(@"SELECT COUNT(*) FROM sms_sort_order_allot_master WHERE STATUS='01'");
+            string sql = string.Format(@"select count(*) from sms_sort_order_allot_master where status='01'");
             var r = ra.DoScalar(sql);
-            return Convert.ToInt32(DBNullUtil.Convert(r)) > 0;
+            return Convert.ToInt32(DBNullUtil.Convert(r));
         }
 
         /// <summary>

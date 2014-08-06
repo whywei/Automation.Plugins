@@ -120,6 +120,7 @@
     <Compile Include="Action\AllTaskAction.cs" />
     <Compile Include="Action\MixedChannelAction.cs" />
     <Compile Include="Action\ProductCheckAction.cs" />
+    <Compile Include="Dal\SortingDal.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ManualSupplyPlugin.cs" />

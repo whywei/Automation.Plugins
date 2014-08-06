@@ -1,6 +1,6 @@
 ﻿namespace Automation.Plugins.YZ.Sorting.View.Dialog
 {
-    partial class DownLoadDataDialog
+    partial class DownLoadDialog
     {
         /// <summary>
         /// Required designer variable.

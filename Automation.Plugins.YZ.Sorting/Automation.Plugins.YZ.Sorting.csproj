@@ -128,6 +128,7 @@
     <Compile Include="Action\SortingEfficiencyAction.cs" />
     <Compile Include="Action\SortingProgressAction.cs" />
     <Compile Include="Action\SortingRecordAction.cs" />
+    <Compile Include="Bll\ProductBll.cs" />
     <Compile Include="Dal\ChannelDal.cs" />
     <Compile Include="Dal\SortingRecordDal.cs" />
     <Compile Include="Dal\CustomerDal.cs" />
@@ -139,7 +140,7 @@
     <Compile Include="Dal\SortingDal.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Model\ChannelAllot.cs" />
-    <Compile Include="Action\DataDownLoad.cs" />
+    <Compile Include="Bll\DownLoaderBll.cs" />
     <Compile Include="Process\DeviceRunStateProcess.cs" />
     <Compile Include="Process\FaultAlarmInformationProcess.cs" />
     <Compile Include="Process\LedInformationProcess.cs" />
@@ -223,11 +224,11 @@
     <Compile Include="View\Dialog\ChannelExchangeDialog.Designer.cs">
       <DependentUpon>ChannelExchangeDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Dialog\DownLoadDataDialog.cs">
+    <Compile Include="View\Dialog\DownLoadDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Dialog\DownLoadDataDialog.Designer.cs">
-      <DependentUpon>DownLoadDataDialog.cs</DependentUpon>
+    <Compile Include="View\Dialog\DownLoadDialog.Designer.cs">
+      <DependentUpon>DownLoadDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Dialog\GeneratePackDataDialog.cs">
       <SubType>Form</SubType>
@@ -338,8 +339,8 @@
     <EmbeddedResource Include="View\Controls\SortingRecordControl.resx">
       <DependentUpon>SortingRecordControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Dialog\DownLoadDataDialog.resx">
-      <DependentUpon>DownLoadDataDialog.cs</DependentUpon>
+    <EmbeddedResource Include="View\Dialog\DownLoadDialog.resx">
+      <DependentUpon>DownLoadDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Dialog\GeneratePackDataDialog.resx">
       <DependentUpon>GeneratePackDataDialog.cs</DependentUpon>
