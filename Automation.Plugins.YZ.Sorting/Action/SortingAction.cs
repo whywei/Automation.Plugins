@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Automation.Core;
 using DotSpatial.Controls.Header;
 using Automation.Plugins.YZ.Sorting.Properties;
 using Automation.Plugins.YZ.Sorting.View;
-using Automation.Plugins.YZ.Sorting.Action;
-using DotSpatial.Controls.Docking;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using Automation.Plugins.YZ.Sorting.Dal;
+using Automation.Plugins.YZ.Sorting.View.Dialog;
+using System.Reflection;
+using System.Drawing;
 
 
 namespace Automation.Plugins.YZ.Sorting.Action
@@ -20,11 +19,9 @@ namespace Automation.Plugins.YZ.Sorting.Action
         private SimpleActionItem btnDown = null;
         private SimpleActionItem btnStart = null;
         private SimpleActionItem btnStop = null;
-
-        private DataDownLoad download = new DataDownLoad();
+        
         public override void Initialize()
         {
-
             DefaultSortOrder = 1;
             RootKey = rootKey;
             ((Form)Shell).FormClosing += new FormClosingEventHandler(HomeMenuAction_FormClosing);
@@ -43,7 +40,7 @@ namespace Automation.Plugins.YZ.Sorting.Action
         {
             IHeaderControl header = App.HeaderControl;
 
-            btnDown = new SimpleActionItem(rootKey, "数据下载", DataDownLoad_click) { ToolTipText = "数据下载", GroupCaption = "操作", SortOrder = 1, LargeImage = Resources.download_32x32 };
+            btnDown = new SimpleActionItem(rootKey, "数据下载", DownLoad_click) { ToolTipText = "数据下载", GroupCaption = "操作", SortOrder = 1, LargeImage = Resources.download_32x32 };
             header.Add(btnDown);
             btnStart = new SimpleActionItem(rootKey, "开始分拣", StartSort_Click) { ToolTipText = "开始分拣", GroupCaption = "操作", SortOrder = 2, LargeImage = Resources.start_32x32 };
             header.Add(btnStart);
@@ -59,14 +56,51 @@ namespace Automation.Plugins.YZ.Sorting.Action
             header.Add(new SimpleActionItem(rootKey, "包装数据", PackDataQuery_Click) { ToolTipText = "包装机数据查询", GroupCaption = "查询", SortOrder = 7, LargeImage = Resources.package_data_32x32 });
         }
 
-        private void DataDownLoad_click(object sender, EventArgs e)
+        private void DownLoad_click(object sender, EventArgs e)
         {
-            download.Data();
+            try
+            {
+                OrderDal orderDal = new OrderDal();
+                if (orderDal.FindUnSortCount() > 0)
+                {
+                    if (XtraMessageBox.Show("还有未分拣的数据，您确定要重新下载数据吗？", "询问", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                    {
+                        return;
+                    }
+                }
+
+                var lineCode = Properties.Settings.Default.Sorting_Line_Code;
+                if (lineCode == null || lineCode == "")
+                {
+                    XtraMessageBox.Show("未找到分拣线配置！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                ServerDal serverDal = new ServerDal();
+                var table = serverDal.FindBatch(lineCode);
+                if (table.Rows.Count > 0)
+                {
+                    DownLoadDialog dialog = new DownLoadDialog(table);
+                    Assembly assembly = Assembly.GetEntryAssembly();
+                    dialog.Icon = Icon.ExtractAssociatedIcon(assembly.Location);
+                    dialog.ShowDialog();
+                }
+                else
+                {
+                    XtraMessageBox.Show("没有需要分拣的订单数据。", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("下载数据失败！原因：" + ex.Message);
+            }
         }
+
         private void StartSort_Click(object sender, EventArgs e)
         {
             SwitchStatus(true);
         }
+
         private void StopSort_click(object sender, EventArgs e)
         {
             SwitchStatus(false);
@@ -80,12 +114,6 @@ namespace Automation.Plugins.YZ.Sorting.Action
             AutomationContext.Write(Global.memoryServiceName_TemporarilySingleData, Global.memoryItemName_SortingState, isStart);
         }
 
-        private void AddDockablePanel(IView view)
-        {
-            view.Initialize();
-            view.Activate();
-            App.DockManager.Add(new DockablePanel(view.Key, view.Caption, view.InnerControl, view.Dock) { SmallImage = view.SmallImage, DefaultSortOrder = view.DefaultSortOrder });
-        }
         private void ChannelQuery_Click(object sender, EventArgs e)
         {
             AutomationContext.ActivateView<ChannelQueryView>();
