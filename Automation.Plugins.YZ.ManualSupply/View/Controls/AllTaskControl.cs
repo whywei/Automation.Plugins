@@ -21,7 +21,7 @@ namespace Automation.Plugins.YZ.ManualSupply.View.Controls
             this.CreateStyle();
         }
 
-        public void CreateColumns()
+        private void CreateColumns()
         {
             gridColumn1 = gridView1.Columns.AddVisible("supply_id", "补货编号");
             gridColumn1 = gridView1.Columns.AddVisible("supply_batch", "批次");
@@ -33,7 +33,7 @@ namespace Automation.Plugins.YZ.ManualSupply.View.Controls
             gridColumn1 = gridView1.Columns.AddVisible("status", "状态");
         }
 
-        public void CreateStyle()
+        private void CreateStyle()
         {
             gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             gridView1.OptionsView.ShowGroupPanel = false;
