@@ -9,6 +9,12 @@ using System.Windows.Forms;
 using Automation.Plugins.YZ.Sorting.Properties;
 using DevExpress.XtraGrid.Views.Grid;
 using Automation.Plugins.YZ.Sorting.Dal;
+using DevExpress.XtraEditors;
+using Automation.Plugins.YZ.Sorting.Process;
+using System.Data;
+using DevExpress.XtraSplashScreen;
+using System.Threading.Tasks;
+using Automation.Plugins.MainPlugin.View.Forms;
 
 namespace Automation.Plugins.YZ.Sorting.View
 {
@@ -54,6 +60,59 @@ namespace Automation.Plugins.YZ.Sorting.View
             PrintSettingView controller = new PrintSettingView(this.gridDetailControl);
             controller.PrintHeader = "烟包信息";
             controller.Preview();
+        }
+
+        public void CheckPackNo()
+        {
+            if (gridMasterView.GetSelectedRows().Count() > 0)
+            {
+                string packNo = gridMasterView.GetRowCellValue(gridMasterView.GetSelectedRows()[0], "pack_no").ToString();
+                if (XtraMessageBox.Show(string.Format("您确定要将下单记录校正到第 {0} 包吗？\n小于此包号的数据将标记为已下单。(慎用)", packNo), "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    bool isStart = Ops.ReadSingle<bool>(Global.memoryServiceName_TemporarilySingleData, Global.memoryItemName_SortingState);
+                    if (!isStart)
+                    {
+                        SplashScreenManager.ShowForm((Form)Shell, typeof(frmWaitForm), false, true);
+                        OrderDal orderDal = new OrderDal();
+                        SortingDal sortingDal = new SortingDal();
+                        //更新主表状态
+                        orderDal.UpdateStatus(packNo);
+                        //清空下单表
+                        orderDal.DeleteTable("sorting");
+                        //生成下单数据
+                        int[] groupNoArray = new int[2] { 1, 2 };
+                        foreach (int groupNo in groupNoArray)
+                        {
+                            for (int i = 1; i <= 20; i++)
+                            {
+                                int packNo2 = sortingDal.FindMaxPackNo(groupNo);
+                                if (packNo2 == 0)
+                                {
+                                    packNo2 = Convert.ToInt32(packNo);
+                                }
+                                DataTable table = orderDal.FindOrderDetailByPackNo(packNo2, groupNo);
+                                foreach (DataRow row in table.Rows)
+                                {
+                                    int sortNo = sortingDal.FindMaxSortNo();
+                                    sortingDal.InsertIntoSorting(sortNo + 1, row);
+                                }
+                            }
+                        }
+                        Logger.Info(string.Format("订单校正成功！订单号：{0}。", packNo));
+                        Refresh();
+                        SplashScreenManager.CloseForm();
+                    }
+                    else
+                    {
+                        Logger.Error("请先停止分拣！");
+                        XtraMessageBox.Show("请先停止分拣！", "提示");
+                    }
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("请选中相应的数据！", "提示");
+            }
         }
     }
 }
