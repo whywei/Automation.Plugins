@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using DBRabbit;
+using Automation.Core;
 
 namespace Automation.Plugins.YZ.Sorting.Dal
 {
@@ -71,16 +72,24 @@ namespace Automation.Plugins.YZ.Sorting.Dal
 
         public string[] GetProduct()
         {
-            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
-            string sql = "select distinct product_name from sort_order_allot_detail ";
-            DataTable dt = ra.DoQuery(sql).Tables[0];
-            string[] array = new string[dt.Rows.Count];
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                DataRow dr = dt.Rows[i];
-                array[i] = Convert.ToString(dr["product_name"]);
-            }
-            return array;
+            //try
+            //{
+                var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+                string sql = "select distinct product_name from sort_order_allot_detail ";
+                DataTable dt = ra.DoQuery(sql).Tables[0];
+                string[] array = new string[dt.Rows.Count];
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    DataRow dr = dt.Rows[i];
+                    array[i] = Convert.ToString(dr["product_name"]);
+                }
+                return array;
+            //}
+            //catch (Exception e)
+            //{
+            //    Logger.Error(e.Message);
+            //    return null;
+            //}
         }
     }
 }

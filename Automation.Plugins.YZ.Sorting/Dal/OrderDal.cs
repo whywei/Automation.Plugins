@@ -268,6 +268,15 @@ namespace Automation.Plugins.YZ.Sorting.Dal
             string sql = @"UPDATE sort_order_allot_master SET finish_time=GETDATE() WHERE pack_no<={0} AND status='02' AND finish_time IS NULL";
             ra.DoCommand(string.Format(sql, packNo));
         }
+
+        public void UpdateStatus(string packNo)
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = @"UPDATE sort_order_allot_master SET start_time=GETDATE(),finish_time=GETDATE(),status='02' WHERE pack_no<{0}";
+            ra.DoCommand(string.Format(sql, packNo));
+            sql = @"UPDATE sort_order_allot_master SET start_time=null,finish_time=null,status='01' WHERE pack_no>={0}";
+            ra.DoCommand(string.Format(sql, packNo));
+        }
     }
 }
 

@@ -19,7 +19,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         public DataTable FindSortingInformation(int groupNo)
         {
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
-            string sql = @"SELECT sort_no,pack_no,quantity,group_no,channel_address,remain_quantity,export_no,product_code,piece_barcode,
+            string sql = @"SELECT TOP 25 sort_no,pack_no,quantity,group_no,channel_address,remain_quantity,export_no,product_code,piece_barcode,
                         customer_order FROM sorting WHERE group_no={0} AND status='0' ORDER BY pack_no,sort_no";
             return ra.DoQuery(string.Format(sql, groupNo)).Tables[0];
         }

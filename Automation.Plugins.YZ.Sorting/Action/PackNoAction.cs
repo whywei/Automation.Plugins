@@ -23,8 +23,9 @@ namespace Automation.Plugins.YZ.Sorting.Action
         public override void Activate()
         {
             this.Add(new RootItem(rootKey, "烟包查询") { SortOrder = 10001 });
-            this.Add(new SimpleActionItem(rootKey, "刷新", PackNoQueryRefresh_Click) { ToolTipText = "刷新烟包查询", GroupCaption = "烟包查询", LargeImage = Resources.refresh_32x32 });
-            this.Add(new SimpleActionItem(rootKey, "打印", Print_Click) { ToolTipText = "打印烟道信息", GroupCaption = "打印", LargeImage = Resources.Print_32 });
+            this.Add(new SimpleActionItem(rootKey, "刷新", PackNoQueryRefresh_Click) { ToolTipText = "刷新烟包查询", LargeImage = Resources.refresh_32x32 });
+            this.Add(new SimpleActionItem(rootKey, "校正", CheckPackNo_Click) { ToolTipText = "校正下单记录", LargeImage = Resources.check_32 });
+            this.Add(new SimpleActionItem(rootKey, "打印", Print_Click) { ToolTipText = "打印烟道信息",LargeImage = Resources.Print_32 });
             base.Activate();
         }
 
@@ -36,6 +37,11 @@ namespace Automation.Plugins.YZ.Sorting.Action
         public void Print_Click(object sender, EventArgs e)
         {
             (View as PackNoView).Print();
+        }
+
+        public void CheckPackNo_Click(object sender, EventArgs e)
+        {
+            (View as PackNoView).CheckPackNo();
         }
     }
 }

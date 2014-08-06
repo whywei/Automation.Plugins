@@ -235,6 +235,12 @@
     <Compile Include="View\Dialog\GeneratePackDataDialog.Designer.cs">
       <DependentUpon>GeneratePackDataDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Forms\frmWaitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Forms\frmWaitForm.designer.cs">
+      <DependentUpon>frmWaitForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\HandSuppyView.cs" />
     <Compile Include="View\ChannelQueryView.cs" />
     <Compile Include="View\PackDataView.cs" />
@@ -294,6 +300,10 @@
     <None Include="Resources\download_16x16.png" />
     <None Include="Resources\Print_16.png" />
     <None Include="Resources\Print_32.png" />
+    <None Include="Resources\send_16.png" />
+    <None Include="Resources\send_32.png" />
+    <None Include="Resources\check_16.png" />
+    <None Include="Resources\check_32.png" />
     <Content Include="Serialize\Readme.txt" />
     <Content Include="TransactionScopeFactoryProviderConfig.xml">
       <SubType>Designer</SubType>

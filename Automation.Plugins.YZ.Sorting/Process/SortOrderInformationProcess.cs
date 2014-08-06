@@ -24,7 +24,7 @@ namespace Automation.Plugins.YZ.Sorting.Process
         {
             try
             {
-                bool isStart = Ops.ReadSingle<bool>(Global.memoryServiceName_PSD, Global.memoryItemName_SortingState);
+                bool isStart = Ops.ReadSingle<bool>(Global.memoryServiceName_TemporarilySingleData, Global.memoryItemName_SortingState);
                 if (isStart)
                 {
                     int sumQuantity = orderDal.FindSumQuantityFromMaster();
@@ -48,10 +48,10 @@ namespace Automation.Plugins.YZ.Sorting.Process
                                     if (table.Rows.Count > 0)
                                     {
                                         int i = 0;
-                                        string sortNoList = "";
+                                        string sortNos = "-1,";
                                         foreach (DataRow row in table.Rows)
                                         {
-                                            sortNoList = row["sort_no"].ToString() + ",";
+                                            sortNos += row["sort_no"].ToString() + ",";
                                             writeData[i++] = Convert.ToInt32(row["sort_no"]);
                                             writeData[i++] = Convert.ToInt32(row["channel_address"]);
                                             writeData[i++] = Convert.ToInt32(row["remain_quantity"]);
@@ -73,12 +73,13 @@ namespace Automation.Plugins.YZ.Sorting.Process
                                             }
                                             Logger.Info(string.Format("{0}线下单成功。包号[{1}]，数据[{2}]。", item, packNo, msg));
                                             //更新sorting表
-                                            sortingDal.UpdateSoringStatus(sortNoList);
+                                            sortNos = sortNos.Substring(0, sortNos.Length - 1);
+                                            sortingDal.UpdateSoringStatus(sortNos);
                                             //更新主表状态
                                             int isSortMaxPackNo = sortingDal.FindIsSortMaxPackNo(groupNo);
                                             orderDal.UpdateMasterStatus(isSortMaxPackNo);
                                             //向sorting表加入数据
-                                            InsertIntoSorting(groupNo,maxPackNo);
+                                            InsertIntoSorting(groupNo, maxPackNo);
                                         }
                                         else
                                         {
