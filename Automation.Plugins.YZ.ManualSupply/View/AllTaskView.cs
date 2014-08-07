@@ -78,6 +78,12 @@ namespace Automation.Plugins.YZ.ManualSupply.View
 
         public void Search(int batchNo)
         {
+            int lastBatch = handSupplyDal.GetLastSupplyBatchNo();
+            if (batchNo > lastBatch)
+            {
+                batchNo = lastBatch;
+                XtraMessageBox.Show("最大批次是 " + lastBatch, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             supplyBatch = batchNo;
             DataTable batchTaskTable = handSupplyDal.GetHandSupplyBySupplyBatch(supplyBatch);
             gridControl.DataSource = batchTaskTable;
