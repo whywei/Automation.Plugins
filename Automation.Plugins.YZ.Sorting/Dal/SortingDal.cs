@@ -71,6 +71,13 @@ namespace Automation.Plugins.YZ.Sorting.Dal
             return Convert.ToInt32(ra.DoScalar(sql));
         }
 
+        public int FindMaxSortNo(int groupNo)
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = "SELECT ISNULL(MAX(sort_no),0) sort_no FROM sorting where group_no={0}";
+            return Convert.ToInt32(ra.DoScalar(string.Format(sql, groupNo)));
+        }
+
         public void UpdateSortingByChannelCode(string channelCode, string cigaretteCode, string cigaretteName, string quantity)
         { 
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();

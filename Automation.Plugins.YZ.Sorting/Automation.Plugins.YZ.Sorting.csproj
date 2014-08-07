@@ -143,6 +143,7 @@
     <Compile Include="Bll\DownLoaderBll.cs" />
     <Compile Include="Process\DeviceRunStateProcess.cs" />
     <Compile Include="Process\FaultAlarmInformationProcess.cs" />
+    <Compile Include="Process\GenerateSortingInformationProcess.cs" />
     <Compile Include="Process\LedInformationProcess.cs" />
     <Compile Include="Process\PackageNumbersInformationProcess.cs" />
     <Compile Include="Process\SortingInfoProgress.cs" />
