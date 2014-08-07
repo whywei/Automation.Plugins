@@ -22,7 +22,7 @@ namespace Automation.Plugins.YZ.Sorting.Bll
             try
             {
                 //给plc写重新分拣标志
-                if (Ops.Write(Global.plcServiceName, "Restart_Sign", 1))
+                if (!Ops.Write(Global.plcServiceName, "Restart_Sign", 1))
                 {
                     XtraMessageBox.Show("将数据写入OPC失败！");
                     return;
