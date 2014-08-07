@@ -16,6 +16,8 @@ namespace Automation.Plugins.YZ.ManualSupply.View
     public class AllTaskView : AbstractView
     {
         int supplyBatch = 0;
+        int lastPage = 0;
+
         DataTable handSupplyTable = null;
         HandSupplyDal handSupplyDal = new HandSupplyDal();
 
@@ -25,6 +27,7 @@ namespace Automation.Plugins.YZ.ManualSupply.View
         public override void Initialize()
         {
             IsPreload = false;
+            lastPage = handSupplyDal.GetLastSupplyBatchNo();
         }
 
         public override void Activate()
@@ -53,12 +56,31 @@ namespace Automation.Plugins.YZ.ManualSupply.View
         }
 
         public void BackPage()
-        { }
+        {
+            if (supplyBatch > 1)
+            {
+                handSupplyTable = handSupplyDal.GetHandSupplyBySupplyBatch(--supplyBatch);
+                gridControl.DataSource = handSupplyTable;
+            }
+        }
 
         public void NextPage()
-        { }
+        {
+            if (supplyBatch < lastPage)
+            {
+                handSupplyTable = handSupplyDal.GetHandSupplyBySupplyBatch(++supplyBatch);
+                gridControl.DataSource = handSupplyTable;
+            }
+        }
 
         public void Print()
         { }
+
+        public void Search(int batchNo)
+        {
+            supplyBatch = batchNo;
+            DataTable batchTaskTable = handSupplyDal.GetHandSupplyBySupplyBatch(supplyBatch);
+            gridControl.DataSource = batchTaskTable;
+        }
     }
 }

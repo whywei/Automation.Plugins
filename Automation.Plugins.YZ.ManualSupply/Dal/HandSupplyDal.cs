@@ -20,5 +20,15 @@ namespace Automation.Plugins.YZ.ManualSupply.Dal
                                         where a.supply_batch='{0}' order by a.supply_id,a.quantity desc", supplyBatch);
             return ra.DoQuery(sql).Tables[0];
         }
+
+        public int GetLastSupplyBatchNo()
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = string.Format(@"select top 1 supply_batch from handle_supply 
+                                         where supply_batch 
+                                         in (select top 1 max(supply_batch) from handle_supply)");
+            object result = ra.DoScalar(sql);
+            return result == null ? 0 : Convert.ToInt32(result);
+        }
     }
 }

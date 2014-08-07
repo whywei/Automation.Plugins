@@ -12,6 +12,7 @@ namespace Automation.Plugins.YZ.ManualSupply.Action
     public class AllTaskAction : AbstractAction
     {
         private const string rootKey = "kAllTask";
+        private TextEntryActionItem txtBatchNo = new TextEntryActionItem();
 
         public override void Initialize()
         {
@@ -27,6 +28,13 @@ namespace Automation.Plugins.YZ.ManualSupply.Action
             this.Add(new SimpleActionItem(rootKey, "上页", BackPage_Click) { ToolTipText = "刷新烟道信息", LargeImage = Resource.Back });
             this.Add(new SimpleActionItem(rootKey, "下页", NextPage_Click) { ToolTipText = "刷新烟道信息", LargeImage = Resource.Next });
             this.Add(new SimpleActionItem(rootKey, "打印", Print_Click) { ToolTipText = "打印烟道信息", LargeImage = Resource.Print_32 });
+            
+            txtBatchNo.GroupCaption = "查询";
+            txtBatchNo.RootKey = rootKey;
+            txtBatchNo.Caption = "批次：";
+            txtBatchNo.Width = 80;
+            this.Add(txtBatchNo);
+            this.Add(new SimpleActionItem(rootKey, "查询", Search_Click) { GroupCaption = "查询", ToolTipText = "批次查询", LargeImage = Resource.Sorting_Query_32 });
             base.Activate();
         }
 
@@ -48,6 +56,11 @@ namespace Automation.Plugins.YZ.ManualSupply.Action
         private void Print_Click(object sender, EventArgs e)
         {
             (View as AllTaskView).Print();
+        }
+
+        private void Search_Click(object sender, EventArgs e)
+        {
+            (View as AllTaskView).Search(int.Parse(txtBatchNo.Text != null ? txtBatchNo.Text : "1"));
         }
     }
 }

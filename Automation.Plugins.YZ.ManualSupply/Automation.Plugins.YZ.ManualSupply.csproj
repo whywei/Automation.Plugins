@@ -186,6 +186,7 @@
     <None Include="Resources\refresh_32x32.png" />
     <None Include="Resources\Back.png" />
     <None Include="Resources\Next.png" />
+    <None Include="Resources\sorting_query_32.png" />
     <Content Include="Serialize\Readme.txt" />
     <Content Include="TransactionScopeFactoryProviderConfig.xml" />
   </ItemGroup>
