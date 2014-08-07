@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using DevExpress.XtraPrinting.Native.WinControls;
 using Automation.Plugins.YZ.ManualSupply;
 
-namespace Automation.Plugins.YZ.Sorting.View
+namespace Automation.Plugins.YZ.ManualSupply.View
 {
     public class PrintUtil
     {
