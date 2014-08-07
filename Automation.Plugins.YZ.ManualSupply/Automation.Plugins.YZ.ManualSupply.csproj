@@ -118,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Action\AllTaskAction.cs" />
+    <Compile Include="Action\CurrentTaskAction.cs" />
     <Compile Include="Action\MixedChannelAction.cs" />
     <Compile Include="Action\ProductCheckAction.cs" />
     <Compile Include="Dal\HandSupplyDal.cs" />
@@ -198,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\AllTaskControl.resx">
       <DependentUpon>AllTaskControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\CurrentTaskControl.resx">
+      <DependentUpon>CurrentTaskControl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
