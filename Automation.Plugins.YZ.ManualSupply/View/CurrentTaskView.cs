@@ -2,14 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
+using System.Windows.Forms;
 using Automation.Core;
 using Automation.Plugins.YZ.ManualSupply.View.Controls;
-using System.Windows.Forms;
+using DotSpatial.Controls.Docking;
+using Automation.Plugins.YZ.ManualSupply.Dal;
+using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace Automation.Plugins.YZ.ManualSupply.View
 {
     public class CurrentTaskView : AbstractView
     {
+        HandSupplyDal handSupplyDal = new HandSupplyDal();
+        DataTable handSupplyTable = null;
+        int supplyBatch = 0;
+        int dataCount = 0;
+
+        GridControl gridControl = null;
+        GridView gridView = null;
+
         public override void Initialize()
         {
             DefaultSortOrder = 201;
@@ -23,11 +36,32 @@ namespace Automation.Plugins.YZ.ManualSupply.View
             this.InnerControl = new CurrentTaskControl();
             this.Dock = DockStyle.Fill;
 
-            this.App.DockManager.PanelClosed += new EventHandler<DotSpatial.Controls.Docking.DockablePanelEventArgs>(DockManager_PanelClosed);
-            this.App.DockManager.ActivePanelChanged += new EventHandler<DotSpatial.Controls.Docking.DockablePanelEventArgs>(DockManager_ActivePanelChanged);
+            this.App.DockManager.PanelClosed += new EventHandler<DockablePanelEventArgs>(DockManager_PanelClosed);
+            this.App.DockManager.ActivePanelChanged += new EventHandler<DockablePanelEventArgs>(DockManager_ActivePanelChanged);
+
+            gridControl = ((CurrentTaskControl)this.InnerControl).gridControl1;
+            gridView = ((CurrentTaskControl)this.InnerControl).gridView1;
+            this.Refresh();
         }
 
-        private void DockManager_ActivePanelChanged(object sender, DotSpatial.Controls.Docking.DockablePanelEventArgs e)
+        public void Refresh()
+        {
+            string message = null;
+            int iSupplyBatch = handSupplyDal.GetCurrentSupplyBatch(out message);
+            supplyBatch = iSupplyBatch;
+
+            handSupplyTable = handSupplyDal.GetHandSupplyBySupplyBatch(supplyBatch);
+            dataCount = handSupplyDal.GetHandSupplyCountBySupplyBatch(supplyBatch);
+            gridControl.DataSource = handSupplyTable;
+            //this.LoadColor(gridControl);
+        }
+
+        private void LoadColor()
+        { 
+            
+        }
+
+        private void DockManager_ActivePanelChanged(object sender, DockablePanelEventArgs e)
         {
             if (e.ActivePanelKey == this.Key)
             {
@@ -35,7 +69,7 @@ namespace Automation.Plugins.YZ.ManualSupply.View
             }
         }
 
-        private void DockManager_PanelClosed(object sender, DotSpatial.Controls.Docking.DockablePanelEventArgs e)
+        private void DockManager_PanelClosed(object sender, DockablePanelEventArgs e)
         {
             if (e.ActivePanelKey == this.Key)
             {

@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using Automation.Core;
-using DotSpatial.Controls.Header;
 using Automation.Plugins.YZ.ManualSupply.Properties;
 using Automation.Plugins.YZ.ManualSupply.View;
+using DevExpress.XtraEditors;
+using DotSpatial.Controls.Header;
 
 namespace Automation.Plugins.YZ.ManualSupply.Action
 {
@@ -60,7 +62,23 @@ namespace Automation.Plugins.YZ.ManualSupply.Action
 
         private void Search_Click(object sender, EventArgs e)
         {
-            (View as AllTaskView).Search(int.Parse(txtBatchNo.Text != null ? txtBatchNo.Text : "1"));
+            int batchNo;
+            try
+            {
+                batchNo = int.Parse(txtBatchNo.Text != null ? txtBatchNo.Text : "1");
+            }
+            catch (Exception)
+            {
+                batchNo = 1;
+            }
+            try
+            {
+                (View as AllTaskView).Search(batchNo);
+            }
+            catch (Exception)
+            {
+                XtraMessageBox.Show("数据库连接失败！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

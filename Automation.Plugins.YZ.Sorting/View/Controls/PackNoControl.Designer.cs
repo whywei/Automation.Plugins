@@ -267,7 +267,7 @@
             this.ProductName.OptionsColumn.AllowFocus = false;
             this.ProductName.Visible = true;
             this.ProductName.VisibleIndex = 3;
-            this.ProductName.Width = 120;
+            this.ProductName.Width = 200;
             // 
             // Quantity1
             // 

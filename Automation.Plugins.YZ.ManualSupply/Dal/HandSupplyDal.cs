@@ -30,5 +30,42 @@ namespace Automation.Plugins.YZ.ManualSupply.Dal
             object result = ra.DoScalar(sql);
             return result == null ? 0 : Convert.ToInt32(result);
         }
+
+        public int GetCurrentSupplyBatch(out string message)
+        {
+            message = null;
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql1 = string.Format("select top 1 supply_batch from handle_supply where status='0' order by supply_id,supply_batch ");
+            string sql2 = string.Format("select max(supply_batch) supply_batch from handle_supply ");
+            DataTable dt1 = ra.DoQuery(sql1).Tables[0];
+            //作业已都补完
+            if (dt1.Rows.Count == 0)
+            {
+                DataTable dt2 = ra.DoQuery(sql2).Tables[0];
+                if (dt2.Rows[0]["supply_batch"].ToString() == "")
+                {
+                    message = "手工补货表无数据";
+                    return 0;
+                }
+                else
+                {
+                    message = "手工补货任务都已完成";
+                    return 0;
+                }
+            }
+            else
+            {
+                object result = dt1.Rows[0]["supply_batch"];
+                return result == null ? 0 : Convert.ToInt32(result);
+            }
+        }
+
+        public int GetHandSupplyCountBySupplyBatch(int supplyBatch)
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = string.Format("select count(*) from handle_supply where supply_batch='{0}' ", supplyBatch);
+            object result = ra.DoScalar(sql);
+            return result == null ? 0 : Convert.ToInt32(result);
+        }
     }
 }
