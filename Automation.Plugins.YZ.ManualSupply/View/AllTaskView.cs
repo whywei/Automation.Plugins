@@ -10,6 +10,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using Automation.Core;
 using Automation.Plugins.YZ.ManualSupply.Dal;
 using Automation.Plugins.YZ.ManualSupply.View.Controls;
+using Automation.Plugins.YZ.Sorting.View;
 
 namespace Automation.Plugins.YZ.ManualSupply.View
 {
@@ -74,7 +75,11 @@ namespace Automation.Plugins.YZ.ManualSupply.View
         }
 
         public void Print()
-        { }
+        {
+            PrintUtil controller = new PrintUtil(this.gridControl);
+            controller.PrintHeader = "全部作业";
+            controller.Preview();
+        }
 
         public void Search(int batchNo)
         {
