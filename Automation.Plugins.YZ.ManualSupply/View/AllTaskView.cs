@@ -10,7 +10,6 @@ using DevExpress.XtraGrid.Views.Grid;
 using Automation.Core;
 using Automation.Plugins.YZ.ManualSupply.Dal;
 using Automation.Plugins.YZ.ManualSupply.View.Controls;
-using Automation.Plugins.YZ.Sorting.View;
 
 namespace Automation.Plugins.YZ.ManualSupply.View
 {

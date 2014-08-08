@@ -14,7 +14,7 @@ namespace Automation.Plugins.YZ.ManualSupply.Dal
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
             string sql = string.Format(@"select a.supply_id ,a.supply_batch ,a.pack_no ,a.channel_code ,a.product_code
                                         ,a.product_name ,a.quantity
-                                        ,case when a.status = 1 then '已补货' else '未补货' end status 
+                                        ,cast(a.status as bit) status
                                         from handle_supply a 
                                         left join channel_allot b on a.channel_code = b.channel_code 
                                         where a.supply_batch='{0}' order by a.supply_id,a.quantity desc", supplyBatch);
@@ -66,6 +66,13 @@ namespace Automation.Plugins.YZ.ManualSupply.Dal
             string sql = string.Format("select count(*) from handle_supply where supply_batch='{0}' ", supplyBatch);
             object result = ra.DoScalar(sql);
             return result == null ? 0 : Convert.ToInt32(result);
+        }
+
+        public void FinishSupply(string supplyId)
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = string.Format("update handle_supply set status = '1' where supply_id={0} ", supplyId);
+            ra.DoCommand(sql);
         }
     }
 }
