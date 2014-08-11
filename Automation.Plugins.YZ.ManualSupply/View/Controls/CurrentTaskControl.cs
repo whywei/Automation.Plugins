@@ -35,9 +35,13 @@ namespace Automation.Plugins.YZ.ManualSupply.View.Controls
 
         private void CreateStyle()
         {
+            gridView1.Columns["product_name"].Width = 150;
+            
             gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             gridView1.OptionsView.ShowGroupPanel = false;
             gridView1.OptionsView.ColumnAutoWidth = false;
+            gridView1.OptionsView.RowAutoHeight = true;
+            gridView1.RowHeight = 30;
 
             for (int i = 0; i < 8; i++)
             {

@@ -50,10 +50,17 @@ namespace Automation.Plugins.YZ.ManualSupply.View
 
         public void Refresh()
         {
-            int iSupplyBatch = handSupplyDal.GetCurrentSupplyBatch();
-            supplyBatch = iSupplyBatch;
-            handSupplyTable = handSupplyDal.GetHandSupplyBySupplyBatch(supplyBatch);
-            gridControl.DataSource = handSupplyTable;
+            try
+            {
+                int iSupplyBatch = handSupplyDal.GetCurrentSupplyBatch();
+                supplyBatch = iSupplyBatch;
+                handSupplyTable = handSupplyDal.GetHandSupplyBySupplyBatch(supplyBatch);
+                gridControl.DataSource = handSupplyTable;
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void GridView_RowCellClick(object sender, RowCellClickEventArgs e)
