@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data;
+﻿using System.Data;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid;
@@ -10,7 +6,6 @@ using DevExpress.XtraGrid.Views.Grid;
 using Automation.Core;
 using Automation.Plugins.YZ.ManualSupply.Dal;
 using Automation.Plugins.YZ.ManualSupply.View.Controls;
-using Automation.Plugins.YZ.Sorting.View;
 
 namespace Automation.Plugins.YZ.ManualSupply.View
 {
