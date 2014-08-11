@@ -31,9 +31,8 @@ namespace Automation.Plugins.YZ.ManualSupply.Dal
             return result == null ? 0 : Convert.ToInt32(result);
         }
 
-        public int GetCurrentSupplyBatch(out string message)
+        public int GetCurrentSupplyBatch()
         {
-            message = null;
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
             string sql1 = string.Format("select top 1 supply_batch from handle_supply where status='0' order by supply_id,supply_batch ");
             string sql2 = string.Format("select max(supply_batch) supply_batch from handle_supply ");
@@ -42,15 +41,13 @@ namespace Automation.Plugins.YZ.ManualSupply.Dal
             if (dt1.Rows.Count == 0)
             {
                 DataTable dt2 = ra.DoQuery(sql2).Tables[0];
-                if (dt2.Rows[0]["supply_batch"].ToString() == "")
+                if (dt2.Rows.ToString() == "")
                 {
-                    message = "手工补货表无数据";
-                    return 0;
+                    throw new Exception("手工补货表无数据");
                 }
                 else
                 {
-                    message = "手工补货任务都已完成";
-                    return 0;
+                    throw new Exception("手工补货任务都已完成");
                 }
             }
             else

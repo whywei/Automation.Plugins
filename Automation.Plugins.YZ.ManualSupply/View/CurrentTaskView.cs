@@ -21,7 +21,6 @@ namespace Automation.Plugins.YZ.ManualSupply.View
         HandSupplyDal handSupplyDal = new HandSupplyDal();
         DataTable handSupplyTable = null;
         int supplyBatch = 0;
-        int dataCount = 0;
 
         GridControl gridControl = null;
         GridView gridView = null;
@@ -44,80 +43,56 @@ namespace Automation.Plugins.YZ.ManualSupply.View
 
             gridControl = ((CurrentTaskControl)this.InnerControl).gridControl1;
             gridView = ((CurrentTaskControl)this.InnerControl).gridView1;
-            
-            gridView.CellValueChanging += new CellValueChangedEventHandler(GridView_CellValueChanged);
             this.Refresh();
+
+            gridView.RowCellClick += new RowCellClickEventHandler(GridView_RowCellClick);
         }
 
         public void Refresh()
         {
-            string message = null;
-            int iSupplyBatch = handSupplyDal.GetCurrentSupplyBatch(out message);
+            int iSupplyBatch = handSupplyDal.GetCurrentSupplyBatch();
             supplyBatch = iSupplyBatch;
-
             handSupplyTable = handSupplyDal.GetHandSupplyBySupplyBatch(supplyBatch);
-            dataCount = handSupplyDal.GetHandSupplyCountBySupplyBatch(supplyBatch);
             gridControl.DataSource = handSupplyTable;
-            //this.LoadColor(gridView);
         }
 
-        private void GridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        private void GridView_RowCellClick(object sender, RowCellClickEventArgs e)
         {
             try
             {
-                string sourceStatus = gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["status"]).ToString();
-                string sourceSupplyId = gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["supply_id"]).ToString();
-                handSupplyDal.FinishSupply(sourceSupplyId);
-                
-                //this.Refresh();
+                string supplyIdValue = gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["supply_id"]).ToString();
+                string statusValue = gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["status"]).ToString();
 
-                //if (sourceStatus == "False")
-                //{
-                //    LoadColor(gridView);
-                //    gridView.Appearance.FocusedRow.BackColor = Color.Red;
-                //    XtraMessageBox.Show("前面还有卷烟未进行补货,请先补前面未补货的卷烟!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        
-                //    gridView.Appearance.FocusedRow.BackColor = Color.White;
-                //    return;
-                //}
+                if (statusValue == "True")
+                {
+                    gridView.SetRowCellValue(gridView.GetSelectedRows()[0], "status", "True");
+                }
+                else
+                {
+                    for (int i = 0; i < gridView.FocusedRowHandle; i++)
+                    {
+                        if (gridView.FocusedRowHandle > 0)
+                        {
+                            if (gridView.GetRowCellValue(gridView.FocusedRowHandle - 1, gridView.Columns["status"]).ToString() == "False")
+                            {
+                                XtraMessageBox.Show("前面还有卷烟未进行补货，请先补前面未补货的卷烟！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                return;
+                            }
+                        }
+                    }
+                    handSupplyDal.FinishSupply(supplyIdValue);
+                    gridView.SetRowCellValue(gridView.GetSelectedRows()[0], "status", "True");
+                    
+                    int hasData = handSupplyDal.GetCurrentSupplyBatch();
+                    if (supplyBatch != hasData)
+                    {
+                        this.Refresh();
+                    }
+                }
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        private void LoadColor(GridView gv)
-        {
-            for (int i = 0; i < gv.RowCount; i++)
-            {
-                string sourceStatus = gv.GetRowCellValue(gv.FocusedRowHandle, gv.Columns["status"]).ToString();
-                if (sourceStatus == "True")
-                {
-                    gv.Appearance.FocusedRow.BackColor = Color.FromArgb(192, 255, 192);
-                    gv.Columns["status"].OptionsColumn.AllowEdit = false;
-                }
-                else if (sourceStatus == "False")
-                {
-                    if (i >= 1 && gv.FocusedRowHandle > 0)
-                    {
-                        if (gv.GetRowCellValue(gv.FocusedRowHandle -1 , gv.Columns["status"]).ToString() == "True")
-                        {
-                            gv.Appearance.FocusedRow.BackColor = Color.Red;
-                        }
-                        else
-                        {
-                            gv.Appearance.FocusedRow.BackColor = Color.Blue;
-                        }
-                    }
-                    else
-                    {
-                        if (sourceStatus == "False")
-                        {
-                            gv.Appearance.FocusedRow.BackColor = Color.Red;
-                        }
-                    }
-                }
             }
         }
 
