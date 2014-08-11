@@ -43,6 +43,9 @@ namespace Automation.Plugins.YZ.ManualSupply.View.Controls
             {
                 gridView1.Columns[i].OptionsColumn.AllowFocus = false;
                 gridView1.Columns[i].OptionsColumn.AllowEdit = false;
+            }
+            for (int i = 0; i < 8; i++)
+            {
                 gridView1.Columns[i].OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             }
         }
