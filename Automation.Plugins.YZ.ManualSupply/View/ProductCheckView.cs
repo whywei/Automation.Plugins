@@ -36,9 +36,9 @@ namespace Automation.Plugins.YZ.ManualSupply.View
             gridView = ((ProductCheckControl)this.InnerControl).gridView1;
         }
 
-        public void Refresh(string product_name)
+        public void Refresh()
         {
-            gridControl.DataSource = productCheckDal.GetProductCheck(product_name); 
+            gridControl.DataSource = productCheckDal.GetProductCheck(); 
         }
 
         public void Print()
