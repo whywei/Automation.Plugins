@@ -12,9 +12,24 @@ namespace Automation.Plugins.YZ.ManualSupply.View.Dialogs
 {
     public partial class MixedChannelDialog : DevExpress.XtraEditors.XtraForm
     {
-        public MixedChannelDialog()
+        public MixedChannelDialog(DataTable table)
         {
             InitializeComponent();
+            lookUpEdit1.EditValue = "channel_code";
+            lookUpEdit1.Properties.DisplayMember = "channel_name";
+            lookUpEdit1.Properties.ValueMember = "channel_code";
+            lookUpEdit1.Properties.DataSource = table;
         }
+
+        public string SelectedChannelCode
+        {
+            get { return lookUpEdit1.EditValue.ToString(); }
+        }
+
+        public string SelectedChannelName
+        {
+            get { return lookUpEdit1.Text.ToString(); }
+        }
+        
     }
 }
