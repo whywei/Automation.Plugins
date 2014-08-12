@@ -35,7 +35,14 @@ namespace Automation.Plugins.YZ.Sorting.Action
 
             dropItem = new DropDownActionItem { GroupCaption = "查询", RootKey = rootKey, Width = 170 };
             dropItem.Caption = "卷烟名称：";
-            
+            try
+            {
+                dropItem.Items.AddRange(customerDal.GetProduct());
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(string.Format("订单查询初始化失败！原因：{0}。", ex.Message));
+            }            
             dropItem.SelectedValueChanged += new EventHandler<SelectedValueChangedEventArgs>(dropItem_SelectedValueChanged);
             this.Add(dropItem);
             dropItem.DisplayText = "请选择卷烟名称";
@@ -51,14 +58,7 @@ namespace Automation.Plugins.YZ.Sorting.Action
             this.Add(new SimpleActionItem(rootKey, "查询", Select_Click) { GroupCaption = "查询",SmallImage = Resources.Sorting_Query_16, LargeImage = Resources.Sorting_Query_16 });
             this.Add(new SimpleActionItem(rootKey, "打印", Print_Click) { ToolTipText = "打印烟道信息", LargeImage = Resources.Print_32 });
             base.Activate();
-            try
-            {
-                dropItem.Items.AddRange(customerDal.GetProduct());
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(string.Format("订单查询初始化失败！原因：{0}。", ex.Message));
-            }
+
         }
 
         private void CustomerQueryRefresh_Click(object sender, EventArgs e)
