@@ -75,6 +75,7 @@ namespace Automation.Plugins.YZ.ManualSupply.View
                     if (statusValue == "True")
                     {
                         gridView.SetRowCellValue(gridView.GetSelectedRows()[0], "status", "True");
+                        gridView.Columns["status"].AppearanceCell.BackColor = Color.FromArgb(192, 255, 192);
                     }
                     else
                     {
