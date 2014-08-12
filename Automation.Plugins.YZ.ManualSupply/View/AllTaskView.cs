@@ -27,7 +27,14 @@ namespace Automation.Plugins.YZ.ManualSupply.View
         public override void Initialize()
         {
             IsPreload = false;
-            lastPage = handSupplyDal.GetLastSupplyBatchNo();
+            try
+            {
+                lastPage = handSupplyDal.GetLastSupplyBatchNo();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         public override void Activate()
@@ -74,10 +81,20 @@ namespace Automation.Plugins.YZ.ManualSupply.View
         }
 
         public void Print()
-        { }
+        {
+            PrintUtil controller = new PrintUtil(this.gridControl);
+            controller.PrintHeader = "全部作业";
+            controller.Preview();
+        }
 
         public void Search(int batchNo)
         {
+            int lastBatch = handSupplyDal.GetLastSupplyBatchNo();
+            if (batchNo > lastBatch)
+            {
+                batchNo = lastBatch;
+                XtraMessageBox.Show("最大批次是 " + lastBatch, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             supplyBatch = batchNo;
             DataTable batchTaskTable = handSupplyDal.GetHandSupplyBySupplyBatch(supplyBatch);
             gridControl.DataSource = batchTaskTable;
