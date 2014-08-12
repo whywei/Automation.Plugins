@@ -39,6 +39,7 @@ namespace Automation.Plugins.YZ.ManualSupply.View
 
         public void Refresh()
         {
+            gridControl.DataSource = null;
             MixedChannelDal mixedChannel = new MixedChannelDal();
             var table = mixedChannel.FindMixedChannel();
             if (table.Rows.Count > 0)
@@ -46,8 +47,16 @@ namespace Automation.Plugins.YZ.ManualSupply.View
                 MixedChannelDialog mixedChannelDialog = new MixedChannelDialog(table);
                 if (mixedChannelDialog.ShowDialog() == DialogResult.OK)
                 {
-                    MixedChannelDal channel = new MixedChannelDal();
-                    gridControl.DataSource = mixedChannelDal.GetMixedChannel(mixedChannelDialog.SelectedChannelCode);
+                    if (mixedChannelDialog.SelectedChannelCode =="null")
+                    {
+                        MixedChannelDal channel = new MixedChannelDal();
+                        gridControl.DataSource = mixedChannelDal.GetAllMixedChannel(); 
+                    }
+                    else
+                    {
+                        MixedChannelDal channel = new MixedChannelDal();
+                        gridControl.DataSource = mixedChannelDal.GetMixedChannel(mixedChannelDialog.SelectedChannelCode);
+                    }
                 }
             }
             else

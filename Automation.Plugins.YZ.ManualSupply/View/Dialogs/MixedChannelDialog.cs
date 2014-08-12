@@ -15,7 +15,7 @@ namespace Automation.Plugins.YZ.ManualSupply.View.Dialogs
         public MixedChannelDialog(DataTable table)
         {
             InitializeComponent();
-            lookUpEdit1.EditValue = "channel_code";
+            lookUpEdit1.EditValue ="null";
             lookUpEdit1.Properties.DisplayMember = "channel_name";
             lookUpEdit1.Properties.ValueMember = "channel_code";
             lookUpEdit1.Properties.DataSource = table;
