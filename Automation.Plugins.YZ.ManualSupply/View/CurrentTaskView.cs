@@ -115,7 +115,6 @@ namespace Automation.Plugins.YZ.ManualSupply.View
 
         private void GridView_RowStyle(object sender, RowStyleEventArgs e)
         {
-            e.Appearance.BackColor = Color.Red;
             DataRow dr = gridView.GetDataRow(e.RowHandle);
             if (dr != null)
             {
