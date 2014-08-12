@@ -27,9 +27,6 @@ namespace Automation.Plugins.YZ.ManualSupply.View
         GridControl gridControl = null;
         GridView gridView = null;
 
-        AppearanceDefault appNotPass1 = new AppearanceDefault(Color.Black, Color.FromArgb(192, 255, 192), Color.Empty, Color.SeaShell, LinearGradientMode.Horizontal);
-        AppearanceDefault appNotPass2 = new AppearanceDefault(Color.Black, Color.Transparent, Color.Empty, Color.SeaShell, LinearGradientMode.Horizontal);
-
         public override void Initialize()
         {
             DefaultSortOrder = 201;
@@ -52,7 +49,6 @@ namespace Automation.Plugins.YZ.ManualSupply.View
 
             gridView.RowCellClick += new RowCellClickEventHandler(GridView_RowCellClick);
             gridView.RowStyle += new RowStyleEventHandler(GridView_RowStyle);
-            gridView.RowCellStyle += new RowCellStyleEventHandler(GridView_RowCellStyle);
         }
 
         public void Refresh()
@@ -115,6 +111,12 @@ namespace Automation.Plugins.YZ.ManualSupply.View
 
         private void GridView_RowStyle(object sender, RowStyleEventArgs e)
         {
+            gridView.Appearance.FocusedRow.BackColor = Color.Green;
+            gridView.Appearance.FocusedRow.BackColor2 = Color.GreenYellow;
+
+            AppearanceDefault appNotPass1 = new AppearanceDefault(Color.Black, Color.Green, Color.Empty, Color.GreenYellow, LinearGradientMode.Horizontal);
+            AppearanceDefault appNotPass2 = new AppearanceDefault(Color.Black, Color.Transparent, Color.Empty, Color.SeaShell, LinearGradientMode.Horizontal);
+
             DataRow dr = gridView.GetDataRow(e.RowHandle);
             if (dr != null)
             {
@@ -127,6 +129,9 @@ namespace Automation.Plugins.YZ.ManualSupply.View
 
         private void GridView_RowCellStyle(object sender, RowCellStyleEventArgs e)
         {
+            AppearanceDefault appNotPass1 = new AppearanceDefault(Color.Black, Color.FromArgb(192, 255, 192), Color.Blue, Color.Green);
+            AppearanceDefault appNotPass2 = new AppearanceDefault(Color.Black, Color.Transparent, Color.Empty, Color.SeaShell);
+
             if (e.Column.FieldName == "status")
             {
                 DataRow dr = gridView.GetDataRow(e.RowHandle);
