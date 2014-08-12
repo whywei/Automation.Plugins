@@ -11,8 +11,10 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Base;
+using DevExpress.Utils;
 using DotSpatial.Controls.Docking;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace Automation.Plugins.YZ.ManualSupply.View
 {
@@ -24,6 +26,9 @@ namespace Automation.Plugins.YZ.ManualSupply.View
 
         GridControl gridControl = null;
         GridView gridView = null;
+
+        AppearanceDefault appNotPass1 = new AppearanceDefault(Color.Black, Color.FromArgb(192, 255, 192), Color.Empty, Color.SeaShell, LinearGradientMode.Horizontal);
+        AppearanceDefault appNotPass2 = new AppearanceDefault(Color.Black, Color.Transparent, Color.Empty, Color.SeaShell, LinearGradientMode.Horizontal);
 
         public override void Initialize()
         {
@@ -46,6 +51,8 @@ namespace Automation.Plugins.YZ.ManualSupply.View
             this.Refresh();
 
             gridView.RowCellClick += new RowCellClickEventHandler(GridView_RowCellClick);
+            gridView.RowStyle += new RowStyleEventHandler(GridView_RowStyle);
+            gridView.RowCellStyle += new RowCellStyleEventHandler(GridView_RowCellStyle);
         }
 
         public void Refresh()
@@ -75,7 +82,6 @@ namespace Automation.Plugins.YZ.ManualSupply.View
                     if (statusValue == "True")
                     {
                         gridView.SetRowCellValue(gridView.GetSelectedRows()[0], "status", "True");
-                        gridView.Columns["status"].AppearanceCell.BackColor = Color.FromArgb(192, 255, 192);
                     }
                     else
                     {
@@ -104,6 +110,40 @@ namespace Automation.Plugins.YZ.ManualSupply.View
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void GridView_RowStyle(object sender, RowStyleEventArgs e)
+        {
+            e.Appearance.BackColor = Color.Red;
+            DataRow dr = gridView.GetDataRow(e.RowHandle);
+            if (dr != null)
+            {
+                if (dr["status"].ToString() == "True")
+                    AppearanceHelper.Apply(e.Appearance, appNotPass1);
+                else if (dr["status"].ToString() == "False")
+                    AppearanceHelper.Apply(e.Appearance, appNotPass2);
+            }
+        }
+
+        private void GridView_RowCellStyle(object sender, RowCellStyleEventArgs e)
+        {
+            if (e.Column.FieldName == "status")
+            {
+                DataRow dr = gridView.GetDataRow(e.RowHandle);
+                string strTemp = dr[e.Column.FieldName].ToString().Trim();
+                if (!string.IsNullOrEmpty(strTemp))
+                {
+                    switch (strTemp)
+                    {
+                        case "True":
+                            AppearanceHelper.Apply(e.Appearance, appNotPass1);
+                            break;
+                        case "False":
+                            AppearanceHelper.Apply(e.Appearance, appNotPass2);
+                            break;
+                    }
+                }
             }
         }
 
