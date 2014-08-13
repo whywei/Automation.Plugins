@@ -27,6 +27,11 @@ namespace Automation.Plugins.YZ.ManualSupply.View
         GridControl gridControl = null;
         GridView gridView = null;
 
+        static Color backColor1 = Color.LimeGreen;
+        static Color backColor2 = Color.GreenYellow;
+        AppearanceDefault appNotPass1 = new AppearanceDefault(Color.Black, backColor1, Color.Empty, backColor2, LinearGradientMode.Horizontal);
+        AppearanceDefault appNotPass2 = new AppearanceDefault(Color.Black, Color.Transparent, Color.Empty, Color.SeaShell, LinearGradientMode.Horizontal);
+
         public override void Initialize()
         {
             DefaultSortOrder = 201;
@@ -111,16 +116,14 @@ namespace Automation.Plugins.YZ.ManualSupply.View
 
         private void GridView_RowStyle(object sender, RowStyleEventArgs e)
         {
-            AppearanceDefault appNotPass1 = new AppearanceDefault(Color.Black, Color.Green, Color.Empty, Color.GreenYellow, LinearGradientMode.Horizontal);
-            AppearanceDefault appNotPass2 = new AppearanceDefault(Color.Black, Color.Transparent, Color.Empty, Color.SeaShell, LinearGradientMode.Horizontal);
-
             DataRow dr = gridView.GetDataRow(e.RowHandle);
             if (dr != null)
             {
                 if (gridView.FocusedRowHandle != 0)
                 {
-                    gridView.Appearance.FocusedRow.BackColor = Color.GreenYellow;
-                    gridView.Appearance.FocusedRow.BackColor2 = Color.Green;
+                    gridView.Appearance.FocusedRow.BackColor = backColor2;
+                    gridView.Appearance.FocusedRow.BackColor2 = backColor1;
+                    gridView.Appearance.FocusedRow.ForeColor = Color.DarkRed;
                 }
                 if (dr["status"].ToString() == "True")
                     AppearanceHelper.Apply(e.Appearance, appNotPass1);
