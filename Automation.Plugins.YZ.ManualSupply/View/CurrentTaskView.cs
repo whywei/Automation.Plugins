@@ -70,7 +70,7 @@ namespace Automation.Plugins.YZ.ManualSupply.View
         {
             try
             {
-                if (e.Column.VisibleIndex == 0)
+                if (e.Column.VisibleIndex == gridView.Columns.Count - 1)
                 {
                     string supplyIdValue = gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["supply_id"]).ToString();
                     string statusValue = gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["status"]).ToString();
@@ -111,15 +111,17 @@ namespace Automation.Plugins.YZ.ManualSupply.View
 
         private void GridView_RowStyle(object sender, RowStyleEventArgs e)
         {
-            gridView.Appearance.FocusedRow.BackColor = Color.Green;
-            gridView.Appearance.FocusedRow.BackColor2 = Color.GreenYellow;
-
             AppearanceDefault appNotPass1 = new AppearanceDefault(Color.Black, Color.Green, Color.Empty, Color.GreenYellow, LinearGradientMode.Horizontal);
             AppearanceDefault appNotPass2 = new AppearanceDefault(Color.Black, Color.Transparent, Color.Empty, Color.SeaShell, LinearGradientMode.Horizontal);
 
             DataRow dr = gridView.GetDataRow(e.RowHandle);
             if (dr != null)
             {
+                if (gridView.FocusedRowHandle != 0)
+                {
+                    gridView.Appearance.FocusedRow.BackColor = Color.GreenYellow;
+                    gridView.Appearance.FocusedRow.BackColor2 = Color.Green;
+                }
                 if (dr["status"].ToString() == "True")
                     AppearanceHelper.Apply(e.Appearance, appNotPass1);
                 else if (dr["status"].ToString() == "False")
