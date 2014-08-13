@@ -79,5 +79,10 @@ namespace Automation.Plugins.MDJ.WCS.Options
                 }
             }
         }
+
+        public override void OnSelected()
+        {
+
+        }
     }
 }

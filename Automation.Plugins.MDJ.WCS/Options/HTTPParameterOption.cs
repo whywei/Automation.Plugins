@@ -54,5 +54,10 @@ namespace Automation.Plugins.MDJ.WCS.Options
             Properties.Settings.Default.HttpUrl = BaseUrl;
             Properties.Settings.Default.Save();
         }
+
+        public override void OnSelected()
+        {
+
+        }
     }
 }
