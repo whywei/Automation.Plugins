@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Automation.Plugins.MDJ.WCS</id>
-    <version>1.0.0.3</version>
+    <version>1.0.0.4</version>
     <title>Automation.Plugins.MDJ.WCS</title>
     <authors>thok</authors>
     <owners>thok</owners>
