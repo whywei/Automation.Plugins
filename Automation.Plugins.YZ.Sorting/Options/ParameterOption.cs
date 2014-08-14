@@ -18,5 +18,9 @@ namespace Automation.Plugins.YZ.Sorting.Options
             this.ParentNodeName = "";
             base.Initialize();
         }
+
+        public override void OnSelected()
+        {
+        }
     }
 }

@@ -33,13 +33,6 @@ namespace Automation.Plugins.YZ.Sorting.Options
             this.control=this.InnerControl;
             ((ServerDatabaseConnectionPanel)this.InnerControl).btnTestConneection.Click+=new EventHandler(btnTestConneection_Click);
             ((ServerDatabaseConnectionPanel)this.InnerControl).btnSave.Click+=new EventHandler(btnSave_Click);
-            ((ServerDatabaseConnectionPanel)this.InnerControl).Paint += new PaintEventHandler(ServerDatabaseConnectionPanel_Paint);
-            //LoadInfo();
-        }
-
-        private void ServerDatabaseConnectionPanel_Paint(object sender, PaintEventArgs e)
-        {
-            LoadInfo();
         }
 
         private void LoadInfo()
@@ -167,6 +160,11 @@ namespace Automation.Plugins.YZ.Sorting.Options
             {
                 return false;
             }
+        }
+
+        public override void OnSelected()
+        {
+            LoadInfo();
         }
     }
 }
