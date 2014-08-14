@@ -296,6 +296,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Nuget\Automation.Plugins.MDJ.WCS.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -600,7 +601,6 @@
     <Content Include="Sql\wcs\pro_get_new_task_for_small_stock_out.sql" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Nuget\" />
     <Folder Include="Sql\data\" />
     <Folder Include="View\Forms\" />
   </ItemGroup>

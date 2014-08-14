@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Automation.Plugins.MDJ.WCS</id>
-    <version>1.0.0.2</version>
+    <version>1.0.0.3</version>
     <title>Automation.Plugins.MDJ.WCS</title>
     <authors>thok</authors>
     <owners>thok</owners>
@@ -15,10 +15,10 @@
     <copyright>Copyright 2014</copyright>
     <tags>Automation MDJ WCS</tags>
     <dependencies>
-      <dependency id="Automation.Plugins.MainPlugin" version="1.0.0.2" />
-      <dependency id="Automation.Service.AiOiTag" version="1.0.0.2" />
-      <dependency id="Automation.Service.BarcodeReader" version="1.0.0.2" />
-      <dependency id="Automation.Service.OPC" version="1.0.0.2" />
+      <dependency id="Automation.Plugins.MainPlugin" version="1.0.0.4" />
+      <dependency id="Automation.Service.AiOiTag" version="1.0.0.3" />
+      <dependency id="Automation.Service.BarcodeReader" version="1.0.0.3" />
+      <dependency id="Automation.Service.OPC" version="1.0.0.3" />
       <dependency id="DBRabbit" version="1.0.6" />
       <dependency id="Spring.Rest" version="1.1.1" />
     </dependencies>
