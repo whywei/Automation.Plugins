@@ -30,12 +30,13 @@
         {
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.supply_batch = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.line_code = new DevExpress.XtraGrid.Columns.GridColumn();
             this.product_code = new DevExpress.XtraGrid.Columns.GridColumn();
             this.product_name = new DevExpress.XtraGrid.Columns.GridColumn();
             this.quantity = new DevExpress.XtraGrid.Columns.GridColumn();
             this.stockquantity = new DevExpress.XtraGrid.Columns.GridColumn();
             this.remainquantity = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.order_date = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
@@ -58,28 +59,29 @@
             this.gridView1.Appearance.Row.Options.UseTextOptions = true;
             this.gridView1.Appearance.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.supply_batch,
+            this.line_code,
             this.product_code,
             this.product_name,
             this.quantity,
             this.stockquantity,
-            this.remainquantity});
+            this.remainquantity,
+            this.order_date});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
-            // supply_batch
+            // line_code
             // 
-            this.supply_batch.AppearanceCell.Options.UseTextOptions = true;
-            this.supply_batch.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.supply_batch.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.supply_batch.Caption = "补货批次号";
-            this.supply_batch.FieldName = "supply_batch";
-            this.supply_batch.Name = "supply_batch";
-            this.supply_batch.OptionsColumn.AllowEdit = false;
-            this.supply_batch.OptionsColumn.AllowFocus = false;
-            this.supply_batch.Visible = true;
-            this.supply_batch.VisibleIndex = 0;
+            this.line_code.AppearanceCell.Options.UseTextOptions = true;
+            this.line_code.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.line_code.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.line_code.Caption = "分拣线";
+            this.line_code.FieldName = "line_code";
+            this.line_code.Name = "line_code";
+            this.line_code.OptionsColumn.AllowEdit = false;
+            this.line_code.OptionsColumn.AllowFocus = false;
+            this.line_code.Visible = true;
+            this.line_code.VisibleIndex = 0;
             // 
             // product_code
             // 
@@ -146,6 +148,16 @@
             this.remainquantity.Visible = true;
             this.remainquantity.VisibleIndex = 5;
             // 
+            // order_date
+            // 
+            this.order_date.Caption = "订单日期";
+            this.order_date.FieldName = "order_date";
+            this.order_date.Name = "order_date";
+            this.order_date.OptionsColumn.AllowEdit = false;
+            this.order_date.OptionsColumn.AllowFocus = false;
+            this.order_date.Visible = true;
+            this.order_date.VisibleIndex = 6;
+            // 
             // ProductCheckControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -163,12 +175,13 @@
 
         public DevExpress.XtraGrid.GridControl gridControl1;
         public DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn supply_batch;
+        private DevExpress.XtraGrid.Columns.GridColumn line_code;
         private DevExpress.XtraGrid.Columns.GridColumn product_code;
         private DevExpress.XtraGrid.Columns.GridColumn product_name;
         private DevExpress.XtraGrid.Columns.GridColumn quantity;
         private DevExpress.XtraGrid.Columns.GridColumn stockquantity;
         private DevExpress.XtraGrid.Columns.GridColumn remainquantity;
+        private DevExpress.XtraGrid.Columns.GridColumn order_date;
 
     }
 }
