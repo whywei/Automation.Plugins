@@ -18,5 +18,10 @@ namespace Automation.Plugins.MDJ.WCS.Options
             this.ParentNodeName = "";
             base.Initialize();
         }
+
+        public override void OnSelected()
+        {
+
+        }
     }
 }

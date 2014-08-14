@@ -15,6 +15,7 @@ namespace Automation.Plugins.YZ.ManualSupply.Dal
             string sql = string.Format(@"select a.supply_id ,a.supply_batch ,a.pack_no ,a.channel_code ,a.product_code
                                         ,a.product_name ,a.quantity
                                         ,cast(a.status as bit) status
+                                        ,b.channel_name
                                         from handle_supply a 
                                         left join channel_allot b on a.channel_code = b.channel_code 
                                         where a.supply_batch='{0}' order by a.supply_id,a.quantity desc", supplyBatch);

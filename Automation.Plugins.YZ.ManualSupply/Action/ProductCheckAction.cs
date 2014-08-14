@@ -29,7 +29,7 @@ namespace Automation.Plugins.YZ.ManualSupply.Action
 
         private void ProductCheckRefresh_Click(object sender, EventArgs e)
         {
-            (View as ProductCheckView).Refresh(null);
+            (View as ProductCheckView).Refresh();
         }
 
         private void Print_Click(object sender, EventArgs e)

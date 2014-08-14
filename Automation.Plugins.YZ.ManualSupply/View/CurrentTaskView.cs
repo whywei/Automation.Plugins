@@ -67,33 +67,36 @@ namespace Automation.Plugins.YZ.ManualSupply.View
         {
             try
             {
-                string supplyIdValue = gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["supply_id"]).ToString();
-                string statusValue = gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["status"]).ToString();
+                if (e.Column.VisibleIndex == 0)
+                {
+                    string supplyIdValue = gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["supply_id"]).ToString();
+                    string statusValue = gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["status"]).ToString();
 
-                if (statusValue == "True")
-                {
-                    gridView.SetRowCellValue(gridView.GetSelectedRows()[0], "status", "True");
-                }
-                else
-                {
-                    for (int i = 0; i < gridView.FocusedRowHandle; i++)
+                    if (statusValue == "True")
                     {
-                        if (gridView.FocusedRowHandle > 0)
+                        gridView.SetRowCellValue(gridView.GetSelectedRows()[0], "status", "True");
+                    }
+                    else
+                    {
+                        for (int i = 0; i < gridView.FocusedRowHandle; i++)
                         {
-                            if (gridView.GetRowCellValue(gridView.FocusedRowHandle - 1, gridView.Columns["status"]).ToString() == "False")
+                            if (gridView.FocusedRowHandle > 0)
                             {
-                                XtraMessageBox.Show("前面还有卷烟未进行补货，请先补前面未补货的卷烟！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                return;
+                                if (gridView.GetRowCellValue(gridView.FocusedRowHandle - 1, gridView.Columns["status"]).ToString() == "False")
+                                {
+                                    XtraMessageBox.Show("前面还有卷烟未进行补货，请先补前面未补货的卷烟！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    return;
+                                }
                             }
                         }
-                    }
-                    handSupplyDal.FinishSupply(supplyIdValue);
-                    gridView.SetRowCellValue(gridView.GetSelectedRows()[0], "status", "True");
-                    
-                    int hasData = handSupplyDal.GetCurrentSupplyBatch();
-                    if (supplyBatch != hasData)
-                    {
-                        this.Refresh();
+                        handSupplyDal.FinishSupply(supplyIdValue);
+                        gridView.SetRowCellValue(gridView.GetSelectedRows()[0], "status", "True");
+
+                        int hasData = handSupplyDal.GetCurrentSupplyBatch();
+                        if (supplyBatch != hasData)
+                        {
+                            this.Refresh();
+                        }
                     }
                 }
             }

@@ -6,6 +6,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using Automation.Core;
 using Automation.Plugins.YZ.ManualSupply.Dal;
 using Automation.Plugins.YZ.ManualSupply.View.Controls;
+using System;
 
 namespace Automation.Plugins.YZ.ManualSupply.View
 {
@@ -23,7 +24,14 @@ namespace Automation.Plugins.YZ.ManualSupply.View
         public override void Initialize()
         {
             IsPreload = false;
-            lastPage = handSupplyDal.GetLastSupplyBatchNo();
+            try
+            {
+                lastPage = handSupplyDal.GetLastSupplyBatchNo();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         public override void Activate()
