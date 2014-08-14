@@ -48,7 +48,7 @@ namespace AutomationDesktop
             }
             catch (Exception ex)
             {
-                string msg = string.Format("MainForm 构造方法执行出错，原因详情：{1}{2}", ex.Message, ex.StackTrace);
+                string msg = string.Format("MainForm 构造方法执行出错，原因详情：{0}{1}", ex.Message, ex.StackTrace);
                 Logger.Error(msg);
                 XtraMessageBox.Show(msg, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
