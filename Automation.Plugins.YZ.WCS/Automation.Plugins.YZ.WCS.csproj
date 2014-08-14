@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Automation.Common.SRM, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Automation.Common.SRM.1.0.0.3\lib\net40\Automation.Common.SRM.dll</HintPath>
+      <HintPath>..\packages\Automation.Common.SRM.1.0.0.4\lib\net40\Automation.Common.SRM.dll</HintPath>
     </Reference>
     <Reference Include="Automation.Core">
       <HintPath>..\packages\Automation.Core.1.0.0.9\lib\net40-Client\Automation.Core.dll</HintPath>
@@ -142,7 +142,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="SRM\Process\SRM02HeartbeatRequstProcess.cs" />
     <Compile Include="SRM\Service\SRM01OPCService.cs" />
+    <Compile Include="SRM\Service\SRM02OPCService.cs" />
     <Compile Include="SRM\SRM01.cs" />
     <Compile Include="SRM\View\Controls\SRMPanel.cs">
       <SubType>UserControl</SubType>
@@ -151,6 +153,7 @@
       <DependentUpon>SRMPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="SRM\View\SRMManagerView.cs" />
+    <Compile Include="SRM\SRM02.cs" />
     <Compile Include="WCSPlugin.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +162,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\PLC.xml" />
+    <Content Include="Config\2号堆垛机.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Serialize\Readme.txt" />
     <Content Include="TransactionScopeFactoryProviderConfig.xml" />
     <None Include="Properties\Settings.settings">
