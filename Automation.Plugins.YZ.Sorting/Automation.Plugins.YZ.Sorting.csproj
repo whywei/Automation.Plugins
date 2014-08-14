@@ -53,6 +53,7 @@
     <Reference Include="DevExpress.XtraEditors.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraVerticalGrid.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DotSpatial.Controls">
@@ -148,6 +149,22 @@
     <Compile Include="Global.cs" />
     <Compile Include="Model\ChannelAllot.cs" />
     <Compile Include="Bll\DownLoaderBll.cs" />
+    <Compile Include="Model\ConnectionModel.cs" />
+    <Compile Include="Options\Controls\LocalDatabaseConnectionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Options\Controls\LocalDatabaseConnectionPanel.Designer.cs">
+      <DependentUpon>LocalDatabaseConnectionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Options\Controls\ServerDatabaseConnectionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Options\Controls\ServerDatabaseConnectionPanel.Designer.cs">
+      <DependentUpon>ServerDatabaseConnectionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Options\LocalDatabaseConnectionOption.cs" />
+    <Compile Include="Options\ParameterOption.cs" />
+    <Compile Include="Options\ServerDatabaseConnectionOption.cs" />
     <Compile Include="Process\DeviceRunStateProcess.cs" />
     <Compile Include="Process\FaultAlarmInformationProcess.cs" />
     <Compile Include="Process\GenerateSortingInformationProcess.cs" />
@@ -313,12 +330,22 @@
     <None Include="Resources\send_32.png" />
     <None Include="Resources\check_16.png" />
     <None Include="Resources\check_32.png" />
+    <None Include="Resources\ParameterOption_16.png" />
+    <None Include="Resources\ParameterOption_32.png" />
+    <None Include="Resources\database_16.png" />
     <Content Include="Serialize\Readme.txt" />
     <Content Include="TransactionScopeFactoryProviderConfig.xml">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Options\Controls\LocalDatabaseConnectionPanel.resx">
+      <DependentUpon>LocalDatabaseConnectionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Options\Controls\ServerDatabaseConnectionPanel.resx">
+      <DependentUpon>ServerDatabaseConnectionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
