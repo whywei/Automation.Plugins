@@ -37,7 +37,7 @@
       <HintPath>..\packages\Automation.Common.SRM.1.0.0.4\lib\net40\Automation.Common.SRM.dll</HintPath>
     </Reference>
     <Reference Include="Automation.Core">
-      <HintPath>..\packages\Automation.Core.1.0.0.9\lib\net40-Client\Automation.Core.dll</HintPath>
+      <HintPath>..\packages\Automation.Core.1.0.0.10\lib\net40-Client\Automation.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Automation.Service.OPC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
