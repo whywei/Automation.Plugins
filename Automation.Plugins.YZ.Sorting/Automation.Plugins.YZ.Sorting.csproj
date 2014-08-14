@@ -150,14 +150,21 @@
     <Compile Include="Model\ChannelAllot.cs" />
     <Compile Include="Bll\DownLoaderBll.cs" />
     <Compile Include="Model\ConnectionModel.cs" />
+    <Compile Include="Options\Controls\LocalDatabaseConnectionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Options\Controls\LocalDatabaseConnectionPanel.Designer.cs">
+      <DependentUpon>LocalDatabaseConnectionPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Options\Controls\ServerDatabaseConnectionPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Options\Controls\ServerDatabaseConnectionPanel.Designer.cs">
       <DependentUpon>ServerDatabaseConnectionPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Options\LocalDatabaseConnectionOption.cs" />
     <Compile Include="Options\ParameterOption.cs" />
-    <Compile Include="Options\ServerDatabaseConnectionOption.cs.cs" />
+    <Compile Include="Options\ServerDatabaseConnectionOption.cs" />
     <Compile Include="Process\DeviceRunStateProcess.cs" />
     <Compile Include="Process\FaultAlarmInformationProcess.cs" />
     <Compile Include="Process\GenerateSortingInformationProcess.cs" />
@@ -332,6 +339,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Options\Controls\LocalDatabaseConnectionPanel.resx">
+      <DependentUpon>LocalDatabaseConnectionPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Options\Controls\ServerDatabaseConnectionPanel.resx">
       <DependentUpon>ServerDatabaseConnectionPanel.cs</DependentUpon>
     </EmbeddedResource>
