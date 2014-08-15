@@ -12,7 +12,7 @@ namespace Automation.Plugins.YZ.ManualSupply.Dal
         public DataTable GetHandSupplyBySupplyBatch(int supplyBatch)
         {
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
-            string sql = string.Format(@"select a.supply_id ,a.supply_batch ,a.pack_no ,a.channel_code ,a.product_code
+            string sql = string.Format(@"select distinct a.supply_id ,a.supply_batch ,a.pack_no ,a.channel_code ,a.product_code
                                         ,a.product_name ,a.quantity
                                         ,cast(a.status as bit) status
                                         ,b.channel_name
