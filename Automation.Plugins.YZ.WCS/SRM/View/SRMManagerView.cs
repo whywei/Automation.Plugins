@@ -4,12 +4,31 @@ using System.Windows.Forms;
 using System.ComponentModel.Composition;
 using Automation.Plugins.YZ.WCS.Properties;
 using Automation.Plugins.YZ.WCS.SRM.View.Controls;
+using Automation.Common.SRM;
 
 namespace Automation.Plugins.YZ.WCS.SRM.View
 {
     public class SRMManagerView : AbstractView, IPartImportsSatisfiedNotification
     {
         private const string memoryServiceName = "MemoryPermanentSingleDataService";
+
+        private ISRM srm = null;
+        public ISRM SRM
+        {
+            get
+            {
+                return srm;
+            }
+            set
+            {
+                srm = value;
+                var control = this.InnerControl as SRMControl;
+                if (control != null)
+                {
+                    control.SRM = value;
+                }
+            }
+        }
 
         public override void Initialize()
         {
@@ -20,7 +39,7 @@ namespace Automation.Plugins.YZ.WCS.SRM.View
         {
             this.Key = "kSRM";
             this.Caption = "堆垛机";
-            this.InnerControl = new SRMPanel();
+            this.InnerControl = new SRMControl();
             this.Dock = DockStyle.Fill;
             this.SmallImage = Resources.info_rhombus_32x32;
             this.App.DockManager.PanelClosed += new EventHandler<DotSpatial.Controls.Docking.DockablePanelEventArgs>(DockManager_PanelClosed);

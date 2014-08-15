@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Automation.Core">
-      <HintPath>..\packages\Automation.Core.1.0.0.9\lib\net40-Client\Automation.Core.dll</HintPath>
+      <HintPath>..\packages\Automation.Core.1.0.0.10\lib\net40-Client\Automation.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Automation.Service.BarcodeReader, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -296,6 +296,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Nuget\Automation.Plugins.MDJ.WCS.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -600,7 +601,6 @@
     <Content Include="Sql\wcs\pro_get_new_task_for_small_stock_out.sql" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Nuget\" />
     <Folder Include="Sql\data\" />
     <Folder Include="View\Forms\" />
   </ItemGroup>

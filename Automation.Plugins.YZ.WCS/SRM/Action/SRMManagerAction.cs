@@ -6,6 +6,7 @@ using Automation.Plugins.YZ.WCS.Properties;
 using DevExpress.XtraEditors;
 using Automation.Common.SRM;
 using System.Linq;
+using Automation.Plugins.YZ.WCS.SRM.View;
 
 namespace Automation.Plugins.YZ.WCS.SRM.Action
 {
@@ -53,6 +54,7 @@ namespace Automation.Plugins.YZ.WCS.SRM.Action
         private void dropItem_SelectedValueChanged(object sender, SelectedValueChangedEventArgs e)
         {
             SRMManager.SelectSRM(e.SelectedItem.ToString());
+            Ops.GetView<SRMManagerView>().SRM = SRMManager.ActiveSRM;
         }
 
         private void btnAuto_Click(object sender, EventArgs e)
@@ -106,13 +108,22 @@ namespace Automation.Plugins.YZ.WCS.SRM.Action
                 btnAuto.Enabled = !SRMManager.ActiveSRM.Auto;
                 btnHand.Enabled = SRMManager.ActiveSRM.Auto;
             }
+            Ops.GetView<SRMManagerView>().SRM = SRMManager.ActiveSRM;
         }
 
         [Export("BeforeStopping", typeof(Func<bool>))]
         public bool BeforeStopping()
         {
-            SRMManager.SRMs.AsParallel().ForAll(s=>s.SetAuto(false));
-            return true;
+            try
+            {
+                SRMManager.SRMs.AsParallel().ForAll(s => s.SetAuto(false));
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.StackTrace);
+                return false;
+            }
         }
     }
 }
