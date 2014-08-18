@@ -51,6 +51,7 @@
     <Reference Include="DevExpress.XtraGrid.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DotSpatial.Controls">
       <HintPath>..\packages\DotSpatial.Controls.1.6.0.0\lib\net40-Client\DotSpatial.Controls.dll</HintPath>
       <Private>False</Private>
@@ -133,6 +134,15 @@
     <Compile Include="Dal\ProductCheckDal.cs" />
     <Compile Include="Dal\SortingDal.cs" />
     <Compile Include="Global.cs" />
+    <Compile Include="Model\ConnectionModel.cs" />
+    <Compile Include="Options\Controls\LocalDatabaseConnectionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Options\Controls\LocalDatabaseConnectionPanel.Designer.cs">
+      <DependentUpon>LocalDatabaseConnectionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Options\LocalDatabaseConnectionOption.cs" />
+    <Compile Include="Options\ParameterOption.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ManualSupplyPlugin.cs" />
     <Compile Include="Properties\Resource.Designer.cs">
@@ -197,10 +207,16 @@
     <None Include="Resources\Back.png" />
     <None Include="Resources\Next.png" />
     <None Include="Resources\sorting_query_32.png" />
+    <None Include="Resources\ParameterOption_16.png" />
+    <None Include="Resources\ParameterOption_32.png" />
+    <None Include="Resources\database_16.png" />
     <Content Include="Serialize\Readme.txt" />
     <Content Include="TransactionScopeFactoryProviderConfig.xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Options\Controls\LocalDatabaseConnectionPanel.resx">
+      <DependentUpon>LocalDatabaseConnectionPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
