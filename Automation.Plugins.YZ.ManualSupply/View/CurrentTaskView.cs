@@ -47,11 +47,10 @@ namespace Automation.Plugins.YZ.ManualSupply.View
 
             this.App.DockManager.PanelClosed += new EventHandler<DockablePanelEventArgs>(DockManager_PanelClosed);
             this.App.DockManager.ActivePanelChanged += new EventHandler<DockablePanelEventArgs>(DockManager_ActivePanelChanged);
-
+            
             gridControl = ((CurrentTaskControl)this.InnerControl).gridControl1;
             gridView = ((CurrentTaskControl)this.InnerControl).gridView1;
-            this.Refresh();
-
+            
             gridView.RowCellClick += new RowCellClickEventHandler(GridView_RowCellClick);
             gridView.RowStyle += new RowStyleEventHandler(GridView_RowStyle);
         }
@@ -155,12 +154,21 @@ namespace Automation.Plugins.YZ.ManualSupply.View
                 }
             }
         }
-
+        bool isRefresh = false;
         private void DockManager_ActivePanelChanged(object sender, DockablePanelEventArgs e)
         {
             if (e.ActivePanelKey == this.Key)
             {
+                if (isRefresh == false)
+                {
+                    isRefresh = true;
+                    this.Refresh();
+                }
                 this.Focus = true;
+            }
+            else
+            {
+                isRefresh = false;
             }
         }
 

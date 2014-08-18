@@ -286,8 +286,16 @@ namespace Automation.MainPlugin.Action
         [Export("BeforeStopping", typeof(Func<bool>))]
         public bool BeforeStopping()
         {
-            AutomationContext.Write(plcServiceName, O_Stockin_Scan_Alarm, 1);
-            return true;
+            try
+            {
+                AutomationContext.Write(plcServiceName, O_Stockin_Scan_Alarm, 1);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.StackTrace);
+                return false;
+            }
         }
     }
 }

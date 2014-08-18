@@ -124,20 +124,27 @@ namespace Automation.MainPlugin.Action
 
         private void RefreshAction(string srmName, string groupCaption)
         {
-            if (InitSRMS(srmName))
+            try
             {
-                if (_btnAuto.Single(b => b.GroupCaption == groupCaption).Enabled == false)
+                if (InitSRMS(srmName))
                 {
-                    Task.Factory.StartNew(() => SRMS[srmName].SetAuto(true));
-                    _btnAuto.Single(b => b.GroupCaption == groupCaption).Enabled = false;
-                    _btnHand.Single(b => b.GroupCaption == groupCaption).Enabled = true;
+                    if (_btnAuto.Single(b => b.GroupCaption == groupCaption).Enabled == false)
+                    {
+                        Task.Factory.StartNew(() => SRMS[srmName].SetAuto(true));
+                        _btnAuto.Single(b => b.GroupCaption == groupCaption).Enabled = false;
+                        _btnHand.Single(b => b.GroupCaption == groupCaption).Enabled = true;
+                    }
+                    else
+                    {
+                        Task.Factory.StartNew(() => SRMS[srmName].SetAuto(false));
+                        _btnAuto.Single(b => b.GroupCaption == groupCaption).Enabled = true;
+                        _btnHand.Single(b => b.GroupCaption == groupCaption).Enabled = false;
+                    }
                 }
-                else
-                {
-                    Task.Factory.StartNew(() => SRMS[srmName].SetAuto(false));
-                    _btnAuto.Single(b => b.GroupCaption == groupCaption).Enabled = true;
-                    _btnHand.Single(b => b.GroupCaption == groupCaption).Enabled = false;
-                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.StackTrace);
             }
         }
 

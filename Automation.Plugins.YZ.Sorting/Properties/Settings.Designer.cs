@@ -23,21 +23,27 @@ namespace Automation.Plugins.YZ.Sorting.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("01")]
         public string Sorting_Line_Code {
             get {
                 return ((string)(this["Sorting_Line_Code"]));
             }
+            set {
+                this["Sorting_Line_Code"] = value;
+            }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("F:\\PackData\\")]
         public string PackDataPath {
             get {
                 return ((string)(this["PackDataPath"]));
+            }
+            set {
+                this["PackDataPath"] = value;
             }
         }
     }

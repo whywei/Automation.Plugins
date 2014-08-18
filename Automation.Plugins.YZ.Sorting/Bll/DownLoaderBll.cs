@@ -40,6 +40,10 @@ namespace Automation.Plugins.YZ.Sorting.Bll
                 var table = serverDal.FindChannel(batchId);
                 for (int i = 0; i < table.Rows.Count; i++)
                 {
+                    if (table.Rows[i]["piece_barcode"].ToString().Length > 6)
+                    {
+                        table.Rows[i]["piece_barcode"] = table.Rows[i]["piece_barcode"].ToString().Substring(0, 6);
+                    }
                     channelDal.InsertChannel(table.Rows[i]);
                     OnDownLoadProgress(table.Rows.Count, "下载烟道信息");
                 }

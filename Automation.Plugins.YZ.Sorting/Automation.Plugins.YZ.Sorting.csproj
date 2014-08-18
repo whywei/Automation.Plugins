@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Automation.Core">
-      <HintPath>..\packages\Automation.Core.1.0.0.9\lib\net40-Client\Automation.Core.dll</HintPath>
+      <HintPath>..\packages\Automation.Core.1.0.0.10\lib\net40-Client\Automation.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Automation.Service.LED">
@@ -162,9 +162,16 @@
     <Compile Include="Options\Controls\ServerDatabaseConnectionPanel.Designer.cs">
       <DependentUpon>ServerDatabaseConnectionPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Options\Controls\SystemParameterPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Options\Controls\SystemParameterPanel.Designer.cs">
+      <DependentUpon>SystemParameterPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Options\LocalDatabaseConnectionOption.cs" />
     <Compile Include="Options\ParameterOption.cs" />
     <Compile Include="Options\ServerDatabaseConnectionOption.cs" />
+    <Compile Include="Options\SystemParameterOption.cs" />
     <Compile Include="Process\DeviceRunStateProcess.cs" />
     <Compile Include="Process\FaultAlarmInformationProcess.cs" />
     <Compile Include="Process\GenerateSortingInformationProcess.cs" />
@@ -186,6 +193,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="SortingPlugin.cs" />
     <Compile Include="View\CacheOrderQueryView.cs" />
     <Compile Include="View\Controls\ChannelQueryControl.cs">
@@ -345,7 +353,9 @@
     <EmbeddedResource Include="Options\Controls\ServerDatabaseConnectionPanel.resx">
       <DependentUpon>ServerDatabaseConnectionPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Options\Controls\SystemParameterPanel.resx">
+      <DependentUpon>SystemParameterPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

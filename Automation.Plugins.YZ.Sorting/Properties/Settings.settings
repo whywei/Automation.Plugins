@@ -2,10 +2,10 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Automation.Plugins.YZ.Sorting.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Sorting_Line_Code" Type="System.String" Scope="Application">
+    <Setting Name="Sorting_Line_Code" Type="System.String" Scope="User">
       <Value Profile="(Default)">01</Value>
     </Setting>
-    <Setting Name="PackDataPath" Type="System.String" Scope="Application">
+    <Setting Name="PackDataPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">F:\PackData\</Value>
     </Setting>
   </Settings>
