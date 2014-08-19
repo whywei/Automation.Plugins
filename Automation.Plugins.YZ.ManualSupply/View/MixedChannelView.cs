@@ -12,6 +12,8 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using Automation.Plugins.YZ.ManualSupply.View.Dialogs;
+using System.Reflection;
+using System.Drawing;
 
 namespace Automation.Plugins.YZ.ManualSupply.View
 {
@@ -45,6 +47,8 @@ namespace Automation.Plugins.YZ.ManualSupply.View
             if (table.Rows.Count > 0)
             {
                 MixedChannelDialog mixedChannelDialog = new MixedChannelDialog(table);
+                Assembly assembly = Assembly.GetEntryAssembly();
+                mixedChannelDialog.Icon = Icon.ExtractAssociatedIcon(assembly.Location);
                 if (mixedChannelDialog.ShowDialog() == DialogResult.OK)
                 {
                     if (mixedChannelDialog.SelectedChannelCode =="null")
