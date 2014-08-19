@@ -74,7 +74,7 @@ namespace Automation.Plugins.YZ.ManualSupply.View
         {
             try
             {
-                if (e.Column.VisibleIndex == gridView.Columns.Count - 1)
+                if (e.Column.FieldName == "status")
                 {
                     string supplyIdValue = gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["supply_id"]).ToString();
                     string statusValue = gridView.GetRowCellValue(gridView.FocusedRowHandle, gridView.Columns["status"]).ToString();

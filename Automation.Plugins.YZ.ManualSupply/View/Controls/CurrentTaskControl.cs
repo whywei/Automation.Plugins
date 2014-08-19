@@ -73,6 +73,7 @@ namespace Automation.Plugins.YZ.ManualSupply.View.Controls
                 gridView1.Columns[i].OptionsColumn.AllowEdit = false;
                 gridView1.Columns[i].OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             }
+            gridView1.Columns["status"].OptionsColumn.AllowFocus = true;
             #endregion
 
             #region Alone
