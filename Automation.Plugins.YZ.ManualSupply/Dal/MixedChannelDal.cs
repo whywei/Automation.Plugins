@@ -12,7 +12,7 @@ namespace Automation.Plugins.YZ.ManualSupply.Dal
         public DataTable GetMixedChannel(string channel_code)
         {
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
-            string sql = string.Format(@"select a.supply_id ,a.supply_batch ,a.pack_no ,
+            string sql = string.Format(@"select distinct a.supply_id ,a.supply_batch ,a.pack_no ,
                                         c.deliver_line_name,c.customer_name,
                                         a.channel_code ,
                                         b.channel_name,
@@ -34,7 +34,7 @@ namespace Automation.Plugins.YZ.ManualSupply.Dal
         public DataTable GetAllMixedChannel()
         {
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
-            string sql = string.Format(@"select a.supply_id ,a.supply_batch ,a.pack_no ,
+            string sql = string.Format(@"select distinct a.supply_id ,a.supply_batch ,a.pack_no ,
                                         c.deliver_line_name,c.customer_name,
                                         a.channel_code ,
                                         b.channel_name,
