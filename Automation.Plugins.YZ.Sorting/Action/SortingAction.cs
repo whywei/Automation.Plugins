@@ -53,7 +53,6 @@ namespace Automation.Plugins.YZ.Sorting.Action
             header.Add(new SimpleActionItem(rootKey, "订单查询", CustomerQuery_Click) { ToolTipText = "客户订单查询", GroupCaption = "查询", SortOrder = 3, LargeImage = Resources.customer_32x32 });
             header.Add(new SimpleActionItem(rootKey, "缓存查询", CacheOrderQuery_Click) { ToolTipText = "缓存订单查询", GroupCaption = "查询", SortOrder = 4, LargeImage = Resources.CacheOrderQuery_32 });
             header.Add(new SimpleActionItem(rootKey, "下单记录", SortingRecordQuery_Click) { ToolTipText = "下单记录查询", GroupCaption = "查询", SortOrder = 5, LargeImage = Resources.Sorting_Query_32 });
-            header.Add(new SimpleActionItem(rootKey, "手工补货", HandSuppyQuery_Click) { ToolTipText = "手工补货查询", GroupCaption = "查询", SortOrder = 6, LargeImage = Resources.handwork_32x32 });
             header.Add(new SimpleActionItem(rootKey, "包装数据", PackDataQuery_Click) { ToolTipText = "包装机数据查询", GroupCaption = "查询", SortOrder = 7, LargeImage = Resources.package_data_32x32 });
         }
 
