@@ -117,6 +117,8 @@
   <ItemGroup>
     <Compile Include="Action\StockPositionAction.cs" />
     <Compile Include="Action\StockStatusAction.cs" />
+    <Compile Include="Dal\OrderDal.cs" />
+    <Compile Include="Dal\ProductDal.cs" />
     <Compile Include="Dal\StockPositionDal.cs" />
     <Compile Include="Dal\StockTaskDal.cs" />
     <Compile Include="Global.cs" />
@@ -188,6 +190,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\UpdateBarcodeDialog.resx">
+      <DependentUpon>UpdateBarcodeDialog.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

@@ -9,6 +9,9 @@ using Automation.Plugins.YZ.Stocking.View;
 using Automation.Plugins.YZ.Stocking.View.Dialog;
 using System.Reflection;
 using System.Drawing;
+using Automation.Plugins.YZ.Stocking.Dal;
+using System.Data;
+using DevExpress.XtraEditors;
 
 namespace Automation.Plugins.YZ.Stocking
 {
@@ -16,6 +19,8 @@ namespace Automation.Plugins.YZ.Stocking
     {
         [Import]
         public AutomationContext AutomationContext { get; set; }
+        [Import]
+        public UpdateBarcodeDialog UpdateBarcodeDialog { get; set; }
 
         [Import("Shell", typeof(ContainerControl))]
         public ContainerControl Shell { get; set; }
@@ -51,10 +56,16 @@ namespace Automation.Plugins.YZ.Stocking
             header.Add(btnStop);
             header.Add(new SimpleActionItem("kStocking", "补货状态", StockStatus_Click) { ToolTipText = "补货状态", GroupCaption = "查询", SortOrder = 1, LargeImage = Resources.Task_32 });
             header.Add(new SimpleActionItem("kStocking", "拆盘位置", StockPosition_Click) { ToolTipText = "拆盘位置", GroupCaption = "查询", SortOrder = 2, LargeImage = Resources.yandao_32x32 });
+
+            UpdateBarcodeDialog.Load+=new EventHandler(dialog_Load);
+            UpdateBarcodeDialog.btnOK.Click += new EventHandler(btnOK_Click);
         }
 
         private void UpdateBarcode_Click(object sender, EventArgs e)
         {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            UpdateBarcodeDialog.Icon = Icon.ExtractAssociatedIcon(assembly.Location);
+            UpdateBarcodeDialog.ShowDialog();
         }
 
         private void StartStock_Click(object sender, EventArgs e)
@@ -83,6 +94,36 @@ namespace Automation.Plugins.YZ.Stocking
         private void StockPosition_Click(object sender, EventArgs e)
         {
             AutomationContext.ActivateView<StockPositionView>();
+        }
+
+        private void dialog_Load(object sender,EventArgs e)
+        {
+            OrderDal orderDal = new OrderDal();
+            DataTable product = orderDal.FindProductFromOrder();
+            UpdateBarcodeDialog.cmbProduct.Properties.ValueMember = "product_code";
+            UpdateBarcodeDialog.cmbProduct.Properties.DisplayMember = "product_name";
+            UpdateBarcodeDialog.cmbProduct.Properties.DataSource = product;
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            string productCode = UpdateBarcodeDialog.cmbProduct.EditValue.ToString().Trim();
+            if (productCode.Length <= 0)
+            {
+                XtraMessageBox.Show("请选择卷烟名称！", "提示");
+                return;
+            }
+            string barcode = UpdateBarcodeDialog.txtBarcode.Text.Trim();
+            if (barcode.Length != 6)
+            {
+                XtraMessageBox.Show("条码长度必须为六位数！", "提示");
+                return;
+            }
+            ProductDal productDal = new ProductDal();
+            productDal.UpdateBarcode(productCode, barcode);
+            StockTaskDal stockTaskDal = new StockTaskDal();
+            stockTaskDal.UpdateBarcode(productCode, barcode);
+            UpdateBarcodeDialog.Close();
         }
     }
 }

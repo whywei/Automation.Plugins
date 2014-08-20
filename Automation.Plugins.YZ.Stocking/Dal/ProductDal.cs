@@ -6,12 +6,12 @@ using DBRabbit;
 
 namespace Automation.Plugins.YZ.Stocking.Dal
 {
-    public class StockTaskDal : AbstractBaseDal
+    public class ProductDal:AbstractBaseDal
     {
-        public void UpdateBarcode(string productCode, string barcode)
+        public void UpdateBarcode(string productCode,string barcode)
         {
             var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
-            string sql = @"update sms_supply_task set product_barcode='{0}' where product_code='{1}'";
+            string sql = @"update wms_product set piece_barcode='{0}' where product_code='{1}'";
             ra.DoCommand(string.Format(sql, barcode, productCode));
         }
     }

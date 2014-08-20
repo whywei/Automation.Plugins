@@ -11,6 +11,7 @@ using System.ComponentModel.Composition;
 
 namespace Automation.Plugins.YZ.Stocking.View.Dialog
 {
+    [Export(typeof(UpdateBarcodeDialog))]
     public partial class UpdateBarcodeDialog : DevExpress.XtraEditors.XtraForm
     {
         public UpdateBarcodeDialog()
