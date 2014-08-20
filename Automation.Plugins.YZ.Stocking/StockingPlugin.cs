@@ -71,6 +71,24 @@ namespace Automation.Plugins.YZ.Stocking
         private void StartStock_Click(object sender, EventArgs e)
         {
             SwitchStatus(true);
+            OrderDal orderDal = new OrderDal();
+            DataTable product = orderDal.FindProductInformation();
+            int[] productCodeList = new int[product.Rows.Count];
+            string[] productNameList = new string[product.Rows.Count];
+            for (int i = 0; i < product.Rows.Count ; i++)
+            {
+                if (product.Rows[i]["piece_barcode"].ToString().Trim().Length != 6)
+                {
+                    productCodeList[i] = i+1;
+                }
+                else
+                {
+                    productCodeList[i] = Convert.ToInt32(product.Rows[i]["piece_barcode"]);
+                }
+                productNameList[i] = product.Rows[i]["product_name"].ToString().Substring(0, 13);
+            }
+            Ops.Write(Global.plcServiceName, "Cigarette_Barcode_Information", productCodeList);
+            Ops.Write(Global.plcServiceName, "Cigarette_Name_Information", productNameList);
         }
 
         private void StopStock_click(object sender, EventArgs e)
@@ -80,10 +98,12 @@ namespace Automation.Plugins.YZ.Stocking
 
         private void SwitchStatus(bool isStart)
         {
-            btnUpdateBarcode.Enabled = !isStart;
-            btnStart.Enabled = !isStart;
-            btnStop.Enabled = isStart;
-            AutomationContext.Write(Global.memoryServiceName_TemporarilySingleData, Global.memoryItemName_SortingState, isStart);
+            if (AutomationContext.Write(Global.memoryServiceName_TemporarilySingleData, Global.memoryItemName_SortingState, isStart))
+            {
+                btnUpdateBarcode.Enabled = !isStart;
+                btnStart.Enabled = !isStart;
+                btnStop.Enabled = isStart;
+            }
         }
 
         private void StockStatus_Click(object sender, EventArgs e)
