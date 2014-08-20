@@ -9,6 +9,7 @@ using Automation.Plugins.YZ.Sorting.Dal;
 using Automation.Plugins.YZ.Sorting.View.Dialog;
 using System.Reflection;
 using System.Drawing;
+using Automation.Plugins.YZ.Sorting.Bll;
 
 
 namespace Automation.Plugins.YZ.Sorting.Action
@@ -99,6 +100,9 @@ namespace Automation.Plugins.YZ.Sorting.Action
         private void StartSort_Click(object sender, EventArgs e)
         {
             SwitchStatus(true);
+            //将卷烟信息写入PLC
+            ProductBll productBll = new ProductBll();
+            productBll.WriteProductInfoToPLC();
         }
 
         private void StopSort_click(object sender, EventArgs e)
@@ -108,10 +112,12 @@ namespace Automation.Plugins.YZ.Sorting.Action
 
         private void SwitchStatus(bool isStart)
         {
-            btnDown.Enabled = !isStart;
-            btnStart.Enabled = !isStart;
-            btnStop.Enabled = isStart;
-            AutomationContext.Write(Global.memoryServiceName_TemporarilySingleData, Global.memoryItemName_SortingState, isStart);
+            if (AutomationContext.Write(Global.memoryServiceName_TemporarilySingleData, Global.memoryItemName_SortingState, isStart))
+            {
+                btnDown.Enabled = !isStart;
+                btnStart.Enabled = !isStart;
+                btnStop.Enabled = isStart;
+            }
         }
 
         private void ChannelQuery_Click(object sender, EventArgs e)
