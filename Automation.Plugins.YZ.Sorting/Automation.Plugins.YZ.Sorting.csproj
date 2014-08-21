@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Automation.Core">
-      <HintPath>..\packages\Automation.Core.1.0.0.9\lib\net40-Client\Automation.Core.dll</HintPath>
+      <HintPath>..\packages\Automation.Core.1.0.0.10\lib\net40-Client\Automation.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Automation.Service.LED">
@@ -53,6 +53,7 @@
     <Reference Include="DevExpress.XtraEditors.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraVerticalGrid.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DotSpatial.Controls">
@@ -128,7 +129,6 @@
     <Compile Include="Action\CacheOrderAction.cs" />
     <Compile Include="Action\ChannelAction.cs" />
     <Compile Include="Action\CustomerAction.cs" />
-    <Compile Include="Action\HandSuppyAction.cs" />
     <Compile Include="Action\PackDataAction.cs" />
     <Compile Include="Action\PackNoAction.cs" />
     <Compile Include="Action\SortingAction.cs" />
@@ -140,7 +140,6 @@
     <Compile Include="Dal\SortingRecordDal.cs" />
     <Compile Include="Dal\CustomerDal.cs" />
     <Compile Include="Dal\ExportPackDal.cs" />
-    <Compile Include="Dal\HandSupplyDal.cs" />
     <Compile Include="Dal\OrderDal.cs" />
     <Compile Include="Dal\PackNoDal.cs" />
     <Compile Include="Dal\ServerDal.cs" />
@@ -148,6 +147,29 @@
     <Compile Include="Global.cs" />
     <Compile Include="Model\ChannelAllot.cs" />
     <Compile Include="Bll\DownLoaderBll.cs" />
+    <Compile Include="Model\ConnectionModel.cs" />
+    <Compile Include="Options\Controls\LocalDatabaseConnectionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Options\Controls\LocalDatabaseConnectionPanel.Designer.cs">
+      <DependentUpon>LocalDatabaseConnectionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Options\Controls\ServerDatabaseConnectionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Options\Controls\ServerDatabaseConnectionPanel.Designer.cs">
+      <DependentUpon>ServerDatabaseConnectionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Options\Controls\SystemParameterPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Options\Controls\SystemParameterPanel.Designer.cs">
+      <DependentUpon>SystemParameterPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Options\LocalDatabaseConnectionOption.cs" />
+    <Compile Include="Options\ParameterOption.cs" />
+    <Compile Include="Options\ServerDatabaseConnectionOption.cs" />
+    <Compile Include="Options\SystemParameterOption.cs" />
     <Compile Include="Process\DeviceRunStateProcess.cs" />
     <Compile Include="Process\FaultAlarmInformationProcess.cs" />
     <Compile Include="Process\GenerateSortingInformationProcess.cs" />
@@ -169,6 +191,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="SortingPlugin.cs" />
     <Compile Include="View\CacheOrderQueryView.cs" />
     <Compile Include="View\Controls\ChannelQueryControl.cs">
@@ -182,12 +205,6 @@
     </Compile>
     <Compile Include="View\Controls\CustomerQueryControl.Designer.cs">
       <DependentUpon>CustomerQueryControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Controls\HandSuppyControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\Controls\HandSuppyControl.Designer.cs">
-      <DependentUpon>HandSuppyControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Controls\PackDataControl.cs">
       <SubType>UserControl</SubType>
@@ -250,7 +267,6 @@
     <Compile Include="View\Forms\frmWaitForm.designer.cs">
       <DependentUpon>frmWaitForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\HandSuppyView.cs" />
     <Compile Include="View\ChannelQueryView.cs" />
     <Compile Include="View\PackDataView.cs" />
     <Compile Include="View\PackNoView.cs" />
@@ -293,8 +309,6 @@
     <None Include="Resources\Efficiency_32x32.png" />
     <None Include="Resources\Efficiency2_16x16.png" />
     <None Include="Resources\Efficiency2_32x32.png" />
-    <None Include="Resources\handwork_16x16.png" />
-    <None Include="Resources\handwork_32x32.png" />
     <None Include="Resources\package_16x16.png" />
     <None Include="Resources\package_32x32.png" />
     <None Include="Resources\package_data_16x16.png" />
@@ -313,12 +327,24 @@
     <None Include="Resources\send_32.png" />
     <None Include="Resources\check_16.png" />
     <None Include="Resources\check_32.png" />
+    <None Include="Resources\ParameterOption_16.png" />
+    <None Include="Resources\ParameterOption_32.png" />
+    <None Include="Resources\database_16.png" />
     <Content Include="Serialize\Readme.txt" />
     <Content Include="TransactionScopeFactoryProviderConfig.xml">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Options\Controls\LocalDatabaseConnectionPanel.resx">
+      <DependentUpon>LocalDatabaseConnectionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Options\Controls\ServerDatabaseConnectionPanel.resx">
+      <DependentUpon>ServerDatabaseConnectionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Options\Controls\SystemParameterPanel.resx">
+      <DependentUpon>SystemParameterPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -328,9 +354,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\CustomerQueryControl.resx">
       <DependentUpon>CustomerQueryControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Controls\HandSuppyControl.resx">
-      <DependentUpon>HandSuppyControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\OrderQueryControl.resx">
       <DependentUpon>OrderQueryControl.cs</DependentUpon>

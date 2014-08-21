@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid;
@@ -7,6 +8,7 @@ using Automation.Core;
 using Automation.Plugins.YZ.ManualSupply.Dal;
 using Automation.Plugins.YZ.ManualSupply.View.Controls;
 using System;
+using DotSpatial.Controls.Docking;
 
 namespace Automation.Plugins.YZ.ManualSupply.View
 {
@@ -24,14 +26,6 @@ namespace Automation.Plugins.YZ.ManualSupply.View
         public override void Initialize()
         {
             IsPreload = false;
-            try
-            {
-                lastPage = handSupplyDal.GetLastSupplyBatchNo();
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show(ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
 
         public override void Activate()
@@ -43,6 +37,7 @@ namespace Automation.Plugins.YZ.ManualSupply.View
 
             gridControl = ((AllTaskControl)this.InnerControl).gridControl1;
             gridView = ((AllTaskControl)this.InnerControl).gridView1;
+            this.App.DockManager.ActivePanelChanged += new EventHandler<DockablePanelEventArgs>(DockManager_ActivePanelChanged);
         }
 
         public void Refresh()
@@ -95,6 +90,21 @@ namespace Automation.Plugins.YZ.ManualSupply.View
             supplyBatch = batchNo;
             DataTable batchTaskTable = handSupplyDal.GetHandSupplyBySupplyBatch(supplyBatch);
             gridControl.DataSource = batchTaskTable;
+        }
+
+        private void DockManager_ActivePanelChanged(object sender, DockablePanelEventArgs e)
+        {
+            if (e.ActivePanelKey == this.Key)
+            {
+                try
+                {
+                    lastPage = handSupplyDal.GetLastSupplyBatchNo();
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(string.Format("全部作业查询初始化失败！原因：{0}。", ex.Message));
+                }
+            }
         }
     }
 }

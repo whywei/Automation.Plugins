@@ -37,6 +37,7 @@ namespace Automation.Plugins.YZ.ManualSupply.View.Controls
 
         private void CreateStyle()
         {
+            #region Set columns width
             gridView1.Columns["supply_id"].Width = 80;
             gridView1.Columns["supply_batch"].Width = 50;
             gridView1.Columns["pack_no"].Width = 80;
@@ -44,28 +45,34 @@ namespace Automation.Plugins.YZ.ManualSupply.View.Controls
             gridView1.Columns["channel_name"].Width = 80;
             gridView1.Columns["product_name"].Width = 200;
             gridView1.Columns["quantity"].Width = 50;
-            gridView1.Columns["status"].Width = 50;
+            gridView1.Columns["status"].Width = 50; 
+            #endregion
 
+            #region HAlignment for header
             gridView1.Columns["status"].AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
             gridView1.Columns["supply_id"].AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
             gridView1.Columns["supply_batch"].AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
             gridView1.Columns["pack_no"].AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
-            gridView1.Columns["quantity"].AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
+            gridView1.Columns["quantity"].AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center; 
+            #endregion
 
+            #region HAlignment for cell
             gridView1.Columns["supply_id"].AppearanceCell.TextOptions.HAlignment = HorzAlignment.Center;
             gridView1.Columns["supply_batch"].AppearanceCell.TextOptions.HAlignment = HorzAlignment.Center;
             gridView1.Columns["pack_no"].AppearanceCell.TextOptions.HAlignment = HorzAlignment.Center;
-            gridView1.Columns["quantity"].AppearanceCell.TextOptions.HAlignment = HorzAlignment.Center;
-            
+            gridView1.Columns["quantity"].AppearanceCell.TextOptions.HAlignment = HorzAlignment.Center; 
+            #endregion
+
+            #region Basic
             gridControl1.Dock = DockStyle.Fill;
             gridView1.OptionsView.ShowGroupPanel = false;
             gridView1.OptionsView.ColumnAutoWidth = false;
-
             for (int i = 0; i < 9; i++)
             {
                 gridView1.Columns[i].OptionsColumn.AllowFocus = false;
                 gridView1.Columns[i].OptionsColumn.AllowEdit = false;
             }
+            #endregion
         }
     }
 }

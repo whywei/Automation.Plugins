@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
-using System.Linq;
 using System.Text;
+using System.Linq;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 
-namespace Automation.Plugins.YZ.Sorting.View.Controls
+namespace Automation.Plugins.YZ.Stocking.View.Controls
 {
-    public partial class HandSuppyControl : DevExpress.XtraEditors.XtraUserControl
+    public partial class StockStatusControl : DevExpress.XtraEditors.XtraUserControl
     {
-        public HandSuppyControl()
+        public StockStatusControl()
         {
             InitializeComponent();
         }

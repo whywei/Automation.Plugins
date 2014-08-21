@@ -9,6 +9,7 @@ using Automation.Plugins.YZ.Sorting.Dal;
 using Automation.Plugins.YZ.Sorting.View.Dialog;
 using System.Reflection;
 using System.Drawing;
+using Automation.Plugins.YZ.Sorting.Bll;
 
 
 namespace Automation.Plugins.YZ.Sorting.Action
@@ -52,7 +53,6 @@ namespace Automation.Plugins.YZ.Sorting.Action
             header.Add(new SimpleActionItem(rootKey, "订单查询", CustomerQuery_Click) { ToolTipText = "客户订单查询", GroupCaption = "查询", SortOrder = 3, LargeImage = Resources.customer_32x32 });
             header.Add(new SimpleActionItem(rootKey, "缓存查询", CacheOrderQuery_Click) { ToolTipText = "缓存订单查询", GroupCaption = "查询", SortOrder = 4, LargeImage = Resources.CacheOrderQuery_32 });
             header.Add(new SimpleActionItem(rootKey, "下单记录", SortingRecordQuery_Click) { ToolTipText = "下单记录查询", GroupCaption = "查询", SortOrder = 5, LargeImage = Resources.Sorting_Query_32 });
-            header.Add(new SimpleActionItem(rootKey, "手工补货", HandSuppyQuery_Click) { ToolTipText = "手工补货查询", GroupCaption = "查询", SortOrder = 6, LargeImage = Resources.handwork_32x32 });
             header.Add(new SimpleActionItem(rootKey, "包装数据", PackDataQuery_Click) { ToolTipText = "包装机数据查询", GroupCaption = "查询", SortOrder = 7, LargeImage = Resources.package_data_32x32 });
         }
 
@@ -99,6 +99,9 @@ namespace Automation.Plugins.YZ.Sorting.Action
         private void StartSort_Click(object sender, EventArgs e)
         {
             SwitchStatus(true);
+            //将卷烟信息写入PLC
+            ProductBll productBll = new ProductBll();
+            productBll.WriteProductInfoToPLC();
         }
 
         private void StopSort_click(object sender, EventArgs e)
@@ -108,10 +111,12 @@ namespace Automation.Plugins.YZ.Sorting.Action
 
         private void SwitchStatus(bool isStart)
         {
-            btnDown.Enabled = !isStart;
-            btnStart.Enabled = !isStart;
-            btnStop.Enabled = isStart;
-            AutomationContext.Write(Global.memoryServiceName_TemporarilySingleData, Global.memoryItemName_SortingState, isStart);
+            if (AutomationContext.Write(Global.memoryServiceName_TemporarilySingleData, Global.memoryItemName_SortingState, isStart))
+            {
+                btnDown.Enabled = !isStart;
+                btnStart.Enabled = !isStart;
+                btnStop.Enabled = isStart;
+            }
         }
 
         private void ChannelQuery_Click(object sender, EventArgs e)
@@ -134,11 +139,6 @@ namespace Automation.Plugins.YZ.Sorting.Action
         private void SortingRecordQuery_Click(object sender, EventArgs e)
         {
             AutomationContext.ActivateView<SortingRecordView>();
-        }
-
-        private void HandSuppyQuery_Click(object sender, EventArgs e)
-        {
-            AutomationContext.ActivateView<HandSuppyView>();
         }
 
         private void PackDataQuery_Click(object sender, EventArgs e)
