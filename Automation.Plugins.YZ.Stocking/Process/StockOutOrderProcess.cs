@@ -117,7 +117,7 @@ namespace Automation.Plugins.YZ.Stocking.Process
                     {
                         msg += item + ",";
                     }
-                    Logger.Info(string.Format("写订单成功！数据【{0}】", msg.Substring(0, msg.Length)));
+                    Logger.Info(string.Format("写订单成功！数据【{0}】", msg.Substring(0, msg.Length-1)));
                 }
             }
         }
