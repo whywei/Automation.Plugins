@@ -30,5 +30,18 @@ namespace Automation.Plugins.YZ.Stocking.Dal
             string sql = @"update dbo.sms_supply_task set origin_position_address='{0}',status='1' where id={1}";
             ra.DoCommand(string.Format(sql, originPositionAddress, id));
         }
+
+        public DataTable FindSupplyTaskForLED(int originPositionAddress,int quantity)
+        {
+            string condition="";
+            if (originPositionAddress > 0)
+            {
+                condition = string.Format("and origin_position_address={0} ", originPositionAddress);
+            }
+            var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
+            string sql = @"select top {1} supply_id,product_code,product_name from sms_supply_task
+                        where status='1' {0} order by supply_id desc";
+            return ra.DoQuery(string.Format(sql, condition, quantity)).Tables[0];
+        }
     }
 }

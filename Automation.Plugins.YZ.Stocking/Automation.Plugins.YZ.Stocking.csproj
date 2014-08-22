@@ -137,6 +137,11 @@
     </Compile>
     <Compile Include="Service\LEDService.cs" />
     <Compile Include="Service\YZStockingOPCService.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="StockingPlugin.cs" />
     <Compile Include="Util\PrintUtil.cs" />
     <Compile Include="View\Controls\StockPositionControl.cs">
@@ -168,8 +173,13 @@
     <Compile Include="View\StockStatusView.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Dll\EQ2008_Dll_Set.ini" />
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\PLC.xml" />
