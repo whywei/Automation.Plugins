@@ -24,7 +24,6 @@ namespace Automation.Plugins.YZ.Sorting.Action
         {
             this.Add(new RootItem(rootKey, "烟道查询") { SortOrder = 10001 });
             this.Add(new SimpleActionItem(rootKey, "刷新", ChannelQueryRefresh_Click) { ToolTipText = "刷新烟道信息", LargeImage = Resources.refresh_32x32 });
-            this.Add(new SimpleActionItem(rootKey, "更新卷烟", SendProductInfoToPLC_Click) { ToolTipText = "将卷烟信息发送到PLC", LargeImage = Resources.send_32 });
             this.Add(new SimpleActionItem(rootKey, "交换烟道", ChannelExchange_Click) { ToolTipText = "烟道交换", LargeImage = Resources.SortChannelSwap_32 });
             this.Add(new SimpleActionItem(rootKey, "打印", Print_Click) { ToolTipText = "打印烟道信息", LargeImage = Resources.Print_32 });
             base.Activate();
@@ -43,12 +42,6 @@ namespace Automation.Plugins.YZ.Sorting.Action
         public void Print_Click(object sender, EventArgs e)
         {
             (View as ChannelQueryView).Print();
-        }
-
-        public void SendProductInfoToPLC_Click(object sender, EventArgs e)
-        {
-            ProductBll productBll = new ProductBll();
-            productBll.WriteProductInfoToPLC();
         }
     }
 }

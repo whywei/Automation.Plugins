@@ -39,7 +39,7 @@ namespace Automation.Plugins.YZ.WCS
             IHeaderControl header = App.HeaderControl;
             header.Add(new RootItem(rootKey, "手工补货") { SortOrder = 106 });
             header.Add(new SimpleActionItem(rootKey, "卷烟查询", ProductCheck_Click) { ToolTipText = "手工补货卷烟查询", GroupCaption = "查询", SortOrder = 1, LargeImage = Resource.Product_32 });
-            header.Add(new SimpleActionItem(rootKey, "全部作业", AllTask_Click) { ToolTipText = "全部作业查询", GroupCaption = "查询", SortOrder = 2, LargeImage = Resource.Task_32 });
+            header.Add(new SimpleActionItem(rootKey, "作业查询", AllTask_Click) { ToolTipText = "全部作业查询", GroupCaption = "查询", SortOrder = 2, LargeImage = Resource.Task_32 });
             header.Add(new SimpleActionItem(rootKey, "混合烟道", MixedChannel_Click) { ToolTipText = "混合烟道卷烟查询", GroupCaption = "查询", SortOrder = 3, LargeImage = Resource.yandao_32x32 });
         }
 

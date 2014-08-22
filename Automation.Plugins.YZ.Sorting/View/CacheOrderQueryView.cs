@@ -24,7 +24,7 @@ namespace Automation.Plugins.YZ.Sorting.View
         public override void Activate()
         {
             this.Key = "kCacheOrderQuery";
-            this.Caption = "缓存订单查询";
+            this.Caption = "缓存查询";
             this.InnerControl = new OrderQueryControl();
             this.Dock = DockStyle.Fill;
             this.SmallImage = Resources.refresh_32x32;

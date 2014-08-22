@@ -56,10 +56,6 @@ namespace Automation.Plugins.YZ.Sorting.Bll
                     channelDal.UpdatePieceBarCode(table.Rows[i]["product_code"].ToString(), pieceBarCode);
                 }
 
-                //将卷烟信息写入PLC
-                ProductBll productBll = new ProductBll();
-                productBll.WriteProductInfoToPLC();
-
                 //下载订单主表
                 table = serverDal.FindOrderMaster(batchId);                
                 int total = table.Rows.Count;

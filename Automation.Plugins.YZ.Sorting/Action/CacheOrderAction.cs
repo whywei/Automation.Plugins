@@ -22,7 +22,7 @@ namespace Automation.Plugins.YZ.Sorting.Action
 
         public override void Activate()
         {
-            this.Add(new RootItem(rootKey, "缓存订单查询") { SortOrder = 10001 });
+            this.Add(new RootItem(rootKey, "缓存查询") { SortOrder = 10001 });
             this.Add(new SimpleActionItem(rootKey, "A-前", A_FrontCacheRefresh_Click) { ToolTipText = "A线小皮带缓存订单查询", LargeImage = Resources.refresh_32x32 });
             this.Add(new SimpleActionItem(rootKey, "A-后", A_LaterCacheRefresh_Click) { ToolTipText = "A线多沟带缓存订单查询", LargeImage = Resources.refresh_32x32 });
             this.Add(new SimpleActionItem(rootKey, "B-前", B_FrontCacheRefresh_Click) { ToolTipText = "B线小皮带缓存订单查询", LargeImage = Resources.refresh_32x32 });

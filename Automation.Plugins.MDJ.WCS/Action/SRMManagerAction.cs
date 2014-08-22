@@ -178,8 +178,6 @@ namespace Automation.MainPlugin.Action
                         RefreshAction();
                     }
                 }));
-
-            Thread.Sleep(1500);
             return true;
         }
     }
