@@ -49,7 +49,11 @@
     <Reference Include="DevExpress.Data.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v13.1.Core, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DotSpatial.Controls">
       <HintPath>..\packages\DotSpatial.Controls.1.6.0.0\lib\net40-Client\DotSpatial.Controls.dll</HintPath>
       <Private>False</Private>
@@ -116,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Action\StockPositionAction.cs" />
+    <Compile Include="Action\StockPositionStorageAction.cs" />
     <Compile Include="Action\StockStatusAction.cs" />
     <Compile Include="Dal\OrderDal.cs" />
     <Compile Include="Dal\ProductDal.cs" />
@@ -133,11 +138,18 @@
     <Compile Include="Service\LEDService.cs" />
     <Compile Include="Service\YZStockingOPCService.cs" />
     <Compile Include="StockingPlugin.cs" />
+    <Compile Include="Util\PrintUtil.cs" />
     <Compile Include="View\Controls\StockPositionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="View\Controls\StockPositionControl.Designer.cs">
       <DependentUpon>StockPositionControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\StockPositionStorageControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\StockPositionStorageControl.Designer.cs">
+      <DependentUpon>StockPositionStorageControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Controls\StockStatusControl.cs">
       <SubType>UserControl</SubType>
@@ -151,6 +163,7 @@
     <Compile Include="View\Dialog\UpdateBarcodeDialog.Designer.cs">
       <DependentUpon>UpdateBarcodeDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\StockPositionStorageView.cs" />
     <Compile Include="View\StockPositionView.cs" />
     <Compile Include="View\StockStatusView.cs" />
   </ItemGroup>
@@ -183,6 +196,7 @@
     <Content Include="Dll\Readme.txt" />
     <None Include="Resources\UpdateBarcode_16.png" />
     <None Include="Resources\UpdateBarcode_32.png" />
+    <None Include="Resources\position_32.png" />
     <Content Include="Serialize\Readme.txt" />
     <Content Include="TransactionScopeFactoryProviderConfig.xml" />
   </ItemGroup>
@@ -190,6 +204,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\StockPositionStorageControl.resx">
+      <DependentUpon>StockPositionStorageControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Dialog\UpdateBarcodeDialog.resx">
       <DependentUpon>UpdateBarcodeDialog.cs</DependentUpon>

@@ -141,11 +141,6 @@ namespace Automation.Plugins.YZ.Sorting.Action
             AutomationContext.ActivateView<SortingRecordView>();
         }
 
-        private void HandSuppyQuery_Click(object sender, EventArgs e)
-        {
-            AutomationContext.ActivateView<HandSuppyView>();
-        }
-
         private void PackDataQuery_Click(object sender, EventArgs e)
         {
             AutomationContext.ActivateView<PackDataView>();

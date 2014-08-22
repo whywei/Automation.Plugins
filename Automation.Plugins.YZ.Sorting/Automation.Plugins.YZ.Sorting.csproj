@@ -129,7 +129,6 @@
     <Compile Include="Action\CacheOrderAction.cs" />
     <Compile Include="Action\ChannelAction.cs" />
     <Compile Include="Action\CustomerAction.cs" />
-    <Compile Include="Action\HandSuppyAction.cs" />
     <Compile Include="Action\PackDataAction.cs" />
     <Compile Include="Action\PackNoAction.cs" />
     <Compile Include="Action\SortingAction.cs" />
@@ -141,7 +140,6 @@
     <Compile Include="Dal\SortingRecordDal.cs" />
     <Compile Include="Dal\CustomerDal.cs" />
     <Compile Include="Dal\ExportPackDal.cs" />
-    <Compile Include="Dal\HandSupplyDal.cs" />
     <Compile Include="Dal\OrderDal.cs" />
     <Compile Include="Dal\PackNoDal.cs" />
     <Compile Include="Dal\ServerDal.cs" />
@@ -208,12 +206,6 @@
     <Compile Include="View\Controls\CustomerQueryControl.Designer.cs">
       <DependentUpon>CustomerQueryControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\HandSuppyControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\Controls\HandSuppyControl.Designer.cs">
-      <DependentUpon>HandSuppyControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\Controls\PackDataControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -275,7 +267,6 @@
     <Compile Include="View\Forms\frmWaitForm.designer.cs">
       <DependentUpon>frmWaitForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\HandSuppyView.cs" />
     <Compile Include="View\ChannelQueryView.cs" />
     <Compile Include="View\PackDataView.cs" />
     <Compile Include="View\PackNoView.cs" />
@@ -318,8 +309,6 @@
     <None Include="Resources\Efficiency_32x32.png" />
     <None Include="Resources\Efficiency2_16x16.png" />
     <None Include="Resources\Efficiency2_32x32.png" />
-    <None Include="Resources\handwork_16x16.png" />
-    <None Include="Resources\handwork_32x32.png" />
     <None Include="Resources\package_16x16.png" />
     <None Include="Resources\package_32x32.png" />
     <None Include="Resources\package_data_16x16.png" />
@@ -365,9 +354,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\CustomerQueryControl.resx">
       <DependentUpon>CustomerQueryControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Controls\HandSuppyControl.resx">
-      <DependentUpon>HandSuppyControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\OrderQueryControl.resx">
       <DependentUpon>OrderQueryControl.cs</DependentUpon>
