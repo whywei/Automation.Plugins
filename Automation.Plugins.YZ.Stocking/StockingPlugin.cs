@@ -99,7 +99,7 @@ namespace Automation.Plugins.YZ.Stocking
 
         private void SwitchStatus(bool isStart)
         {
-            if (AutomationContext.Write(Global.memoryServiceName_TemporarilySingleData, Global.memoryItemName_SortingState, isStart))
+            if (AutomationContext.Write(Global.memoryServiceName_TemporarilySingleData, Global.memoryItemName_StockState, isStart))
             {
                 btnUpdateBarcode.Enabled = !isStart;
                 btnStart.Enabled = !isStart;
