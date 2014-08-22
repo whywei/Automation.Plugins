@@ -154,6 +154,15 @@ namespace Automation.Plugins.YZ.ManualSupply.View
                 }
             }
         }
+
+        private void GridView_RowCellCustomDraw(object sender, RowCellCustomDrawEventArgs e)
+        {
+            if (e.RowHandle == gridView.FocusedRowHandle)
+            {
+                e.Appearance.BackColor = Color.Red;
+            }
+        }
+
         bool isRefresh = false;
         private void DockManager_ActivePanelChanged(object sender, DockablePanelEventArgs e)
         {
