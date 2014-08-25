@@ -14,36 +14,37 @@ using Automation.Plugins.YZ.Sorting.View;
 
 namespace Automation.Plugins.YZ.Stocking.View
 {
-    public class StockPositionView : AbstractView
+    public class StockPositionStorageView : AbstractView
     {
         private GridControl gridControl = null;
         GridView gridView = null;
-        StockPositionDal stockPositionDal = new StockPositionDal();
+        StockPositionStorageDal stockPositionStorageDal = new StockPositionStorageDal();
+
         public override void Initialize()
         {
-            this.DefaultSortOrder = 101;
+            this.DefaultSortOrder = 102;
             IsPreload = false;
         }
 
         public override void Activate()
         {
-            this.Key = "kStockPosition";
-            this.Caption = "拆盘位置";
-            this.InnerControl = new StockPositionControl();
+            this.Key = "kStockPositionStorage";
+            this.Caption = "位置库存";
+            this.InnerControl = new StockPositionStorageControl();
             this.Dock = DockStyle.Fill;
             this.SmallImage = Resources.yandao_16x16;
-            gridControl = ((StockPositionControl)this.InnerControl).gridStockPositionQuery;
-            gridView = ((StockPositionControl)this.InnerControl).viewStockPositionQuery;
+            gridControl = ((StockPositionStorageControl)this.InnerControl).gridStockPositionStorageQuery;
+            gridView = ((StockPositionStorageControl)this.InnerControl).viewStockPositionStorageQuery;
         }
 
         public void Refresh()
         {
-            gridControl.DataSource = stockPositionDal.FindSupplyPosition();
+            gridControl.DataSource = stockPositionStorageDal.FindStockPositionStorage();
         }
         public void Print()
         {
             PrintSettingView controller = new PrintSettingView(this.gridControl);
-            controller.PrintHeader = "拆盘位置";
+            controller.PrintHeader = "拆盘位置库存";
             controller.Preview();
         }
     }

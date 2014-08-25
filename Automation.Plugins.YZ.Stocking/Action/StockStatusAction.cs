@@ -5,6 +5,7 @@ using System.Text;
 using Automation.Core;
 using DotSpatial.Controls.Header;
 using Automation.Plugins.YZ.Stocking.Properties;
+using Automation.Plugins.YZ.Stocking.View;
 
 namespace Automation.Plugins.YZ.Stocking.Action
 {
@@ -28,12 +29,16 @@ namespace Automation.Plugins.YZ.Stocking.Action
         }
 
         private void OrderStatus_Click(object sender, EventArgs e)
-        { }
+        {
+            (View as StockStatusView).Refresh();
+        }
 
         private void ScanStatus_Click(object sender, EventArgs e)
         { }
 
         private void Print_Click(object sender, EventArgs e)
-        { }
+        {
+            (View as StockStatusView).Print();
+        }
     }
 }

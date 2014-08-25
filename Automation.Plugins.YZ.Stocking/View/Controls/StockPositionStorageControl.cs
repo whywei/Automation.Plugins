@@ -13,9 +13,9 @@ using Automation.Plugins.YZ.Stocking.Action;
 
 namespace Automation.Plugins.YZ.Stocking.View.Controls
 {
-    public partial class StockPositionControl : DevExpress.XtraEditors.XtraUserControl
+    public partial class StockPositionStorageControl : DevExpress.XtraEditors.XtraUserControl
     {
-        public StockPositionControl()
+        public StockPositionStorageControl()
         {
             InitializeComponent();
         }

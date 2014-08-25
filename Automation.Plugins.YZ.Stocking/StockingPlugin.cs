@@ -55,8 +55,8 @@ namespace Automation.Plugins.YZ.Stocking
             btnStop = new SimpleActionItem("kStocking", "停止补货", StopStock_click) { Enabled = false, ToolTipText = "停止补货", GroupCaption = "操作", SortOrder = 3, LargeImage = Resources.spouse_32x32 };
             header.Add(btnStop);
             header.Add(new SimpleActionItem("kStocking", "拆盘位置", StockPosition_Click) { ToolTipText = "补货状态", GroupCaption = "查询", SortOrder = 1, LargeImage = Resources.position_32 });
-            header.Add(new SimpleActionItem("kStocking", "位置库存", StockPosition_Click) { ToolTipText = "拆盘位置", GroupCaption = "查询", SortOrder = 2, LargeImage = Resources.yandao_32x32 });
-            header.Add(new SimpleActionItem("kStocking", "补货任务", StockStatus_Click) { ToolTipText = "补货状态", GroupCaption = "查询", SortOrder = 3, LargeImage = Resources.Task_32 });
+            header.Add(new SimpleActionItem("kStocking", "位置库存", StockPositionStorage_Click) { ToolTipText = "拆盘位置", GroupCaption = "查询", SortOrder = 2, LargeImage = Resources.yandao_32x32 });
+            header.Add(new SimpleActionItem("kStocking", "补货任务", StockStatus_Click) { ToolTipText = "补货任务", GroupCaption = "查询", SortOrder = 3, LargeImage = Resources.Task_32 });
 
             UpdateBarcodeDialog.Load+=new EventHandler(dialog_Load);
             UpdateBarcodeDialog.btnOK.Click += new EventHandler(btnOK_Click);
@@ -115,6 +115,10 @@ namespace Automation.Plugins.YZ.Stocking
         private void StockPosition_Click(object sender, EventArgs e)
         {
             AutomationContext.ActivateView<StockPositionView>();
+        }
+        private void StockPositionStorage_Click(object sender, EventArgs e)
+        {
+            AutomationContext.ActivateView<StockPositionStorageView>();
         }
 
         private void dialog_Load(object sender,EventArgs e)

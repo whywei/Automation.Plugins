@@ -144,6 +144,7 @@
     <Compile Include="Dal\PackNoDal.cs" />
     <Compile Include="Dal\ServerDal.cs" />
     <Compile Include="Dal\SortingDal.cs" />
+    <Compile Include="Dal\SupplyPositionStorage.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Model\ChannelAllot.cs" />
     <Compile Include="Bll\DownLoaderBll.cs" />
@@ -345,6 +346,7 @@
     <EmbeddedResource Include="Options\Controls\SystemParameterPanel.resx">
       <DependentUpon>SystemParameterPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
