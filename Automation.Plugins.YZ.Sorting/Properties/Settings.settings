@@ -8,5 +8,11 @@
     <Setting Name="PackDataPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">F:\PackData\</Value>
     </Setting>
+    <Setting Name="Supply_Cache_Position" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1,2</Value>
+    </Setting>
+    <Setting Name="HttpUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://localhost:7851/SortTask/</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

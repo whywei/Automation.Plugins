@@ -47,6 +47,8 @@
         <OPCItem ItemName="Fault_Alarm_Information" OPCItemName="DB402,INT0,100"  ItemType="READ"/>
         <!--运行状态-->
         <OPCItem ItemName="Device_Run_State" OPCItemName="DB100,INT6,1"  ItemType="READ"/>
+
+        <OPCItem ItemName="Supply_Cache_Position_Information" OPCItemName="DB502,INT0,8"  ItemType="READ"/>
       </OPCGroup>
     </OPCGroups>
   </OPCServer>

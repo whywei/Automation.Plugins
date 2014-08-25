@@ -46,5 +46,29 @@ namespace Automation.Plugins.YZ.Sorting.Properties {
                 this["PackDataPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1,2")]
+        public string Supply_Cache_Position {
+            get {
+                return ((string)(this["Supply_Cache_Position"]));
+            }
+            set {
+                this["Supply_Cache_Position"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:7851/SortTask/")]
+        public string HttpUrl {
+            get {
+                return ((string)(this["HttpUrl"]));
+            }
+            set {
+                this["HttpUrl"] = value;
+            }
+        }
     }
 }
