@@ -61,7 +61,7 @@
             // 
             this.panelControl2.Controls.Add(this.panelControl4);
             this.panelControl2.Controls.Add(this.panelControl3);
-            this.panelControl2.Location = new System.Drawing.Point(3, 6);
+            this.panelControl2.Location = new System.Drawing.Point(3, 3);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(342, 299);
             this.panelControl2.TabIndex = 20;
