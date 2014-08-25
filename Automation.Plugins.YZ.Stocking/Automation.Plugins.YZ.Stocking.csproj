@@ -37,9 +37,6 @@
       <HintPath>..\packages\Automation.Core.1.0.0.10\lib\net40-Client\Automation.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Automation.Plugins.YZ.Sorting">
-      <HintPath>..\Automation.Plugins.YZ.Sorting\obj\Debug\Automation.Plugins.YZ.Sorting.dll</HintPath>
-    </Reference>
     <Reference Include="Automation.Service.LED">
       <HintPath>..\packages\Automation.Service.LED.1.0.0.1\lib\net40\Automation.Service.LED.dll</HintPath>
     </Reference>

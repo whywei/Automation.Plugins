@@ -121,11 +121,6 @@ namespace Automation.Plugins.YZ.Stocking
             AutomationContext.ActivateView<StockPositionStorageView>();
         }
 
-        private void StockPositionStorage_Click(object sender, EventArgs e)
-        {
-            AutomationContext.ActivateView<StockPositionStorageView>();
-        }
-
         private void dialog_Load(object sender,EventArgs e)
         {
             OrderDal orderDal = new OrderDal();

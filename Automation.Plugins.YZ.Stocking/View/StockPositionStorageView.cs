@@ -10,7 +10,7 @@ using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using System.Data;
 using Automation.Plugins.YZ.Stocking.Dal;
-using Automation.Plugins.YZ.Sorting.View;
+using Automation.Plugins.YZ.Stocking.Util;
 
 namespace Automation.Plugins.YZ.Stocking.View
 {
@@ -43,7 +43,7 @@ namespace Automation.Plugins.YZ.Stocking.View
         }
         public void Print()
         {
-            PrintSettingView controller = new PrintSettingView(this.gridControl);
+            PrintUtil controller = new PrintUtil(this.gridControl);
             controller.PrintHeader = "拆盘位置库存";
             controller.Preview();
         }

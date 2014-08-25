@@ -37,3 +37,4 @@ namespace Automation.Plugins.YZ.Stocking.Action
             (View as StockPositionStorageView).Print();
         }
     }
+}
