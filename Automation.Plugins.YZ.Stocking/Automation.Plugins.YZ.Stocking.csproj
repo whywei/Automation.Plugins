@@ -52,11 +52,11 @@
     <Reference Include="DevExpress.Data.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v13.1.Core, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\DevExpress\DXperience 13.1\Bin\Framework\DevExpress.XtraGrid.v13.1.dll</HintPath>
-    </Reference>
+    <Reference Include="DevExpress.XtraBars.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DotSpatial.Controls">
       <HintPath>..\packages\DotSpatial.Controls.1.6.0.0\lib\net40-Client\DotSpatial.Controls.dll</HintPath>
       <Private>False</Private>
@@ -141,7 +141,13 @@
     </Compile>
     <Compile Include="Service\LEDService.cs" />
     <Compile Include="Service\YZStockingOPCService.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="StockingPlugin.cs" />
+    <Compile Include="Util\PrintUtil.cs" />
     <Compile Include="View\Controls\StockPositionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -166,14 +172,18 @@
     <Compile Include="View\Dialog\UpdateBarcodeDialog.Designer.cs">
       <DependentUpon>UpdateBarcodeDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\PrintSettingView.cs" />
     <Compile Include="View\StockPositionStorageView.cs" />
     <Compile Include="View\StockPositionView.cs" />
     <Compile Include="View\StockStatusView.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Dll\EQ2008_Dll_Set.ini" />
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\PLC.xml" />
@@ -208,6 +218,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\StockPositionStorageControl.resx">
+      <DependentUpon>StockPositionStorageControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Dialog\UpdateBarcodeDialog.resx">
       <DependentUpon>UpdateBarcodeDialog.cs</DependentUpon>

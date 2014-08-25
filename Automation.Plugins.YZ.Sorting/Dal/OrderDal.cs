@@ -275,6 +275,13 @@ namespace Automation.Plugins.YZ.Sorting.Dal
             sql = @"UPDATE sort_order_allot_master SET start_time=null,finish_time=null,status='01' WHERE pack_no>={0}";
             ra.DoCommand(string.Format(sql, packNo));
         }
+
+        public DataTable FindOrderDate()
+        {
+            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            string sql = @"select distinct order_date,batch_no from sort_order_allot_master";
+            return ra.DoQuery(sql).Tables[0];
+        }
     }
 }
 

@@ -12,6 +12,7 @@ namespace Automation.Plugins.YZ.Stocking.Action
     public class StockPositionStorageAction : AbstractAction
     {
         private const string rootKey = "kStockPositionStorage";
+
         public override void Initialize()
         {
             RootKey = rootKey;
@@ -36,4 +37,3 @@ namespace Automation.Plugins.YZ.Stocking.Action
             (View as StockPositionStorageView).Print();
         }
     }
-}

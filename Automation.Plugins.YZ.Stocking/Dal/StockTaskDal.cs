@@ -34,5 +34,32 @@ namespace Automation.Plugins.YZ.Stocking.Dal
                       ,case [status]  when '1' then '已下单' else  '未下单' end [status] FROM [sms_supply_task]";
             return ra.DoQuery(sql).Tables[0];
         }
+        public DataTable FindUnStockTask()
+        {
+            var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
+            string sql = @"select top 25 id,product_code,product_barcode,origin_position_address,target_supply_address,status,0 as storageId
+                        from sms_supply_task where status='0' order by supply_id";
+            return ra.DoQuery(sql).Tables[0];
+        }
+
+        public void UpdateSupplyTask(string id, string originPositionAddress)
+        {
+            var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
+            string sql = @"update dbo.sms_supply_task set origin_position_address='{0}',status='1' where id={1}";
+            ra.DoCommand(string.Format(sql, originPositionAddress, id));
+        }
+
+        public DataTable FindSupplyTaskForLED(int originPositionAddress,int quantity)
+        {
+            string condition="";
+            if (originPositionAddress > 0)
+            {
+                condition = string.Format("and origin_position_address={0} ", originPositionAddress);
+            }
+            var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
+            string sql = @"select top {1} supply_id,product_code,product_name from sms_supply_task
+                        where status='1' {0} order by supply_id desc";
+            return ra.DoQuery(string.Format(sql, condition, quantity)).Tables[0];
+        }
     }
 }
