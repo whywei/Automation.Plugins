@@ -10,6 +10,7 @@ using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using Automation.Plugins.YZ.Stocking.Dal;
 using Automation.Plugins.YZ.Stocking.Util;
+using System.Data;
 
 namespace Automation.Plugins.YZ.Stocking.View
 {
@@ -34,9 +35,28 @@ namespace Automation.Plugins.YZ.Stocking.View
             IsPreload = false;
         }
        
-        public void Refresh()
+        public void Refresh(string ledNo,string sql)
         {
-            gridControl.DataSource = stockTaskDal.FindStockTaskStorage();
+            DataTable table = stockTaskDal.FindStockTaskStorage(sql);
+            object obj = AutomationContext.Read(Global.plcServiceName, "Supply_Led_Position_Information");
+            Array array = (Array)obj;
+            for (int i = 0; i < array.Length / 2; i++)
+            {
+                string ledCode = array.GetValue(i * 2).ToString();
+                if (ledCode == ledNo)
+                {
+                    int quantity = Convert.ToInt32(array.GetValue(i * 2 + 1));
+                    if (quantity > 0)
+                    {
+                        DataRow[] rows = table.Select("", "id desc");
+                        for (int j = 0; j < quantity && j < rows.Count(); j++)
+                        {
+                            rows[j]["ledStatus"] = "未经过";
+                        }
+                    }
+                }
+            }
+            gridControl.DataSource = table;
         }
         public void Print()
         {

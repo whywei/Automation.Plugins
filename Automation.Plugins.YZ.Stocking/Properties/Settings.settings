@@ -5,5 +5,8 @@
     <Setting Name="LED" Type="System.String" Scope="User">
       <Value Profile="(Default)">1,23;2,0</Value>
     </Setting>
+    <Setting Name="LED_SQL" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1-小品种LED:select *,case status  when '1' then '已下单' else  '未下单' end orderstatus,'已经过' ledStatus from sms_supply_task where origin_position_address='14';2-扫码LED:select *,case status  when '1' then '已下单' else  '未下单' end orderstatus,'已经过' ledStatus from sms_supply_task</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

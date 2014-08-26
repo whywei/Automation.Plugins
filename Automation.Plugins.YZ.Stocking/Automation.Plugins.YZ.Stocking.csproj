@@ -219,6 +219,9 @@
     <EmbeddedResource Include="View\Controls\StockPositionStorageControl.resx">
       <DependentUpon>StockPositionStorageControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\StockStatusControl.resx">
+      <DependentUpon>StockStatusControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Dialog\UpdateBarcodeDialog.resx">
       <DependentUpon>UpdateBarcodeDialog.cs</DependentUpon>
     </EmbeddedResource>

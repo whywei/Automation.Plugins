@@ -34,5 +34,17 @@ namespace Automation.Plugins.YZ.Stocking.Properties {
                 this["LED"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"1-小品种LED:select *,case status  when '1' then '已下单' else  '未下单' end orderstatus,'已经过' ledStatus from sms_supply_task where origin_position_address='14';2-扫码LED:select *,case status  when '1' then '已下单' else  '未下单' end orderstatus,'已经过' ledStatus from sms_supply_task")]
+        public string LED_SQL {
+            get {
+                return ((string)(this["LED_SQL"]));
+            }
+            set {
+                this["LED_SQL"] = value;
+            }
+        }
     }
 }

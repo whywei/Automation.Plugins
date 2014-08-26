@@ -75,7 +75,7 @@ namespace Automation.Plugins.YZ.Stocking.Process
             {
                 int originPositionAddress = ledGroup[ledCode];
                 DataTable taskTable = stockTaskDal.FindSupplyTaskForLED(originPositionAddress, quantity);
-                DataRow[] taskRow = taskTable.Select("", "supply_id asc");
+                DataRow[] taskRow = taskTable.Select("", "id asc");
                 List<LEDData> ledDataList = new List<LEDData>();
                 for (int i = 0; i < taskRow.Length && i < 5; i++)
                 {

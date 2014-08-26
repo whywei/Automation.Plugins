@@ -16,22 +16,9 @@ namespace Automation.Plugins.YZ.Stocking.Dal
             ra.DoCommand(string.Format(sql, barcode, productCode));
         }
 
-        public DataTable FindStockTaskStorage()
+        public DataTable FindStockTaskStorage(string sql)
         {
             var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
-            string sql = @"SELECT [id]
-                      ,[supply_id]
-                      ,[pack_no]
-                      ,[sorting_line_code]
-                      ,[group_no]
-                      ,[channel_code]
-                      ,[channel_name]
-                      ,[product_code]
-                      ,[product_name]
-                      ,[product_barcode]
-                      ,[origin_position_address]
-                      ,[target_supply_address]
-                      ,case [status]  when '1' then '已下单' else  '未下单' end [status] FROM [sms_supply_task]";
             return ra.DoQuery(sql).Tables[0];
         }
         public DataTable FindUnStockTask()
@@ -58,7 +45,7 @@ namespace Automation.Plugins.YZ.Stocking.Dal
             }
             var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
             string sql = @"select top {1} supply_id,product_code,product_name from sms_supply_task
-                        where status='1' {0} order by supply_id desc";
+                        where status='1' {0} order by id desc";
             return ra.DoQuery(string.Format(sql, condition, quantity)).Tables[0];
         }
     }
