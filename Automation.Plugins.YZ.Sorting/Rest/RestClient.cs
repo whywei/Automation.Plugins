@@ -53,7 +53,7 @@ namespace Automation.Plugins.YZ.Sorting.Rest
                 }
                 else if (restReturn != null && !restReturn.IsSuccess)
                 {
-                    Logger.Error("生成空托盘回收任务失败，详情：" + restReturn.Message);
+                    Logger.Error("生成补货计划失败，详情：" + restReturn.Message);
                 }
             }
         }

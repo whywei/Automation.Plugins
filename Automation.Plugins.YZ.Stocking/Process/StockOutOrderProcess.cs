@@ -5,6 +5,7 @@ using System.Text;
 using Automation.Core;
 using Automation.Plugins.YZ.Stocking.Dal;
 using System.Data;
+using DBRabbit;
 
 namespace Automation.Plugins.YZ.Stocking.Process
 {
@@ -38,63 +39,64 @@ namespace Automation.Plugins.YZ.Stocking.Process
         }
 
         private void WriteDataToPLC()
-        { 
-            //获取补货数据
-            StockTaskDal stockTaskDal = new StockTaskDal();
-            StockPositionDal stockPositionDal = new StockPositionDal();
-            DataTable taskTable = stockTaskDal.FindUnStockTask();
-            int[] data = new int[76];
-            int i = 0;
-            foreach (DataRow row in taskTable.Rows)
+        {
+            using (TransactionScopeManager TM = new TransactionScopeManager(true, IsolationLevel.RepeatableRead))
             {
-                //获取卷烟对应的拆盘位置信息
-                DataTable productPositionTable = stockPositionDal.FindStockPositionByProduct(row["product_code"].ToString());
-                if (productPositionTable.Rows.Count <= 0)
+                //获取补货数据
+                StockTaskDal stockTaskDal = new StockTaskDal();
+                StockPositionDal stockPositionDal = new StockPositionDal();
+                stockTaskDal.TransactionScopeManager = TM;
+                stockPositionDal.TransactionScopeManager = TM;
+                DataTable taskTable = stockTaskDal.FindUnStockTask();
+                int[] data = new int[76];
+                int i = 0;
+                foreach (DataRow row in taskTable.Rows)
                 {
-                    DataTable mixPositionTable = stockPositionDal.FindMixStockPosition();
-                    if (mixPositionTable.Rows.Count <= 0)
+                    //获取卷烟对应的拆盘位置信息
+                    DataTable productPositionTable = stockPositionDal.FindStockPositionByProduct(row["product_code"].ToString());
+                    if (productPositionTable.Rows.Count <= 0)
                     {
-                        Logger.Error("发现有烟没有拆盘位，且当前没有配置混合拆盘位！");
-                        break;
+                        DataTable mixPositionTable = stockPositionDal.FindMixStockPosition();
+                        if (mixPositionTable.Rows.Count <= 0)
+                        {
+                            Logger.Error("发现有烟没有拆盘位，且当前没有配置混合拆盘位！");
+                            break;
+                        }
+                        else
+                        {
+                            data[i++] = Convert.ToInt32(mixPositionTable.Rows[0]["position_address"]);
+                            data[i++] = Convert.ToInt32(row["target_supply_address"]);
+                            data[i++] = Convert.ToInt32(row["product_barcode"]);
+                            row["origin_position_address"] = Convert.ToInt32(mixPositionTable.Rows[0]["position_address"]);
+                            row["status"] = "1";
+                        }
                     }
                     else
                     {
-                        data[i++] = Convert.ToInt32(mixPositionTable.Rows[0]["position_address"]);
-                        data[i++] = Convert.ToInt32(row["target_supply_address"]);
-                        data[i++] = Convert.ToInt32(row["product_barcode"]);
-                        row["origin_position_address"] = Convert.ToInt32(mixPositionTable.Rows[0]["position_address"]);
-                        row["status"] = "1";
-                    }
-                }
-                else
-                {
-                    int j = 0;
-                    foreach (DataRow productRow in productPositionTable.Rows)
-                    {
-                        if (Convert.ToInt32(productRow["quantity"]) > 0)
+                        int j = 0;
+                        foreach (DataRow productRow in productPositionTable.Rows)
                         {
-                            data[i++] = Convert.ToInt32(productRow["position_address"]);
-                            data[i++] = Convert.ToInt32(row["target_supply_address"]);
-                            data[i++] = Convert.ToInt32(row["product_barcode"]);
-                            row["origin_position_address"] = Convert.ToInt32(productRow["position_address"]);
-                            row["status"] = "1";
-                            row["storageId"] = productRow["id"];
+                            if (Convert.ToInt32(productRow["quantity"]) > 0)
+                            {
+                                data[i++] = Convert.ToInt32(productRow["position_address"]);
+                                data[i++] = Convert.ToInt32(row["target_supply_address"]);
+                                data[i++] = Convert.ToInt32(row["product_barcode"]);
+                                row["origin_position_address"] = Convert.ToInt32(productRow["position_address"]);
+                                row["status"] = "1";
+                                row["storageId"] = productRow["id"];
+                                break;
+                            }
+                            j++;
+                        }
+                        if (j == productPositionTable.Rows.Count)
+                        {
                             break;
                         }
-                        j++;
-                    }
-                    if (j == productPositionTable.Rows.Count)
-                    {
-                        break;
                     }
                 }
-            }
-            if (data[0] > 0)
-            {
-                data[75] = 1;
-                //将数据写到PLC
-                if (Ops.Write(Global.plcServiceName, "Stock_Out_Order_Information", data))
-                { 
+                if (data[0] > 0)
+                {
+                    data[75] = 1;
                     //更新状态
                     foreach (DataRow row in taskTable.Rows)
                     {
@@ -111,13 +113,18 @@ namespace Automation.Plugins.YZ.Stocking.Process
                             break;
                         }
                     }
-                    //将订单数据写入日志
-                    string msg="";
-                    foreach (var item in data)
+                    //将数据写到PLC
+                    if (Ops.Write(Global.plcServiceName, "Stock_Out_Order_Information", data))
                     {
-                        msg += item + ",";
+                        TM.Commit();
+                        //将订单数据写入日志
+                        string msg = "";
+                        foreach (var item in data)
+                        {
+                            msg += item + ",";
+                        }
+                        Logger.Info(string.Format("写订单成功！数据【{0}】", msg.Substring(0, msg.Length - 1)));
                     }
-                    Logger.Info(string.Format("写订单成功！数据【{0}】", msg.Substring(0, msg.Length-1)));
                 }
             }
         }
