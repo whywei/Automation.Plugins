@@ -188,6 +188,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AiPlug.1.0.0.5\AiPlug.ocx" />
     <Content Include="Config\PLC.xml" />
     <Content Include="Resources\cmd_16x16.png" />
     <Content Include="Resources\cmd_32x32.png" />
@@ -222,6 +223,7 @@
     <Folder Include="Nuget\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="AiPlug.1.0.0.5\注册控件.bat" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
