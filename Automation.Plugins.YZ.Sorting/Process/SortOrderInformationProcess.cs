@@ -5,6 +5,7 @@ using System.Text;
 using Automation.Core;
 using Automation.Plugins.YZ.Sorting.Dal;
 using System.Data;
+using DBRabbit;
 
 namespace Automation.Plugins.YZ.Sorting.Process
 {
@@ -78,25 +79,32 @@ namespace Automation.Plugins.YZ.Sorting.Process
                                 writeData[i++] = Convert.ToInt32(row["piece_barcode"]);
                             }
                             writeData[225] = 1;
-                            bool result = Ops.Write(Global.plcServiceName, sortOrderInformation, writeData);
-                            if (result)
+                            using (TransactionScopeManager TM = new TransactionScopeManager(true, IsolationLevel.ReadCommitted))
                             {
-                                string msg = "";
-                                foreach (int data in writeData)
-                                {
-                                    msg += data.ToString() + ",";
-                                }
-                                Logger.Info(string.Format("{0}线下单成功。包号[{1}]，数据[{2}]。", groupNo == 1 ? "A" : groupNo == 2 ? "B" : "", packNo, msg));
+                                sortingDal.TransactionScopeManager = TM;
+                                orderDal.TransactionScopeManager = TM;
                                 //更新sorting表
                                 sortNos = sortNos.Substring(0, sortNos.Length - 1);
                                 sortingDal.UpdateSoringStatus(sortNos);
                                 //更新主表状态
                                 int isSortMaxPackNo = sortingDal.FindIsSortMaxPackNo(groupNo);
                                 orderDal.UpdateMasterStatus(isSortMaxPackNo);
-                            }
-                            else
-                            {
-                                Logger.Error(string.Format("{0}线下单失败。包号[{1}]。", groupNo == 1 ? "A" : groupNo == 2 ? "B" : "", packNo + 1));
+                                bool result = Ops.Write(Global.plcServiceName, sortOrderInformation, writeData);
+                                if (result)
+                                {
+                                    TM.Commit();
+                                    string msg = "";
+                                    foreach (int data in writeData)
+                                    {
+                                        msg += data.ToString() + ",";
+                                    }
+                                    Logger.Info(string.Format("{0}线下单成功。包号[{1}]，数据[{2}]。", groupNo == 1 ? "A" : groupNo == 2 ? "B" : "", packNo, msg));
+
+                                }
+                                else
+                                {
+                                    Logger.Error(string.Format("{0}线下单失败。包号[{1}]。", groupNo == 1 ? "A" : groupNo == 2 ? "B" : "", packNo + 1));
+                                }
                             }
                         }
                     }

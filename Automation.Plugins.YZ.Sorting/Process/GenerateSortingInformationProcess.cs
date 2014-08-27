@@ -5,12 +5,12 @@ using System.Text;
 using Automation.Core;
 using System.Data;
 using Automation.Plugins.YZ.Sorting.Dal;
+using DBRabbit;
 
 namespace Automation.Plugins.YZ.Sorting.Process
 {
     public class GenerateSortingInformationProcess : AbstractProcess
     {
-        private SortingDal sortingDal = new SortingDal();
         private OrderDal orderDal = new OrderDal();
 
         public override void Initialize()
@@ -45,6 +45,7 @@ namespace Automation.Plugins.YZ.Sorting.Process
             int count = 0;
             do
             {
+                SortingDal sortingDal = new SortingDal();
                 DataTable unSortPackNoOnSorting = sortingDal.FindUnSortPackNo(groupNo);
                 count = unSortPackNoOnSorting.Rows.Count;
                 int packNo;
@@ -59,11 +60,16 @@ namespace Automation.Plugins.YZ.Sorting.Process
                 }
                 if (packNo < maxPackNo)
                 {
-                    DataTable detailTable = orderDal.FindOrderDetailByPackNo(packNo, groupNo);
-                    foreach (DataRow row in detailTable.Rows)
+                    using (TransactionScopeManager TM = new TransactionScopeManager(true, IsolationLevel.ReadCommitted))
                     {
-                        int sortNo = sortingDal.FindMaxSortNo();
-                        sortingDal.InsertIntoSorting(sortNo + 1, row);
+                        sortingDal.TransactionScopeManager = TM;
+                        DataTable detailTable = orderDal.FindOrderDetailByPackNo(packNo, groupNo);
+                        foreach (DataRow row in detailTable.Rows)
+                        {
+                            int sortNo = sortingDal.FindMaxSortNo();
+                            sortingDal.InsertIntoSorting(sortNo + 1, row);
+                        }
+                        TM.Commit();
                     }
                 }
                 else
