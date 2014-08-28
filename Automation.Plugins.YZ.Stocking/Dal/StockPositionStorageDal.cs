@@ -11,7 +11,7 @@ namespace Automation.Plugins.YZ.Stocking.Dal
     {
         public DataTable FindStockPositionStorage()
         {
-            var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
+            var ra = TransactionScopeManager[Global.dataBaseServiceName].NewRelationAccesser();
             string sql = @"SELECT id
                           ,position_id
                           ,product_code

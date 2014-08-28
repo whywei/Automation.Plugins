@@ -11,19 +11,19 @@ namespace Automation.Plugins.YZ.Stocking.Dal
     {
         public void UpdateBarcode(string productCode, string barcode)
         {
-            var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
+            var ra = TransactionScopeManager[Global.dataBaseServiceName].NewRelationAccesser();
             string sql = @"update sms_supply_task set product_barcode='{0}' where product_code='{1}'";
             ra.DoCommand(string.Format(sql, barcode, productCode));
         }
 
         public DataTable FindStockTaskStorage(string sql)
         {
-            var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
+            var ra = TransactionScopeManager[Global.dataBaseServiceName].NewRelationAccesser();
             return ra.DoQuery(sql).Tables[0];
         }
         public DataTable FindUnStockTask()
         {
-            var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
+            var ra = TransactionScopeManager[Global.dataBaseServiceName].NewRelationAccesser();
             string sql = @"select top 25 id,product_code,product_barcode,origin_position_address,target_supply_address,status,0 as storageId
                         from sms_supply_task where status='0' order by supply_id";
             return ra.DoQuery(sql).Tables[0];
@@ -31,7 +31,7 @@ namespace Automation.Plugins.YZ.Stocking.Dal
 
         public void UpdateSupplyTask(string id, string originPositionAddress)
         {
-            var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
+            var ra = TransactionScopeManager[Global.dataBaseServiceName].NewRelationAccesser();
             string sql = @"update dbo.sms_supply_task set origin_position_address='{0}',status='1' where id={1}";
             ra.DoCommand(string.Format(sql, originPositionAddress, id));
         }
@@ -43,7 +43,7 @@ namespace Automation.Plugins.YZ.Stocking.Dal
             {
                 condition = string.Format("and origin_position_address={0} ", originPositionAddress);
             }
-            var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
+            var ra = TransactionScopeManager[Global.dataBaseServiceName].NewRelationAccesser();
             string sql = @"select top {1} supply_id,product_code,product_name from sms_supply_task
                         where status='1' {0} order by id desc";
             return ra.DoQuery(string.Format(sql, condition, quantity)).Tables[0];

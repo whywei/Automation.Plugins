@@ -54,6 +54,7 @@
     <Reference Include="DevExpress.XtraGrid.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DotSpatial.Controls">
       <HintPath>..\packages\DotSpatial.Controls.1.6.0.0\lib\net40-Client\DotSpatial.Controls.dll</HintPath>
       <Private>False</Private>
@@ -128,6 +129,15 @@
     <Compile Include="Dal\StockTaskDal.cs" />
     <Compile Include="Dal\StockPositionStorageDal.cs" />
     <Compile Include="Global.cs" />
+    <Compile Include="Models\ConnectionModel.cs" />
+    <Compile Include="Options\Controls\ServerDatabaseConnectionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Options\Controls\ServerDatabaseConnectionPanel.Designer.cs">
+      <DependentUpon>ServerDatabaseConnectionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Options\ParameterOption.cs" />
+    <Compile Include="Options\ServerDatabaseConnectionOption.cs" />
     <Compile Include="Process\StockOutOrderProcess.cs" />
     <Compile Include="Process\SupplyLedPositionInformationProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -212,10 +222,16 @@
     <None Include="Resources\UpdateBarcode_16.png" />
     <None Include="Resources\UpdateBarcode_32.png" />
     <None Include="Resources\position_32.png" />
+    <None Include="Resources\ParameterOption_16.png" />
+    <None Include="Resources\ParameterOption_32.png" />
+    <None Include="Resources\database_16.png" />
     <Content Include="Serialize\Readme.txt" />
     <Content Include="TransactionScopeFactoryProviderConfig.xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Options\Controls\ServerDatabaseConnectionPanel.resx">
+      <DependentUpon>ServerDatabaseConnectionPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

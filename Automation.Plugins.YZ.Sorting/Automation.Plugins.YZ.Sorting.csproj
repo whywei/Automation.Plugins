@@ -309,10 +309,12 @@
     </Content>
     <Content Include="Config\Sort_AB.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Config\Sort_OPC.xml" />
     <Content Include="Config\Sort_PLC.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <None Include="Resources\bar_16x16.png" />
     <None Include="Resources\bar_32x32.png" />

@@ -10,7 +10,7 @@ namespace Automation.Plugins.YZ.Stocking.Dal
     {
         public void UpdateBarcode(string productCode,string barcode)
         {
-            var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
+            var ra = TransactionScopeManager[Global.dataBaseServiceName].NewRelationAccesser();
             string sql = @"update wms_product set piece_barcode='{0}' where product_code='{1}'";
             ra.DoCommand(string.Format(sql, barcode, productCode));
         }

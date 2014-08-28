@@ -63,6 +63,16 @@ namespace Automation.Plugins.YZ.Stocking.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap database_16 {
+            get {
+                object obj = ResourceManager.GetObject("database_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap OrderStatus_16 {
             get {
                 object obj = ResourceManager.GetObject("OrderStatus_16", resourceCulture);
@@ -76,6 +86,26 @@ namespace Automation.Plugins.YZ.Stocking.Properties {
         internal static System.Drawing.Bitmap OrderStatus_32 {
             get {
                 object obj = ResourceManager.GetObject("OrderStatus_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap ParameterOption_16 {
+            get {
+                object obj = ResourceManager.GetObject("ParameterOption_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap ParameterOption_32 {
+            get {
+                object obj = ResourceManager.GetObject("ParameterOption_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
