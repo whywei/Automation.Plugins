@@ -137,7 +137,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Service\LEDService.cs" />
-    <Compile Include="Service\YZStockingOPCService.cs" />
+    <Compile Include="Service\StockingOPCService.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -199,8 +199,12 @@
     <None Include="Resources\ScanStatus_16.png" />
     <None Include="Resources\ScanStatus_32.png" />
     <None Include="Resources\refresh_32x32.png" />
-    <Content Include="Config\YZ_Stock_OPC.xml" />
-    <Content Include="Config\YZ_Stock_PLC.xml">
+    <Content Include="Config\Stock_AB.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Config\Stock_OPC.xml" />
+    <Content Include="Config\Stock_PLC.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Dll\EQ2008_Dll.dll" />

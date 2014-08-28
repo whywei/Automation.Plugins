@@ -7,17 +7,17 @@ using Automation.Service.OPC;
 
 namespace Automation.Plugins.YZ.Sorting.Service
 {
-    public class YZSortingOPCService : AbstractServiceWrapper
+    public class SortingOPCService : AbstractServiceWrapper
     {
         public override void Initialize()
         {
-            Description = "永州分拣OPC服务";
+            Description = "分拣AB服务";
             base.Initialize();
         }
 
         public override void CreateTargetService()
         {
-            Name = "YZ_FJ_PLC";
+            Name = "Sort_AB";
             this.TargetService = new OPCService(GetConfigFilePath());
         }
     }

@@ -7,17 +7,17 @@ using Automation.Service.OPC;
 
 namespace Automation.Plugins.YZ.Stocking.Service
 {
-    public class YZStockingOPCService : AbstractServiceWrapper
+    public class StockingOPCService : AbstractServiceWrapper
     {
         public override void Initialize()
         {
-            Description = "补货OPC服务";
+            Description = "补货AB服务";
             base.Initialize();
         }
 
         public override void CreateTargetService()
         {
-            Name = "YZ_Stock_PLC";
+            Name = "Stock_AB";
             this.TargetService = new OPCService(GetConfigFilePath());
         }
     }

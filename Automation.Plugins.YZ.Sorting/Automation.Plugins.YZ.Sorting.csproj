@@ -192,7 +192,7 @@
     <Compile Include="Rest\RestClient.cs" />
     <Compile Include="Rest\RestReturn.cs" />
     <Compile Include="Service\LEDService.cs" />
-    <Compile Include="Service\YZSortingOPCService.cs" />
+    <Compile Include="Service\SortingOPCService.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -304,9 +304,14 @@
     <None Include="Resources\sortchannelswap_32.png" />
     <None Include="Resources\sorting_query_16.png" />
     <Content Include="App_Readme\Spring.Rest.txt" />
-    <Content Include="Config\PLC.xml" />
-    <Content Include="Config\YZ_FJ_OPC.xml" />
-    <Content Include="Config\YZ_FJ_PLC.xml">
+    <Content Include="Config\PLC.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Config\Sort_AB.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\Sort_OPC.xml" />
+    <Content Include="Config\Sort_PLC.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\bar_16x16.png" />
