@@ -46,73 +46,29 @@ namespace Automation.Plugins.YZ.Stocking.Process
                 StockTaskDal stockTaskDal = new StockTaskDal();
                 StockPositionDal stockPositionDal = new StockPositionDal();
                 stockTaskDal.TransactionScopeManager = TM;
-                stockPositionDal.TransactionScopeManager = TM;
                 DataTable taskTable = stockTaskDal.FindUnStockTask();
                 int[] data = new int[76];
+                string ids = "-1,";
                 int i = 0;
                 foreach (DataRow row in taskTable.Rows)
                 {
-                    //获取卷烟对应的拆盘位置信息
-                    DataTable productPositionTable = stockPositionDal.FindStockPositionByProduct(row["product_code"].ToString());
-                    if (productPositionTable.Rows.Count <= 0)
+                    if (Convert.ToInt32( row["origin_position_address"])>0)
                     {
-                        DataTable mixPositionTable = stockPositionDal.FindMixStockPosition();
-                        if (mixPositionTable.Rows.Count <= 0)
-                        {
-                            Logger.Error("发现有烟没有拆盘位，且当前没有配置混合拆盘位！");
-                            break;
-                        }
-                        else
-                        {
-                            data[i++] = Convert.ToInt32(mixPositionTable.Rows[0]["position_address"]);
-                            data[i++] = Convert.ToInt32(row["target_supply_address"]);
-                            data[i++] = Convert.ToInt32(row["product_barcode"]);
-                            row["origin_position_address"] = Convert.ToInt32(mixPositionTable.Rows[0]["position_address"]);
-                            row["status"] = "1";
-                        }
+                        data[i++] = Convert.ToInt32(row["position_address"]);
+                        data[i++] = Convert.ToInt32(row["target_supply_address"]);
+                        data[i++] = Convert.ToInt32(row["product_barcode"]);
+                        ids += row["id"].ToString() + ",";
                     }
                     else
                     {
-                        int j = 0;
-                        foreach (DataRow productRow in productPositionTable.Rows)
-                        {
-                            if (Convert.ToInt32(productRow["quantity"]) > 0)
-                            {
-                                data[i++] = Convert.ToInt32(productRow["position_address"]);
-                                data[i++] = Convert.ToInt32(row["target_supply_address"]);
-                                data[i++] = Convert.ToInt32(row["product_barcode"]);
-                                row["origin_position_address"] = Convert.ToInt32(productRow["position_address"]);
-                                row["status"] = "1";
-                                row["storageId"] = productRow["id"];
-                                break;
-                            }
-                            j++;
-                        }
-                        if (j == productPositionTable.Rows.Count)
-                        {
-                            break;
-                        }
+                        break;
                     }
                 }
                 if (data[0] > 0)
                 {
                     data[75] = 1;
                     //更新状态
-                    foreach (DataRow row in taskTable.Rows)
-                    {
-                        if (Convert.ToInt32(row["status"]) > 0)
-                        {
-                            stockTaskDal.UpdateSupplyTask(row["id"].ToString(), row["origin_position_address"].ToString());
-                            if (Convert.ToInt32(row["storageId"]) > 0)
-                            {
-                                stockPositionDal.UpdateSupplyPositionStorage(row["storageId"].ToString());
-                            }
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
+                    stockTaskDal.UpdateSupplyTask(ids.Substring(0, ids.Length - 1));
                     //将数据写到PLC
                     if (Ops.Write(Global.plcServiceName, "Stock_Out_Order_Information", data))
                     {

@@ -24,16 +24,16 @@ namespace Automation.Plugins.YZ.Stocking.Dal
         public DataTable FindUnStockTask()
         {
             var ra = TransactionScopeManager[Global.dataBaseServiceName].NewRelationAccesser();
-            string sql = @"select top 25 id,product_code,product_barcode,origin_position_address,target_supply_address,status,0 as storageId
-                        from sms_supply_task where status='0' order by supply_id";
+            string sql = @"select top 25 id,product_code,product_barcode,origin_position_address,target_supply_address,status
+                        from sms_supply_task where status='0' order by id";
             return ra.DoQuery(sql).Tables[0];
         }
 
-        public void UpdateSupplyTask(string id, string originPositionAddress)
+        public void UpdateSupplyTask(string id)
         {
             var ra = TransactionScopeManager[Global.dataBaseServiceName].NewRelationAccesser();
-            string sql = @"update dbo.sms_supply_task set origin_position_address='{0}',status='1' where id={1}";
-            ra.DoCommand(string.Format(sql, originPositionAddress, id));
+            string sql = @"update sms_supply_task set status='1' where id in {0}";
+            ra.DoCommand(string.Format(sql, id));
         }
 
         public DataTable FindSupplyTaskForLED(int originPositionAddress,int quantity)
