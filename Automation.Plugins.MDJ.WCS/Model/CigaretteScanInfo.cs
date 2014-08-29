@@ -70,7 +70,7 @@ namespace Automation.Plugins.MDJ.WCS.Dal
 
         public override string ToString<T>(T obj)
         {
-            return ((IDictionary<string, CigaretteScanInfo>)obj).ConvertToString(AutomationContext.Converters);
+            return ((IDictionary<string, CigaretteScanInfo>)obj).ConvertToString();
         }
     }
 }

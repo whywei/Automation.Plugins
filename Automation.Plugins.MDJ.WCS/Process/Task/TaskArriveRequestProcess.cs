@@ -54,7 +54,7 @@ namespace Automation.Plugins.MDJ.WCS.Process.Task
                     int[] data = new int[] { Convert.ToInt32(positionName), taskID };
                     AutomationContext.Write(memoryServiceName, memoryItemName, data);
                     AutomationContext.Write(plcServiceName, O_Task_Arrive_Process_Complete + i, data);
-                    Logger.Info(string.Format("TaskArriveRequest : {0}", data.ConvertToString(AutomationContext.Converters)));
+                    Logger.Info(string.Format("TaskArriveRequest : {0}", data.ConvertToString()));
                 }
             }
             catch (Exception ex)

@@ -23,7 +23,7 @@ namespace Automation.Plugins.YZ.WCS.SRM
             throw new NotImplementedException();
         }
 
-        protected override void FinishCurrentTask()
+        protected override bool FinishCurrentTask()
         {
             throw new NotImplementedException();
         }
