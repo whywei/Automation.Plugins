@@ -1,0 +1,55 @@
+﻿<?xml version='1.0' ?>
+<Config>
+  <OPCServer OPCServerHostIP="127.0.0.1" OPCServerHostName="" OPCServerName="Matrikon.OPC.Simulation.1" Real="OPC.SimaticNET" Test="Matrikon.OPC.Simulation.1" IsTest="true">
+    <OPCGroups>
+      <OPCGroup GroupName="THOKPLC" GroupString="THOKPLC" UpdateRate="350" Prefix=".">
+        <!--重新分拣标志-->
+        <OPCItem ItemName="Restart_Sign" OPCItemName="DB100,INT0,1"  ItemType="WRITE"/>
+        <!--A线缓存订单信息-->
+        <OPCItem ItemName="Sort_Cache_Order_Information_A" OPCItemName="DB2,INT10,3"  ItemType="READ"/>
+        <!--A线分拣订单信息-->
+        <OPCItem ItemName="Sort_Order_Information_A" OPCItemName="DB10,DINT0,226"  ItemType="WRITE"/>
+        <!--A线缓存订单信息-->
+        <OPCItem ItemName="Sort_Cache_Order_Information_B" OPCItemName="DB22,INT10,3"  ItemType="READ"/>
+        <!--B线分拣订单信息-->
+        <OPCItem ItemName="Sort_Order_Information_B" OPCItemName="DB30,DINT0,226"  ItemType="WRITE"/>
+        <!--打码订单信息-->
+        <OPCItem ItemName="Barcode_Printing_Order_Information" OPCItemName="DB100,INT10,2"  ItemType="READ"/>
+        <!--摆动订单信息-->
+        <OPCItem ItemName="Swing_Order_Information" OPCItemName="DB100,INT14,2"  ItemType="READ"/>
+        <!--1号包装机订单信息-->
+        <OPCItem ItemName="Packager_Order_Information_01" OPCItemName="DB100,INT22,2"  ItemType="READ"/>
+        <!--2号包装机订单信息-->
+        <OPCItem ItemName="Packager_Order_Information_02" OPCItemName="DB100,INT26,2"  ItemType="READ"/>
+        <!--1号包装数据信息-->
+        <OPCItem ItemName="Package_Numbers_Information_01" OPCItemName="DB100,INT30,1"  ItemType="READ"/>
+        <!--2号包装数据信息-->
+        <OPCItem ItemName="Package_Numbers_Information_02" OPCItemName="DB100,INT32,1"  ItemType="READ"/>
+        <!--A线交换烟道信息-->
+        <OPCItem ItemName="Channel_Interchange_Information_A" OPCItemName="DB2,INT18,3"  ItemType="WRITE"/>
+        <!--B线交换烟道信息-->
+        <OPCItem ItemName="Channel_Interchange_Information_B" OPCItemName="DB22,INT18,3"  ItemType="WRITE"/>
+        <!--A线缺烟烟道信息-->
+        <OPCItem ItemName="Lack_Cigarette_Channel_Information_A" OPCItemName="DB402,INT0,88"  ItemType="READ"/>
+        <!--B线缺烟烟道信息-->
+        <OPCItem ItemName="Lack_Cigarette_Channel_Information_B" OPCItemName="DB402,INT0,88"  ItemType="READ"/>
+        <!--换线标志-->
+        <OPCItem ItemName="Chang_Route_Sign" OPCItemName="DB100,INT2,1"  ItemType="WRITE"/>
+        <!--A线实时盘点数据-->
+        <OPCItem ItemName="Real_Time_Inventory_Data_A" OPCItemName="DB7,INT0,88"  ItemType="READ"/>
+        <!--B线实时盘点数据-->
+        <OPCItem ItemName="Real_Time_Inventory_Data_B" OPCItemName="DB27,INT0,88"  ItemType="READ"/>
+        <!--卷烟条码-->
+        <OPCItem ItemName="Cigarette_Barcode_Information" OPCItemName="DB400,DINT0,200"  ItemType="WRITE"/>
+        <!--卷烟名称-->
+        <OPCItem ItemName="Cigarette_Name_Information" OPCItemName="DB401,STRING[27]0,200"  ItemType="WRITE"/>
+        <!--故障报警信息-->
+        <OPCItem ItemName="Fault_Alarm_Information" OPCItemName="DB402,INT0,100"  ItemType="READ"/>
+        <!--运行状态-->
+        <OPCItem ItemName="Device_Run_State" OPCItemName="DB100,INT6,1"  ItemType="READ"/>
+
+        <OPCItem ItemName="Supply_Cache_Position_Information" OPCItemName="DB502,INT0,8"  ItemType="READ"/>
+      </OPCGroup>
+    </OPCGroups>
+  </OPCServer>
+</Config>

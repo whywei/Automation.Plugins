@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Config>
+  <OPCServer OPCServerHostIP="192.168.1.242" OPCServerHostName="" OPCServerName="Matrikon.OPC.Simulation.1" Real="OPC.SimaticNET" Test="Matrikon.OPC.Simulation.1" IsTest="true">
+    <OPCGroups>
+      <OPCGroup GroupName="THOKPLC" GroupString="S7:[贱人]" UpdateRate="350" Prefix=".">
+        <!--写入库订单-->
+        <OPCItem ItemName="Stock_In_Order_Information" OPCItemName="Stock_In_Order_Information"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="4"/>
+        <!--刷新入库LED-->
+        <OPCItem ItemName="Stock_In_Led_Order_Information" OPCItemName="Stock_In_Led_Order_Information"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="170"/>
+        <!--生成补货计划-->
+        <!--<OPCItem ItemName="Supply_Cache_Position_Information" OPCItemName="Supply_Cache_Position_Information"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="10"/>-->
+        <!--写出库订单-->
+        <OPCItem ItemName="Stock_Out_Order_Information" OPCItemName="Stock_Out_Order_Information"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="76"/>
+        <!--刷新出库LED -->
+        <OPCItem ItemName="Supply_Led_Position_Information" OPCItemName="Supply_Led_Position_Information"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="4"/>
+        <!--卷烟信息-->
+        <OPCItem ItemName="Cigarette_Barcode_Information" OPCItemName="Cigarette_Barcode_Information"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="200"/>
+        <OPCItem ItemName="Cigarette_Name_Information" OPCItemName="Cigarette_Name_Information"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="200"/>
+        <!--故障信息-->
+        <OPCItem ItemName="Fault_Alarm_Information" OPCItemName="Fault_Alarm_Information"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="200"/>
+        <!--运行状态-->
+        <OPCItem ItemName="Packager_Order_Information_02" OPCItemName="Packager_Order_Information_02"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="1"/>
+      </OPCGroup>
+    </OPCGroups>
+  </OPCServer>
+</Config>
