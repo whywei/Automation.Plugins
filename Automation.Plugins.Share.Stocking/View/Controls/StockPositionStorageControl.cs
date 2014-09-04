@@ -8,7 +8,7 @@ using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
-namespace Automation.Plugins.YZ.Stocking.View.Controls
+namespace Automation.Plugins.Share.Stocking.View.Controls
 {
     public partial class StockPositionStorageControl : DevExpress.XtraEditors.XtraUserControl
     {

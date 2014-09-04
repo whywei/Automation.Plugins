@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Automation.Core;
 
-namespace Automation.Plugins.YZ.Stocking.Service
+namespace Automation.Plugins.Share.Stocking.Service
 {
     public class LEDService: AbstractServiceWrapper
     {

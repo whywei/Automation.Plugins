@@ -8,8 +8,8 @@
     <ProjectGuid>{80C34ACB-FC72-40A9-B327-5031D1E09A5D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Automation.Plugins.YZ.Stocking</RootNamespace>
-    <AssemblyName>Automation.Plugins.YZ.Stocking</AssemblyName>
+    <RootNamespace>Automation.Plugins.Share.Stocking</RootNamespace>
+    <AssemblyName>Automation.Plugins.Share.Stocking</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\bin\Debug\Extensions\Packages\Automation.Plugins.YZ.Stocking\</OutputPath>
+    <OutputPath>..\..\..\bin\Debug\Extensions\Packages\Automation.Plugins.Share.Stocking\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -122,24 +122,26 @@
   <ItemGroup>
     <Compile Include="Action\StockPositionAction.cs" />
     <Compile Include="Action\StockPositionStorageAction.cs" />
-    <Compile Include="Action\StockStatusAction.cs" />
+    <Compile Include="Action\StockTaskAction.cs" />
     <Compile Include="Dal\OrderDal.cs" />
     <Compile Include="Dal\ProductDal.cs" />
     <Compile Include="Dal\StockPositionDal.cs" />
     <Compile Include="Dal\StockTaskDal.cs" />
     <Compile Include="Dal\StockPositionStorageDal.cs" />
     <Compile Include="Global.cs" />
-    <Compile Include="Models\ConnectionModel.cs" />
+    <Compile Include="Options\Models\ConnectionModel.cs" />
     <Compile Include="Options\Controls\ServerDatabaseConnectionPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Options\Controls\ServerDatabaseConnectionPanel.Designer.cs">
       <DependentUpon>ServerDatabaseConnectionPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Options\ParameterOption.cs" />
+    <Compile Include="Options\StockParameterOption.cs" />
     <Compile Include="Options\ServerDatabaseConnectionOption.cs" />
     <Compile Include="Process\StockOutOrderProcess.cs" />
     <Compile Include="Process\SupplyLedPositionInformationProcess.cs" />
+    <Compile Include="Process\StockInOrderProcess.cs" />
+    <Compile Include="Process\StockInLedProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -147,13 +149,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Service\LEDService.cs" />
-    <Compile Include="Service\StockingOPCService.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="StockingPlugin.cs" />
+    <Compile Include="Util\ArrayExtension.cs" />
     <Compile Include="Util\PrintUtil.cs" />
     <Compile Include="View\Controls\StockPositionControl.cs">
       <SubType>UserControl</SubType>
@@ -167,11 +170,11 @@
     <Compile Include="View\Controls\StockPositionStorageControl.Designer.cs">
       <DependentUpon>StockPositionStorageControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\StockStatusControl.cs">
+    <Compile Include="View\Controls\StockTaskControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Controls\StockStatusControl.Designer.cs">
-      <DependentUpon>StockStatusControl.cs</DependentUpon>
+    <Compile Include="View\Controls\StockTaskControl.Designer.cs">
+      <DependentUpon>StockTaskControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Dialog\UpdateBarcodeDialog.cs">
       <SubType>Form</SubType>
@@ -181,7 +184,7 @@
     </Compile>
     <Compile Include="View\StockPositionStorageView.cs" />
     <Compile Include="View\StockPositionView.cs" />
-    <Compile Include="View\StockStatusView.cs" />
+    <Compile Include="View\StockTaskView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -193,7 +196,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config\PLC.xml" />
     <None Include="Resources\spouse_16x16.png" />
     <None Include="Resources\spouse_32x32.png" />
     <None Include="Resources\start_16x16.png" />
@@ -209,12 +211,11 @@
     <None Include="Resources\ScanStatus_16.png" />
     <None Include="Resources\ScanStatus_32.png" />
     <None Include="Resources\refresh_32x32.png" />
-    <Content Include="Config\Stock_AB.xml">
+    <Content Include="Config\StockPLC[AB].xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Config\Stock_OPC.xml" />
-    <Content Include="Config\Stock_PLC.xml">
+    <Content Include="Config\StockPLC[Siemens].xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Dll\EQ2008_Dll.dll" />
@@ -225,13 +226,13 @@
     <None Include="Resources\ParameterOption_16.png" />
     <None Include="Resources\ParameterOption_32.png" />
     <None Include="Resources\database_16.png" />
-    <Content Include="Serialize\Readme.txt" />
     <Content Include="TransactionScopeFactoryProviderConfig.xml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Options\Controls\ServerDatabaseConnectionPanel.resx">
       <DependentUpon>ServerDatabaseConnectionPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -239,8 +240,8 @@
     <EmbeddedResource Include="View\Controls\StockPositionStorageControl.resx">
       <DependentUpon>StockPositionStorageControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Controls\StockStatusControl.resx">
-      <DependentUpon>StockStatusControl.cs</DependentUpon>
+    <EmbeddedResource Include="View\Controls\StockTaskControl.resx">
+      <DependentUpon>StockTaskControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Dialog\UpdateBarcodeDialog.resx">
       <DependentUpon>UpdateBarcodeDialog.cs</DependentUpon>

@@ -1,26 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using DBRabbit;
+﻿using DBRabbit;
 using System.Data;
 
-namespace Automation.Plugins.YZ.Stocking.Dal
+namespace Automation.Plugins.Share.Stocking.Dal
 {
     public class OrderDal : AbstractBaseDal
     {
-        public DataTable FindProductFromOrder()
+        public DataTable FindProduct()
         {
-            var ra = TransactionScopeManager[Global.dataBaseServiceName].NewRelationAccesser();
-            string sql = @"select distinct product_code,product_name from sms_sort_order_allot_detail order by product_name";
-            return ra.DoQuery(sql).Tables[0];
-        }
-
-        public DataTable FindProductInformation()
-        {
-            var ra = TransactionScopeManager[Global.dataBaseServiceName].NewRelationAccesser();
-            string sql = @"select distinct b.piece_barcode,a.product_code,a.product_name from sms_sort_order_allot_detail a
-                        left join wms_product b on a.product_code=b.product_code";
+            var ra = TransactionScopeManager[Global.DATABASE_NAME].NewRelationAccesser();
+            string sql = @"select distinct d.product_code,d.product_name,d.piece_barcode
+                            from sms_sort_batch a   
+                            left join  sms_sort_order_allot_master b on a.id = b.sort_batch_id
+                            left join  sms_sort_order_allot_detail c on b.id = c.master_id
+                            left join  wms_product d on c.product_code = d.product_code
+                            where a.order_date > DATEADD(day,7,GETDATE())
+                            order by d.product_code";
             return ra.DoQuery(sql).Tables[0];
         }
     }

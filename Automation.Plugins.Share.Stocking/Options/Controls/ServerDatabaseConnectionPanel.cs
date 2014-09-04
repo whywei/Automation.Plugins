@@ -8,7 +8,7 @@ using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
-namespace Automation.Plugins.YZ.Stocking.Options.Controls
+namespace Automation.Plugins.Share.Stocking.Options.Controls
 {
     public partial class ServerDatabaseConnectionPanel : DevExpress.XtraEditors.XtraUserControl
     {

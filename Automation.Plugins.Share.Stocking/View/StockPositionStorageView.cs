@@ -1,24 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Automation.Core;
+﻿using Automation.Core;
 using System.Windows.Forms;
-using Automation.Plugins.YZ.Stocking.Properties;
-using Automation.Plugins.YZ.Stocking.View.Controls;
+using Automation.Plugins.Share.Stocking.Properties;
+using Automation.Plugins.Share.Stocking.View.Controls;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
-using System.Data;
-using Automation.Plugins.YZ.Stocking.Dal;
-using Automation.Plugins.YZ.Stocking.Util;
+using Automation.Plugins.Share.Stocking.Dal;
+using Automation.Plugins.Share.Stocking.Util;
 
-namespace Automation.Plugins.YZ.Stocking.View
+namespace Automation.Plugins.Share.Stocking.View
 {
     public class StockPositionStorageView : AbstractView
     {
         private GridControl gridControl = null;
-        GridView gridView = null;
-        StockPositionStorageDal stockPositionStorageDal = new StockPositionStorageDal();
+        private GridView gridView = null;
 
         public override void Initialize()
         {
@@ -33,18 +27,21 @@ namespace Automation.Plugins.YZ.Stocking.View
             this.InnerControl = new StockPositionStorageControl();
             this.Dock = DockStyle.Fill;
             this.SmallImage = Resources.yandao_16x16;
+
             gridControl = ((StockPositionStorageControl)this.InnerControl).gridStockPositionStorageQuery;
             gridView = ((StockPositionStorageControl)this.InnerControl).viewStockPositionStorageQuery;
         }
 
         public void Refresh()
         {
+            StockPositionStorageDal stockPositionStorageDal = new StockPositionStorageDal();
             gridControl.DataSource = stockPositionStorageDal.FindStockPositionStorage();
         }
+
         public void Print()
         {
             PrintUtil controller = new PrintUtil(this.gridControl);
-            controller.PrintHeader = "拆盘位置库存";
+            controller.PrintHeader = "位置库存";
             controller.Preview();
         }
     }

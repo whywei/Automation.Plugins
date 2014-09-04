@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Automation.Core.Option;
-using Automation.Plugins.YZ.Stocking.Properties;
+﻿using Automation.Core.Option;
+using Automation.Plugins.Share.Stocking.Properties;
 
-namespace Automation.Plugins.YZ.Stocking.Options
+namespace Automation.Plugins.Share.Stocking.Options
 {
-    public class ParameterOption : AbstractOption
+    public class StockParameterOption : AbstractOption
     {
         public override void Initialize()
         {

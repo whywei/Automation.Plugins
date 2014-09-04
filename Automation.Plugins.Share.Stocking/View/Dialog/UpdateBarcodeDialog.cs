@@ -9,9 +9,8 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.ComponentModel.Composition;
 
-namespace Automation.Plugins.YZ.Stocking.View.Dialog
+namespace Automation.Plugins.Share.Stocking.View.Dialog
 {
-    [Export(typeof(UpdateBarcodeDialog))]
     public partial class UpdateBarcodeDialog : DevExpress.XtraEditors.XtraForm
     {
         public UpdateBarcodeDialog()

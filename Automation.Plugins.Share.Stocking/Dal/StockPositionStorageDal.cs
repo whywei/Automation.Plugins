@@ -5,19 +5,16 @@ using System.Text;
 using DBRabbit;
 using System.Data;
 
-namespace Automation.Plugins.YZ.Stocking.Dal
+namespace Automation.Plugins.Share.Stocking.Dal
 {
     public class StockPositionStorageDal : AbstractBaseDal
     {
         public DataTable FindStockPositionStorage()
         {
-            var ra = TransactionScopeManager[Global.dataBaseServiceName].NewRelationAccesser();
-            string sql = @"SELECT id
-                          ,position_id
-                          ,product_code
-                          ,product_name
-                          ,quantity
-                          ,wait_quantity  FROM sms_supply_position_storage";
+            //todo:库存查询时，要显示位置名称
+            var ra = TransactionScopeManager[Global.DATABASE_NAME].NewRelationAccesser();
+            string sql = @"select id,position_id,product_code,product_name,quantity,wait_quantity  
+                            from sms_supply_position_storage";
             return ra.DoQuery(sql).Tables[0];
         }
     }

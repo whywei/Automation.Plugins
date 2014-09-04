@@ -1,6 +1,6 @@
-﻿namespace Automation.Plugins.YZ.Stocking.View.Controls
+﻿namespace Automation.Plugins.Share.Stocking.View.Controls
 {
-    partial class StockStatusControl
+    partial class StockTaskControl
     {
         /// <summary> 
         /// Required designer variable.

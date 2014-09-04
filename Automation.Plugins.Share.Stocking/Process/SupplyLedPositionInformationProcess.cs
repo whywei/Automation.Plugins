@@ -3,61 +3,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Automation.Core;
-using Automation.Plugins.YZ.Stocking.Dal;
+using Automation.Plugins.Share.Stocking.Dal;
 using System.Data;
 using Automation.Service.LED;
+using Automation.Plugins.Share.Stocking.Properties;
+using Automation.Plugins.Share.Stocking.Util;
 
-namespace Automation.Plugins.YZ.Stocking.Process
+namespace Automation.Plugins.Share.Stocking.Process
 {
     public class SupplyLedPositionInformationProcess : AbstractProcess
     {
-        private Dictionary<int, int> ledGroup = new Dictionary<int, int>();
+        private Dictionary<int, string> ledSqls = new Dictionary<int, string>();
+
         public override void Initialize()
         {
-            Description = "出库LED线程";
-            base.Initialize();
-            string[] ledList = Properties.Settings.Default.LED.Split(';');
-            foreach (string led in ledList)
-            {
-                string[] ledInformation = led.Split(',');
-                if (ledInformation.Length == 2)
-                {
-                    if (ledGroup.ContainsKey(Convert.ToInt32(ledInformation[0])))
-                    {
-                        ledGroup[Convert.ToInt32(ledInformation[0])] = Convert.ToInt32(ledInformation[1]);
-                    }
-                    else
-                    {
-                        ledGroup.Add(Convert.ToInt32(ledInformation[0]), Convert.ToInt32(ledInformation[1]));
-                    }
-                }
-                else
-                {
-                    Logger.Error("LED配置错误！");
-                }
-            }
+            Description = "刷出库LED线程";
+            LoadLedConfig();
+            base.Initialize();  
         }
 
         public override void Execute()
         {
             try
             {
-                bool isStock = Ops.ReadSingle<bool>(Global.memoryServiceName_TemporarilySingleData, Global.memoryItemName_StockState);
+                bool isStock = Ops.ReadSingle<bool>(Global.MemoryTemporarilySingleDataService, Global.MemoryItemNameStockState);
                 if (isStock == true)
                 {
-                    object obj = AutomationContext.Read(Global.plcServiceName, "Supply_Led_Position_Information");
-                    Array array = (Array)obj;
-                    for (int i = 0; i < array.Length / 2; i++)
+                    var ledPositionInfo = Ops.ReadArray<int>(Global.PLC_SERVICE_NAME, "Supply_Led_Position_Information")
+                        .ConvertToNewArray(2);
+
+                    foreach (var item in ledPositionInfo)
                     {
-                        int ledCode = Convert.ToInt32(array.GetValue(i * 2));
-                        int quantity = Convert.ToInt32(array.GetValue(i * 2 + 1));
+                        int ledNo = item[0];
+                        int quantity = item[1];
                         if (quantity > 0)
                         {
-                            Show(ledCode, quantity);
+                            Show(ledNo, quantity);
                         }
                         else
                         {
-                            Show(ledCode);
+                            Show(ledNo);
                         }
                     }
                 }
@@ -68,35 +53,35 @@ namespace Automation.Plugins.YZ.Stocking.Process
             }
         }
 
-        private void Show(int ledCode, int quantity)
+        private void Show(int ledNo, int quantity)
         {
             StockTaskDal stockTaskDal = new StockTaskDal();
-            if (ledGroup.ContainsKey(ledCode))
+            DataTable table = stockTaskDal.FindStockTaskForLED(ledSqls[ledNo], quantity);
+
+            if (ledSqls.ContainsKey(ledNo))
             {
-                int originPositionAddress = ledGroup[ledCode];
-                DataTable taskTable = stockTaskDal.FindSupplyTaskForLED(originPositionAddress, quantity);
-                DataRow[] taskRow = taskTable.Select("", "id asc");
+                DataRow[] taskRow = table.Select("", "id asc");
                 List<LEDData> ledDataList = new List<LEDData>();
                 for (int i = 0; i < taskRow.Length && i < 5; i++)
                 {
-                    ledDataList.Add(LEDDataFactory(ledCode, i, taskRow[i]["product_name"].ToString()));
+                    ledDataList.Add(CreateLEDData(ledNo, i, taskRow[i]["product_name"].ToString()));
                 }
                 Ops.Write("StockLED", "ShowData", ledDataList);
             }
             else
             {
-                Logger.Error(string.Format("LED位置编号{0}，有在PLC中配置，但却没有在上位机中配置！", ledCode));
+                Logger.Error(string.Format("LED位置编号{0}，有在PLC中配置，但却没有在上位机中配置！", ledNo));
             }
         }
 
         private void Show(int ledCode)
         {
             List<LEDData> ledDataList = new List<LEDData>();
-            ledDataList.Add(LEDDataFactory(ledCode, 0, "当前无补货任务！"));
+            ledDataList.Add(CreateLEDData(ledCode, 0, "当前无补货任务！"));
             Ops.Write("StockLED", "ShowData", ledDataList);
         }
 
-        private LEDData LEDDataFactory(int cardNum, int id, string name)
+        private LEDData CreateLEDData(int cardNum, int id, string name)
         {
             LEDData ledData = new LEDData();
             ledData.CardNum = cardNum;
@@ -110,6 +95,11 @@ namespace Automation.Plugins.YZ.Stocking.Process
             ledData.IsMove = true;
             ledData.MethodType = MethodType.AddSingleText;
             return ledData;
+        }
+
+        private void LoadLedConfig()
+        {
+            ledSqls = Settings.Default.LedSqls.AsEnumerable().ToDictionary(l => Convert.ToInt32(l.Split(':')[0]), l => l.Split(':')[1]);
         }
     }
 }

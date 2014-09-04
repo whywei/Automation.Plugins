@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Automation.Plugins.YZ.Stocking
+namespace Automation.Plugins.Share.Stocking
 {
     public class Global
     {
-        public const string dataBaseServiceName = "master";
-        public const string memoryServiceName_PSD = "MemoryPermanentSingleDataService";//永久保存的单数据服务
-        public const string memoryServiceName_TemporarilySingleData = "MemoryTemporarilySingleDataService";//临时保存的单数据服务
-        public const string memoryItemName_StockState = "IsStock";
-        public const string plcServiceName = "Stock_AB";
+        public const string DATABASE_NAME = "master";
+        public const string PLC_SERVICE_NAME = "StockPLC";
+        public const string LED_SERVICE_NAME = "StockLED";
+
+        public const string MemoryPermanentSingleDataService = "MemoryPermanentSingleDataService";
+        public const string MemoryTemporarilySingleDataService = "MemoryTemporarilySingleDataService";
+        public const string MemoryItemNameStockState = "IsStock";
     }
 }

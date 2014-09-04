@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Automation.Core;
-using Automation.Plugins.YZ.Stocking.Dal;
+using Automation.Plugins.Share.Stocking.Dal;
 using System.Data;
 using DBRabbit;
 
-namespace Automation.Plugins.YZ.Stocking.Process
+namespace Automation.Plugins.Share.Stocking.Process
 {
     public class StockOutOrderProcess : AbstractProcess
     {
@@ -21,67 +19,50 @@ namespace Automation.Plugins.YZ.Stocking.Process
         {
             try
             {
-                bool isStock = Ops.ReadSingle<bool>(Global.memoryServiceName_TemporarilySingleData, Global.memoryItemName_StockState);
-                if (isStock == true)
+                bool isStock = Ops.ReadSingle<bool>(Global.MemoryTemporarilySingleDataService, Global.MemoryItemNameStockState);
+                int[] data = Ops.ReadArray<int>(Global.PLC_SERVICE_NAME, "Stock_Out_Order_Information");
+
+                if (isStock == true && data != null && data.Length == 76 && data[75] == 0)
                 {
-                    object obj = AutomationContext.Read(Global.plcServiceName, "Stock_Out_Order_Information");
-                    Array array = (Array)obj;
-                    if (array.Length == 76 && array.GetValue(75).ToString() == "0")
+                    using (TransactionScopeManager TM = new TransactionScopeManager(true, IsolationLevel.RepeatableRead))
                     {
-                        WriteDataToPLC();
+                        StockTaskDal stockTaskDal = new StockTaskDal();
+                        stockTaskDal.TransactionScopeManager = TM;
+                        DataTable taskTable = stockTaskDal.FindUnStockTask();
+
+                        int i = 0;
+                        data = new int[76];
+
+                        foreach (DataRow row in taskTable.Rows)
+                        {
+                            if (Convert.ToInt32(row["origin_position_address"]) > 0)
+                            {
+                                data[i++] = Convert.ToInt32(row["position_address"]);
+                                data[i++] = Convert.ToInt32(row["target_supply_address"]);
+                                data[i++] = Convert.ToInt32(row["product_barcode"]);
+                                stockTaskDal.UpdateStockTaskStatus(row["id"].ToString());
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+
+                        if (i > 0)
+                        {
+                            data[75] = 1;
+                            if (Ops.Write(Global.PLC_SERVICE_NAME, "Stock_Out_Order_Information", data))
+                            {
+                                TM.Commit();
+                                Logger.Info(string.Format("写订单成功！数据【{0}】", data.ConvertToString()));
+                            }
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
                 Logger.Error(string.Format("写出库订单失败！原因：{0}。", ex.Message));
-            }
-        }
-
-        private void WriteDataToPLC()
-        {
-            using (TransactionScopeManager TM = new TransactionScopeManager(true, IsolationLevel.RepeatableRead))
-            {
-                //获取补货数据
-                StockTaskDal stockTaskDal = new StockTaskDal();
-                StockPositionDal stockPositionDal = new StockPositionDal();
-                stockTaskDal.TransactionScopeManager = TM;
-                DataTable taskTable = stockTaskDal.FindUnStockTask();
-                int[] data = new int[76];
-                string ids = "-1,";
-                int i = 0;
-                foreach (DataRow row in taskTable.Rows)
-                {
-                    if (Convert.ToInt32( row["origin_position_address"])>0)
-                    {
-                        data[i++] = Convert.ToInt32(row["position_address"]);
-                        data[i++] = Convert.ToInt32(row["target_supply_address"]);
-                        data[i++] = Convert.ToInt32(row["product_barcode"]);
-                        ids += row["id"].ToString() + ",";
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-                if (data[0] > 0)
-                {
-                    data[75] = 1;
-                    //更新状态
-                    stockTaskDal.UpdateSupplyTask(ids.Substring(0, ids.Length - 1));
-                    //将数据写到PLC
-                    if (Ops.Write(Global.plcServiceName, "Stock_Out_Order_Information", data))
-                    {
-                        TM.Commit();
-                        //将订单数据写入日志
-                        string msg = "";
-                        foreach (var item in data)
-                        {
-                            msg += item + ",";
-                        }
-                        Logger.Info(string.Format("写订单成功！数据【{0}】", msg.Substring(0, msg.Length - 1)));
-                    }
-                }
             }
         }
     }

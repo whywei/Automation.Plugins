@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Automation.Plugins.YZ.Stocking.Models
+namespace Automation.Plugins.Share.Stocking.Options.Models
 {
     public class ConnectionModel
     {

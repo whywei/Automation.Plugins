@@ -1,23 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Automation.Core.Option;
 using System.Windows.Forms;
-using Automation.Plugins.YZ.Stocking.Models;
-using Automation.Plugins.YZ.Stocking.Properties;
-using Automation.Plugins.YZ.Stocking.Options.Controls;
+using Automation.Plugins.Share.Stocking.Properties;
+using Automation.Plugins.Share.Stocking.Options.Controls;
 using DevExpress.XtraEditors;
 using Automation.Core;
 using System.Xml.Linq;
 using System.Data.SqlClient;
+using Automation.Plugins.Share.Stocking.Options.Models;
 
-namespace Automation.Plugins.YZ.Stocking.Options
+namespace Automation.Plugins.Share.Stocking.Options
 {
     public class ServerDatabaseConnectionOption : AbstractOption
     {
-        private Control control = null;
+        private ServerDatabaseConnectionPanel control = null;
         private ConnectionModel connectionModel = null;
+
         public override void Initialize()
         {
             base.Initialize();
@@ -26,17 +26,19 @@ namespace Automation.Plugins.YZ.Stocking.Options
             this.Order = 1;
             this.ParentNodeName = "StockParameterOption";
             this.NodeImage = Resources.database_16;
-            this.InnerControl = new ServerDatabaseConnectionPanel();
-            this.control = this.InnerControl;
-            ((ServerDatabaseConnectionPanel)this.InnerControl).btnTestConneection.Click += new EventHandler(btnTestConneection_Click);
-            ((ServerDatabaseConnectionPanel)this.InnerControl).btnSave.Click += new EventHandler(btnSave_Click);
+            this.control = new ServerDatabaseConnectionPanel();
+            this.InnerControl = this.control;
+
+            control.btnTestConnection.Click += new EventHandler(btnTestConnection_Click);
+            control.btnSave.Click += new EventHandler(btnSave_Click);
         }
-        private void LoadInfo()
+
+        public override void OnSelected()
         {
             try
             {
                 XElement doc = XElement.Load(@"TransactionScopeFactoryProviderConfig.xml");
-                IList<XElement> el = (from d in doc.Descendants("key") where d.Attribute("name").Value == Global.dataBaseServiceName select d).ToList();
+                IList<XElement> el = (from d in doc.Descendants("key") where d.Attribute("name").Value == Global.DATABASE_NAME select d).ToList();
                 if (el != null)
                 {
                     var node = (from e in el[0].Elements("DataConfiguration")
@@ -47,6 +49,7 @@ namespace Automation.Plugins.YZ.Stocking.Options
                                     User = e.Element("User").Attribute("value").Value,
                                     Password = e.Element("Password").Attribute("value").Value
                                 }).ToList();
+
                     if (node != null)
                     {
                         connectionModel = new ConnectionModel();
@@ -55,7 +58,7 @@ namespace Automation.Plugins.YZ.Stocking.Options
                         connectionModel.User = node[0].User;
                         connectionModel.Password = node[0].Password;
                         connectionModel.ConfirmPassword = node[0].Password;
-                        ((ServerDatabaseConnectionPanel)this.InnerControl).propertyGridControl1.SelectedObject = connectionModel;
+                        control.propertyGridControl1.SelectedObject = connectionModel;
                     }
                 }
             }
@@ -66,10 +69,11 @@ namespace Automation.Plugins.YZ.Stocking.Options
             }
         }
 
-        private void btnTestConneection_Click(object sender, EventArgs e)
+        private void btnTestConnection_Click(object sender, EventArgs e)
         {
             if (CheckInformation())
             {
+                //todo：重写数据库连接测试方法。
                 string connection = "server = " + connectionModel.IP + "; uid = " + connectionModel.User + "; pwd = " + connectionModel.Password + "; database = " + connectionModel.DataBaseName;
                 SqlConnection conn = new SqlConnection(connection);
                 try
@@ -91,7 +95,7 @@ namespace Automation.Plugins.YZ.Stocking.Options
                 try
                 {
                     XElement doc = XElement.Load(@"TransactionScopeFactoryProviderConfig.xml");
-                    IList<XElement> el = (from d in doc.Descendants("key") where d.Attribute("name").Value == Global.dataBaseServiceName select d).ToList();
+                    IList<XElement> el = (from d in doc.Descendants("key") where d.Attribute("name").Value == Global.DATABASE_NAME select d).ToList();
                     if (el != null)
                     {
                         var node = (from item in el[0].Elements("DataConfiguration")
@@ -156,11 +160,6 @@ namespace Automation.Plugins.YZ.Stocking.Options
             {
                 return false;
             }
-        }
-
-        public override void OnSelected()
-        {
-            LoadInfo();
         }
     }
 }

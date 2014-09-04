@@ -1,4 +1,4 @@
-﻿namespace Automation.Plugins.YZ.Stocking.Options.Controls
+﻿namespace Automation.Plugins.Share.Stocking.Options.Controls
 {
     partial class ServerDatabaseConnectionPanel
     {
@@ -31,15 +31,6 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
-            this.btnSave = new DevExpress.XtraEditors.SimpleButton();
-            this.btnTestConneection = new DevExpress.XtraEditors.SimpleButton();
-            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.repositoryItemTextEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.repositoryItemTextEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.repositoryItemTextEdit6 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.propertyGridControl1 = new DevExpress.XtraVerticalGrid.PropertyGridControl();
             this.repositoryItemTextEdit7 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit8 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
@@ -49,12 +40,25 @@
             this.User = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.Password = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.ConfirmPassword = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.btnSave = new DevExpress.XtraEditors.SimpleButton();
+            this.btnTestConnection = new DevExpress.XtraEditors.SimpleButton();
+            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryItemTextEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryItemTextEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryItemTextEdit6 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.propertyGridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
@@ -63,10 +67,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.propertyGridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit9)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl2
@@ -95,66 +95,6 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(334, 250);
             this.panelControl1.TabIndex = 0;
-            // 
-            // panelControl3
-            // 
-            this.panelControl3.Controls.Add(this.btnSave);
-            this.panelControl3.Controls.Add(this.btnTestConneection);
-            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl3.Location = new System.Drawing.Point(2, 256);
-            this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(338, 41);
-            this.panelControl3.TabIndex = 1;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(188, 9);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 19;
-            this.btnSave.Text = "保存修改";
-            // 
-            // btnTestConneection
-            // 
-            this.btnTestConneection.Location = new System.Drawing.Point(59, 9);
-            this.btnTestConneection.Name = "btnTestConneection";
-            this.btnTestConneection.Size = new System.Drawing.Size(75, 23);
-            this.btnTestConneection.TabIndex = 3;
-            this.btnTestConneection.Text = "测试连接";
-            // 
-            // repositoryItemTextEdit1
-            // 
-            this.repositoryItemTextEdit1.AutoHeight = false;
-            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
-            this.repositoryItemTextEdit1.PasswordChar = '*';
-            // 
-            // repositoryItemTextEdit2
-            // 
-            this.repositoryItemTextEdit2.AutoHeight = false;
-            this.repositoryItemTextEdit2.Name = "repositoryItemTextEdit2";
-            this.repositoryItemTextEdit2.PasswordChar = '*';
-            // 
-            // repositoryItemTextEdit3
-            // 
-            this.repositoryItemTextEdit3.AutoHeight = false;
-            this.repositoryItemTextEdit3.Name = "repositoryItemTextEdit3";
-            // 
-            // repositoryItemTextEdit4
-            // 
-            this.repositoryItemTextEdit4.AutoHeight = false;
-            this.repositoryItemTextEdit4.Name = "repositoryItemTextEdit4";
-            this.repositoryItemTextEdit4.PasswordChar = '*';
-            // 
-            // repositoryItemTextEdit5
-            // 
-            this.repositoryItemTextEdit5.AutoHeight = false;
-            this.repositoryItemTextEdit5.Name = "repositoryItemTextEdit5";
-            this.repositoryItemTextEdit5.PasswordChar = '*';
-            // 
-            // repositoryItemTextEdit6
-            // 
-            this.repositoryItemTextEdit6.AutoHeight = false;
-            this.repositoryItemTextEdit6.Name = "repositoryItemTextEdit6";
             // 
             // propertyGridControl1
             // 
@@ -246,6 +186,66 @@
             this.ConfirmPassword.Properties.RowEdit = this.repositoryItemTextEdit7;
             this.ConfirmPassword.Properties.ShowUnboundExpressionMenu = true;
             // 
+            // panelControl3
+            // 
+            this.panelControl3.Controls.Add(this.btnSave);
+            this.panelControl3.Controls.Add(this.btnTestConnection);
+            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelControl3.Location = new System.Drawing.Point(2, 256);
+            this.panelControl3.Name = "panelControl3";
+            this.panelControl3.Size = new System.Drawing.Size(338, 41);
+            this.panelControl3.TabIndex = 1;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(188, 9);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 19;
+            this.btnSave.Text = "保存修改";
+            // 
+            // btnTestConnection
+            // 
+            this.btnTestConnection.Location = new System.Drawing.Point(59, 9);
+            this.btnTestConnection.Name = "btnTestConnection";
+            this.btnTestConnection.Size = new System.Drawing.Size(75, 23);
+            this.btnTestConnection.TabIndex = 3;
+            this.btnTestConnection.Text = "测试连接";
+            // 
+            // repositoryItemTextEdit1
+            // 
+            this.repositoryItemTextEdit1.AutoHeight = false;
+            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
+            this.repositoryItemTextEdit1.PasswordChar = '*';
+            // 
+            // repositoryItemTextEdit2
+            // 
+            this.repositoryItemTextEdit2.AutoHeight = false;
+            this.repositoryItemTextEdit2.Name = "repositoryItemTextEdit2";
+            this.repositoryItemTextEdit2.PasswordChar = '*';
+            // 
+            // repositoryItemTextEdit3
+            // 
+            this.repositoryItemTextEdit3.AutoHeight = false;
+            this.repositoryItemTextEdit3.Name = "repositoryItemTextEdit3";
+            // 
+            // repositoryItemTextEdit4
+            // 
+            this.repositoryItemTextEdit4.AutoHeight = false;
+            this.repositoryItemTextEdit4.Name = "repositoryItemTextEdit4";
+            this.repositoryItemTextEdit4.PasswordChar = '*';
+            // 
+            // repositoryItemTextEdit5
+            // 
+            this.repositoryItemTextEdit5.AutoHeight = false;
+            this.repositoryItemTextEdit5.Name = "repositoryItemTextEdit5";
+            this.repositoryItemTextEdit5.PasswordChar = '*';
+            // 
+            // repositoryItemTextEdit6
+            // 
+            this.repositoryItemTextEdit6.AutoHeight = false;
+            this.repositoryItemTextEdit6.Name = "repositoryItemTextEdit6";
+            // 
             // ServerDatabaseConnectionPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -259,6 +259,10 @@
             this.panelControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.propertyGridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
@@ -267,10 +271,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.propertyGridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit9)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -282,7 +282,7 @@
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.PanelControl panelControl3;
         public DevExpress.XtraEditors.SimpleButton btnSave;
-        public DevExpress.XtraEditors.SimpleButton btnTestConneection;
+        public DevExpress.XtraEditors.SimpleButton btnTestConnection;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit2;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit3;

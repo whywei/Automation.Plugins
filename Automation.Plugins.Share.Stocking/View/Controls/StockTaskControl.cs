@@ -8,11 +8,11 @@ using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
-namespace Automation.Plugins.YZ.Stocking.View.Controls
+namespace Automation.Plugins.Share.Stocking.View.Controls
 {
-    public partial class StockStatusControl : DevExpress.XtraEditors.XtraUserControl
+    public partial class StockTaskControl : DevExpress.XtraEditors.XtraUserControl
     {
-        public StockStatusControl()
+        public StockTaskControl()
         {
             InitializeComponent();
         }

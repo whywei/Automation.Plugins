@@ -1,4 +1,4 @@
-﻿namespace Automation.Plugins.YZ.Stocking.View.Dialog
+﻿namespace Automation.Plugins.Share.Stocking.View.Dialog
 {
     partial class UpdateBarcodeDialog
     {
