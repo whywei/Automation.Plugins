@@ -27,7 +27,7 @@ namespace Automation.Plugins.Share.Stocking.Action
             this.Add(new SimpleActionItem(rootKey, "刷新", Refresh_Click) { SortOrder=1, LargeImage = Resources.refresh_32x32 });
             this.Add(new SimpleActionItem(rootKey, "打印", Print_Click) { SortOrder = 2, LargeImage = Resources.Print_32 });
             
-            var dropDownActionItem = new DropDownActionItem() { RootKey = rootKey, GroupCaption = "请选择LED屏", Width = 180 };
+            var dropDownActionItem = new DropDownActionItem() { RootKey = rootKey, GroupCaption = "请选择LED屏", Width = 70 };
             dropDownActionItem.SelectedValueChanged += new EventHandler<SelectedValueChangedEventArgs>(dropDownActionItem_SelectedValueChanged);
             ledSqls.Keys.AsParallel().ForAll(k => dropDownActionItem.Items.Add(k));
             this.Add(dropDownActionItem);
