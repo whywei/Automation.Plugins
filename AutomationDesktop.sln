@@ -118,10 +118,28 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sorting", "Sorting", "{305588C0-FE5D-466A-AEEA-508856B573A6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stocking", "Stocking", "{ED33899B-C266-4241-8537-439B19504C4A}"
+	ProjectSection(SolutionItems) = preProject
+		Setup\AutomationDesktop.Setup.AS.Stocking\AutomationDesktop.exe.config = Setup\AutomationDesktop.Setup.AS.Stocking\AutomationDesktop.exe.config
+		Setup\AutomationDesktop.Setup.AS.Stocking\AutomationDesktop.ico = Setup\AutomationDesktop.Setup.AS.Stocking\AutomationDesktop.ico
+		Setup\AutomationDesktop.Setup.AS.Stocking\AutomationDesktop.jpg = Setup\AutomationDesktop.Setup.AS.Stocking\AutomationDesktop.jpg
+		Setup\AutomationDesktop.Setup.AS.Stocking\EQ2008_Dll.dll = Setup\AutomationDesktop.Setup.AS.Stocking\EQ2008_Dll.dll
+		Setup\AutomationDesktop.Setup.AS.Stocking\EQ2008_Dll_Set.ini = Setup\AutomationDesktop.Setup.AS.Stocking\EQ2008_Dll_Set.ini
+		Setup\AutomationDesktop.Setup.AS.Stocking\HomePanelImage.jpg = Setup\AutomationDesktop.Setup.AS.Stocking\HomePanelImage.jpg
+		Setup\AutomationDesktop.Setup.AS.Stocking\TransactionScopeFactoryProviderConfig.xml = Setup\AutomationDesktop.Setup.AS.Stocking\TransactionScopeFactoryProviderConfig.xml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Forklift", "Forklift", "{CAB46868-9FAB-49A7-957B-BF68FF75DB0B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stocking", "Stocking", "{1888D25B-F110-4EFC-9A29-506915C436A0}"
+	ProjectSection(SolutionItems) = preProject
+		Setup\AutomationDesktop.Setup.LPS.Stocking\AutomationDesktop.exe.config = Setup\AutomationDesktop.Setup.LPS.Stocking\AutomationDesktop.exe.config
+		Setup\AutomationDesktop.Setup.LPS.Stocking\AutomationDesktop.ico = Setup\AutomationDesktop.Setup.LPS.Stocking\AutomationDesktop.ico
+		Setup\AutomationDesktop.Setup.LPS.Stocking\AutomationDesktop.jpg = Setup\AutomationDesktop.Setup.LPS.Stocking\AutomationDesktop.jpg
+		Setup\AutomationDesktop.Setup.LPS.Stocking\EQ2008_Dll.dll = Setup\AutomationDesktop.Setup.LPS.Stocking\EQ2008_Dll.dll
+		Setup\AutomationDesktop.Setup.LPS.Stocking\EQ2008_Dll_Set.ini = Setup\AutomationDesktop.Setup.LPS.Stocking\EQ2008_Dll_Set.ini
+		Setup\AutomationDesktop.Setup.LPS.Stocking\HomePanelImage.jpg = Setup\AutomationDesktop.Setup.LPS.Stocking\HomePanelImage.jpg
+		Setup\AutomationDesktop.Setup.LPS.Stocking\TransactionScopeFactoryProviderConfig.xml = Setup\AutomationDesktop.Setup.LPS.Stocking\TransactionScopeFactoryProviderConfig.xml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ManualSupply", "ManualSupply", "{46BEF356-108A-4E31-9E3C-E12E0001196D}"
 EndProject
@@ -136,6 +154,18 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.Plugins.Share.Stocking", "Automation.Plugins.Share.Stocking\Automation.Plugins.Share.Stocking.csproj", "{80C34ACB-FC72-40A9-B327-5031D1E09A5D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.Plugins.LPS.Stocking", "Automation.Plugins.LPS.Stocking\Automation.Plugins.LPS.Stocking.csproj", "{C515F354-B32B-4082-A17C-1B186171A913}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AutomationDesktop.Setup.AS.Stocking", "Setup\AutomationDesktop.Setup.AS.Stocking\AutomationDesktop.Setup.AS.Stocking.vdproj", "{35848525-B3C0-4B14-ADEE-67B130FDD6EE}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AutomationDesktop.Setup.LPS.Stocking", "Setup\AutomationDesktop.Setup.LPS.Stocking\AutomationDesktop.Setup.LPS.Stocking.vdproj", "{88B36E3E-D284-4262-BF63-F0383BE9E495}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AutomationDesktop.Setup.AS.Sorting", "Setup\AutomationDesktop.Setup.AS.Sorting\AutomationDesktop.Setup.AS.Sorting.vdproj", "{37DA80A5-3B92-432E-A209-1DF1557D7D7F}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AutomationDesktop.Setup.AS.ManualSupply", "Setup\AutomationDesktop.Setup.AS.ManualSupply\AutomationDesktop.Setup.AS.ManualSupply.vdproj", "{318FF73D-8EEB-4C8A-A05B-3A79151AF074}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AutomationDesktop.Setup.LPS.ManualSupply", "Setup\AutomationDesktop.Setup.LPS.ManualSupply\AutomationDesktop.Setup.LPS.ManualSupply.vdproj", "{99FD521F-6452-42D9-8FF2-BC5DF84C53E4}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AutomationDesktop.Setup.LPS.Sorting", "Setup\AutomationDesktop.Setup.LPS.Sorting\AutomationDesktop.Setup.LPS.Sorting.vdproj", "{B866B34D-39CC-425B-A644-5C5F58BA73F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -459,6 +489,78 @@ Global
 		{C515F354-B32B-4082-A17C-1B186171A913}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{C515F354-B32B-4082-A17C-1B186171A913}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{C515F354-B32B-4082-A17C-1B186171A913}.Release|x86.ActiveCfg = Release|Any CPU
+		{35848525-B3C0-4B14-ADEE-67B130FDD6EE}.Debug|Any CPU.ActiveCfg = Debug
+		{35848525-B3C0-4B14-ADEE-67B130FDD6EE}.Debug|Any CPU.Build.0 = Debug
+		{35848525-B3C0-4B14-ADEE-67B130FDD6EE}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{35848525-B3C0-4B14-ADEE-67B130FDD6EE}.Debug|Mixed Platforms.Build.0 = Debug
+		{35848525-B3C0-4B14-ADEE-67B130FDD6EE}.Debug|x86.ActiveCfg = Debug
+		{35848525-B3C0-4B14-ADEE-67B130FDD6EE}.Debug|x86.Build.0 = Debug
+		{35848525-B3C0-4B14-ADEE-67B130FDD6EE}.Release|Any CPU.ActiveCfg = Release
+		{35848525-B3C0-4B14-ADEE-67B130FDD6EE}.Release|Any CPU.Build.0 = Release
+		{35848525-B3C0-4B14-ADEE-67B130FDD6EE}.Release|Mixed Platforms.ActiveCfg = Release
+		{35848525-B3C0-4B14-ADEE-67B130FDD6EE}.Release|Mixed Platforms.Build.0 = Release
+		{35848525-B3C0-4B14-ADEE-67B130FDD6EE}.Release|x86.ActiveCfg = Release
+		{35848525-B3C0-4B14-ADEE-67B130FDD6EE}.Release|x86.Build.0 = Release
+		{88B36E3E-D284-4262-BF63-F0383BE9E495}.Debug|Any CPU.ActiveCfg = Debug
+		{88B36E3E-D284-4262-BF63-F0383BE9E495}.Debug|Any CPU.Build.0 = Debug
+		{88B36E3E-D284-4262-BF63-F0383BE9E495}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{88B36E3E-D284-4262-BF63-F0383BE9E495}.Debug|Mixed Platforms.Build.0 = Debug
+		{88B36E3E-D284-4262-BF63-F0383BE9E495}.Debug|x86.ActiveCfg = Debug
+		{88B36E3E-D284-4262-BF63-F0383BE9E495}.Debug|x86.Build.0 = Debug
+		{88B36E3E-D284-4262-BF63-F0383BE9E495}.Release|Any CPU.ActiveCfg = Release
+		{88B36E3E-D284-4262-BF63-F0383BE9E495}.Release|Any CPU.Build.0 = Release
+		{88B36E3E-D284-4262-BF63-F0383BE9E495}.Release|Mixed Platforms.ActiveCfg = Release
+		{88B36E3E-D284-4262-BF63-F0383BE9E495}.Release|Mixed Platforms.Build.0 = Release
+		{88B36E3E-D284-4262-BF63-F0383BE9E495}.Release|x86.ActiveCfg = Release
+		{88B36E3E-D284-4262-BF63-F0383BE9E495}.Release|x86.Build.0 = Release
+		{37DA80A5-3B92-432E-A209-1DF1557D7D7F}.Debug|Any CPU.ActiveCfg = Debug
+		{37DA80A5-3B92-432E-A209-1DF1557D7D7F}.Debug|Any CPU.Build.0 = Debug
+		{37DA80A5-3B92-432E-A209-1DF1557D7D7F}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{37DA80A5-3B92-432E-A209-1DF1557D7D7F}.Debug|Mixed Platforms.Build.0 = Debug
+		{37DA80A5-3B92-432E-A209-1DF1557D7D7F}.Debug|x86.ActiveCfg = Debug
+		{37DA80A5-3B92-432E-A209-1DF1557D7D7F}.Debug|x86.Build.0 = Debug
+		{37DA80A5-3B92-432E-A209-1DF1557D7D7F}.Release|Any CPU.ActiveCfg = Release
+		{37DA80A5-3B92-432E-A209-1DF1557D7D7F}.Release|Any CPU.Build.0 = Release
+		{37DA80A5-3B92-432E-A209-1DF1557D7D7F}.Release|Mixed Platforms.ActiveCfg = Release
+		{37DA80A5-3B92-432E-A209-1DF1557D7D7F}.Release|Mixed Platforms.Build.0 = Release
+		{37DA80A5-3B92-432E-A209-1DF1557D7D7F}.Release|x86.ActiveCfg = Release
+		{37DA80A5-3B92-432E-A209-1DF1557D7D7F}.Release|x86.Build.0 = Release
+		{318FF73D-8EEB-4C8A-A05B-3A79151AF074}.Debug|Any CPU.ActiveCfg = Debug
+		{318FF73D-8EEB-4C8A-A05B-3A79151AF074}.Debug|Any CPU.Build.0 = Debug
+		{318FF73D-8EEB-4C8A-A05B-3A79151AF074}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{318FF73D-8EEB-4C8A-A05B-3A79151AF074}.Debug|Mixed Platforms.Build.0 = Debug
+		{318FF73D-8EEB-4C8A-A05B-3A79151AF074}.Debug|x86.ActiveCfg = Debug
+		{318FF73D-8EEB-4C8A-A05B-3A79151AF074}.Debug|x86.Build.0 = Debug
+		{318FF73D-8EEB-4C8A-A05B-3A79151AF074}.Release|Any CPU.ActiveCfg = Release
+		{318FF73D-8EEB-4C8A-A05B-3A79151AF074}.Release|Any CPU.Build.0 = Release
+		{318FF73D-8EEB-4C8A-A05B-3A79151AF074}.Release|Mixed Platforms.ActiveCfg = Release
+		{318FF73D-8EEB-4C8A-A05B-3A79151AF074}.Release|Mixed Platforms.Build.0 = Release
+		{318FF73D-8EEB-4C8A-A05B-3A79151AF074}.Release|x86.ActiveCfg = Release
+		{318FF73D-8EEB-4C8A-A05B-3A79151AF074}.Release|x86.Build.0 = Release
+		{99FD521F-6452-42D9-8FF2-BC5DF84C53E4}.Debug|Any CPU.ActiveCfg = Debug
+		{99FD521F-6452-42D9-8FF2-BC5DF84C53E4}.Debug|Any CPU.Build.0 = Debug
+		{99FD521F-6452-42D9-8FF2-BC5DF84C53E4}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{99FD521F-6452-42D9-8FF2-BC5DF84C53E4}.Debug|Mixed Platforms.Build.0 = Debug
+		{99FD521F-6452-42D9-8FF2-BC5DF84C53E4}.Debug|x86.ActiveCfg = Debug
+		{99FD521F-6452-42D9-8FF2-BC5DF84C53E4}.Debug|x86.Build.0 = Debug
+		{99FD521F-6452-42D9-8FF2-BC5DF84C53E4}.Release|Any CPU.ActiveCfg = Release
+		{99FD521F-6452-42D9-8FF2-BC5DF84C53E4}.Release|Any CPU.Build.0 = Release
+		{99FD521F-6452-42D9-8FF2-BC5DF84C53E4}.Release|Mixed Platforms.ActiveCfg = Release
+		{99FD521F-6452-42D9-8FF2-BC5DF84C53E4}.Release|Mixed Platforms.Build.0 = Release
+		{99FD521F-6452-42D9-8FF2-BC5DF84C53E4}.Release|x86.ActiveCfg = Release
+		{99FD521F-6452-42D9-8FF2-BC5DF84C53E4}.Release|x86.Build.0 = Release
+		{B866B34D-39CC-425B-A644-5C5F58BA73F7}.Debug|Any CPU.ActiveCfg = Debug
+		{B866B34D-39CC-425B-A644-5C5F58BA73F7}.Debug|Any CPU.Build.0 = Debug
+		{B866B34D-39CC-425B-A644-5C5F58BA73F7}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{B866B34D-39CC-425B-A644-5C5F58BA73F7}.Debug|Mixed Platforms.Build.0 = Debug
+		{B866B34D-39CC-425B-A644-5C5F58BA73F7}.Debug|x86.ActiveCfg = Debug
+		{B866B34D-39CC-425B-A644-5C5F58BA73F7}.Debug|x86.Build.0 = Debug
+		{B866B34D-39CC-425B-A644-5C5F58BA73F7}.Release|Any CPU.ActiveCfg = Release
+		{B866B34D-39CC-425B-A644-5C5F58BA73F7}.Release|Any CPU.Build.0 = Release
+		{B866B34D-39CC-425B-A644-5C5F58BA73F7}.Release|Mixed Platforms.ActiveCfg = Release
+		{B866B34D-39CC-425B-A644-5C5F58BA73F7}.Release|Mixed Platforms.Build.0 = Release
+		{B866B34D-39CC-425B-A644-5C5F58BA73F7}.Release|x86.ActiveCfg = Release
+		{B866B34D-39CC-425B-A644-5C5F58BA73F7}.Release|x86.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -522,5 +624,11 @@ Global
 		{C1F3079B-8D9F-4EDB-91B7-9702CFDEF7F8} = {6FE4DC32-AB04-4E03-A5BA-DBCAE53B04F7}
 		{DAE714C3-0812-469A-88DF-F7321B78D3D2} = {6FE4DC32-AB04-4E03-A5BA-DBCAE53B04F7}
 		{BF4E2838-BA61-4FA6-BC04-384DF19E231C} = {6FE4DC32-AB04-4E03-A5BA-DBCAE53B04F7}
+		{B866B34D-39CC-425B-A644-5C5F58BA73F7} = {AA6B794F-F08C-40F6-A676-2B36463500B3}
+		{318FF73D-8EEB-4C8A-A05B-3A79151AF074} = {00C2063D-8285-4528-BE60-30AD8D2F0C6A}
+		{37DA80A5-3B92-432E-A209-1DF1557D7D7F} = {305588C0-FE5D-466A-AEEA-508856B573A6}
+		{35848525-B3C0-4B14-ADEE-67B130FDD6EE} = {ED33899B-C266-4241-8537-439B19504C4A}
+		{88B36E3E-D284-4262-BF63-F0383BE9E495} = {1888D25B-F110-4EFC-9A29-506915C436A0}
+		{99FD521F-6452-42D9-8FF2-BC5DF84C53E4} = {46BEF356-108A-4E31-9E3C-E12E0001196D}
 	EndGlobalSection
 EndGlobal
