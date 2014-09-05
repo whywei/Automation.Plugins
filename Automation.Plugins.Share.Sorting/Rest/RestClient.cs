@@ -6,11 +6,11 @@ using Spring.Http.Converters;
 using Spring.Rest.Client;
 using Spring.Http.Converters.Json;
 using Spring.Http;
-using Automation.Plugins.YZ.Sorting.Dal;
+using Automation.Plugins.Share.Sorting.Dal;
 using System.Data;
 using Automation.Core;
 
-namespace Automation.Plugins.YZ.Sorting.Rest
+namespace Automation.Plugins.Share.Sorting.Rest
 {
     public class RestClient
     {

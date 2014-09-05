@@ -5,19 +5,19 @@ using System.Text;
 using Automation.Core;
 using Automation.Service.OPC;
 
-namespace Automation.Plugins.YZ.Sorting.Service
+namespace Automation.Plugins.AS.Sorting.Service
 {
     public class SortingOPCService : AbstractServiceWrapper
     {
         public override void Initialize()
         {
-            Description = "分拣AB服务";
+            Description = "分拣OPC服务[AB]";
             base.Initialize();
         }
 
         public override void CreateTargetService()
         {
-            Name = "Sort_AB";
+            Name = "SortPLC";
             this.TargetService = new OPCService(GetConfigFilePath());
         }
     }

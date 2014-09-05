@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using Automation.Core;
 using System.Windows.Forms;
-using Automation.Plugins.YZ.Sorting.View.Controls;
+using Automation.Plugins.Share.Sorting.View.Controls;
 using DevExpress.XtraGrid;
-using Automation.Plugins.YZ.Sorting.Dal;
+using Automation.Plugins.Share.Sorting.Dal;
 using System.Data;
-using Automation.Plugins.YZ.Sorting.View.Dialog;
+using Automation.Plugins.Share.Sorting.View.Dialog;
 using System.Reflection;
 using System.Drawing;
 using DevExpress.XtraEditors;
 using System.IO;
 
-namespace Automation.Plugins.YZ.Sorting.View
+namespace Automation.Plugins.Share.Sorting.View
 {
     public class PackDataView : AbstractView
     {

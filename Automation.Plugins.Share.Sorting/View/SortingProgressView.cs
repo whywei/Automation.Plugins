@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Automation.Core;
-using Automation.Plugins.YZ.Sorting.View.Controls;
+using Automation.Plugins.Share.Sorting.View.Controls;
 using System.Windows.Forms;
-using Automation.Plugins.YZ.Sorting.Dal;
+using Automation.Plugins.Share.Sorting.Dal;
 using System.Data;
 using DevExpress.XtraEditors;
 
-namespace Automation.Plugins.YZ.Sorting.View
+namespace Automation.Plugins.Share.Sorting.View
 {
     public class SortingProgressView : AbstractView
     {

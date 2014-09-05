@@ -1,4 +1,4 @@
-﻿namespace Automation.Plugins.YZ.Sorting.View.Dialog
+﻿namespace Automation.Plugins.Share.Sorting.View.Dialog
 {
     partial class GeneratePackDataDialog
     {

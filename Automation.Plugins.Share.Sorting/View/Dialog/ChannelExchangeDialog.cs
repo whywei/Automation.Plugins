@@ -6,10 +6,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Automation.Plugins.YZ.Sorting.View.Controls;
-using Automation.Plugins.YZ.Sorting.Dal;
+using Automation.Plugins.Share.Sorting.View.Controls;
+using Automation.Plugins.Share.Sorting.Dal;
 
-namespace Automation.Plugins.YZ.Sorting.View.Dialog
+namespace Automation.Plugins.Share.Sorting.View.Dialog
 {
     public partial class ChannelExchangeDialog : DevExpress.XtraEditors.XtraForm
     {

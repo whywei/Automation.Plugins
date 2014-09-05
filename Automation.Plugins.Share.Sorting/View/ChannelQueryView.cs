@@ -5,17 +5,17 @@ using System.Text;
 using Automation.Core;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
-using Automation.Plugins.YZ.Sorting.Dal;
-using Automation.Plugins.YZ.Sorting.View.Controls;
+using Automation.Plugins.Share.Sorting.Dal;
+using Automation.Plugins.Share.Sorting.View.Controls;
 using System.Windows.Forms;
-using Automation.Plugins.YZ.Sorting.Properties;
+using Automation.Plugins.Share.Sorting.Properties;
 using System.Data;
-using Automation.Plugins.YZ.Sorting.View.Dialog;
+using Automation.Plugins.Share.Sorting.View.Dialog;
 using System.Transactions;
 using System.Drawing;
 using System.Reflection;
 
-namespace Automation.Plugins.YZ.Sorting.View
+namespace Automation.Plugins.Share.Sorting.View
 {
    public class ChannelQueryView :AbstractView
     {
@@ -52,7 +52,7 @@ namespace Automation.Plugins.YZ.Sorting.View
             foreach(var groupNo in groupNos)
             {
                 string itemName="Real_Time_Inventory_Data_"+groupNo;
-                object obj = AutomationContext.Read(Global.plcServiceName, itemName);
+                object obj = AutomationContext.Read(Global.PLC_SERVICE_NAME, itemName);
                 if(obj is Array)
                 {
                     Array channelRemainQuantityArray=(Array)obj;
@@ -118,14 +118,14 @@ namespace Automation.Plugins.YZ.Sorting.View
                             data[1] = channelDal.FindChannelAddressByChannelCode(targetChannelCode);
                             data[2] = 1;
 
-                            tryError = "[写入PLC-" + Global.plcServiceName + "]";
+                            tryError = "[写入PLC-" + Global.PLC_SERVICE_NAME + "]";
                             if (Convert.ToInt32(channeltable.Rows[0]["group_no"].ToString()) == 1)
                             {
-                                Ops.Write(Global.plcServiceName, "Channel_Interchange_Information_A", data);
+                                Ops.Write(Global.PLC_SERVICE_NAME, "Channel_Interchange_Information_A", data);
                             }
                             else
                             {
-                                Ops.Write(Global.plcServiceName, "Channel_Interchange_Information_B", data);
+                                Ops.Write(Global.PLC_SERVICE_NAME, "Channel_Interchange_Information_B", data);
                             }
                             DevExpress.XtraEditors.XtraMessageBox.Show(string.Format("{0}号烟道与{1}号烟道交换！", data[0], data[1]));
                             this.Refresh();

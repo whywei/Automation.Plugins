@@ -5,12 +5,12 @@ using System.Text;
 using DevExpress.XtraGrid;
 using Automation.Core;
 using System.Windows.Forms;
-using Automation.Plugins.YZ.Sorting.Properties;
-using Automation.Plugins.YZ.Sorting.View.Controls;
-using Automation.Plugins.YZ.Sorting.Dal;
+using Automation.Plugins.Share.Sorting.Properties;
+using Automation.Plugins.Share.Sorting.View.Controls;
+using Automation.Plugins.Share.Sorting.Dal;
 using System.Data;
 
-namespace Automation.Plugins.YZ.Sorting.View
+namespace Automation.Plugins.Share.Sorting.View
 {
     public class CacheOrderQueryView : AbstractView
     {
@@ -36,7 +36,7 @@ namespace Automation.Plugins.YZ.Sorting.View
         {
             SortingDal sortingDal = new SortingDal();
             string sortCacheOrderInformation="Sort_Cache_Order_Information_"+groupNo;
-            object obj = AutomationContext.Read(Global.plcServiceName, sortCacheOrderInformation);
+            object obj = AutomationContext.Read(Global.PLC_SERVICE_NAME, sortCacheOrderInformation);
             Array array = (Array)obj;
             if (array.Length == 3)
             {
@@ -65,7 +65,7 @@ namespace Automation.Plugins.YZ.Sorting.View
             switch (position)
             {
                 case "P":
-                    object obj = AutomationContext.Read(Global.plcServiceName, "Barcode_Printing_Order_Information");
+                    object obj = AutomationContext.Read(Global.PLC_SERVICE_NAME, "Barcode_Printing_Order_Information");
                     array = (Array)obj;
                     if (array.Length == 2)
                     {
@@ -74,7 +74,7 @@ namespace Automation.Plugins.YZ.Sorting.View
                     }
                     break;
                 case "S":
-                    obj = AutomationContext.Read(Global.plcServiceName, "Swing_Order_Information");
+                    obj = AutomationContext.Read(Global.PLC_SERVICE_NAME, "Swing_Order_Information");
                     array = (Array)obj;
                     if (array.Length == 2)
                     {

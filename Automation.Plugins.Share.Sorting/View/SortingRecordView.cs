@@ -5,12 +5,12 @@ using System.Text;
 using Automation.Core;
 using DevExpress.XtraGrid;
 using System.Windows.Forms;
-using Automation.Plugins.YZ.Sorting.View.Controls;
-using Automation.Plugins.YZ.Sorting.Dal;
+using Automation.Plugins.Share.Sorting.View.Controls;
+using Automation.Plugins.Share.Sorting.Dal;
 using DevExpress.XtraGrid.Views.Grid;
 
 
-namespace Automation.Plugins.YZ.Sorting.View
+namespace Automation.Plugins.Share.Sorting.View
 {
     public class SortingRecordView : AbstractView
     {

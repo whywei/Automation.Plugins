@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 
-namespace Automation.Plugins.YZ.Sorting.Model
+namespace Automation.Plugins.Share.Sorting.Model
 {
     public class ConnectionModel
     {

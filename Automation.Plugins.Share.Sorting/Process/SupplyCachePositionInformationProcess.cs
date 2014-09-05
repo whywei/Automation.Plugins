@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Automation.Core;
-using Automation.Plugins.YZ.Sorting.Rest;
+using Automation.Plugins.Share.Sorting.Rest;
 
-namespace Automation.Plugins.YZ.Sorting.Process
+namespace Automation.Plugins.Share.Sorting.Process
 {
     public class SupplyCachePositionInformationProcess : AbstractProcess
     {
@@ -29,7 +29,7 @@ namespace Automation.Plugins.YZ.Sorting.Process
         {
             try
             {
-                object obj = AutomationContext.Read(Global.plcServiceName, "Supply_Cache_Position_Information");
+                object obj = AutomationContext.Read(Global.PLC_SERVICE_NAME, "Supply_Cache_Position_Information");
                 Array array = (Array)obj;
                 for (int i = 0; i < array.Length / 2; i++)
                 {

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Automation.Core;
-using Automation.Plugins.YZ.Sorting.Dal;
+using Automation.Plugins.Share.Sorting.Dal;
 using System.Data;
 using Automation.Service.LED;
 
-namespace Automation.Plugins.YZ.Sorting.Process
+namespace Automation.Plugins.Share.Sorting.Process
 {
     public class LedInformationProcess : AbstractProcess
     {
@@ -27,7 +27,7 @@ namespace Automation.Plugins.YZ.Sorting.Process
                 foreach (var groupNo in groupNos)
                 {
                     string itemName = "Lack_Cigarette_Channel_Information_" + groupNo;
-                    object obj = AutomationContext.Read(Global.plcServiceName, itemName);
+                    object obj = AutomationContext.Read(Global.PLC_SERVICE_NAME, itemName);
                     List<string> channels = new List<string>();
                     if (obj is Array)
                     {
@@ -41,7 +41,7 @@ namespace Automation.Plugins.YZ.Sorting.Process
                         }
                         DataTable channelTable = channelDal.FindCigaretteChannelInfo(groupNo == "A" ? 1 : 2);
                         itemName = "Real_Time_Inventory_Data_" + groupNo;
-                        obj = AutomationContext.Read(Global.plcServiceName, itemName);
+                        obj = AutomationContext.Read(Global.PLC_SERVICE_NAME, itemName);
                         Array channelRemainQuantity = (Array)obj;
                         List<LEDData> ledDataList = new List<LEDData>();
                         foreach (DataRow row in channelTable.Rows)

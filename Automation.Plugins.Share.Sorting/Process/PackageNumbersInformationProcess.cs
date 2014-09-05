@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Automation.Core;
-using Automation.Plugins.YZ.Sorting.Dal;
+using Automation.Plugins.Share.Sorting.Dal;
 using System.Data;
 using DBRabbit;
 
-namespace Automation.Plugins.YZ.Sorting.Process
+namespace Automation.Plugins.Share.Sorting.Process
 {
     public class PackageNumbersInformationProcess : AbstractProcess
     {
@@ -25,7 +25,7 @@ namespace Automation.Plugins.YZ.Sorting.Process
             foreach (int item in export)
             {
                 string itemName="Package_Numbers_Information_0"+item.ToString();
-                int packNo = Ops.ReadSingle<int>(Global.plcServiceName, itemName);
+                int packNo = Ops.ReadSingle<int>(Global.PLC_SERVICE_NAME, itemName);
                 if (packNo > 0)
                 { 
                     //包号不存在
@@ -49,7 +49,7 @@ namespace Automation.Plugins.YZ.Sorting.Process
                             int maxPackNo = orderDal.FindMaxPackNoInDeliverLine(packNo);
                             if (packNo == maxPackNo)
                             {
-                                if (Ops.Write(Global.plcServiceName, "Chang_Route_Sign", 1))
+                                if (Ops.Write(Global.PLC_SERVICE_NAME, "Chang_Route_Sign", 1))
                                 {
                                     TM.Commit();
                                 }
@@ -60,7 +60,7 @@ namespace Automation.Plugins.YZ.Sorting.Process
                             }
                         }
                     }
-                    Ops.Write(Global.plcServiceName, itemName, "0");
+                    Ops.Write(Global.PLC_SERVICE_NAME, itemName, "0");
                 }
             }
         }

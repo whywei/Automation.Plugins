@@ -1,9 +1,9 @@
 ﻿using System;
-using Automation.Plugins.YZ.Sorting.Dal;
+using Automation.Plugins.Share.Sorting.Dal;
 using System.Data;
 using Automation.Core;
 
-namespace Automation.Plugins.YZ.Sorting.Bll
+namespace Automation.Plugins.Share.Sorting.Bll
 {
     public class ProductBll
     {
@@ -18,8 +18,8 @@ namespace Automation.Plugins.YZ.Sorting.Bll
                 barCode[i] = Convert.ToInt32(table.Rows[i]["piece_barcode"]);
                 productName[i] = table.Rows[i]["product_name"].ToString().Substring(0, 13);
             }
-            Ops.Write(Global.plcServiceName, "Cigarette_Barcode_Information", barCode);
-            Ops.Write(Global.plcServiceName, "Cigarette_Name_Information", productName);
+            Ops.Write(Global.PLC_SERVICE_NAME, "Cigarette_Barcode_Information", barCode);
+            Ops.Write(Global.PLC_SERVICE_NAME, "Cigarette_Name_Information", productName);
         }
     }
 }

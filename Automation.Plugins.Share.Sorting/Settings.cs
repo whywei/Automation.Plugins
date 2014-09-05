@@ -1,4 +1,4 @@
-﻿namespace Automation.Plugins.YZ.Sorting.Properties {
+﻿namespace Automation.Plugins.Share.Sorting.Properties {
     
     
     // 通过此类可以处理设置类的特定事件:

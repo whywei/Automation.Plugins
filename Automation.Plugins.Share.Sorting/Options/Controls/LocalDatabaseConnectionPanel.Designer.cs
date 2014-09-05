@@ -1,4 +1,4 @@
-﻿namespace Automation.Plugins.YZ.Sorting.Options.Controls
+﻿namespace Automation.Plugins.Share.Sorting.Options.Controls
 {
     partial class LocalDatabaseConnectionPanel
     {

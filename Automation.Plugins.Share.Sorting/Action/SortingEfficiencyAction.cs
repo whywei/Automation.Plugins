@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Automation.Core;
-using Automation.Plugins.YZ.Sorting.Properties;
+using Automation.Plugins.Share.Sorting.Properties;
 using DotSpatial.Controls.Header;
-using Automation.Plugins.YZ.Sorting.View;
+using Automation.Plugins.Share.Sorting.View;
 
-namespace Automation.Plugins.YZ.Sorting.Action
+namespace Automation.Plugins.Share.Sorting.Action
 {
     public class SortingEfficiencyAction : AbstractAction
     {

@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Automation.Core.Option;
-using Automation.Plugins.YZ.Sorting.Options.Controls;
-using Automation.Plugins.YZ.Sorting.Properties;
+using Automation.Plugins.Share.Sorting.Options.Controls;
+using Automation.Plugins.Share.Sorting.Properties;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using Automation.Plugins.YZ.Sorting.Model;
+using Automation.Plugins.Share.Sorting.Model;
 using System.Xml.Linq;
 using Automation.Core;
 using System.Data.SqlClient;
 
-namespace Automation.Plugins.YZ.Sorting.Options
+namespace Automation.Plugins.Share.Sorting.Options
 {
     public class LocalDatabaseConnectionOption : AbstractOption
     {
@@ -43,7 +43,7 @@ namespace Automation.Plugins.YZ.Sorting.Options
             try
             {
                 XElement doc = XElement.Load(@"TransactionScopeFactoryProviderConfig.xml");
-                IList<XElement> el = (from d in doc.Descendants("key") where d.Attribute("name").Value == Global.yzSorting_DB_NAME select d).ToList();
+                IList<XElement> el = (from d in doc.Descendants("key") where d.Attribute("name").Value == Global.SORTING_DATABASE_NAME select d).ToList();
                 if (el != null)
                 {
                     var node = (from e in el[0].Elements("DataConfiguration")
@@ -98,7 +98,7 @@ namespace Automation.Plugins.YZ.Sorting.Options
                 try
                 {
                     XElement doc = XElement.Load(@"TransactionScopeFactoryProviderConfig.xml");
-                    IList<XElement> el = (from d in doc.Descendants("key") where d.Attribute("name").Value == Global.yzSorting_DB_NAME select d).ToList();
+                    IList<XElement> el = (from d in doc.Descendants("key") where d.Attribute("name").Value == Global.SORTING_DATABASE_NAME select d).ToList();
                     if (el != null)
                     {
                         var node = (from item in el[0].Elements("DataConfiguration")

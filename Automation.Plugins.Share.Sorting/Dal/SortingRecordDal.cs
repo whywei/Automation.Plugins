@@ -5,7 +5,7 @@ using System.Text;
 using DBRabbit;
 using System.Data;
 
-namespace Automation.Plugins.YZ.Sorting.Dal
+namespace Automation.Plugins.Share.Sorting.Dal
 {
     public class SortingRecordDal : AbstractBaseDal
     {
@@ -13,7 +13,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
 
         public DataTable FindSortingRecordMaster()
         {
-            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
             string sql = @"SELECT sort_no,pack_no,a.quantity,b.channel_name,b.sort_address,
                            a.remain_quantity,export_no,a.product_code,a.product_name,
                            case a.group_no when '1' then 'A线' when '2' then 'B线' end as group_no,
@@ -26,7 +26,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         //包号查询
         public DataTable FindSortingRecordByPackNo(int pack)
         {
-            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
             string sql = @"SELECT sort_no,pack_no,a.quantity,b.channel_name,b.sort_address,
                            a.remain_quantity,export_no,a.product_code,a.product_name,
                            case a.group_no when '1' then 'A线' when '2' then 'B线' end as group_no,

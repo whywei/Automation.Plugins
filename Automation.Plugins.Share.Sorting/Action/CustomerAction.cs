@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using Automation.Core;
 using DotSpatial.Controls.Header;
-using Automation.Plugins.YZ.Sorting.Properties;
-using Automation.Plugins.YZ.Sorting.View;
+using Automation.Plugins.Share.Sorting.Properties;
+using Automation.Plugins.Share.Sorting.View;
 using DevExpress.XtraEditors;
-using Automation.Plugins.YZ.Sorting.Dal;
+using Automation.Plugins.Share.Sorting.Dal;
 using System.Windows.Forms;
 
-namespace Automation.Plugins.YZ.Sorting.Action
+namespace Automation.Plugins.Share.Sorting.Action
 {
     public class CustomerAction : AbstractAction
     {

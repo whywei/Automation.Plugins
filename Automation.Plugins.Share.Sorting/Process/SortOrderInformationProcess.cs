@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Automation.Core;
-using Automation.Plugins.YZ.Sorting.Dal;
+using Automation.Plugins.Share.Sorting.Dal;
 using System.Data;
 using DBRabbit;
 
-namespace Automation.Plugins.YZ.Sorting.Process
+namespace Automation.Plugins.Share.Sorting.Process
 {
     public class SortOrderInformationProcess : AbstractProcess
     {
@@ -25,7 +25,7 @@ namespace Automation.Plugins.YZ.Sorting.Process
         {
             try
             {
-                bool isStart = Ops.ReadSingle<bool>(Global.memoryServiceName_TemporarilySingleData, Global.memoryItemName_SortingState);
+                bool isStart = Ops.ReadSingle<bool>(Global.MemoryTemporarilySingleDataService, Global.MemoryItemNameSortState);
                 if (isStart)
                 {
                     //A线
@@ -43,7 +43,7 @@ namespace Automation.Plugins.YZ.Sorting.Process
         public void WriteSortOrderInformationToPLC(int groupNo)
         {
             string sortOrderInformation = "Sort_Order_Information_" + (groupNo == 1 ? "A" : groupNo == 2 ? "B" : "");
-            object readData = AutomationContext.Read(Global.plcServiceName, sortOrderInformation);
+            object readData = AutomationContext.Read(Global.PLC_SERVICE_NAME, sortOrderInformation);
             Array array = (Array)readData;
             if (array.Length == 226)
             {
@@ -89,7 +89,7 @@ namespace Automation.Plugins.YZ.Sorting.Process
                                 //更新主表状态
                                 int isSortMaxPackNo = sortingDal.FindIsSortMaxPackNo(groupNo);
                                 orderDal.UpdateMasterStatus(isSortMaxPackNo);
-                                bool result = Ops.Write(Global.plcServiceName, sortOrderInformation, writeData);
+                                bool result = Ops.Write(Global.PLC_SERVICE_NAME, sortOrderInformation, writeData);
                                 if (result)
                                 {
                                     TM.Commit();

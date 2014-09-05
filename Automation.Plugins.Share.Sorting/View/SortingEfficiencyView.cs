@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Automation.Core;
-using Automation.Plugins.YZ.Sorting.View.Controls;
+using Automation.Plugins.Share.Sorting.View.Controls;
 using System.Windows.Forms;
 
-namespace Automation.Plugins.YZ.Sorting.View
+namespace Automation.Plugins.Share.Sorting.View
 {
     public class SortingEfficiencyView : AbstractView
     {

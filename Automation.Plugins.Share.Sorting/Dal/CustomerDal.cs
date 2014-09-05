@@ -6,7 +6,7 @@ using System.Data;
 using DBRabbit;
 using Automation.Core;
 
-namespace Automation.Plugins.YZ.Sorting.Dal
+namespace Automation.Plugins.Share.Sorting.Dal
 {
     public class CustomerDal : AbstractBaseDal
     {
@@ -16,7 +16,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         /// <returns>客户查询</returns>
         public DataTable FindMaster(string product_name)
         {
-            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
             string sql = @"SELECT order_date,batch_no,MIN(pack_no) pack_no,dist_name,deliver_line_name,customer_code,customer_name,address,
                            customer_Info,sum(quantity) as quantity,
                            CASE STATUS WHEN '01' THEN '未下单' ELSE '已下单' END status 
@@ -33,7 +33,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         /// <returns>客户查询</returns>
         public DataTable FindDetail(string customer_code)
         {
-            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
             string sql = string.Format(@"SELECT A.pack_no,A.channel_code,A.product_code,A.product_name,A.quantity,B.channel_name 
                                          ,channel_type=CASE B.channel_type WHEN '1'THEN '立式机（人工）' WHEN '2'THEN '立式机（自动）' WHEN '3'THEN '通道机' WHEN '4' THEN '卧式机' WHEN '5' THEN '混合道' END
                                          FROM sort_order_allot_detail A LEFT JOIN Channel_Allot B ON A.channel_code=B.channel_code AND A.product_code=B.product_code
@@ -43,7 +43,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
 
         public DataTable FindProduct(string product_name, string quantity)
         {
-            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
             string sql = "";
             if (quantity!="")
                 sql = string.Format(@"SELECT order_date,batch_no,MIN(pack_no) pack_no,dist_name,deliver_line_name,customer_code,customer_name,
@@ -74,7 +74,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         {
             //try
             //{
-                var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
                 string sql = "select distinct product_name from sort_order_allot_detail ";
                 DataTable dt = ra.DoQuery(sql).Tables[0];
                 string[] array = new string[dt.Rows.Count];

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Automation.Core.Option;
-using Automation.Plugins.YZ.Sorting.Properties;
+using Automation.Plugins.Share.Sorting.Properties;
 
-namespace Automation.Plugins.YZ.Sorting.Options
+namespace Automation.Plugins.Share.Sorting.Options
 {
     public class ParameterOption : AbstractOption
     {

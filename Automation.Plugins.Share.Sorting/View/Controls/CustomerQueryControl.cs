@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Automation.Plugins.YZ.Sorting.View.Controls
+namespace Automation.Plugins.Share.Sorting.View.Controls
 {
     public partial class CustomerQueryControl : UserControl
     {

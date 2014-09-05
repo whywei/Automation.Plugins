@@ -5,13 +5,13 @@ using System.Text;
 using System.Data;
 using DBRabbit;
 
-namespace Automation.Plugins.YZ.Sorting.Dal
+namespace Automation.Plugins.Share.Sorting.Dal
 {
     public class ServerDal : AbstractBaseDal
     {
         public DataTable FindBatch(string lineCode)
         {
-            var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
+            var ra = TransactionScopeManager[Global.SERVER_DATABASE_NAME].NewRelationAccesser();
             string sql = @"SELECT id,order_date,batch_no,sorting_line_code
                         FROM sms_sort_batch 
                         where status='03' AND sorting_line_code='{0}'
@@ -22,7 +22,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         //下载烟道表  a.sort_batch_id,
         public DataTable FindChannel(string batchsortid)
         {
-            var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
+            var ra = TransactionScopeManager[Global.SERVER_DATABASE_NAME].NewRelationAccesser();
             string sql = string.Format(@"SELECT a.channel_code,a.product_code,a.product_name,c.piece_barcode,a.quantity,
                                         b.channel_type,b.channel_name,b.sorting_line_code,b.led_no,b.x,b.y,b.width,
                                         b.height,b.remain_quantity,b.channel_capacity,b.group_no,b.order_no,b.sort_address,
@@ -37,7 +37,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         //下载订单主表  
         public DataTable FindOrderMaster(string batchsortid)
         {
-            var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
+            var ra = TransactionScopeManager[Global.SERVER_DATABASE_NAME].NewRelationAccesser();
             string sql = string.Format(@"SELECT b.order_date,b.batch_no,b.sorting_line_code,a.pack_no,
                                     a.order_id,d.dist_code,d.dist_name,a.deliver_line_code,e.deliver_line_name,
                                     a.customer_code,a.customer_name,f.license_code,f.address,a.customer_order,
@@ -53,7 +53,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         //下载订单细表
         public DataTable FindOrderDetail(string batchsortid)
         {
-            var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
+            var ra = TransactionScopeManager[Global.SERVER_DATABASE_NAME].NewRelationAccesser();
             string sql = string.Format(@"select a.channel_code,                                              
                                                 a.product_code,
                                                 a.product_name,
@@ -66,7 +66,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         //下载手工补货订单明细表
         public DataTable FindHandleSupply(string batchsortid)
         {
-            var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
+            var ra = TransactionScopeManager[Global.SERVER_DATABASE_NAME].NewRelationAccesser();
             string sql = string.Format(@"SELECT supply_id,supply_batch,pack_no,channel_code,product_code,product_name,quantity
                                                 FROM sms_hand_supply where sort_batch_id='{0}'", batchsortid);
             return ra.DoQuery(sql).Tables[0];
@@ -75,13 +75,13 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         //更新批次状态提示数据下载完成
         public void UpdateBatchStatus(string batchsortid)
         {
-            var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
+            var ra = TransactionScopeManager[Global.SERVER_DATABASE_NAME].NewRelationAccesser();
             ra.DoCommand(string.Format("update sms_sort_batch set status ='04' where id = '{0}'", batchsortid));
         }
 
         public DataTable FindBatchInfoById(string batchId)
         {
-            var ra = TransactionScopeManager[Global.yzServiceName].NewRelationAccesser();
+            var ra = TransactionScopeManager[Global.SERVER_DATABASE_NAME].NewRelationAccesser();
             string sql = @"SELECT order_date,batch_no FROM sms_sort_batch WHERE id={0}";
             return ra.DoQuery(string.Format(sql, batchId)).Tables[0];
         }

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Automation.Core.Option;
-using Automation.Plugins.YZ.Sorting.Properties;
-using Automation.Plugins.YZ.Sorting.Options.Controls;
+using Automation.Plugins.Share.Sorting.Properties;
+using Automation.Plugins.Share.Sorting.Options.Controls;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
-namespace Automation.Plugins.YZ.Sorting.Options
+namespace Automation.Plugins.Share.Sorting.Options
 {
     public class SystemParameterOption:AbstractOption
     {

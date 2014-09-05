@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Automation.Plugins.YZ.Sorting.Rest
+namespace Automation.Plugins.Share.Sorting.Rest
 {
     public class RestReturn
     {

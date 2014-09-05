@@ -6,11 +6,11 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Automation.Plugins.YZ.Sorting.Dal;
-using Automation.Plugins.YZ.Sorting.View.Dialog;
-using Automation.Plugins.YZ.Sorting.Action;
+using Automation.Plugins.Share.Sorting.Dal;
+using Automation.Plugins.Share.Sorting.View.Dialog;
+using Automation.Plugins.Share.Sorting.Action;
 
-namespace Automation.Plugins.YZ.Sorting.View.Controls
+namespace Automation.Plugins.Share.Sorting.View.Controls
 {
     public partial class ChannelQueryControl : DevExpress.XtraEditors.XtraUserControl
     {

@@ -7,7 +7,7 @@ using DevExpress.XtraPrinting;
 using System.Windows.Forms;
 using DevExpress.XtraPrinting.Native.WinControls;
 
-namespace Automation.Plugins.YZ.Sorting.View
+namespace Automation.Plugins.Share.Sorting.View
 {
     public class PrintSettingView
     {
@@ -123,7 +123,7 @@ namespace Automation.Plugins.YZ.Sorting.View
         private void barLandScape_Vertical_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ChangeStatus(true);
-            bool result = Ops.Write(Global.memoryServiceName_PSD, "PrintLandScape", "Vertical");
+            bool result = Ops.Write(Global.MemoryPermanentSingleDataService, "PrintLandScape", "Vertical");
             if (result)
             {
                 Logger.Info("打印页面方向设置成功！");
@@ -143,7 +143,7 @@ namespace Automation.Plugins.YZ.Sorting.View
         private void barLandScape_Horizontal_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ChangeStatus(false);
-            bool result = Ops.Write(Global.memoryServiceName_PSD, "PrintLandScape", "Horizontal");
+            bool result = Ops.Write(Global.MemoryPermanentSingleDataService, "PrintLandScape", "Horizontal");
             if (result)
             {
                 Logger.Info("打印页面方向设置成功！");
@@ -157,7 +157,7 @@ namespace Automation.Plugins.YZ.Sorting.View
         private void barHeaderAndFooter_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             HeaderFooterForm headerFooterForm = new HeaderFooterForm();
-            editValue = Ops.ReadSingle<PageHeaderFooter>(Global.memoryServiceName_PSD, "PageHeaderFooter");
+            editValue = Ops.ReadSingle<PageHeaderFooter>(Global.MemoryPermanentSingleDataService, "PageHeaderFooter");
             if (editValue == null)
             {
                 editValue = new PageHeaderFooter();
@@ -166,7 +166,7 @@ namespace Automation.Plugins.YZ.Sorting.View
             if (headerFooterForm.ShowDialog() == DialogResult.OK)
             {
                 this.editValue = (PageHeaderFooter)headerFooterForm.EditValue;
-                bool result= Ops.Write(Global.memoryServiceName_PSD, "PageHeaderFooter", this.editValue);
+                bool result= Ops.Write(Global.MemoryPermanentSingleDataService, "PageHeaderFooter", this.editValue);
                 if (result)
                 {
                     Logger.Info("页眉页脚信息保存成功！");
@@ -182,7 +182,7 @@ namespace Automation.Plugins.YZ.Sorting.View
         public void LoadPageSetting()
         {
             //页面方向
-            string landScape = Ops.ReadSingle<string>(Global.memoryServiceName_PSD, "PrintLandScape");
+            string landScape = Ops.ReadSingle<string>(Global.MemoryPermanentSingleDataService, "PrintLandScape");
             if (landScape != null && landScape != "")
             {
                 if (landScape == "Horizontal")
@@ -197,7 +197,7 @@ namespace Automation.Plugins.YZ.Sorting.View
                 }
             }
             //页眉页脚
-            editValue = Ops.ReadSingle<PageHeaderFooter>(Global.memoryServiceName_PSD, "PageHeaderFooter");
+            editValue = Ops.ReadSingle<PageHeaderFooter>(Global.MemoryPermanentSingleDataService, "PageHeaderFooter");
             if (editValue != null)
             {
                 if (editValue.Header.Content.Count >= 3&&editValue.Header.Content[1] == "")

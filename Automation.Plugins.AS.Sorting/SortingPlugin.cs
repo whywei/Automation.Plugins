@@ -1,25 +1,23 @@
 ﻿using DotSpatial.Controls;
 using Automation.Core;
 using System.ComponentModel.Composition;
-using DotSpatial.Controls.Header;
 using System.Windows.Forms;
 
-namespace Automation.Plugins.Share.Sorting
+namespace Automation.Plugins.AS.Sorting
 {
     public class SortingPlugin : Extension
     {
         [Import]
-        public AutomationContext AutomationContext { get; set; }
+        public AutomationContext AutomationContext { get; set; }        
 
         [Import("Shell", typeof(ContainerControl))]
         public ContainerControl Shell { get; set; }
 
         public override void Activate()
         {
-            AddHeaderRootItems();
             AutomationContext.ActivateAction();
             AutomationContext.ActivateView();     
-            base.Activate();
+            base.Activate();            
         }
 
         public override void Deactivate()
@@ -28,12 +26,6 @@ namespace Automation.Plugins.Share.Sorting
             AutomationContext.DeactivateView();
             App.HeaderControl.RemoveAll();
             base.Deactivate();
-        }
-
-        private void AddHeaderRootItems()
-        {
-            IHeaderControl header = App.HeaderControl;
-            header.Add(new RootItem("yzSorting", "分拣") { SortOrder = 105 });
         }
     }
 }

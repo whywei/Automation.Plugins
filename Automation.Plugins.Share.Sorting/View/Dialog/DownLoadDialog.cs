@@ -4,9 +4,9 @@ using System.Data;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.ComponentModel.Composition;
-using Automation.Plugins.YZ.Sorting.Bll;
+using Automation.Plugins.Share.Sorting.Bll;
 
-namespace Automation.Plugins.YZ.Sorting.View.Dialog
+namespace Automation.Plugins.Share.Sorting.View.Dialog
 {
     public partial class DownLoadDialog : DevExpress.XtraEditors.XtraForm
     {

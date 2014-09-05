@@ -8,7 +8,7 @@ using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
-namespace Automation.Plugins.YZ.Sorting.View.Dialog
+namespace Automation.Plugins.Share.Sorting.View.Dialog
 {
     public partial class GeneratePackDataDialog : DevExpress.XtraEditors.XtraForm
     {

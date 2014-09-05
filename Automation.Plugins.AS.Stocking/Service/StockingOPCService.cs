@@ -3,7 +3,7 @@ using Automation.Service.OPC;
 
 namespace Automation.Plugins.AS.Stocking.Service
 {
-    public class StockOPCService : AbstractServiceWrapper
+    public class StockingOPCService : AbstractServiceWrapper
     {
         public override void Initialize()
         {

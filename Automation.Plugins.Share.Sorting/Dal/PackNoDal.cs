@@ -5,7 +5,7 @@ using System.Text;
 using System.Data;
 using DBRabbit;
 
-namespace Automation.Plugins.YZ.Sorting.Dal
+namespace Automation.Plugins.Share.Sorting.Dal
 {
     public class PackNoDal : AbstractBaseDal
     {
@@ -16,7 +16,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         /// <returns>烟包查询</returns>
         public DataTable FindMaster()
         {
-            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
             string sql = @"SELECT order_date
       ,batch_no
       ,line_code
@@ -48,7 +48,7 @@ namespace Automation.Plugins.YZ.Sorting.Dal
         /// <returns>烟包查询</returns>
         public DataTable FindDetail(string pack_no)
         {
-            var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
+            var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
             string sql = string.Format(@"SELECT A.pack_no
       ,C.order_id
       ,A.channel_code

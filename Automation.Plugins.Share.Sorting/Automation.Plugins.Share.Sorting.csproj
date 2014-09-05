@@ -8,8 +8,8 @@
     <ProjectGuid>{85AAB825-C8B5-40F3-B648-54F9B6553B0F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Automation.Plugins.YZ.Sorting</RootNamespace>
-    <AssemblyName>Automation.Plugins.YZ.Sorting</AssemblyName>
+    <RootNamespace>Automation.Plugins.Share.Sorting</RootNamespace>
+    <AssemblyName>Automation.Plugins.Share.Sorting</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -192,7 +192,6 @@
     <Compile Include="Rest\RestClient.cs" />
     <Compile Include="Rest\RestReturn.cs" />
     <Compile Include="Service\LEDService.cs" />
-    <Compile Include="Service\SortingOPCService.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>

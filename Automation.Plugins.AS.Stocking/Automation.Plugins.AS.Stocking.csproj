@@ -106,7 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\StockOPCService.cs" />
+    <Compile Include="Service\StockingOPCService.cs" />
     <Compile Include="StockingPlugin.cs" />
   </ItemGroup>
   <ItemGroup>

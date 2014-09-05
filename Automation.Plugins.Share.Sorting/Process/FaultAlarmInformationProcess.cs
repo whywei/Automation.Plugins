@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Automation.Core;
 
-namespace Automation.Plugins.YZ.Sorting.Process
+namespace Automation.Plugins.Share.Sorting.Process
 {
     public class FaultAlarmInformationProcess : AbstractProcess
     {

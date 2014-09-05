@@ -4,19 +4,19 @@ using System.Linq;
 using System.Text;
 using Automation.Core;
 
-namespace Automation.Plugins.YZ.Sorting.Service
+namespace Automation.Plugins.Share.Sorting.Service
 {
     public class LEDService : AbstractServiceWrapper
     {
         public override void Initialize()
         {
-            Description = "LED服务";
+            Description = "分拣LED服务";
             base.Initialize();
         }
 
         public override void CreateTargetService()
         {
-            Name = "LED";
+            Name = "SortLED";
             this.TargetService = new Automation.Service.LED.LEDService();
         }
     }

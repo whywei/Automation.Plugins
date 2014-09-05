@@ -8,7 +8,7 @@ using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
-namespace Automation.Plugins.YZ.Sorting.Options.Controls
+namespace Automation.Plugins.Share.Sorting.Options.Controls
 {
     public partial class SystemParameterPanel : DevExpress.XtraEditors.XtraUserControl
     {

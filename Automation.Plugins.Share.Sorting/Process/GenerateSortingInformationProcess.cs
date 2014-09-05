@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using Automation.Core;
 using System.Data;
-using Automation.Plugins.YZ.Sorting.Dal;
+using Automation.Plugins.Share.Sorting.Dal;
 using DBRabbit;
 
-namespace Automation.Plugins.YZ.Sorting.Process
+namespace Automation.Plugins.Share.Sorting.Process
 {
     public class GenerateSortingInformationProcess : AbstractProcess
     {
@@ -23,7 +23,7 @@ namespace Automation.Plugins.YZ.Sorting.Process
         {
             try
             {
-                bool isStart = Ops.ReadSingle<bool>(Global.memoryServiceName_TemporarilySingleData, Global.memoryItemName_SortingState);
+                bool isStart = Ops.ReadSingle<bool>(Global.MemoryTemporarilySingleDataService, Global.MemoryItemNameSortState);
                 if (isStart)
                 {
                     //A线

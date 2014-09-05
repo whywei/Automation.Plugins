@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Automation.Plugins.YZ.Sorting
+﻿
+namespace Automation.Plugins.Share.Sorting
 {
     public class Global
     {
-       public const string yzSorting_DB_NAME="master5";
-       public const string yzServiceName = "master";
-       public const string memoryServiceName_PSD = "MemoryPermanentSingleDataService";//永久保存的单数据服务
-       public const string memoryServiceName_TemporarilySingleData = "MemoryTemporarilySingleDataService";//临时保存的单数据服务
-       public const string memoryItemName_SortingState = "IsStart";
-       public const string plcServiceName = "Sort_AB";
+       public const string SERVER_DATABASE_NAME = "server";
+       public const string SORTING_DATABASE_NAME = "master";
+       public const string PLC_SERVICE_NAME = "SortPLC";
+       public const string LED_SERVICE_NAME = "SortLED";
+
+       public const string MemoryPermanentSingleDataService = "MemoryPermanentSingleDataService";
+       public const string MemoryTemporarilySingleDataService = "MemoryTemporarilySingleDataService";
+       public const string MemoryItemNameSortState = "IsStart";       
     }
 }

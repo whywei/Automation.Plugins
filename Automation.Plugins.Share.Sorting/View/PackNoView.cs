@@ -4,19 +4,19 @@ using System.Linq;
 using System.Text;
 using Automation.Core;
 using DevExpress.XtraGrid;
-using Automation.Plugins.YZ.Sorting.View.Controls;
+using Automation.Plugins.Share.Sorting.View.Controls;
 using System.Windows.Forms;
-using Automation.Plugins.YZ.Sorting.Properties;
+using Automation.Plugins.Share.Sorting.Properties;
 using DevExpress.XtraGrid.Views.Grid;
-using Automation.Plugins.YZ.Sorting.Dal;
+using Automation.Plugins.Share.Sorting.Dal;
 using DevExpress.XtraEditors;
-using Automation.Plugins.YZ.Sorting.Process;
+using Automation.Plugins.Share.Sorting.Process;
 using System.Data;
 using DevExpress.XtraSplashScreen;
 using System.Threading.Tasks;
 using Automation.Plugins.MainPlugin.View.Forms;
 
-namespace Automation.Plugins.YZ.Sorting.View
+namespace Automation.Plugins.Share.Sorting.View
 {
     public class PackNoView:AbstractView
     {
@@ -67,7 +67,7 @@ namespace Automation.Plugins.YZ.Sorting.View
             if (gridMasterView.GetSelectedRows().Count() > 0)
             {
                 string packNo = gridMasterView.GetRowCellValue(gridMasterView.GetSelectedRows()[0], "pack_no").ToString();
-                bool isStart = Ops.ReadSingle<bool>(Global.memoryServiceName_TemporarilySingleData, Global.memoryItemName_SortingState);
+                bool isStart = Ops.ReadSingle<bool>(Global.MemoryTemporarilySingleDataService, Global.MemoryItemNameSortState);
                 if (!isStart)
                 {
                     if (XtraMessageBox.Show(string.Format("您确定要将下单记录校正到第 {0} 包吗？\n小于此包号的数据将标记为已下单。(慎用)", packNo), "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)

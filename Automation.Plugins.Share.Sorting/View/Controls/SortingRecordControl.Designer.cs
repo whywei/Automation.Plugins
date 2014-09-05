@@ -1,4 +1,4 @@
-﻿namespace Automation.Plugins.YZ.Sorting.View.Controls
+﻿namespace Automation.Plugins.Share.Sorting.View.Controls
 {
     partial class SortingRecordControl
     {

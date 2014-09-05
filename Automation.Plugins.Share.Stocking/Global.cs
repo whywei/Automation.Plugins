@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿
 namespace Automation.Plugins.Share.Stocking
 {
     public class Global
@@ -13,6 +9,6 @@ namespace Automation.Plugins.Share.Stocking
 
         public const string MemoryPermanentSingleDataService = "MemoryPermanentSingleDataService";
         public const string MemoryTemporarilySingleDataService = "MemoryTemporarilySingleDataService";
-        public const string MemoryItemNameStockState = "IsStock";
+        public const string MemoryItemNameStockState = "IsStart";
     }
 }
