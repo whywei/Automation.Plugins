@@ -106,16 +106,50 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "YZ", "YZ", "{6FE4DC32-AB04-4E03-A5BA-DBCAE53B04F7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WCS", "WCS", "{737DBA44-AAA7-4067-8E0D-31BB91FB2BD4}"
+	ProjectSection(SolutionItems) = preProject
+		Setup\AutomationDesktop.Setup.AS.WCS\AutomationDesktop.exe.config = Setup\AutomationDesktop.Setup.AS.WCS\AutomationDesktop.exe.config
+		Setup\AutomationDesktop.Setup.AS.WCS\AutomationDesktop.ico = Setup\AutomationDesktop.Setup.AS.WCS\AutomationDesktop.ico
+		Setup\AutomationDesktop.Setup.AS.WCS\AutomationDesktop.jpg = Setup\AutomationDesktop.Setup.AS.WCS\AutomationDesktop.jpg
+		Setup\AutomationDesktop.Setup.AS.WCS\HomePanelImage.jpg = Setup\AutomationDesktop.Setup.AS.WCS\HomePanelImage.jpg
+		Setup\AutomationDesktop.Setup.AS.WCS\TransactionScopeFactoryProviderConfig.xml = Setup\AutomationDesktop.Setup.AS.WCS\TransactionScopeFactoryProviderConfig.xml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sorting", "Sorting", "{AA6B794F-F08C-40F6-A676-2B36463500B3}"
+	ProjectSection(SolutionItems) = preProject
+		Setup\AutomationDesktop.Setup.LPS.Sorting\AutomationDesktop.exe.config = Setup\AutomationDesktop.Setup.LPS.Sorting\AutomationDesktop.exe.config
+		Setup\AutomationDesktop.Setup.LPS.Sorting\AutomationDesktop.ico = Setup\AutomationDesktop.Setup.LPS.Sorting\AutomationDesktop.ico
+		Setup\AutomationDesktop.Setup.LPS.Sorting\AutomationDesktop.jpg = Setup\AutomationDesktop.Setup.LPS.Sorting\AutomationDesktop.jpg
+		Setup\AutomationDesktop.Setup.LPS.Sorting\EQ2008_Dll.dll = Setup\AutomationDesktop.Setup.LPS.Sorting\EQ2008_Dll.dll
+		Setup\AutomationDesktop.Setup.LPS.Sorting\EQ2008_Dll_Set.ini = Setup\AutomationDesktop.Setup.LPS.Sorting\EQ2008_Dll_Set.ini
+		Setup\AutomationDesktop.Setup.LPS.Sorting\HomePanelImage.jpg = Setup\AutomationDesktop.Setup.LPS.Sorting\HomePanelImage.jpg
+		Setup\AutomationDesktop.Setup.LPS.Sorting\TransactionScopeFactoryProviderConfig.xml = Setup\AutomationDesktop.Setup.LPS.Sorting\TransactionScopeFactoryProviderConfig.xml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sorting", "Sorting", "{3B586A2B-636A-42BC-AAF0-513D55403661}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WCS", "WCS", "{F9AAF3DA-10F8-4901-AB9A-FB4ECB91D575}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ManualSupply", "ManualSupply", "{00C2063D-8285-4528-BE60-30AD8D2F0C6A}"
+	ProjectSection(SolutionItems) = preProject
+		Setup\AutomationDesktop.Setup.AS.ManualSupply\AutomationDesktop.exe.config = Setup\AutomationDesktop.Setup.AS.ManualSupply\AutomationDesktop.exe.config
+		Setup\AutomationDesktop.Setup.AS.ManualSupply\AutomationDesktop.ico = Setup\AutomationDesktop.Setup.AS.ManualSupply\AutomationDesktop.ico
+		Setup\AutomationDesktop.Setup.AS.ManualSupply\AutomationDesktop.jpg = Setup\AutomationDesktop.Setup.AS.ManualSupply\AutomationDesktop.jpg
+		Setup\AutomationDesktop.Setup.AS.ManualSupply\EQ2008_Dll.dll = Setup\AutomationDesktop.Setup.AS.ManualSupply\EQ2008_Dll.dll
+		Setup\AutomationDesktop.Setup.AS.ManualSupply\EQ2008_Dll_Set.ini = Setup\AutomationDesktop.Setup.AS.ManualSupply\EQ2008_Dll_Set.ini
+		Setup\AutomationDesktop.Setup.AS.ManualSupply\HomePanelImage.jpg = Setup\AutomationDesktop.Setup.AS.ManualSupply\HomePanelImage.jpg
+		Setup\AutomationDesktop.Setup.AS.ManualSupply\TransactionScopeFactoryProviderConfig.xml = Setup\AutomationDesktop.Setup.AS.ManualSupply\TransactionScopeFactoryProviderConfig.xml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sorting", "Sorting", "{305588C0-FE5D-466A-AEEA-508856B573A6}"
+	ProjectSection(SolutionItems) = preProject
+		Setup\AutomationDesktop.Setup.AS.Sorting\AutomationDesktop.exe.config = Setup\AutomationDesktop.Setup.AS.Sorting\AutomationDesktop.exe.config
+		Setup\AutomationDesktop.Setup.AS.Sorting\AutomationDesktop.ico = Setup\AutomationDesktop.Setup.AS.Sorting\AutomationDesktop.ico
+		Setup\AutomationDesktop.Setup.AS.Sorting\AutomationDesktop.jpg = Setup\AutomationDesktop.Setup.AS.Sorting\AutomationDesktop.jpg
+		Setup\AutomationDesktop.Setup.AS.Sorting\EQ2008_Dll.dll = Setup\AutomationDesktop.Setup.AS.Sorting\EQ2008_Dll.dll
+		Setup\AutomationDesktop.Setup.AS.Sorting\EQ2008_Dll_Set.ini = Setup\AutomationDesktop.Setup.AS.Sorting\EQ2008_Dll_Set.ini
+		Setup\AutomationDesktop.Setup.AS.Sorting\HomePanelImage.jpg = Setup\AutomationDesktop.Setup.AS.Sorting\HomePanelImage.jpg
+		Setup\AutomationDesktop.Setup.AS.Sorting\TransactionScopeFactoryProviderConfig.xml = Setup\AutomationDesktop.Setup.AS.Sorting\TransactionScopeFactoryProviderConfig.xml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stocking", "Stocking", "{ED33899B-C266-4241-8537-439B19504C4A}"
 	ProjectSection(SolutionItems) = preProject
@@ -129,6 +163,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stocking", "Stocking", "{ED
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Forklift", "Forklift", "{CAB46868-9FAB-49A7-957B-BF68FF75DB0B}"
+	ProjectSection(SolutionItems) = preProject
+		Setup\AutomationDesktop.Setup.AS.Forklift\AutomationDesktop.exe.config = Setup\AutomationDesktop.Setup.AS.Forklift\AutomationDesktop.exe.config
+		Setup\AutomationDesktop.Setup.AS.Forklift\AutomationDesktop.ico = Setup\AutomationDesktop.Setup.AS.Forklift\AutomationDesktop.ico
+		Setup\AutomationDesktop.Setup.AS.Forklift\AutomationDesktop.jpg = Setup\AutomationDesktop.Setup.AS.Forklift\AutomationDesktop.jpg
+		Setup\AutomationDesktop.Setup.AS.Forklift\HomePanelImage.jpg = Setup\AutomationDesktop.Setup.AS.Forklift\HomePanelImage.jpg
+		Setup\AutomationDesktop.Setup.AS.Forklift\TransactionScopeFactoryProviderConfig.xml = Setup\AutomationDesktop.Setup.AS.Forklift\TransactionScopeFactoryProviderConfig.xml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stocking", "Stocking", "{1888D25B-F110-4EFC-9A29-506915C436A0}"
 	ProjectSection(SolutionItems) = preProject
@@ -142,6 +183,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stocking", "Stocking", "{18
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ManualSupply", "ManualSupply", "{46BEF356-108A-4E31-9E3C-E12E0001196D}"
+	ProjectSection(SolutionItems) = preProject
+		Setup\AutomationDesktop.Setup.LPS.ManualSupply\AutomationDesktop.exe.config = Setup\AutomationDesktop.Setup.LPS.ManualSupply\AutomationDesktop.exe.config
+		Setup\AutomationDesktop.Setup.LPS.ManualSupply\AutomationDesktop.ico = Setup\AutomationDesktop.Setup.LPS.ManualSupply\AutomationDesktop.ico
+		Setup\AutomationDesktop.Setup.LPS.ManualSupply\AutomationDesktop.jpg = Setup\AutomationDesktop.Setup.LPS.ManualSupply\AutomationDesktop.jpg
+		Setup\AutomationDesktop.Setup.LPS.ManualSupply\EQ2008_Dll.dll = Setup\AutomationDesktop.Setup.LPS.ManualSupply\EQ2008_Dll.dll
+		Setup\AutomationDesktop.Setup.LPS.ManualSupply\EQ2008_Dll_Set.ini = Setup\AutomationDesktop.Setup.LPS.ManualSupply\EQ2008_Dll_Set.ini
+		Setup\AutomationDesktop.Setup.LPS.ManualSupply\HomePanelImage.jpg = Setup\AutomationDesktop.Setup.LPS.ManualSupply\HomePanelImage.jpg
+		Setup\AutomationDesktop.Setup.LPS.ManualSupply\TransactionScopeFactoryProviderConfig.xml = Setup\AutomationDesktop.Setup.LPS.ManualSupply\TransactionScopeFactoryProviderConfig.xml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ManualSupply", "ManualSupply", "{C1F3079B-8D9F-4EDB-91B7-9702CFDEF7F8}"
 EndProject
@@ -166,6 +216,10 @@ EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AutomationDesktop.Setup.LPS.ManualSupply", "Setup\AutomationDesktop.Setup.LPS.ManualSupply\AutomationDesktop.Setup.LPS.ManualSupply.vdproj", "{99FD521F-6452-42D9-8FF2-BC5DF84C53E4}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AutomationDesktop.Setup.LPS.Sorting", "Setup\AutomationDesktop.Setup.LPS.Sorting\AutomationDesktop.Setup.LPS.Sorting.vdproj", "{B866B34D-39CC-425B-A644-5C5F58BA73F7}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AutomationDesktop.Setup.AS.Forklift", "Setup\AutomationDesktop.Setup.AS.Forklift\AutomationDesktop.Setup.AS.Forklift.vdproj", "{B27F94D1-43C6-4858-B1D8-0400187447BE}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AutomationDesktop.Setup.AS.WCS", "Setup\AutomationDesktop.Setup.AS.WCS\AutomationDesktop.Setup.AS.WCS.vdproj", "{49012D92-843A-4499-9AAC-7F4128DF83CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -561,6 +615,30 @@ Global
 		{B866B34D-39CC-425B-A644-5C5F58BA73F7}.Release|Mixed Platforms.Build.0 = Release
 		{B866B34D-39CC-425B-A644-5C5F58BA73F7}.Release|x86.ActiveCfg = Release
 		{B866B34D-39CC-425B-A644-5C5F58BA73F7}.Release|x86.Build.0 = Release
+		{B27F94D1-43C6-4858-B1D8-0400187447BE}.Debug|Any CPU.ActiveCfg = Debug
+		{B27F94D1-43C6-4858-B1D8-0400187447BE}.Debug|Any CPU.Build.0 = Debug
+		{B27F94D1-43C6-4858-B1D8-0400187447BE}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{B27F94D1-43C6-4858-B1D8-0400187447BE}.Debug|Mixed Platforms.Build.0 = Debug
+		{B27F94D1-43C6-4858-B1D8-0400187447BE}.Debug|x86.ActiveCfg = Debug
+		{B27F94D1-43C6-4858-B1D8-0400187447BE}.Debug|x86.Build.0 = Debug
+		{B27F94D1-43C6-4858-B1D8-0400187447BE}.Release|Any CPU.ActiveCfg = Release
+		{B27F94D1-43C6-4858-B1D8-0400187447BE}.Release|Any CPU.Build.0 = Release
+		{B27F94D1-43C6-4858-B1D8-0400187447BE}.Release|Mixed Platforms.ActiveCfg = Release
+		{B27F94D1-43C6-4858-B1D8-0400187447BE}.Release|Mixed Platforms.Build.0 = Release
+		{B27F94D1-43C6-4858-B1D8-0400187447BE}.Release|x86.ActiveCfg = Release
+		{B27F94D1-43C6-4858-B1D8-0400187447BE}.Release|x86.Build.0 = Release
+		{49012D92-843A-4499-9AAC-7F4128DF83CA}.Debug|Any CPU.ActiveCfg = Debug
+		{49012D92-843A-4499-9AAC-7F4128DF83CA}.Debug|Any CPU.Build.0 = Debug
+		{49012D92-843A-4499-9AAC-7F4128DF83CA}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{49012D92-843A-4499-9AAC-7F4128DF83CA}.Debug|Mixed Platforms.Build.0 = Debug
+		{49012D92-843A-4499-9AAC-7F4128DF83CA}.Debug|x86.ActiveCfg = Debug
+		{49012D92-843A-4499-9AAC-7F4128DF83CA}.Debug|x86.Build.0 = Debug
+		{49012D92-843A-4499-9AAC-7F4128DF83CA}.Release|Any CPU.ActiveCfg = Release
+		{49012D92-843A-4499-9AAC-7F4128DF83CA}.Release|Any CPU.Build.0 = Release
+		{49012D92-843A-4499-9AAC-7F4128DF83CA}.Release|Mixed Platforms.ActiveCfg = Release
+		{49012D92-843A-4499-9AAC-7F4128DF83CA}.Release|Mixed Platforms.Build.0 = Release
+		{49012D92-843A-4499-9AAC-7F4128DF83CA}.Release|x86.ActiveCfg = Release
+		{49012D92-843A-4499-9AAC-7F4128DF83CA}.Release|x86.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -624,10 +702,12 @@ Global
 		{C1F3079B-8D9F-4EDB-91B7-9702CFDEF7F8} = {6FE4DC32-AB04-4E03-A5BA-DBCAE53B04F7}
 		{DAE714C3-0812-469A-88DF-F7321B78D3D2} = {6FE4DC32-AB04-4E03-A5BA-DBCAE53B04F7}
 		{BF4E2838-BA61-4FA6-BC04-384DF19E231C} = {6FE4DC32-AB04-4E03-A5BA-DBCAE53B04F7}
+		{49012D92-843A-4499-9AAC-7F4128DF83CA} = {737DBA44-AAA7-4067-8E0D-31BB91FB2BD4}
 		{B866B34D-39CC-425B-A644-5C5F58BA73F7} = {AA6B794F-F08C-40F6-A676-2B36463500B3}
 		{318FF73D-8EEB-4C8A-A05B-3A79151AF074} = {00C2063D-8285-4528-BE60-30AD8D2F0C6A}
 		{37DA80A5-3B92-432E-A209-1DF1557D7D7F} = {305588C0-FE5D-466A-AEEA-508856B573A6}
 		{35848525-B3C0-4B14-ADEE-67B130FDD6EE} = {ED33899B-C266-4241-8537-439B19504C4A}
+		{B27F94D1-43C6-4858-B1D8-0400187447BE} = {CAB46868-9FAB-49A7-957B-BF68FF75DB0B}
 		{88B36E3E-D284-4262-BF63-F0383BE9E495} = {1888D25B-F110-4EFC-9A29-506915C436A0}
 		{99FD521F-6452-42D9-8FF2-BC5DF84C53E4} = {46BEF356-108A-4E31-9E3C-E12E0001196D}
 	EndGlobalSection
