@@ -37,11 +37,11 @@
       <HintPath>..\packages\Automation.Common.SRM.1.0.0.5\lib\net40\Automation.Common.SRM.dll</HintPath>
     </Reference>
     <Reference Include="Automation.Core">
-      <HintPath>..\packages\Automation.Core.1.0.0.11\lib\net40-Client\Automation.Core.dll</HintPath>
+      <HintPath>..\packages\Automation.Core.1.0.0.12\lib\net40-Client\Automation.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Automation.Service.OPC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Automation.Service.OPC.1.0.0.3\lib\net40\Automation.Service.OPC.dll</HintPath>
+    <Reference Include="Automation.Service.OPC">
+      <HintPath>..\packages\Automation.Service.OPC.1.0.0.4\lib\net40\Automation.Service.OPC.dll</HintPath>
     </Reference>
     <Reference Include="DBRabbit, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DBRabbit.1.0.6\lib\net20\DBRabbit.dll</HintPath>
@@ -161,11 +161,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config\PLC.xml" />
     <Content Include="Config\2号堆垛机.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Config\PLC[AB].xml" />
+    <Content Include="Config\PLC[Siemens].xml" />
+    <Content Include="Config\PLC[TEST].xml" />
     <Content Include="Serialize\Readme.txt" />
     <Content Include="TransactionScopeFactoryProviderConfig.xml" />
     <None Include="Properties\Settings.settings">
