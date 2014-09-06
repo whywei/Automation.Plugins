@@ -38,7 +38,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Automation.Service.OPC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Automation.Service.OPC.1.0.0.5\lib\net40\Automation.Service.OPC.dll</HintPath>
+      <HintPath>..\packages\Automation.Service.OPC.1.0.0.6\lib\net40\Automation.Service.OPC.dll</HintPath>
     </Reference>
     <Reference Include="DotSpatial.Controls">
       <HintPath>..\packages\DotSpatial.Controls.1.6.0.0\lib\net40-Client\DotSpatial.Controls.dll</HintPath>

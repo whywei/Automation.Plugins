@@ -40,8 +40,8 @@
     <Reference Include="Automation.Service.LED">
       <HintPath>..\packages\Automation.Service.LED.1.0.0.1\lib\net40\Automation.Service.LED.dll</HintPath>
     </Reference>
-    <Reference Include="Automation.Service.OPC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Automation.Service.OPC.1.0.0.5\lib\net40\Automation.Service.OPC.dll</HintPath>
+    <Reference Include="Automation.Service.OPC">
+      <HintPath>..\packages\Automation.Service.OPC.1.0.0.6\lib\net40\Automation.Service.OPC.dll</HintPath>
     </Reference>
     <Reference Include="DBRabbit, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DBRabbit.1.0.6\lib\net20\DBRabbit.dll</HintPath>
