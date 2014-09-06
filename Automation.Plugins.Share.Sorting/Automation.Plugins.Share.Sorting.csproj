@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\bin\Debug\Extensions\Packages\Automation.Plugins.YZ.Sorting\</OutputPath>
+    <OutputPath>..\..\..\bin\Debug\Extensions\Packages\Automation.Plugins.Share.Sorting\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -197,6 +197,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Service\SortingOPCService.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="SortingPlugin.cs" />
     <Compile Include="View\CacheOrderQueryView.cs" />
@@ -283,6 +284,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Dll\EQ2008_Dll_Set.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -344,6 +348,10 @@
     <None Include="Resources\ParameterOption_16.png" />
     <None Include="Resources\ParameterOption_32.png" />
     <None Include="Resources\database_16.png" />
+    <Content Include="Dll\EQ2008_Dll.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dll\Readme.txt" />
     <Content Include="Serialize\Readme.txt" />
     <Content Include="TransactionScopeFactoryProviderConfig.xml">
       <SubType>Designer</SubType>
