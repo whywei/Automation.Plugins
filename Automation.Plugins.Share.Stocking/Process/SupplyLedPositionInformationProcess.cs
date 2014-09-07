@@ -61,12 +61,12 @@ namespace Automation.Plugins.Share.Stocking.Process
             if (ledSqls.ContainsKey(ledNo))
             {
                 DataRow[] taskRow = table.Select("", "id asc");
-                List<LEDData> ledDataList = new List<LEDData>();
+                LEDData[] ledDataList = new LEDData[taskRow.Length > 5 ? 5 : taskRow.Length];
                 for (int i = 0; i < taskRow.Length && i < 5; i++)
                 {
-                    ledDataList.Add(CreateLEDData(ledNo, i, taskRow[i]["product_name"].ToString()));
+                    ledDataList[i] = CreateLEDData(ledNo, i, taskRow[i]["product_name"].ToString());
                 }
-                Ops.Write("StockLED", "ShowData", ledDataList);
+                Ops.Write(Global.LED_SERVICE_NAME, "ShowData", ledDataList);
             }
             else
             {
@@ -76,9 +76,9 @@ namespace Automation.Plugins.Share.Stocking.Process
 
         private void Show(int ledCode)
         {
-            List<LEDData> ledDataList = new List<LEDData>();
-            ledDataList.Add(CreateLEDData(ledCode, 0, "当前无补货任务！"));
-            Ops.Write("StockLED", "ShowData", ledDataList);
+            LEDData[] ledDataList = new LEDData[1];
+            ledDataList[0] = CreateLEDData(ledCode, 0, "当前无补货任务！");
+            Ops.Write(Global.LED_SERVICE_NAME, "ShowData", ledDataList);
         }
 
         private LEDData CreateLEDData(int cardNum, int id, string name)
