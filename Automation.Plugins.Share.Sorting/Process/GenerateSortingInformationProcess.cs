@@ -42,29 +42,25 @@ namespace Automation.Plugins.Share.Sorting.Process
 
         public void InsertIntoSorting(int groupNo, int maxPackNo)
         {
-            int count = 0;
-            do
+            using (TransactionScopeManager TM = new TransactionScopeManager(true, IsolationLevel.ReadCommitted))
             {
-                using (TransactionScopeManager TM = new TransactionScopeManager(true, IsolationLevel.ReadCommitted))
+                SortingDal sortingDal = new SortingDal();
+                sortingDal.TransactionScopeManager = TM;
+
+                DataTable unSortPackNoOnSorting = sortingDal.FindUnSortPackNo(groupNo);
+                int count = unSortPackNoOnSorting.Rows.Count;
+
+                int packNo = sortingDal.FindMaxPackNo(groupNo);
+                DataTable detailTable = orderDal.FindOrderDetailByPackNo(packNo, groupNo);
+
+                foreach (DataRow row in detailTable.Rows)
                 {
-                    SortingDal sortingDal = new SortingDal();
-                    sortingDal.TransactionScopeManager = TM;
-
-                    DataTable unSortPackNoOnSorting = sortingDal.FindUnSortPackNo(groupNo);
-                    count = unSortPackNoOnSorting.Rows.Count;
-
-                    int packNo = sortingDal.FindMaxPackNo(groupNo);
-                    DataTable detailTable = orderDal.FindOrderDetailByPackNo(packNo, groupNo);
-
-                    foreach (DataRow row in detailTable.Rows)
-                    {
-                        int sortNo = sortingDal.FindMaxSortNo();
-                        sortingDal.InsertIntoSorting(sortNo + 1, row);
-                    }
-
-                    TM.Commit();
+                    int sortNo = sortingDal.FindMaxSortNo();
+                    sortingDal.InsertIntoSorting(sortNo + 1, row);
                 }
-            } while (count < 19);
+
+                TM.Commit();
+            }
         }
     }
 }
