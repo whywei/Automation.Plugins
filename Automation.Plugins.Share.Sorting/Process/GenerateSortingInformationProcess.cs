@@ -27,10 +27,10 @@ namespace Automation.Plugins.Share.Sorting.Process
                 if (isStart)
                 {
                     //A线
-                    int maxPackNo = orderDal.FindMaxPackNoFromMaster(1);
+                    int maxPackNo = orderDal.FindMaxPackNo(1);
                     InsertIntoSorting(1, maxPackNo);
                     //B线
-                    maxPackNo = orderDal.FindMaxPackNoFromMaster(2);
+                    maxPackNo = orderDal.FindMaxPackNo(2);
                     InsertIntoSorting(2, maxPackNo);
                 }
             }
@@ -45,36 +45,24 @@ namespace Automation.Plugins.Share.Sorting.Process
             int count = 0;
             do
             {
-                SortingDal sortingDal = new SortingDal();
-                DataTable unSortPackNoOnSorting = sortingDal.FindUnSortPackNo(groupNo);
-                count = unSortPackNoOnSorting.Rows.Count;
-                int packNo;
-                if (count > 0)
+                using (TransactionScopeManager TM = new TransactionScopeManager(true, IsolationLevel.ReadCommitted))
                 {
-                    packNo = Convert.ToInt32(unSortPackNoOnSorting.Rows[0]["pack_no"]);
-                }
-                else
-                {
-                    packNo = sortingDal.FindMaxPackNo(groupNo);
+                    SortingDal sortingDal = new SortingDal();
+                    sortingDal.TransactionScopeManager = TM;
 
-                }
-                if (packNo < maxPackNo)
-                {
-                    using (TransactionScopeManager TM = new TransactionScopeManager(true, IsolationLevel.ReadCommitted))
+                    DataTable unSortPackNoOnSorting = sortingDal.FindUnSortPackNo(groupNo);
+                    count = unSortPackNoOnSorting.Rows.Count;
+
+                    int packNo = sortingDal.FindMaxPackNo(groupNo);
+                    DataTable detailTable = orderDal.FindOrderDetailByPackNo(packNo, groupNo);
+
+                    foreach (DataRow row in detailTable.Rows)
                     {
-                        sortingDal.TransactionScopeManager = TM;
-                        DataTable detailTable = orderDal.FindOrderDetailByPackNo(packNo, groupNo);
-                        foreach (DataRow row in detailTable.Rows)
-                        {
-                            int sortNo = sortingDal.FindMaxSortNo();
-                            sortingDal.InsertIntoSorting(sortNo + 1, row);
-                        }
-                        TM.Commit();
+                        int sortNo = sortingDal.FindMaxSortNo();
+                        sortingDal.InsertIntoSorting(sortNo + 1, row);
                     }
-                }
-                else
-                {
-                    break;
+
+                    TM.Commit();
                 }
             } while (count < 19);
         }

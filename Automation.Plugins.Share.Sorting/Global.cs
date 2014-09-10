@@ -12,4 +12,12 @@ namespace Automation.Plugins.Share.Sorting
        public const string MemoryTemporarilySingleDataService = "MemoryTemporarilySingleDataService";
        public const string MemoryItemNameSortState = "IsStart";       
     }
+
+    public enum Group
+    {
+        A = 1,
+        B = 2,
+        C = 3,
+        D = 4
+    }
 }

@@ -184,12 +184,12 @@ namespace Automation.Plugins.Share.Sorting.Dal
         /// 获取主单最大的包号
         /// </summary>
         /// <returns>包号</returns>
-        public int FindMaxPackNoFromMaster(int groupNo)
+        public int FindMaxPackNo(int groupNo)
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
-            string sql = @"SELECT ISNULL(MAX(pack_no),0) pack_no FROM sort_order_allot_detail A
-                        LEFT JOIN Channel_Allot B ON A.channel_code=B.channel_code AND A.product_code=B.product_code
-                        WHERE group_no={0}";
+            string sql = @"select isnull(max(pack_no),0) pack_no from sort_order_allot_detail a
+                            left join channel_allot b on a.channel_code=b.channel_code and a.product_code=b.product_code
+                           where group_no={0}";
             return Convert.ToInt32(ra.DoScalar(string.Format(sql,groupNo)));
         }
 
@@ -207,7 +207,7 @@ namespace Automation.Plugins.Share.Sorting.Dal
         public void UpdateMasterStatus(int packNo)
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
-            string sql = "UPDATE sort_order_allot_master SET status='02',start_time=GETDATE() WHERE pack_no<={0} AND status='01'";
+            string sql = "update sort_order_allot_master set status='02',start_time=getdate() where pack_no<={0} and status='01'";
             ra.DoCommand(string.Format(sql, packNo));
         }
 
