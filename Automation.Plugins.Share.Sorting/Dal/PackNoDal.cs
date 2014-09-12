@@ -17,28 +17,11 @@ namespace Automation.Plugins.Share.Sorting.Dal
         public DataTable FindMaster()
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
-            string sql = @"SELECT order_date
-      ,batch_no
-      ,line_code
-      ,pack_no
-      ,order_id
-      ,dist_code
-      ,dist_name
-      ,deliver_line_code
-      ,deliver_line_name
-      ,customer_code
-      ,customer_name
-      ,license_no
-      ,address
-      ,customer_order
-      ,customer_deliver_order
-      ,customer_Info
-      ,quantity as mquantity
-      ,export_no
-      ,start_time
-      ,finish_time
-      ,CASE STATUS WHEN '01' THEN '未下单' ELSE '已下单' END status
-      FROM sort_order_allot_master";
+            string sql = @"select order_date,batch_no,line_code,pack_no,order_id,dist_code ,dist_name,deliver_line_code
+                  ,deliver_line_name,customer_code ,customer_name,license_no,address,customer_order,customer_deliver_order 
+                  ,customer_info,quantity as mquantity,export_no,start_time ,finish_time
+                  ,case status when '01' then '未下单' else '已下单' end status
+                  from sort_order_allot_master";
             return ra.DoQuery(string.Format(sql)).Tables[0];
         }
 
@@ -49,22 +32,14 @@ namespace Automation.Plugins.Share.Sorting.Dal
         public DataTable FindDetail(string pack_no)
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
-            string sql = string.Format(@"SELECT A.pack_no
-      ,C.order_id
-      ,A.channel_code
-      ,A.product_code
-      ,A.product_name
-      ,A.quantity as dquantity
-      ,CASE WHEN B.group_no=1 THEN 'A线' ELSE 'B线' END  channelline
-      ,B.channel_name 
-      ,channel_type=CASE B.channel_type WHEN '1'THEN '立式机（人工）' WHEN '2'THEN '立式机（自动）' WHEN '3'THEN '通道机' WHEN '4' THEN '卧式机' WHEN '5' THEN '混合道' END
-      ,B.sort_address
-      FROM sort_order_allot_detail A LEFT JOIN Channel_Allot B ON A.channel_code=B.channel_code AND A.product_code=B.product_code
-      LEFT JOIN sort_order_allot_master C ON A.pack_no=C.pack_no
-      where A.pack_no={0}", pack_no);
+            string sql = string.Format(@"select a.pack_no,c.order_id,a.channel_code,a.product_code,a.product_name
+                  ,a.quantity as dquantity,case when b.group_no=1 then 'A线' else 'B线' end  channelline ,b.channel_name 
+                  ,channel_type=case b.channel_type when '1'then '立式机（人工）' when '2'then '立式机（自动）' when '3'then '通道机' when '4' then '卧式机' when '5' then '混合道' end
+                  ,b.sort_address
+                  from sort_order_allot_detail a left join channel_allot b on a.channel_code=b.channel_code and a.product_code=b.product_code
+                  left join sort_order_allot_master c on a.pack_no=c.pack_no
+                  where a.pack_no={0}", pack_no);
             return ra.DoQuery(string.Format(sql)).Tables[0];
         }
-
-
     }
 }

@@ -3,7 +3,7 @@ namespace Automation.Plugins.Share.Stocking
 {
     public class Global
     {
-        public const string DATABASE_NAME = "master";
+        public const string DATABASE_NAME = "ServerDB";
         public const string PLC_SERVICE_NAME = "StockPLC";
         public const string LED_SERVICE_NAME = "StockLED";
 

@@ -15,21 +15,21 @@ namespace Automation.Plugins.Share.Sorting.Dal
         {
 
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
-            string sql = @"select [order_date],[batch_no],[line_code],[pack_no],[order_id],[dist_code],
-       [dist_name],[deliver_line_code],[deliver_line_name],[customer_code],[customer_name],[license_no],
-       [address],[customer_order],[customer_deliver_order],[quantity],[export_no],[start_time],[finish_time],
-       CASE status WHEN '01' THEN '未下单' ELSE '已下单' END status FROM SORT_ORDER_ALLOT_MASTER";
+            string sql = @"select order_date,batch_no,line_code,pack_no,order_id,dist_code,
+                   dist_name,deliver_line_code,deliver_line_name,customer_code,customer_name,license_no,
+                   address,customer_order,customer_deliver_order,quantity,export_no,start_time,finish_time,
+                   case status when '01' then '未下单' else '已下单' end status from sort_order_allot_master";
             return ra.DoQuery(sql).Tables[0];
         }
 
         public DataTable FindDetailBySortNo(string pack_no)
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
-            string sql = string.Format(@"SELECT a.[pack_no],a.[channel_code],b.[channel_name],a.[product_code],a.[product_name],a.[quantity],
-            c.[customer_deliver_order],c.[quantity] as quantity1,c.[export_no]
-            FROM [sort_order_allot_detail] a left join Channel_Allot b on a.channel_code=b.channel_code AND a.product_code=b.product_code
-            left join SORT_ORDER_ALLOT_MASTER c on a.pack_no=c.pack_no 
-            WHERE a.pack_no={0} ORDER BY pack_no", pack_no);
+            string sql = string.Format(@"select a.pack_no,a.channel_code,b.channel_name,a.product_code,a.product_name,a.quantity,
+            c.customer_deliver_order,c.quantity as quantity1,c.export_no
+            from sort_order_allot_detail a left join channel_allot b on a.channel_code=b.channel_code and a.product_code=b.product_code
+            left join sort_order_allot_master c on a.pack_no=c.pack_no 
+            where a.pack_no={0} order by pack_no", pack_no);
             return ra.DoQuery(sql).Tables[0];
         }
 
@@ -42,37 +42,37 @@ namespace Automation.Plugins.Share.Sorting.Dal
         public DataTable FindDetailForCacheOrderQuery(string channelGroup, int sortNoStart)
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
-            string sql = @"SELECT A.SORTNO,A.ORDERID,A.CIGARETTECODE, A.CIGARETTENAME, A.QUANTITY ,C.CUSTOMERNAME,B.CHANNELNAME,   
-                        CASE B.CHANNELTYPE WHEN '2' THEN '立式机' WHEN '5' THEN '立式机' ELSE '卧式机' END CHANNELTYPE,   
-                        CASE WHEN A.CHANNELGROUP=1 THEN 'A线' ELSE 'B线' END  CHANNELLINE
-                        FROM AS_SC_ORDER A  
-                          LEFT JOIN AS_SC_CHANNELUSED B ON A.CHANNELCODE=B.CHANNELCODE   
-                            LEFT JOIN AS_SC_PALLETMASTER C ON A.SORTNO = C.SORTNO AND A.ORDERID = C.ORDERID AND A.ORDERDATE = C.ORDERDATE
-                              WHERE A.CHANNELGROUP ={0} AND A.SORTNO >={1} ORDER BY A.SORTNO,B.CHANNELADDRESS";
+            string sql = @"select a.sortno,a.orderid,a.cigarettecode, a.cigarettename, a.quantity ,c.customername,b.channelname,   
+                        case b.channeltype when '2' then '立式机' when '5' then '立式机' else '卧式机' end channeltype,   
+                        case when a.channelgroup=1 then 'A线' else 'B线' end  channelline
+                        from as_sc_order a  
+                          left join as_sc_channelused b on a.channelcode=b.channelcode   
+                            left join as_sc_palletmaster c on a.sortno = c.sortno and a.orderid = c.orderid and a.orderdate = c.orderdate
+                              where a.channelgroup ={0} and a.sortno >={1} order by a.sortno,b.channeladdress";
             return ra.DoQuery(string.Format(sql, channelGroup == "A" ? "1" : "2", sortNoStart)).Tables[0];
         }
 
         public DataTable FindCustomerMaster()
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
-            string sql = @"SELECT ORDERNO,MIN(SORTNO) AS SORTNO,ORDERID,ROUTECODE,ROUTENAME,CUSTOMERCODE,CUSTOMERNAME,BATCHNO,
-                        ADDRESS,SUM(QUANTITY)AS QUANTITY,SUM(QUANTITY1) AS QUANTITY1,SUM(QUANTITY) + SUM(QUANTITY1) AS ALLQUANTITY,
-                        CASE MIN(STATUS) WHEN '01' THEN '未下单' ELSE '已下单' END STATUS,MIN(ORDERDATE) AS ORDERDATE 
-                        FROM AS_SC_PALLETMASTER
-                        GROUP BY ORDERNO ,ORDERID,ROUTECODE,ROUTENAME,CUSTOMERCODE,CUSTOMERNAME,BATCHNO,ADDRESS ORDER BY SORTNO";
+            string sql = @"select orderno,min(sortno) as sortno,orderid,routecode,routename,customercode,customername,batchno,
+                        address,sum(quantity)as quantity,sum(quantity1) as quantity1,sum(quantity) + sum(quantity1) as allquantity,
+                        case min(status) when '01' then '未下单' else '已下单' end status,min(orderdate) as orderdate 
+                        from as_sc_palletmaster
+                        group by orderno ,orderid,routecode,routename,customercode,customername,batchno,address order by sortno";
             return ra.DoQuery(sql).Tables[0];
         }
 
         public List<string> FindCigaretteList()
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
-            string sql = @"SELECT CIGARETTECODE+'-'+CIGARETTENAME AS CIGARETTE
-                           FROM AS_SC_ORDER GROUP BY CIGARETTECODE,CIGARETTENAME ORDER BY CIGARETTECODE";
+            string sql = @"select cigarettecode+'-'+cigarettename as cigarette
+                           from as_sc_order group by cigarettecode,cigarettename order by cigarettecode";
             DataTable table = ra.DoQuery(sql).Tables[0];
             List<string> list = new List<string>();
             foreach (DataRow row in table.Rows)
             {
-                list.Add(row["CIGARETTE"].ToString());
+                list.Add(row["cigarette"].ToString());
             }
             return list;
         }
@@ -80,12 +80,12 @@ namespace Automation.Plugins.Share.Sorting.Dal
         public DataTable FindPackMaster(string cigaretteCode, int quantity)
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
-            string sql = string.Format(@"SELECT ORDERNO,MIN(SORTNO) AS SORTNO,ORDERID,ROUTECODE,ROUTENAME,CUSTOMERCODE,CUSTOMERNAME,BATCHNO,
-                                        ADDRESS,SUM(QUANTITY)AS QUANTITY,SUM(QUANTITY1) AS QUANTITY1,SUM(QUANTITY) + SUM(QUANTITY1) AS ALLQUANTITY,
-                                        CASE MIN(STATUS) WHEN '01' THEN '未下单' ELSE '已下单' END STATUS,MIN(ORDERDATE) AS ORDERDATE 
-                                        FROM AS_SC_PALLETMASTER
-                                        WHERE ORDERID IN (SELECT ORDERID  FROM AS_SC_ORDER WHERE  CIGARETTECODE = '{0}'  GROUP BY ORDERID,CIGARETTECODE HAVING SUM(QUANTITY) = {1} )
-                                         GROUP BY ORDERNO ,ORDERID,ROUTECODE,ROUTENAME,CUSTOMERCODE,CUSTOMERNAME,BATCHNO,ADDRESS ORDER BY SORTNO", cigaretteCode, quantity);
+            string sql = string.Format(@"select orderno,min(sortno) as sortno,orderid,routecode,routename,customercode,customername,batchno,
+                                        address,sum(quantity)as quantity,sum(quantity1) as quantity1,sum(quantity) + sum(quantity1) as allquantity,
+                                        case min(status) when '01' then '未下单' else '已下单' end status,min(orderdate) as orderdate 
+                                        from as_sc_palletmaster
+                                        where orderid in (select orderid  from as_sc_order where  cigarettecode = '{0}'  group by orderid,cigarettecode having sum(quantity) = {1} )
+                                         group by orderno ,orderid,routecode,routename,customercode,customername,batchno,address order by sortno", cigaretteCode, quantity);
             return ra.DoQuery(sql).Tables[0];
         }
 
@@ -97,7 +97,7 @@ namespace Automation.Plugins.Share.Sorting.Dal
         public string FindMaxSortedMaster(string channelGroup)
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
-            string sql = "SELECT ISNULL(MAX(SORTNO),0) FROM AS_SC_PALLETMASTER WHERE STATUS{0} ='1'";
+            string sql = "select isnull(max(sortno),0) from as_sc_palletmaster where status{0} ='1'";
             object result = ra.DoScalar(string.Format(sql, channelGroup == "A" ? "" : "1"));
             return result == null ? "0" : result.ToString();
         }
@@ -112,11 +112,11 @@ namespace Automation.Plugins.Share.Sorting.Dal
         public DataTable FindHandSupply(string condition)
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
-            string sql = string.Format(@"SELECT A.SUPPLYNO,A.SORTNO,A.CIGARETTECODE,A.BATCHNO,A.CIGARETTENAME,
-                           A.LINECODE,A.ORDERDATE,A.SUPPLYBATCH,A.QUANTITY,A.CHANNELCODE,CHANNELNAME,
-                           CASE WHEN A.STATUS = 1 THEN '已补货' ELSE '未补货' END STATUS 
-                           FROM AS_SC_HANDLESUPPLY A LEFT JOIN AS_SC_CHANNELUSED B ON A.CHANNELCODE = B.CHANNELCODE 
-                           {0} ORDER BY A.SUPPLYNO", condition);
+            string sql = string.Format(@"select a.supplyno,a.sortno,a.cigarettecode,a.batchno,a.cigarettename,
+                           a.linecode,a.orderdate,a.supplybatch,a.quantity,a.channelcode,channelname,
+                           case when a.status = 1 then '已补货' else '未补货' end status 
+                           from as_sc_handlesupply a left join as_sc_channelused b on a.channelcode = b.channelcode 
+                           {0} order by a.supplyno", condition);
             return ra.DoQuery(sql).Tables[0];
         }
 
@@ -135,7 +135,7 @@ namespace Automation.Plugins.Share.Sorting.Dal
         public void DeleteTable(string tableName)
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
-            ra.DoScalar(string.Format("TRUNCATE TABLE {0}",tableName));
+            ra.DoScalar(string.Format("truncate table {0}",tableName));
         }
 
 
@@ -170,13 +170,13 @@ namespace Automation.Plugins.Share.Sorting.Dal
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
             string sql = "";
             if (sortNo != "all")
-                sql = @"SELECT COUNT(DISTINCT customer_code) customer_num, COUNT(DISTINCT deliver_line_code) deliver_line_num,
-                         (SELECT ISNULL(SUM(quantity),0) FROM sort_order_allot_master WHERE finish_time <= GETDATE() AND STATUS='02' ) quantity
-                         FROM sort_order_allot_master WHERE finish_time <= GETDATE()";
+                sql = @"select count(distinct customer_code) customer_num, count(distinct deliver_line_code) deliver_line_num,
+                         (select isnull(sum(quantity),0) from sort_order_allot_master where finish_time <= getdate() and status='02' ) quantity
+                         from sort_order_allot_master where finish_time <= getdate()";
             else
-                sql = @"SELECT COUNT(DISTINCT customer_code) customer_num, COUNT(DISTINCT deliver_line_code) deliver_line_num,
-                         (SELECT ISNULL(SUM(quantity),0) FROM sort_order_allot_master) quantity
-                         FROM sort_order_allot_master";
+                sql = @"select count(distinct customer_code) customer_num, count(distinct deliver_line_code) deliver_line_num,
+                         (select isnull(sum(quantity),0) from sort_order_allot_master) quantity
+                         from sort_order_allot_master";
             return ra.DoQuery(sql).Tables[0];
         }
 
@@ -200,7 +200,7 @@ namespace Automation.Plugins.Share.Sorting.Dal
         public int FindSumQuantityFromMaster()
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
-            string sql = "SELECT ISNULL(SUM(quantity),0) quantity FROM sort_order_allot_master";
+            string sql = "select isnull(sum(quantity),0) quantity from sort_order_allot_master";
             return Convert.ToInt32(ra.DoScalar(sql));
         }
 
@@ -214,65 +214,65 @@ namespace Automation.Plugins.Share.Sorting.Dal
         public DataTable FindOrderDetailByPackNo(int packNo,int groupNo)
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
-            string sql = @"SELECT A.pack_no,A.channel_code,C.sort_address,C.group_no,B.export_no,B.customer_order,A.product_code,A.product_name,A.quantity,C.piece_barcode
-                        ,(SELECT ISNULL(SUM(D.quantity),0) FROM sort_order_allot_detail D LEFT JOIN Channel_Allot E 
-                        ON D.channel_code=E.channel_code AND D.product_code=E.product_code WHERE D.pack_no={0} AND E.group_no=C.group_no) TOTALQUANTITY
-                        ,(SELECT ISNULL(SUM(D.quantity),0) FROM sort_order_allot_detail D LEFT JOIN Channel_Allot E 
-                        ON D.channel_code=E.channel_code AND D.product_code=E.product_code WHERE D.pack_no>={0} AND E.channel_code=C.channel_code) REMAINQUANTITY
-                        FROM sort_order_allot_detail A LEFT JOIN sort_order_allot_master B ON A.pack_no=B.pack_no
-                        LEFT JOIN Channel_Allot C ON A.channel_code=C.channel_code AND A.product_code=C.product_code
-                        LEFT JOIN handle_supply D ON  A.pack_no=D.pack_no AND A.channel_code=D.channel_code AND A.product_code=D.product_code
-                        where A.pack_no=(SELECT ISNULL(MIN(pack_no),0) pack_no FROM sort_order_allot_detail E
-							LEFT JOIN Channel_Allot F ON E.channel_code=F.channel_code AND E.product_code=F.product_code
-							WHERE E.pack_no>{0} AND group_no={1}) AND C.group_no={1}
-                       ORDER BY A.pack_no ASC,C.group_no DESC,C.sort_address,D.supply_batch,D.supply_id";
+            string sql = @"select a.pack_no,a.channel_code,c.sort_address,c.group_no,b.export_no,b.customer_order,a.product_code,a.product_name,a.quantity,c.piece_barcode
+                        ,(select isnull(sum(d.quantity),0) from sort_order_allot_detail d left join channel_allot e 
+                        on d.channel_code=e.channel_code and d.product_code=e.product_code where d.pack_no={0} and e.group_no=c.group_no) totalquantity
+                        ,(select isnull(sum(d.quantity),0) from sort_order_allot_detail d left join channel_allot e 
+                        on d.channel_code=e.channel_code and d.product_code=e.product_code where d.pack_no>={0} and e.channel_code=c.channel_code) remainquantity
+                        from sort_order_allot_detail a left join sort_order_allot_master b on a.pack_no=b.pack_no
+                        left join channel_allot c on a.channel_code=c.channel_code and a.product_code=c.product_code
+                        left join handle_supply d on  a.pack_no=d.pack_no and a.channel_code=d.channel_code and a.product_code=d.product_code
+                        where a.pack_no=(select isnull(min(pack_no),0) pack_no from sort_order_allot_detail e
+							left join channel_allot f on e.channel_code=f.channel_code and e.product_code=f.product_code
+							where e.pack_no>{0} and group_no={1}) and c.group_no={1}
+                       order by a.pack_no asc,c.group_no desc,c.sort_address,d.supply_batch,d.supply_id";
             return ra.DoQuery(string.Format(sql, packNo,groupNo)).Tables[0];
         }
 
         public DataTable FindExporNoFromMaster()
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
-            string sql = "SELECT DISTINCT export_no,CONVERT(VARCHAR(100),order_date,23) order_date FROM sort_order_allot_master";
+            string sql = "select distinct export_no,convert(varchar(100),order_date,23) order_date from sort_order_allot_master";
             return ra.DoQuery(sql).Tables[0];
         }
 
         public DataTable FindPackData(string condition)
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
-            string sql = @"SELECT row_number() over(ORDER BY A.pack_no,C.group_no DESC,C.sort_address,D.supply_batch,D.supply_id) id
-                        ,A.pack_no,(SELECT ISNULL(SUM(E.quantity),0) FROM sort_order_allot_master E WHERE E.customer_code=B.customer_code) TOTAL_QUANTITY
-                        ,B.quantity BAG_QUANTITY,A.quantity,B.export_no,CONVERT(VARCHAR(100),B.order_date,23) order_date,B.batch_no,B.line_code
-                        ,B.order_id,B.deliver_line_code,B.deliver_line_name,B.customer_code,B.customer_name,B.address,B.customer_order
-                        ,B.customer_deliver_order,B.customer_Info,A.product_code,A.product_name,B.dist_code,B.dist_name
-                        FROM sort_order_allot_detail A LEFT JOIN sort_order_allot_master B ON A.pack_no=B.pack_no
-                        LEFT JOIN Channel_Allot C ON A.channel_code=C.channel_code AND A.product_code=C.product_code
-                        LEFT JOIN handle_supply D ON A.pack_no=D.pack_no AND A.channel_code =D.channel_code AND A.product_code=D.product_code
+            string sql = @"select row_number() over(order by a.pack_no,c.group_no desc,c.sort_address,d.supply_batch,d.supply_id) id
+                        ,a.pack_no,(select isnull(sum(e.quantity),0) from sort_order_allot_master e where e.customer_code=b.customer_code) total_quantity
+                        ,b.quantity bag_quantity,a.quantity,b.export_no,convert(varchar(100),b.order_date,23) order_date,b.batch_no,b.line_code
+                        ,b.order_id,b.deliver_line_code,b.deliver_line_name,b.customer_code,b.customer_name,b.address,b.customer_order
+                        ,b.customer_deliver_order,b.customer_info,a.product_code,a.product_name,b.dist_code,b.dist_name
+                        from sort_order_allot_detail a left join sort_order_allot_master b on a.pack_no=b.pack_no
+                        left join channel_allot c on a.channel_code=c.channel_code and a.product_code=c.product_code
+                        left join handle_supply d on a.pack_no=d.pack_no and a.channel_code =d.channel_code and a.product_code=d.product_code
                         {0}
-                        ORDER BY A.pack_no,C.group_no DESC,C.sort_address,D.supply_batch,D.supply_id";
+                        order by a.pack_no,c.group_no desc,c.sort_address,d.supply_batch,d.supply_id";
             return ra.DoQuery(string.Format(sql,condition)).Tables[0];
         }
 
         public int FindMaxPackNoInDeliverLine(int packNo)
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
-            string sql = @"SELECT ISNULL(MAX(pack_no),0) FROM sort_order_allot_master WHERE deliver_line_code=
-                        (SELECT DISTINCT deliver_line_code FROM sort_order_allot_master WHERE pack_no={0})";
+            string sql = @"select isnull(max(pack_no),0) from sort_order_allot_master where deliver_line_code=
+                        (select distinct deliver_line_code from sort_order_allot_master where pack_no={0})";
             return Convert.ToInt32(ra.DoScalar(string.Format(sql, packNo)));
         }
 
         public void UpdateFinishTime(int packNo)
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
-            string sql = @"UPDATE sort_order_allot_master SET finish_time=GETDATE() WHERE pack_no<={0} AND status='02' AND finish_time IS NULL";
+            string sql = @"update sort_order_allot_master set finish_time=getdate() where pack_no<={0} and status='02' and finish_time is null";
             ra.DoCommand(string.Format(sql, packNo));
         }
 
         public void UpdateStatus(string packNo)
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
-            string sql = @"UPDATE sort_order_allot_master SET start_time=GETDATE(),finish_time=GETDATE(),status='02' WHERE pack_no<{0}";
+            string sql = @"update sort_order_allot_master set start_time=getdate(),finish_time=getdate(),status='02' where pack_no<{0}";
             ra.DoCommand(string.Format(sql, packNo));
-            sql = @"UPDATE sort_order_allot_master SET start_time=null,finish_time=null,status='01' WHERE pack_no>={0}";
+            sql = @"update sort_order_allot_master set start_time=null,finish_time=null,status='01' where pack_no>={0}";
             ra.DoCommand(string.Format(sql, packNo));
         }
 
