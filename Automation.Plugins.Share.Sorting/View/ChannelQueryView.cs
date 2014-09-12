@@ -48,7 +48,7 @@ namespace Automation.Plugins.Share.Sorting.View
         public void Refresh()
         {
             DataTable channelTable= channelDal.FindChannel();
-            List<string> groupNos=new List<string> {"A","B"};
+            List<string> groupNos=new List<string> {"A"};
             foreach(var groupNo in groupNos)
             {
                 string itemName="Real_Time_Inventory_Data_"+groupNo;

@@ -87,7 +87,7 @@ namespace Automation.Plugins.Share.Sorting.Process
                     if (Ops.Write(Global.PLC_SERVICE_NAME, sortOrderInformation, writeData))
                     {
                         TM.Commit();
-                        Logger.Info(string.Format("{0}线下单成功。数据[{2}]。", groupName,writeData.ConvertToString()));
+                        Logger.Info(string.Format("{0}线下单成功。数据[{1}]。", groupName,writeData.ConvertToString()));
                     }
                     else
                     {

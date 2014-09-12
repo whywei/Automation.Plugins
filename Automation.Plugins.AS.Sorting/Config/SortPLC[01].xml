@@ -1,56 +1,57 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Config>
-  <OPCServer OPCServerHostIP="192.168.1.242" OPCServerHostName="" OPCServerName="Matrikon.OPC.Simulation.1" Real="OPC.SimaticNET" Test="Matrikon.OPC.Simulation.1" IsTest="true">
+  <OPCServer OPCServerHostIP="127.0.0.1" OPCServerHostName="" OPCServerName="RSLinx OPC Server" Real="RSLinx OPC Server" Test="RSLinx OPC Server" IsTest="false">
     <OPCGroups>
-      <OPCGroup GroupName="THOKPLC" GroupString="S7:[贱人]" UpdateRate="350" Prefix=".">
+      <OPCGroup GroupName="DefaultGroup" GroupString="[AS_FJ_02_192.168.100.155]" UpdateRate="350" Prefix=".">
         <!--重新分拣标志-->
         <OPCItem ItemName="Restart_Sign" OPCItemName="Restart_Sign"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="1"/>
         <!--A线缓存订单信息-->
-        <OPCItem ItemName="Sort_Cache_Order_Information_A" OPCItemName="Sort_Cache_Order_Information_A"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="3"/>
+        <!--<OPCItem ItemName="Sort_Cache_Order_Information_A" OPCItemName="Sort_Cache_Order_Information_A"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="3"/>-->
         <!--A线分拣订单信息-->
-        <OPCItem ItemName="Sort_Order_Information_A" OPCItemName="Sort_Order_Information_A"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="226"/>
+        <OPCItem ItemName="Sort_Order_Information_A" OPCItemName="Sort_Order_Information_A[?]"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="226"/>
+        <OPCItem ItemName="Sort_Order_Information_A_Sign" OPCItemName="Sort_Order_Information_A[?]"  ArrayStartIndex="225" ArrayIndexInterval="1" ArrayLength="1"/>
         <!--B线缓存订单信息-->
-        <OPCItem ItemName="Sort_Cache_Order_Information_B" OPCItemName="Sort_Cache_Order_Information_B"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="3"/>
+        <!--<OPCItem ItemName="Sort_Cache_Order_Information_B" OPCItemName="Sort_Cache_Order_Information_B"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="3"/>-->
         <!--B线分拣订单信息-->
-        <OPCItem ItemName="Sort_Order_Information_B" OPCItemName="Sort_Order_Information_B"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="226"/>
+        <!--<OPCItem ItemName="Sort_Order_Information_B" OPCItemName="Sort_Order_Information_B"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="226"/>-->
         <!--打码订单信息-->
-        <OPCItem ItemName="Barcode_Printing_Order_Information" OPCItemName="Barcode_Printing_Order_Information"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="2"/>
+        <!--<OPCItem ItemName="Barcode_Printing_Order_Information" OPCItemName="Barcode_Printing_Order_Information"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="2"/>-->
         <!--摆动订单信息-->
-        <OPCItem ItemName="Swing_Order_Information" OPCItemName="Swing_Order_Information"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="2"/>
+        <!--<OPCItem ItemName="Swing_Order_Information" OPCItemName="Swing_Order_Information"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="2"/>-->
         <!--1号包装机订单信息-->
-        <OPCItem ItemName="Packager_Order_Information_01" OPCItemName="Packager_Order_Information_01"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="2"/>
+        <!--<OPCItem ItemName="Packager_Order_Information_01" OPCItemName="Packager_Order_Information_01"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="2"/>-->
         <!--2号包装机订单信息-->
-        <OPCItem ItemName="Packager_Order_Information_02" OPCItemName="Packager_Order_Information_02"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="2"/>
+        <!--<OPCItem ItemName="Packager_Order_Information_02" OPCItemName="Packager_Order_Information_02"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="2"/>-->
         <!--1号包装数据信息-->
-        <OPCItem ItemName="Package_Numbers_Information_01" OPCItemName="Package_Numbers_Information_01"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="1"/>
+        <!--<OPCItem ItemName="Package_Numbers_Information_01" OPCItemName="Package_Numbers_Information_01"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="1"/>-->
         <!--2号包装数据信息-->
-        <OPCItem ItemName="Package_Numbers_Information_02" OPCItemName="Package_Numbers_Information_02"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="1"/>
+        <!--<OPCItem ItemName="Package_Numbers_Information_02" OPCItemName="Package_Numbers_Information_02"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="1"/>-->
         <!--A线交换烟道信息-->
-        <OPCItem ItemName="Channel_Interchange_Information_A" OPCItemName="Channel_Interchange_Information_A"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="3"/>
+        <OPCItem ItemName="Channel_Interchange_Information_A" OPCItemName="Channel_Interchange_Information_A[?]"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="3"/>
         <!--B线交换烟道信息-->
-        <OPCItem ItemName="Channel_Interchange_Information_B" OPCItemName="Channel_Interchange_Information_B"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="3"/>
+        <!--<OPCItem ItemName="Channel_Interchange_Information_B" OPCItemName="Channel_Interchange_Information_B"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="3"/>-->
         <!--A线缺烟烟道信息-->
-        <OPCItem ItemName="Lack_Cigarette_Channel_Information_A" OPCItemName="Lack_Cigarette_Channel_Information_A"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="76"/>
+        <OPCItem ItemName="Lack_Cigarette_Channel_Information_A" OPCItemName="Lack_Cigarette_Channel_Information_A[?]"  ArrayStartIndex="15" ArrayIndexInterval="1" ArrayLength="60"/>
         <!--B线缺烟烟道信息-->
-        <OPCItem ItemName="Lack_Cigarette_Channel_Information_B" OPCItemName="Lack_Cigarette_Channel_Information_B"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="76"/>
+        <!--<OPCItem ItemName="Lack_Cigarette_Channel_Information_B" OPCItemName="Lack_Cigarette_Channel_Information_B"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="76"/>-->
         <!--换线标志-->
-        <OPCItem ItemName="Chang_Route_Sign" OPCItemName="Chang_Route_Sign"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="1"/>
+        <!--<OPCItem ItemName="Chang_Route_Sign" OPCItemName="Chang_Route_Sign"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="1"/>-->
         <!--A线实时盘点数据-->
-        <OPCItem ItemName="Real_Time_Inventory_Data_A" OPCItemName="Real_Time_Inventory_Data_A"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="76"/>
+        <OPCItem ItemName="Real_Time_Inventory_Data_A" OPCItemName="Real_Time_Inventory_Data_A[?]"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="76"/>
         <!--B线实时盘点数据-->
-        <OPCItem ItemName="Real_Time_Inventory_Data_B" OPCItemName="Real_Time_Inventory_Data_B"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="76"/>
+        <!--<OPCItem ItemName="Real_Time_Inventory_Data_B" OPCItemName="Real_Time_Inventory_Data_B"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="76"/>-->
         <!--卷烟信息-->
         <OPCItem ItemName="Cigarette_Barcode_Information" OPCItemName="Cigarette_Barcode_Information"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="200"/>
         <OPCItem ItemName="Cigarette_Name_Information" OPCItemName="Cigarette_Name_Information"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="200"/>
         <!--故障报警信息-->
-        <OPCItem ItemName="Fault_Alarm_Information" OPCItemName="Fault_Alarm_Information"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="200"/>
+        <!--<OPCItem ItemName="Fault_Alarm_Information" OPCItemName="Fault_Alarm_Information"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="200"/>-->
         <!--运行状态-->
         <OPCItem ItemName="Device_Run_State" OPCItemName="Device_Run_State"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="1"/>
       </OPCGroup>
-      <OPCGroup GroupName="THOKPLC" GroupString="S7:[贱人]" UpdateRate="350" Prefix=".">
-        <!--生成补货计划-->
+      <!--<OPCGroup GroupName="THOKPLC" GroupString="S7:[贱人]" UpdateRate="350" Prefix=".">
+        --><!--生成补货计划--><!--
         <OPCItem ItemName="Supply_Cache_Position_Information" OPCItemName="Supply_Cache_Position_Information"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="10"/>
-      </OPCGroup>
+      </OPCGroup>-->
     </OPCGroups>
   </OPCServer>
 </Config>

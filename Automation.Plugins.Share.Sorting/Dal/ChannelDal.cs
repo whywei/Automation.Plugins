@@ -123,9 +123,18 @@ namespace Automation.Plugins.Share.Sorting.Dal
         public DataTable FindCigaretteChannelInfo(int groupNo)
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
-            string sql = @"SELECT product_name,remain_quantity,sort_address,led_no,x,y,width,height
-                          FROM Channel_Allot WHERE channel_type='2' AND group_no={0}";
+            string sql = @"select product_name,quantity,remain_quantity,sort_address,led_no,x,y,width,height
+                          from channel_allot where channel_type='2' and group_no={0} order by sort_address";
             return ra.DoQuery(string.Format(sql,groupNo)).Tables[0];
+        }
+
+        public DataTable FindCigaretteChannelInfo2(int groupNo)
+        {
+            var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
+            string sql = @"select sum(quantity) quantity,0 as remain_quantity,'混合道' product_name,sort_address,led_no,x,y,width,height
+                          from channel_allot where channel_type='5' and group_no={0} 
+                          group by sort_address,led_no,x,y,width,height order by sort_address";
+            return ra.DoQuery(string.Format(sql, groupNo)).Tables[0];
         }
     }
 }
