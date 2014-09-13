@@ -108,6 +108,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NuGet.Core.2.8.2\lib\net40-Client\NuGet.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Spring.Rest">
+      <HintPath>..\packages\Spring.Rest.1.1.1\lib\net40-client\Spring.Rest.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
@@ -142,12 +145,16 @@
     <Compile Include="Process\SupplyLedPositionInformationProcess.cs" />
     <Compile Include="Process\StockInOrderProcess.cs" />
     <Compile Include="Process\StockInLedProcess.cs" />
+    <Compile Include="Process\AssignTaskOriginPositionAddressProcess.cs" />
+    <Compile Include="Process\CheckSupplyPositionStorageProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Rest\RestClient.cs" />
+    <Compile Include="Rest\RestReturn.cs" />
     <Compile Include="Service\LEDService.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -211,6 +218,7 @@
     <None Include="Resources\ScanStatus_16.png" />
     <None Include="Resources\ScanStatus_32.png" />
     <None Include="Resources\refresh_32x32.png" />
+    <Content Include="App_Readme\Spring.Rest.txt" />
     <Content Include="Config\PLC[AB].xml" />
     <Content Include="Config\PLC[Siemens].xml" />
     <Content Include="Config\PLC[TEST].xml" />

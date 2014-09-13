@@ -39,5 +39,17 @@ namespace Automation.Plugins.Share.Stocking.Properties {
                 this["LedSqls"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string HttpUrl {
+            get {
+                return ((string)(this["HttpUrl"]));
+            }
+            set {
+                this["HttpUrl"] = value;
+            }
+        }
     }
 }

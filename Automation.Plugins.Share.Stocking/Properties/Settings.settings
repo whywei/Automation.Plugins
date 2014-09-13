@@ -10,5 +10,8 @@
   &lt;string&gt;03:select *,case status  when '1' then '已下单' else  '未下单' end orderstatus,'已经过' ledStatus from sms_supply_task where origin_position_address='14'&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
+    <Setting Name="HttpUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>
