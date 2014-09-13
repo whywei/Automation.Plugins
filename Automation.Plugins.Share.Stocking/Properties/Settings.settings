@@ -11,7 +11,7 @@
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="HttpUrl" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">11</Value>
     </Setting>
   </Settings>
 </SettingsFile>
