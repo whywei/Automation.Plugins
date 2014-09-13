@@ -38,7 +38,7 @@ namespace Automation.Plugins.Share.Sorting.Process
                     if (supplyCachePositionList.Contains(position) && quantity > 0)
                     {
                         RestClient restClient = new RestClient();
-                        restClient.CreateNewSupplyTask(position, quantity);
+                        restClient.CreateSupplyTask(position, quantity);
                     }
                 }
             }
