@@ -59,7 +59,8 @@ namespace Automation.Plugins.Share.Sorting.View
                     DataRow[] channelRows=channelTable.Select(string.Format("group_no={0}",groupNo=="A"?1:2));
                     foreach (DataRow row in channelRows)
                     {
-                        row["remain_quantity"] = channelRemainQuantityArray.GetValue(Convert.ToInt32(row["sort_address"]) - 1);
+                        int quantity=Convert.ToInt32(channelRemainQuantityArray.GetValue(Convert.ToInt32(row["sort_address"]) - 1).ToString());
+                        row["remain_quantity"] = quantity == 0 ? row["quantity"] : quantity - 1;
                     }
                 }
             }

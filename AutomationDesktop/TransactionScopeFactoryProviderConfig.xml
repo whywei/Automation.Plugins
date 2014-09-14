@@ -2,7 +2,7 @@
 <TransactionScopeFactoryProvider>
 	<property name="DBOperationLogger" type="DBRabbit.Logger.DBOperationLogger,DBRabbit.dll"/>
 	<property name="MasterDataConfigurationDictionary">
-		<key name="master">
+		<key name="ServerDB">
 			<DataConfiguration type="DBRabbit.Config.DataConfiguration,DBRabbit.dll">
 				<DataBaseType value ="SqlServer"  desc =""/>
 				<ORMappingType value ="Emit" desc =""/>
@@ -12,8 +12,8 @@
 				<MaxPoolSize value ="" desc =""/>
 				<DataBaseSchemaFileName value ="" desc =""/>				
 				<DataSource value ="" desc =""/>
-				<IP value ="." desc =""/>
-				<DataBaseName value ="wms_rfid_db" desc =""/>
+				<IP value ="10.93.5.172" desc =""/>
+				<DataBaseName value ="wms_rfid_db1" desc =""/>
 				<User value ="sa" desc =""/>
 				<Password value ="123456" desc =""/>
 			</DataConfiguration>
@@ -66,7 +66,7 @@
         <Password value="123456" desc="" />
       </DataConfiguration>
     </key>
-    <key name="master5">
+    <key name="SortDB">
       <DataConfiguration type="DBRabbit.Config.DataConfiguration,DBRabbit.dll">
         <DataBaseType value="SqlServer" desc="" />
         <ORMappingType value="Emit" desc="" />

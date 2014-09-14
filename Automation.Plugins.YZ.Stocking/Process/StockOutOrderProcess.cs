@@ -6,6 +6,7 @@ using Automation.Core;
 using Automation.Plugins.YZ.Stocking.Dal;
 using System.Data;
 using DBRabbit;
+using DevExpress.XtraEditors;
 
 namespace Automation.Plugins.YZ.Stocking.Process
 {
@@ -54,7 +55,7 @@ namespace Automation.Plugins.YZ.Stocking.Process
                 {
                     if (Convert.ToInt32( row["origin_position_address"])>0)
                     {
-                        data[i++] = Convert.ToInt32(row["position_address"]);
+                        data[i++] = Convert.ToInt32(row["origin_position_address"]);
                         data[i++] = Convert.ToInt32(row["target_supply_address"]);
                         data[i++] = Convert.ToInt32(row["product_barcode"]);
                         ids += row["id"].ToString() + ",";
@@ -74,12 +75,7 @@ namespace Automation.Plugins.YZ.Stocking.Process
                     {
                         TM.Commit();
                         //将订单数据写入日志
-                        string msg = "";
-                        foreach (var item in data)
-                        {
-                            msg += item + ",";
-                        }
-                        Logger.Info(string.Format("写订单成功！数据【{0}】", msg.Substring(0, msg.Length - 1)));
+                        Logger.Info(string.Format("写订单成功！数据{0}", data.ConvertToString()));
                     }
                 }
             }

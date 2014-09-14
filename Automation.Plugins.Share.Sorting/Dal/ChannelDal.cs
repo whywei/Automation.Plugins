@@ -116,7 +116,7 @@ namespace Automation.Plugins.Share.Sorting.Dal
         public DataTable FindAllProduct()
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
-            string sql = @"select distinct piece_barcode,product_name from Channel_Allot";
+            string sql = @"select distinct piece_barcode,product_name from Channel_Allot where len(rtrim(ltrim(product_code)))>0";
             return ra.DoQuery(sql).Tables[0];
         }
 

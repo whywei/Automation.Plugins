@@ -16,7 +16,8 @@ namespace Automation.Plugins.Share.Sorting.Bll
             for (int i = 0; i < table.Rows.Count; i++)
             {
                 barCode[i] = Convert.ToInt32(table.Rows[i]["piece_barcode"]);
-                productName[i] = table.Rows[i]["product_name"].ToString().Substring(0, 13);
+                string name=table.Rows[i]["product_name"].ToString().Trim();
+                productName[i] =  name.Length > 13 ? name.Substring(0, 13) : name;
             }
             Ops.Write(Global.PLC_SERVICE_NAME, "Cigarette_Barcode_Information", barCode);
             Ops.Write(Global.PLC_SERVICE_NAME, "Cigarette_Name_Information", productName);

@@ -13,7 +13,7 @@ namespace Automation.Plugins.Share.Stocking.Dal
                             left join  sms_sort_order_allot_master b on a.id = b.sort_batch_id
                             left join  sms_sort_order_allot_detail c on b.id = c.master_id
                             left join  wms_product d on c.product_code = d.product_code
-                            where a.order_date > DATEADD(day,7,GETDATE())
+                            where a.order_date > dateadd(day,-7,getdate()) and len(d.product_code)>0
                             order by d.product_code";
             return ra.DoQuery(sql).Tables[0];
         }

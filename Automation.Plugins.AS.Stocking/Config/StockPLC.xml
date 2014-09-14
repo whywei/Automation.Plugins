@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Config>
-  <OPCServer OPCServerHostIP="192.168.1.242" OPCServerHostName="" OPCServerName="Matrikon.OPC.Simulation.1" IsTest="false">
+  <OPCServer OPCServerHostIP="127.0.0.1" OPCServerHostName="" OPCServerName="RSLinx OPC Server" IsTest="false">
     <OPCGroups>
-      <OPCGroup GroupName="StockPLC" GroupString="StockPLC" UpdateRate="350" Prefix=".">
+      <OPCGroup GroupName="StockPLC" GroupString="[BH_192.168.100.94]" UpdateRate="100" Prefix=".">
         <!--写出库订单-->
-        <OPCItem ItemName="Stock_Out_Order_Information" OPCItemName="Stock_Out_Order_Information"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="76"/>
+        <OPCItem ItemName="Stock_Out_Order_Information" OPCItemName="DB503[?]"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="76"/>
         <!--刷新出库LED -->
-        <OPCItem ItemName="Supply_Led_Position_Information" OPCItemName="Supply_Led_Position_Information"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="4"/>
-        
+        <OPCItem ItemName="Supply_Led_Position_Information" OPCItemName="DB504[?]"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="4"/>
+
         <!--卷烟信息-->
-        <OPCItem ItemName="Cigarette_Barcode_Information" OPCItemName="Cigarette_Barcode_Information"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="200"/>
-        <OPCItem ItemName="Cigarette_Name_Information" OPCItemName="Cigarette_Name_Information"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="200"/>
-        
+        <OPCItem ItemName="Cigarette_Barcode_Information" OPCItemName="DB114[?]"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="200"/>
+        <OPCItem ItemName="Cigarette_Name_Information" OPCItemName="DB118[?]"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="200"/>
+
         <!--故障信息-->
-        <OPCItem ItemName="Fault_Alarm_Information" OPCItemName="Fault_Alarm_Information"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="200"/>
+        <OPCItem ItemName="Fault_Alarm_Information" OPCItemName="DB507[?]"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="200"/>
         <!--运行状态-->
-        <OPCItem ItemName="Device_Run_State" OPCItemName="Device_Run_State"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="1"/>
+        <OPCItem ItemName="Device_Run_State" OPCItemName="DB508"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="1"/>
       </OPCGroup>
     </OPCGroups>
   </OPCServer>

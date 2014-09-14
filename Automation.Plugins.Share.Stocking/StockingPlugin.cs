@@ -80,15 +80,15 @@ namespace Automation.Plugins.Share.Stocking
                 OrderDal orderDal = new OrderDal();
                 DataTable productTable = orderDal.FindProduct();
 
-                int[] productBarcodeList = new int[productTable.Rows.Count];
-                string[] productNameList = new string[productTable.Rows.Count];
+                int[] productBarcodeList = new int[200];
+                string[] productNameList = new string[200];
 
                 for (int i = 0; i < productTable.Rows.Count; i++)
                 {
                     if (productTable.Rows[i]["piece_barcode"] != null && productTable.Rows[i]["piece_barcode"].ToString().Trim().Length == 6)
                     {
                         productBarcodeList[i] = Convert.ToInt32(productTable.Rows[i]["piece_barcode"].ToString().Trim());
-                        productNameList[i] = productTable.Rows[i]["product_name"].ToString().Substring(0, 13);
+                        productNameList[i] = productTable.Rows[i]["product_name"].ToString();
                     }
                     else
                     {
