@@ -5,19 +5,21 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{41C785D1-A3D5-4047-BFA7-EC6A7AFF76AA}</ProjectGuid>
+    <ProjectGuid>{D3A6ACE7-5FFC-4048-9B77-061C63F1A0CD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Automation.Plugins.AS.WCS</RootNamespace>
     <AssemblyName>Automation.Plugins.AS.WCS</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\..\bin\Debug\Extensions\Packages\Automation.Plugins.AS.WCS\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,14 +27,101 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\..\bin\Release\Extensions\Packages\Automation.Plugins.AS.WCS\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Automation.Common.SRM">
+      <HintPath>..\packages\Automation.Common.SRM.1.0.0.5\lib\net40\Automation.Common.SRM.dll</HintPath>
+    </Reference>
+    <Reference Include="Automation.Core">
+      <HintPath>..\packages\Automation.Core.1.0.0.13\lib\net40-Client\Automation.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Automation.Service.OPC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Automation.Service.OPC.1.0.0.7\lib\net40\Automation.Service.OPC.dll</HintPath>
+    </Reference>
+    <Reference Include="DBRabbit, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DBRabbit.1.0.6\lib\net20\DBRabbit.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v13.1.Core, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DotSpatial.Controls">
+      <HintPath>..\packages\DotSpatial.Controls.1.6.0.0\lib\net40-Client\DotSpatial.Controls.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Data">
+      <HintPath>..\packages\DotSpatial.Data.1.6.0.0\lib\net40-Client\DotSpatial.Data.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Data.Forms">
+      <HintPath>..\packages\DotSpatial.Data.Forms.1.6.0.0\lib\net40-Client\DotSpatial.Data.Forms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Extensions">
+      <HintPath>..\packages\DotSpatial.Extensions.1.6.0.0\lib\net40-Client\DotSpatial.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Modeling.Forms">
+      <HintPath>..\packages\DotSpatial.Modeling.Forms.1.6.0.0\lib\net40-Client\DotSpatial.Modeling.Forms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Mono">
+      <HintPath>..\packages\DotSpatial.Mono.1.6.0.0\lib\net40-Client\DotSpatial.Mono.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Projections">
+      <HintPath>..\packages\DotSpatial.Projections.1.6.0.0\lib\net40-Client\DotSpatial.Projections.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Projections.Forms">
+      <HintPath>..\packages\DotSpatial.Projections.Forms.1.6.0.0\lib\net40-Client\DotSpatial.Projections.Forms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Serialization">
+      <HintPath>..\packages\DotSpatial.Serialization.1.6.0.0\lib\net40-Client\DotSpatial.Serialization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Symbology">
+      <HintPath>..\packages\DotSpatial.Symbology.1.6.0.0\lib\net40-Client\DotSpatial.Symbology.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Symbology.Forms">
+      <HintPath>..\packages\DotSpatial.Symbology.Forms.1.6.0.0\lib\net40-Client\DotSpatial.Symbology.Forms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Topology">
+      <HintPath>..\packages\DotSpatial.Topology.1.6.0.0\lib\net40-Client\DotSpatial.Topology.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ESBasic, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DBRabbit.1.0.6\lib\net20\ESBasic.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.XmlTransform">
+      <HintPath>..\packages\Microsoft.Web.Xdt.2.1.1\lib\net40\Microsoft.Web.XmlTransform.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Core, Version=2.8.50506.491, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NuGet.Core.2.8.2\lib\net40-Client\NuGet.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Rest">
+      <HintPath>..\packages\Spring.Rest.1.1.1\lib\net40-client\Spring.Rest.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,9 +129,199 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Action\FileMenuAction.cs" />
+    <Compile Include="Action\HelpMenuAction.cs" />
+    <Compile Include="Rest\RestClient.cs" />
+    <Compile Include="Rest\RestReturn.cs" />
+    <Compile Include="SRM\Action\SRMManagerAction.cs" />
+    <Compile Include="Process\CigaretteInformationProcess.cs" />
+    <Compile Include="SRM\Process\SRM01HeartbeatRequstProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SRM\Process\SRM02HeartbeatRequstProcess.cs" />
+    <Compile Include="SRM\Service\SRM01OPCService.cs" />
+    <Compile Include="SRM\Service\SRM02OPCService.cs" />
+    <Compile Include="SRM\SRM01.cs" />
+    <Compile Include="SRM\View\Controls\SRMPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SRM\View\Controls\SRMPanel.Designer.cs">
+      <DependentUpon>SRMPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SRM\View\SRMManagerView.cs" />
+    <Compile Include="WCSPlugin.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Readme\Spring.Rest.txt" />
+    <Content Include="Config\2号堆垛机.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\PLC[AB].xml" />
+    <Content Include="Config\PLC[Siemens].xml" />
+    <Content Include="Config\PLC[TEST].xml" />
+    <Content Include="Serialize\Readme.txt" />
+    <Content Include="TransactionScopeFactoryProviderConfig.xml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\add_16x16.png" />
+    <None Include="Resources\add_32x32.png" />
+    <None Include="Resources\auto_full_16x16.png" />
+    <None Include="Resources\auto_full_32x32.png" />
+    <None Include="Resources\auto_semi_16x16.png" />
+    <None Include="Resources\auto_semi_32x32.png" />
+    <None Include="Resources\cancel_16x16.png" />
+    <None Include="Resources\cancel_32x32.png" />
+    <None Include="Resources\cmd_16x16.png" />
+    <None Include="Resources\cmd_32x32.png" />
+    <None Include="Resources\cmd_test_16x16.png" />
+    <None Include="Resources\cmd_test_32x32.png" />
+    <None Include="Resources\cursor_arrow_16x16.png" />
+    <None Include="Resources\cursor_arrow_32x32.png" />
+    <None Include="Resources\database_16.png" />
+    <None Include="Resources\deselect_16x16.png" />
+    <None Include="Resources\deselect_32x32.png" />
+    <None Include="Resources\disk_16x16.png" />
+    <None Include="Resources\disk_32x32.png" />
+    <None Include="Resources\document_empty_16x16.png" />
+    <None Include="Resources\document_empty_32x32.png" />
+    <None Include="Resources\error_reset_16x16.png" />
+    <None Include="Resources\error_reset_32x32.png" />
+    <None Include="Resources\finish_16x16.png" />
+    <None Include="Resources\finish_32x32.png" />
+    <None Include="Resources\folder_16x16.png" />
+    <None Include="Resources\folder_32x32.png" />
+    <None Include="Resources\hand_16x16.png" />
+    <None Include="Resources\hand_32x32.png" />
+    <None Include="Resources\help1_16x16.png" />
+    <None Include="Resources\help1_32x32.png" />
+    <None Include="Resources\help2_16x16.png" />
+    <None Include="Resources\help2_32x32.png" />
+    <None Include="Resources\HTTPParameter_16.png" />
+    <None Include="Resources\info_rhombus_16x16.png" />
+    <None Include="Resources\info_rhombus_32x32.png" />
+    <None Include="Resources\init_16x16.png" />
+    <None Include="Resources\init_32x32.png" />
+    <None Include="Resources\layer_add_16x16.png" />
+    <None Include="Resources\layer_add_32x32.png" />
+    <None Include="Resources\layer_remove_16x16.png" />
+    <None Include="Resources\layer_remove_32x32.png" />
+    <None Include="Resources\layer_save_16x16.png" />
+    <None Include="Resources\layer_save_32x32.png" />
+    <None Include="Resources\layout_delete_16x16.png" />
+    <None Include="Resources\layout_delete_32x32.png" />
+    <None Include="Resources\measure_16x16.png" />
+    <None Include="Resources\measure_32x32.png" />
+    <None Include="Resources\pause_16x16.png" />
+    <None Include="Resources\pause_32x32.png" />
+    <None Include="Resources\stop_black_16x16.png" />
+    <None Include="Resources\stop_black_32x32.png" />
+    <None Include="Resources\position_16x16.png" />
+    <None Include="Resources\position_32x32.png" />
+    <None Include="Resources\position2_16x16.png" />
+    <None Include="Resources\position2_32x32.png" />
+    <None Include="Resources\printer_16x16.png" />
+    <None Include="Resources\printer_32x32.png" />
+    <None Include="Resources\read_16x16.png" />
+    <None Include="Resources\read_32x32.png" />
+    <None Include="Resources\refresh_16x16.png" />
+    <None Include="Resources\refresh_32x32.png" />
+    <None Include="Resources\refresh_stop_16x16.png" />
+    <None Include="Resources\refresh_stop_32x32.png" />
+    <None Include="Resources\reset_16x16.png" />
+    <None Include="Resources\reset_32x32.png" />
+    <None Include="Resources\save_as_16x16.png" />
+    <None Include="Resources\save_as_32x32.png" />
+    <None Include="Resources\scan_16x16.png" />
+    <None Include="Resources\scan_32x32.png" />
+    <None Include="Resources\scan_hand_16x16.png" />
+    <None Include="Resources\scan_hand_32x32.png" />
+    <None Include="Resources\scan_stop_16x16.png" />
+    <None Include="Resources\scan_stop_32x32.png" />
+    <None Include="Resources\scan_update_16x16.png" />
+    <None Include="Resources\scan_update_32x32.png" />
+    <None Include="Resources\select_16x16.png" />
+    <None Include="Resources\select_32x32.png" />
+    <None Include="Resources\set_16x16.png" />
+    <None Include="Resources\set_32x32.png" />
+    <None Include="Resources\tag_set_16x16.png" />
+    <None Include="Resources\tag_set_32x32.png" />
+    <None Include="Resources\show_16x16.png" />
+    <None Include="Resources\show_32x32.png" />
+    <None Include="Resources\show_stop_16x16.png" />
+    <None Include="Resources\show_stop_32x32.png" />
+    <None Include="Resources\stop_blue_16x16.png" />
+    <None Include="Resources\stop_blue_32x32.png" />
+    <None Include="Resources\table_16x16.png" />
+    <None Include="Resources\table_32x32.png" />
+    <None Include="Resources\unlocked_16x16.png" />
+    <None Include="Resources\update_size_16x16.png" />
+    <None Include="Resources\update_size_32x32.png" />
+    <None Include="Resources\warehouse_32x32.png" />
+    <None Include="Resources\warehouse_16x16.png" />
+    <None Include="Resources\wms.jpg" />
+    <None Include="Resources\zoom_16x16.png" />
+    <None Include="Resources\zoom_32x32.png" />
+    <None Include="Resources\zoom_coordinate_16x16.png" />
+    <None Include="Resources\zoom_coordinate_32x32.png" />
+    <None Include="Resources\zoom_extend_16x16.png" />
+    <None Include="Resources\zoom_extend_32x32.png" />
+    <None Include="Resources\zoom_in_16x16.png" />
+    <None Include="Resources\zoom_in_32x32.png" />
+    <None Include="Resources\zoom_layer_16x16.png" />
+    <None Include="Resources\zoom_layer_32x32.png" />
+    <None Include="Resources\zoom_out_16x16.png" />
+    <None Include="Resources\zoom_out_32x32.png" />
+    <None Include="Resources\zoom_selection_16x16.png" />
+    <None Include="Resources\zoom_selection_32x32.png" />
+    <None Include="Resources\zoom_to_next.png" />
+    <None Include="Resources\zoom_to_next_16.png" />
+    <None Include="Resources\zoom_to_previous.png" />
+    <None Include="Resources\zoom_to_previous_16.png" />
+    <Content Include="Config\1号堆垛机.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SRM\View\Controls\SRMPanel.resx">
+      <DependentUpon>SRMPanel.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="FaultAlarm\" />
+    <Folder Include="Service\" />
+    <Folder Include="View\Controls\" />
+    <Folder Include="View\Dialogs\" />
+    <Folder Include="View\Forms\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。启用“NuGet 程序包还原”可下载这些程序包。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
