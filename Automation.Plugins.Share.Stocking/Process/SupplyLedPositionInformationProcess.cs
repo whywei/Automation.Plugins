@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Automation.Core;
 using Automation.Plugins.Share.Stocking.Dal;
 using System.Data;
 using Automation.Service.LED;
 using Automation.Plugins.Share.Stocking.Properties;
-using Automation.Plugins.Share.Stocking.Util;
 
 namespace Automation.Plugins.Share.Stocking.Process
 {

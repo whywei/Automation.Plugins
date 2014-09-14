@@ -42,7 +42,7 @@ namespace Automation.Plugins.Share.Stocking.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("11")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://10.57.64.171:8080/")]
         public string HttpUrl {
             get {
                 return ((string)(this["HttpUrl"]));

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://www.myget.org/gallery/thok</licenseUrl>
+    <projectUrl>https://www.myget.org/gallery/thok</projectUrl>
+    <iconUrl>https://www.myget.org/gallery/thok</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>Automation Share Stocking</tags>
+  </metadata>
+</package>

@@ -27,7 +27,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\bin\Release\Extensions\Packages\Automation.Plugins.YZ.Stocking\</OutputPath>
+    <OutputPath>..\..\..\bin\Release\Extensions\Packages\Automation.Plugins.Share.Stocking\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -163,7 +163,6 @@
     </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="StockingPlugin.cs" />
-    <Compile Include="Util\ArrayExtension.cs" />
     <Compile Include="Util\PrintUtil.cs" />
     <Compile Include="View\Controls\StockPositionControl.cs">
       <SubType>UserControl</SubType>
@@ -196,6 +195,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Dll\EQ2008_Dll_Set.ini" />
+    <None Include="Nuget\Automation.Plugins.Share.Stocking.nuspec" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

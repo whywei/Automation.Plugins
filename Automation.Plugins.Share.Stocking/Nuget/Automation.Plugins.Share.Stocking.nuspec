@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Automation.Plugins.Share.Stocking</id>
+    <version>1.0.0.0</version>
+    <title>Automation.Plugins.Share.Stocking</title>
+    <authors>thok</authors>
+    <owners>thok</owners>
+    <licenseUrl>http://nuget.wicp.net/license</licenseUrl>
+    <projectUrl>https://github.com/thok-sw</projectUrl>
+    <iconUrl>http://nuget.wicp.net/content/icon/package.ico</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Automation.Plugins.Share.Stocking</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>Automation Share Stocking</tags>
+    <dependencies>
+      <dependency id="Automation.Plugins.MainPlugin" version="1.0.0.13" />
+      <dependency id="Automation.Service.LED" version="1.0.0.1" />
+      <dependency id="Automation.Service.OPC" version="1.0.0.7" />
+      <dependency id="DBRabbit" version="1.0.6" />
+      <dependency id="Spring.Rest" version="1.1.1" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\..\..\..\bin\Release\Extensions\Packages\Automation.Plugins.Share.Stocking\Automation.Plugins.Share.Stocking.dll" target=""/>
+    <file src="..\Config\*.xml" target="Config"/>
+  </files>
+</package>

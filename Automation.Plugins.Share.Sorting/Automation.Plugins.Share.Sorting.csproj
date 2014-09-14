@@ -27,7 +27,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\bin\Release\Extensions\Packages\Automation.Plugins.YZ.Sorting\</OutputPath>
+    <OutputPath>..\..\..\bin\Release\Extensions\Packages\Automation.Plugins.Share.Sorting\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -286,6 +286,7 @@
     <None Include="Dll\EQ2008_Dll_Set.ini">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Nuget\Automation.Plugins.Share.Sorting.nuspec" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
