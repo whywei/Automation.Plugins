@@ -16,8 +16,12 @@ namespace Automation.Plugins.Share.Stocking.Process
         {
             try
             {
-                RestClient restClient = new RestClient();
-                restClient.CheckSupplyPositionStorage();
+                bool isStock = Ops.ReadSingle<bool>(Global.MemoryTemporarilySingleDataService, Global.MemoryItemNameStockState);
+                if (isStock == true)
+                {
+                    RestClient restClient = new RestClient();
+                    restClient.CheckSupplyPositionStorage();
+                }
             }
             catch (Exception ex)
             {
