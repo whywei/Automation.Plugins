@@ -108,6 +108,10 @@ namespace Automation.Plugins.Share.Stocking
                     return;
                 }
 
+                productNameList.AsParallel().ForAll(n => { 
+                    n =  System.Text.Encoding.GetEncoding("gb2312").GetString(System.Text.Encoding.Default.GetBytes(n));
+                });
+
                 Ops.Write(Global.PLC_SERVICE_NAME, "Cigarette_Barcode_Information", productBarcodeList);
                 Ops.Write(Global.PLC_SERVICE_NAME, "Cigarette_Name_Information", productNameList);
 
