@@ -35,9 +35,9 @@ namespace Automation.Plugins.AS.WCS.Rest
             restTemplate.MessageConverters.Add(jsonConverter);
         }
 
-        public SRMTask ApplyNewTask()
+        public SRMTask ApplyNewTask(string name, int travelPos,int liftPos)
         {
-            var restReturn = restTemplate.GetForObject<RestReturn<SRMTask>>(@"supply\assignTaskOriginPositionAddress");
+            var restReturn = restTemplate.GetForObject<RestReturn<SRMTask>>(@"transport\getSrmTask\?name={name}&travelPos={travelPos}&liftPos={liftPos}", name, travelPos, liftPos);
             if (restReturn != null && restReturn.IsSuccess)
             {
                 if (restReturn.Message != string.Empty) Logger.Info(restReturn.Message);
@@ -45,7 +45,7 @@ namespace Automation.Plugins.AS.WCS.Rest
             }
             else if (restReturn != null && !restReturn.IsSuccess)
             {
-                Logger.Error("分配补货任务出库位置失败，详情：" + restReturn.Message);
+                Logger.Error(string.Format("{0}请求新任务失败，详情：{1}" ,name, restReturn.Message));
                 return null;
             }
             else
@@ -54,9 +54,9 @@ namespace Automation.Plugins.AS.WCS.Rest
             }
         }
 
-        public bool CancelCurrentTask(SRMTask task)
+        public bool CancelCurrentTask(string name,SRMTask task)
         {
-            var restReturn = restTemplate.GetForObject<RestReturn>(@"supply\checkSupplyPositionStorage");
+            var restReturn = restTemplate.GetForObject<RestReturn>(@"transport\cancelTask\?taskid={taskid}",task.ID);
             if (restReturn != null && restReturn.IsSuccess)
             {
                 if (restReturn.Message != string.Empty) Logger.Info(restReturn.Message);
@@ -64,7 +64,7 @@ namespace Automation.Plugins.AS.WCS.Rest
             }
             else if (restReturn != null && !restReturn.IsSuccess)
             {
-                Logger.Error("检查拆盘位置库存失败，详情：" + restReturn.Message);
+                Logger.Error(string.Format("{0}取消任务失败，详情：{1}", name, restReturn.Message));
                 return false;
             }
             else
@@ -73,17 +73,17 @@ namespace Automation.Plugins.AS.WCS.Rest
             }
         }
 
-        public bool FinishCurrentTask(SRMTask task)
+        public bool FinishCurrentTask(string name,SRMTask task)
         {
-            var restReturn = restTemplate.GetForObject<RestReturn>(@"supply\checkSupplyPositionStorage");
+            var restReturn = restTemplate.GetForObject<RestReturn>(@"transport\finishTask\?taskid={taskid}&operatorName={operatorName}", task.ID, name);
             if (restReturn != null && restReturn.IsSuccess)
             {
                 if (restReturn.Message != string.Empty) Logger.Info(restReturn.Message);
-                return false;
+                return true;
             }
             else if (restReturn != null && !restReturn.IsSuccess)
             {
-                Logger.Error("检查拆盘位置库存失败，详情：" + restReturn.Message);
+                Logger.Error(string.Format("{0}完成任务失败，详情：{1}", name, restReturn.Message));
                 return false;
             }
             else

@@ -1,0 +1,68 @@
+﻿<?xml version='1.0' ?>
+<Config>
+  <OPCServer OPCServerHostIP="127.0.0.1" OPCServerHostName="" OPCServerName="OPC.SimaticNET" IsTest="false">
+    <OPCGroups>
+      <OPCGroup GroupName="SRM01" GroupString="S7:[SRM01]" UpdateRate="1000" Prefix=".">
+        <!--连接检查-->
+        <OPCItem ItemName="b_O_HandShake" OPCItemName="DB540,X0.0"/>
+        <!--堆垛机操作-->
+        <OPCItem ItemName="b_O_Reset" OPCItemName="DB540,X0.2"/>
+        <OPCItem ItemName="b_O_Initialize" OPCItemName="DB540,X0.4"/>
+        <OPCItem ItemName="b_O_Auto" OPCItemName="DB540,X0.1"/>
+        <!--报警与警告-->
+        <OPCItem ItemName="b_O_Acknowledge" ClientHandler="5" OPCItemName="DB540,X0.3" />
+        <!--任务执行交互-->
+        <OPCItem ItemName="n_O_Task_Data_Position1" OPCItemName="DB540,DINT4,2"/>
+        <OPCItem ItemName="n_O_Task_Data_Type1" OPCItemName="DB540,INT12"/>
+        <OPCItem ItemName="n_O_Task_Data_Position2" OPCItemName="DB540,DINT14,2"/>
+        <OPCItem ItemName="n_O_Task_Data_Type2" OPCItemName="DB540,INT22"/>
+        <OPCItem ItemName="b_O_New_Task" OPCItemName="DB540,X0.5"/>
+        <OPCItem ItemName="b_O_Cancel_Task" OPCItemName="DB540,X0.6"/>
+        <OPCItem ItemName="b_O_Get_Permit" OPCItemName="DB540,X0.7"/>
+        <OPCItem ItemName="b_O_Put_Permit" OPCItemName="DB540,X1.0"/>
+        <!--连接检查-->
+        <OPCItem ItemName="b_I_HandShake" OPCItemName="DB541,X0.0"/>
+        <!--堆垛机操作模式指示-->
+        <OPCItem ItemName="b_I_Local" OPCItemName="DB541,X0.5"/>
+        <OPCItem ItemName="b_I_Manual_Control" OPCItemName="DB541,X0.6"/>
+        <OPCItem ItemName="b_I_Auto" OPCItemName="DB541,X0.7"/>
+        <!--报警与警告-->
+        <OPCItem ItemName="b_I_Alarm" OPCItemName="DB541,X1.0"/>
+        <OPCItem ItemName="b_I_Warning" OPCItemName="DB541,X1.1"/>
+        <OPCItem ItemName="n_I_AlarmCode" OPCItemName="DB541,INT6"/>
+        <!--任务执行交互-->
+        <OPCItem ItemName="b_I_Get_Request" OPCItemName="DB541,X0.1"/>
+        <OPCItem ItemName="b_I_Put_Request" OPCItemName="DB541,X0.2"/>
+        <OPCItem ItemName="b_I_Get_Finish" OPCItemName="DB541,X0.3"/>
+        <OPCItem ItemName="b_I_Put_Finish" OPCItemName="DB541,X0.4"/>
+        <OPCItem ItemName="b_I_Task_Finish" OPCItemName="DB541,X1.2"/>
+        <OPCItem ItemName="n_I_State" OPCItemName="DB541,INT8"/>
+        <!--设备位置状态信息-->
+        <OPCItem ItemName="b_I_Loaded" OPCItemName="DB541,X1.3"/>
+        <OPCItem ItemName="b_I_Fork_Zero" OPCItemName="DB541,X1.4"/>
+        <OPCItem ItemName="b_I_UpFork_SW_Left" OPCItemName="DB541,X1.5"/>
+        <OPCItem ItemName="b_I_UpFork_SW_Right" OPCItemName="DB541,X1.6"/>
+        <OPCItem ItemName="b_I_Fork_SW_Left" OPCItemName="DB541,X1.7"/>
+        <OPCItem ItemName="b_I_Fork_SW_Right" OPCItemName="DB541,X2.0"/>
+        <OPCItem ItemName="n_I_TravelPos" OPCItemName="DB541,DINT10"/>
+        <OPCItem ItemName="n_I_LiftPos" OPCItemName="DB541,DINT14"/>
+        <OPCItem ItemName="n_I_ForkPos_Single" OPCItemName="DB541,INT18"/>
+        <OPCItem ItemName="n_I_ForkPos_Double" OPCItemName="DB541,INT20"/>
+        <OPCItem ItemName="n_I_ForkType" OPCItemName="DB541,INT22"/>
+        <!--设备运行信息-->
+        <OPCItem ItemName="r_I_Speed_Travel" OPCItemName="DB541,REAL30"/>
+        <OPCItem ItemName="r_I_Frequency_Travel" OPCItemName="DB541,REAL34"/>
+        <OPCItem ItemName="r_I_Current_Travel"  OPCItemName="DB541,REAL38"/>
+        <OPCItem ItemName="r_I_Torque_Travel" OPCItemName="DB541,REAL42"/>
+        <OPCItem ItemName="r_I_Speed_Lift"  OPCItemName="DB541,REAL46"/>
+        <OPCItem ItemName="r_I_Frequency_Lift" OPCItemName="DB541,REAL50"/>
+        <OPCItem ItemName="r_I_Current_Lift" OPCItemName="DB541,REAL54"/>
+        <OPCItem ItemName="r_I_Torque_Lift" OPCItemName="DB541,REAL58"/>
+        <OPCItem ItemName="r_I_Speed_Fork" OPCItemName="DB541,REAL62"/>
+        <OPCItem ItemName="r_I_Frequency_Fork" OPCItemName="DB541,REAL66"/>
+        <OPCItem ItemName="r_I_Current_Fork" OPCItemName="DB541,REAL70"/>
+        <OPCItem ItemName="r_I_Torque_Fork" OPCItemName="DB541,REAL74"/>
+      </OPCGroup>
+    </OPCGroups>
+  </OPCServer>
+</Config>
