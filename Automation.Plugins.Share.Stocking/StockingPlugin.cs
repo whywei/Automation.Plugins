@@ -99,21 +99,22 @@ namespace Automation.Plugins.Share.Stocking
                     }
                 }
 
-                var tmp = productBarcodeList.Where(p => productBarcodeList.Where(b => b == p).Count() > 1);
-                if (tmp.Count() > 0)
-                {
-                    string msg = string.Format("{0} ,条码重复，请检查！",tmp.ToArray().ConvertToString());
-                    Logger.Error(msg);
-                    XtraMessageBox.Show(msg, "提示");
-                    return;
-                }
+                //var tmp = productBarcodeList.Where(p => productBarcodeList.Where(b => b == p).Count() > 1);
+                //if (tmp.Count() > 0)
+                //{
+                //    string msg = string.Format("{0} ,条码重复，请检查！",tmp.ToArray().ConvertToString());
+                //    Logger.Error(msg);
+                //    XtraMessageBox.Show(msg, "提示");
+                //    return;
+                //}
 
-                productNameList.AsParallel().ForAll(n => { 
-                    n =  System.Text.Encoding.GetEncoding("gb2312").GetString(System.Text.Encoding.Default.GetBytes(n));
-                });
-
-                Ops.Write(Global.PLC_SERVICE_NAME, "Cigarette_Barcode_Information", productBarcodeList);
-                Ops.Write(Global.PLC_SERVICE_NAME, "Cigarette_Name_Information", productNameList);
+                //productNameList.AsParallel().ForAll(n => { 
+                //    n =  System.Text.Encoding.GetEncoding("gb2312").GetString(System.Text.Encoding.Default.GetBytes(n));
+                //});
+                //productNameList[0] = "中华";
+                //var names = productNameList.Select(p => p!= null ? ConvertToString((System.Text.Encoding.Default.GetBytes(p)).Select(b => Convert.ToString(b, 16)).ToArray(), "$"):"").ToArray();
+                ////Ops.Write(Global.PLC_SERVICE_NAME, "Cigarette_Barcode_Information", productBarcodeList);
+                //Ops.Write(Global.PLC_SERVICE_NAME, "Cigarette_Name_Information", names);
 
                 SwitchStatus(true);
             }
@@ -123,6 +124,16 @@ namespace Automation.Plugins.Share.Stocking
                 Logger.Error(msg);
                 XtraMessageBox.Show(msg, "提示");
             }
+        }
+
+        private string ConvertToString<T>(T[] inArray,string tag)
+        {
+            string r = string.Empty;
+            foreach (var item in inArray)
+            {
+                r += string.Format("{0}{1}", tag, item);
+            }
+            return r;
         }
 
         private void StopStock_click(object sender, EventArgs e)

@@ -12,7 +12,7 @@ namespace Automation.Plugins.Share.Sorting.Dal
         public DataTable FindBatch(string lineCode)
         {
             var ra = TransactionScopeManager[Global.SERVER_DATABASE_NAME].NewRelationAccesser();
-            string sql = @"select id,order_date,batch_no,sorting_line_code
+            string sql = @"select id,convert(nvarchar(10), order_date,20) order_date,batch_no,sorting_line_code
                         from sms_sort_batch 
                         where status='03' and sorting_line_code='{0}'
                         order by order_date,batch_no";

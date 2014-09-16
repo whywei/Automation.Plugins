@@ -36,7 +36,12 @@ namespace Automation.Plugins.Share.Sorting.Action
 
         public void ChannelExchange_Click(object sender, EventArgs e)
         {
-            (View as ChannelQueryView).gridChannelQuery_DoubleClick(sender, e);
+            object obj = Ops.Read(Global.MemoryTemporarilySingleDataService, Global.MemoryItemNameSortState);
+            bool isSort = obj == null ? false : Convert.ToBoolean(obj);
+            if (isSort == false)
+            {
+                (View as ChannelQueryView).gridChannelQuery_DoubleClick(sender, e);
+            }
         }
 
         public void Print_Click(object sender, EventArgs e)

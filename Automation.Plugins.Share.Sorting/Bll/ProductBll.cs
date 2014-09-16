@@ -19,8 +19,8 @@ namespace Automation.Plugins.Share.Sorting.Bll
                 string name=table.Rows[i]["product_name"].ToString().Trim();
                 productName[i] =  name.Length > 13 ? name.Substring(0, 13) : name;
             }
-            Ops.Write(Global.PLC_SERVICE_NAME, "Cigarette_Barcode_Information", barCode);
-            Ops.Write(Global.PLC_SERVICE_NAME, "Cigarette_Name_Information", productName);
+            //Ops.Write(Global.PLC_SERVICE_NAME, "Cigarette_Barcode_Information", barCode);
+            //Ops.Write(Global.PLC_SERVICE_NAME, "Cigarette_Name_Information", productName);
         }
     }
 }

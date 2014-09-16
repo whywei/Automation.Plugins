@@ -46,7 +46,7 @@ namespace Automation.Plugins.Share.Sorting.Rest
             DataTable table = orderDal.FindOrderDate();
             if (table.Rows.Count > 0)
             {
-                var restReturn = restTemplate.GetForObject<RestReturn>(@"supply\createSupplyTask\?positionName={positionName}&quantity={quantity}&orderdate={orderdate}&batchNo={batchNo}", position, quantity, table.Rows[0]["order_date"], table.Rows[0]["batch_no"]);
+                var restReturn = restTemplate.GetForObject<RestReturn>(@"CreateNewSupplyTask\?supplyCachePositionNo={positionName}&vacancyQuantity={quantity}&orderdate={orderdate}&batchNo={batchNo}", position, quantity, table.Rows[0]["order_date"], table.Rows[0]["batch_no"]);
                 if (restReturn != null && restReturn.IsSuccess)
                 {
                     if (restReturn.Message != string.Empty) Logger.Info(restReturn.Message);
