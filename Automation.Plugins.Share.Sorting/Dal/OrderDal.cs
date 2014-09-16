@@ -215,18 +215,23 @@ namespace Automation.Plugins.Share.Sorting.Dal
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
             string sql = @"select a.pack_no,a.channel_code,c.sort_address,c.group_no,b.export_no,b.customer_order,a.product_code,a.product_name,a.quantity,c.piece_barcode
-                        ,(select isnull(sum(d.quantity),0) from sort_order_allot_detail d left join channel_allot e 
-                        on d.channel_code=e.channel_code and d.product_code=e.product_code where d.pack_no={0} and e.group_no=c.group_no) totalquantity
-                        ,(select isnull(sum(d.quantity),0) from sort_order_allot_detail d left join channel_allot e 
-                        on d.channel_code=e.channel_code and d.product_code=e.product_code where d.pack_no>={0} and e.channel_code=c.channel_code) remainquantity
-                        from sort_order_allot_detail a left join sort_order_allot_master b on a.pack_no=b.pack_no
-                        left join channel_allot c on a.channel_code=c.channel_code and a.product_code=c.product_code
-                        left join handle_supply d on  a.pack_no=d.pack_no and a.channel_code=d.channel_code and a.product_code=d.product_code
-                        where a.pack_no=(select isnull(min(pack_no),0) pack_no from sort_order_allot_detail e
-							left join channel_allot f on e.channel_code=f.channel_code and e.product_code=f.product_code
-							where e.pack_no>{0} and group_no={1}) and c.group_no={1}
-                       order by a.pack_no asc,c.group_no desc,c.sort_address,d.supply_batch,d.supply_id";
+                          from sort_order_allot_detail a left join sort_order_allot_master b on a.pack_no=b.pack_no
+                          left join channel_allot c on a.channel_code=c.channel_code and a.product_code=c.product_code
+                          left join handle_supply d on  a.pack_no=d.pack_no and a.channel_code=d.channel_code and a.product_code=d.product_code
+                          where a.pack_no=(select isnull(min(pack_no),0) pack_no from sort_order_allot_detail e
+							               left join channel_allot f on e.channel_code=f.channel_code and e.product_code=f.product_code
+							               where e.pack_no>{0} and group_no={1}) and c.group_no={1}
+                          order by a.pack_no asc,c.group_no desc,c.sort_address,d.supply_batch,d.supply_id";
             return ra.DoQuery(string.Format(sql, packNo,groupNo)).Tables[0];
+        }
+
+        public int FindRemainquantity(int packNo, string channelCode)
+        {
+            var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
+            string sql = @"select isnull(sum(d.quantity),0)-(select count(*) from sorting f where f.channel_code='{1}' and f.pack_no={0}+1) 
+                          from sort_order_allot_detail d left join channel_allot e on d.channel_code=e.channel_code and d.product_code=e.product_code 
+                          where d.pack_no>{0} and e.channel_code='{1}' ";
+            return Convert.ToInt32(ra.DoScalar(string.Format(sql, packNo, channelCode)));
         }
 
         public DataTable FindExporNoFromMaster()

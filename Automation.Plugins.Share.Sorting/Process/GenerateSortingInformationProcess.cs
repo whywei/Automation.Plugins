@@ -30,8 +30,8 @@ namespace Automation.Plugins.Share.Sorting.Process
                     int maxPackNo = orderDal.FindMaxPackNo(1);
                     InsertIntoSorting(1, maxPackNo);
                     //B线
-                    maxPackNo = orderDal.FindMaxPackNo(2);
-                    InsertIntoSorting(2, maxPackNo);
+                    //maxPackNo = orderDal.FindMaxPackNo(2);
+                    //InsertIntoSorting(2, maxPackNo);
                 }
             }
             catch (Exception ex)
@@ -42,25 +42,23 @@ namespace Automation.Plugins.Share.Sorting.Process
 
         public void InsertIntoSorting(int groupNo, int maxPackNo)
         {
-            using (TransactionScopeManager TM = new TransactionScopeManager(true, IsolationLevel.ReadCommitted))
+            do
             {
                 SortingDal sortingDal = new SortingDal();
-                sortingDal.TransactionScopeManager = TM;
-
                 DataTable unSortPackNoOnSorting = sortingDal.FindUnSortPackNo(groupNo);
-                int count = unSortPackNoOnSorting.Rows.Count;
-
+                
                 int packNo = sortingDal.FindMaxPackNo(groupNo);
                 DataTable detailTable = orderDal.FindOrderDetailByPackNo(packNo, groupNo);
-
+                if (unSortPackNoOnSorting.Rows.Count > 19 || detailTable.Rows.Count <= 0)
+                    break;
                 foreach (DataRow row in detailTable.Rows)
                 {
+                    int remainquantity = orderDal.FindRemainquantity(packNo, row["channel_code"].ToString());
                     int sortNo = sortingDal.FindMaxSortNo();
-                    sortingDal.InsertIntoSorting(sortNo + 1, row);
+                    sortingDal.InsertIntoSorting(sortNo + 1, remainquantity, row);
                 }
-
-                TM.Commit();
             }
+            while (true);
         }
     }
 }
