@@ -147,9 +147,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="SRM\Process\SRM02HeartbeatRequstProcess.cs" />
     <Compile Include="SRM\Service\SRM01OPCService.cs" />
-    <Compile Include="SRM\Service\SRM02OPCService.cs" />
+    <Compile Include="SRM\Service\SRM01PartnerOPCService.cs" />
     <Compile Include="SRM\SRM01.cs" />
     <Compile Include="SRM\View\Controls\SRMPanel.cs">
       <SubType>UserControl</SubType>
@@ -166,13 +165,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Readme\Spring.Rest.txt" />
-    <Content Include="Config\2号堆垛机.xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Config\PLC[AB].xml" />
     <Content Include="Config\PLC[Siemens].xml" />
     <Content Include="Config\PLC[TEST].xml" />
+    <Content Include="Config\SRM01Partner.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Serialize\Readme.txt" />
     <Content Include="TransactionScopeFactoryProviderConfig.xml" />
     <None Include="Properties\Settings.settings">
@@ -293,7 +291,7 @@
     <None Include="Resources\zoom_to_next_16.png" />
     <None Include="Resources\zoom_to_previous.png" />
     <None Include="Resources\zoom_to_previous_16.png" />
-    <Content Include="Config\1号堆垛机.xml">
+    <Content Include="Config\SRM01.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>

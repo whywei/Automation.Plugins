@@ -1,0 +1,16 @@
+﻿<?xml version='1.0' ?>
+<Config>
+  <OPCServer OPCServerHostIP="127.0.0.1" OPCServerHostName="" OPCServerName="RSLinx OPC Server" IsTest="false">
+    <OPCGroups>
+      <OPCGroup GroupName="SRM01Partner" GroupString="[THOK]" Prefix="." UpdateRate="1000">
+        <!--1号堆垛机-->
+        <OPCItem ItemName="n_O_Get_Request" OPCItemName="DB1,INT300,2"/>
+        <OPCItem ItemName="n_I_Get_Permit" OPCItemName="DB1,INT304,2"/>
+        <OPCItem ItemName="n_O_Get_Complete" OPCItemName="DB1,INT308,2"/>
+        <OPCItem ItemName="n_O_Put_Request" OPCItemName="DB1,INT312,2"/>
+        <OPCItem ItemName="n_I_Put_Permit" OPCItemName="DB1,INT316,2"/>
+        <OPCItem ItemName="n_O_Put_Complete" OPCItemName="DB1,INT320,8"/>
+      </OPCGroup>
+    </OPCGroups>
+  </OPCServer>
+</Config>

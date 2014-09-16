@@ -11,25 +11,26 @@ namespace Automation.Plugins.AS.WCS.SRM
         public override void Initialize()
         {
             base.Initialize();
-            Name = "1号堆垛机";
+            this.Name = "SRM01";
+            this.PartnerName = "SRM01Partner";
         }
 
         protected override SRMTask ApplyNewTask()
         {
             RestClient restClient = new RestClient();
-            return restClient.ApplyNewTask();
+            return restClient.ApplyNewTask(this.Name, this.TravelPos, this.LiftPos);
         }
 
         protected override bool CancelCurrentTask()
         {
             RestClient restClient = new RestClient();
-            return restClient.CancelCurrentTask(this.CurrentTask);
+            return restClient.CancelCurrentTask(this.Name, this.CurrentTask);
         }
 
         protected override bool FinishCurrentTask()
         {
             RestClient restClient = new RestClient();
-            return restClient.FinishCurrentTask(this.CurrentTask);
+            return restClient.FinishCurrentTask(this.Name, this.CurrentTask);
         }
     }
 }

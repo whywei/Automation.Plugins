@@ -17,7 +17,7 @@ namespace Automation.Plugins.AS.WCS.SRM.Service
 
         public override void CreateTargetService()
         {
-            Name = "1号堆垛机";
+            Name = "SRM01";
             this.TargetService = new OPCService(GetConfigFilePath());
         }
     }
