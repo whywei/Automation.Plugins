@@ -102,8 +102,9 @@ namespace Automation.Plugins.Share.Sorting.Bll
                         table = orderDal.FindOrderDetailByPackNo(packNo, groupNo);
                         foreach (DataRow row in table.Rows)
                         {
+                            int remainquantity = orderDal.FindRemainquantity(Convert.ToInt32(packNo), row["channel_code"].ToString());
                             int sortNo = sortingDal.FindMaxSortNo();
-                            sortingDal.InsertIntoSorting(sortNo + 1, row);
+                            sortingDal.InsertIntoSorting(sortNo + 1, remainquantity, row);
                         }
                         OnDownLoadProgress(40, "生成下单数据");
                     }

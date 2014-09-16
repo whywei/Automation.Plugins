@@ -45,7 +45,7 @@ namespace Automation.Plugins.Share.Sorting.Dal
             return ra.DoQuery(string.Format(sql,groupNo)).Tables[0];
         }
 
-        public void InsertIntoSorting(int sortNo, DataRow row)
+        public void InsertIntoSorting(int sortNo, int remainquantity, DataRow row)
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
             string sql = @"declare @aa int
@@ -60,7 +60,7 @@ namespace Automation.Plugins.Share.Sorting.Dal
                            set @aa=@aa+1
                            set @sortno=@sortno+1
                         end";
-            ra.DoCommand(string.Format(sql, sortNo, row["pack_no"], row["quantity"], row["channel_code"], row["sort_address"], row["remainquantity"],
+            ra.DoCommand(string.Format(sql, sortNo, row["pack_no"], row["quantity"], row["channel_code"], row["sort_address"], remainquantity,
                 row["export_no"], row["product_code"], row["product_name"], row["customer_order"], row["group_no"], row["piece_barcode"]));
         }
 
