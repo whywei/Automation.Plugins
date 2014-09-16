@@ -24,16 +24,33 @@ namespace Automation.Plugins.Share.Stocking.Process
         {
             try
             {
-                bool isStock = Ops.ReadSingle<bool>(Global.MemoryTemporarilySingleDataService, Global.MemoryItemNameStockState);
+               // bool isStock = Ops.ReadSingle<bool>(Global.MemoryTemporarilySingleDataService, Global.MemoryItemNameStockState);
+                object obj = AutomationContext.Read(Global.MemoryTemporarilySingleDataService, Global.MemoryItemNameStockState);
+                bool isStock = obj == null ? false : Convert.ToBoolean(obj);
                 if (isStock == true)
                 {
-                    var ledPositionInfo = Ops.ReadArray<int>(Global.PLC_SERVICE_NAME, "Supply_Led_Position_Information")
-                        .ConvertToNewArray(2);
+                    //var ledPositionInfo = Ops.ReadArray<int>(Global.PLC_SERVICE_NAME, "Supply_Led_Position_Information")
+                    //    .ConvertToNewArray(2);
 
-                    foreach (var item in ledPositionInfo)
+                    //foreach (var item in ledPositionInfo)
+                    //{
+                    //    int ledNo = item[0];
+                    //    int quantity = item[1];
+                    //    if (quantity > 0)
+                    //    {
+                    //        Show(ledNo, quantity);
+                    //    }
+                    //    else
+                    //    {
+                    //        Show(ledNo);
+                    //    }
+                    //}
+                    obj = AutomationContext.Read(Global.PLC_SERVICE_NAME, "Supply_Led_Position_Information");
+                    Array array = (Array)obj;
+                    for (int i = 0; i < array.Length / 2; i++)
                     {
-                        int ledNo = item[0];
-                        int quantity = item[1];
+                        int ledNo = Convert.ToInt32(array.GetValue(i * 2));
+                        int quantity = Convert.ToInt32(array.GetValue(i * 2 + 1));
                         if (quantity > 0)
                         {
                             Show(ledNo, quantity);
@@ -59,8 +76,8 @@ namespace Automation.Plugins.Share.Stocking.Process
             if (ledSqls.ContainsKey(ledNo))
             {
                 DataRow[] taskRow = table.Select("", "id asc");
-                LEDData[] ledDataList = new LEDData[taskRow.Length > 5 ? 5 : taskRow.Length];
-                for (int i = 0; i < taskRow.Length && i < 5; i++)
+                LEDData[] ledDataList = new LEDData[taskRow.Length > 6 ? 6 : taskRow.Length];
+                for (int i = 0; i < taskRow.Length && i < 6; i++)
                 {
                     ledDataList[i] = CreateLEDData(ledNo, i, taskRow[i]["product_name"].ToString());
                 }
@@ -83,14 +100,15 @@ namespace Automation.Plugins.Share.Stocking.Process
         {
             LEDData ledData = new LEDData();
             ledData.CardNum = cardNum;
-            ledData.ColorFont = EQ2008.EQ2008.RED;
+            ledData.ColorFont = id == 0 ? EQ2008.EQ2008.GREEN : EQ2008.EQ2008.RED;
             ledData.Content = name;
             ledData.FontName = "宋体";
+            ledData.SingleText.FontInfo.iFontSize = 9;
             ledData.X = 0;
             ledData.Y = id * 16;
             ledData.Width = 128;
-            ledData.Height = 64;
-            ledData.IsMove = true;
+            ledData.Height = 16;
+            ledData.IsMove = false;
             ledData.MethodType = MethodType.AddSingleText;
             return ledData;
         }

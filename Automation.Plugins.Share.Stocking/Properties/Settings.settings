@@ -2,16 +2,15 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Automation.Plugins.Share.Stocking.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
+    <Setting Name="HttpUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://10.93.5.172:8081/</Value>
+    </Setting>
     <Setting Name="LedSqls" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;string&gt;01:select *,case status  when '1' then '已下单' else  '未下单' end orderstatus,'已经过' ledStatus from sms_supply_task where origin_position_address='14'&lt;/string&gt;
-  &lt;string&gt;02:select *,case status  when '1' then '已下单' else  '未下单' end orderstatus,'已经过' ledStatus from sms_supply_task where origin_position_address='14'&lt;/string&gt;
-  &lt;string&gt;03:select *,case status  when '1' then '已下单' else  '未下单' end orderstatus,'已经过' ledStatus from sms_supply_task where origin_position_address='14'&lt;/string&gt;
+  &lt;string&gt;01:select *,case status  when '1' then '已下单' else  '未下单' end orderstatus,'已经过' ledStatus from sms_supply_task where origin_position_address='1'&lt;/string&gt;
+  &lt;string&gt;02:select *,case status  when '1' then '已下单' else  '未下单' end orderstatus,'已经过' ledStatus from sms_supply_task &lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
-    </Setting>
-    <Setting Name="HttpUrl" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://10.57.64.171:8080/</Value>
     </Setting>
   </Settings>
 </SettingsFile>

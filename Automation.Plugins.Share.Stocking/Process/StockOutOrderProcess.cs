@@ -20,9 +20,9 @@ namespace Automation.Plugins.Share.Stocking.Process
             try
             {
                 bool isStock = Ops.ReadSingle<bool>(Global.MemoryTemporarilySingleDataService, Global.MemoryItemNameStockState);
-                int[] data = Ops.ReadArray<int>(Global.PLC_SERVICE_NAME, "Stock_Out_Order_Information");
+                int sign = Ops.ReadSingle<int>(Global.PLC_SERVICE_NAME, "Stock_Out_Order_Information_Sign");
 
-                if (isStock == true && data != null && data.Length == 76 && data[75] == 0)
+                if (isStock == true && sign == 0 )
                 {
                     using (TransactionScopeManager TM = new TransactionScopeManager(true, IsolationLevel.RepeatableRead))
                     {
@@ -31,13 +31,13 @@ namespace Automation.Plugins.Share.Stocking.Process
                         DataTable taskTable = stockTaskDal.FindUnStockTask();
 
                         int i = 0;
-                        data = new int[76];
+                        int[] data = new int[76];
 
                         foreach (DataRow row in taskTable.Rows)
                         {
                             if (Convert.ToInt32(row["origin_position_address"]) > 0)
                             {
-                                data[i++] = Convert.ToInt32(row["position_address"]);
+                                data[i++] = Convert.ToInt32(row["origin_position_address"]);
                                 data[i++] = Convert.ToInt32(row["target_supply_address"]);
                                 data[i++] = Convert.ToInt32(row["product_barcode"]);
                                 stockTaskDal.UpdateStockTaskStatus(row["id"].ToString());
