@@ -23,14 +23,14 @@ namespace Automation.Plugins.Share.Sorting.Dal
         public DataTable FindChannel(string batchsortid)
         {
             var ra = TransactionScopeManager[Global.SERVER_DATABASE_NAME].NewRelationAccesser();
-            string sql = string.Format(@"select a.channel_code,a.product_code,a.product_name,c.piece_barcode,a.quantity,
-                                        b.channel_type,b.channel_name,b.sorting_line_code,b.led_no,b.x,b.y,b.width,
-                                        b.height,b.remain_quantity,b.channel_capacity,b.group_no,b.order_no,b.sort_address,
-                                        b.supply_address,b.is_active
-                                        from sms_channel_allot a 
-                                        left join sms_channel b on a.channel_code=b.channel_code
+            string sql = string.Format(@"select b.channel_code,a.product_code,a.product_name,c.piece_barcode,a.quantity,
+                                            b.channel_type,b.channel_name,b.sorting_line_code,b.led_no,b.x,b.y,b.width,
+                                            b.height,b.remain_quantity,b.channel_capacity,b.group_no,b.order_no,b.sort_address,
+                                            b.supply_address,b.is_active
+                                        from sms_channel b 
+                                        left join sms_channel_allot a on a.channel_code=b.channel_code
                                         left join wms_product c on a.product_code=c.product_code
-                                        where sort_batch_id={0}", batchsortid);
+                                        where b.sorting_line_code=(select sorting_line_code from sms_sort_batch where id={0})", batchsortid);
             return ra.DoQuery(sql).Tables[0];
         }
 
