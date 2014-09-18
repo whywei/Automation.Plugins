@@ -237,6 +237,9 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="EQ2008_Dll_Set.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -274,6 +277,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="AutomationDesktop.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EQ2008_Dll.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Extensions\Packages\Automation.Plugins.MainPlugin\Automation.Plugins.MainPlugin.dll">
