@@ -14,7 +14,7 @@ namespace Automation.Plugins.Share.Sorting.Rest
 {
     public class RestClient
     {
-        public const string httpUrl = "http://10.57.64.171:8080/";
+        public const string httpUrl = "http://10.93.5.172:8081/";
         private RestTemplate restTemplate;
 
         public RestClient(string url = null)
@@ -46,7 +46,7 @@ namespace Automation.Plugins.Share.Sorting.Rest
             DataTable table = orderDal.FindOrderDate();
             if (table.Rows.Count > 0)
             {
-                var restReturn = restTemplate.GetForObject<RestReturn>(@"CreateNewSupplyTask\?supplyCachePositionNo={positionName}&vacancyQuantity={quantity}&orderdate={orderdate}&batchNo={batchNo}", position, quantity, table.Rows[0]["order_date"], table.Rows[0]["batch_no"]);
+                var restReturn = restTemplate.GetForObject<RestReturn>(@"/Supply/CreateSupplyTask/?position={positionName}&quantity={quantity}&orderdate={orderdate}&batchNo={batchNo}", position, quantity, table.Rows[0]["order_date"], table.Rows[0]["batch_no"]);
                 if (restReturn != null && restReturn.IsSuccess)
                 {
                     if (restReturn.Message != string.Empty) Logger.Info(restReturn.Message);

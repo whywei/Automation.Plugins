@@ -61,7 +61,7 @@ namespace Automation.Plugins.Share.Sorting.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://10.93.5.172:8081/SortTask/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://10.93.5.172:8081/")]
         public string HttpUrl {
             get {
                 return ((string)(this["HttpUrl"]));

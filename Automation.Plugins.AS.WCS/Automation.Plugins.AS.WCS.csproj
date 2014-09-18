@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Automation.Common.SRM, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Automation.Common.SRM.1.0.0.7\lib\net40\Automation.Common.SRM.dll</HintPath>
+      <HintPath>..\packages\Automation.Common.SRM.1.0.0.8\lib\net40\Automation.Common.SRM.dll</HintPath>
     </Reference>
     <Reference Include="Automation.Core">
       <HintPath>..\packages\Automation.Core.1.0.0.15\lib\net40-Client\Automation.Core.dll</HintPath>

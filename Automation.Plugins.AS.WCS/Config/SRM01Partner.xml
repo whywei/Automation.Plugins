@@ -2,14 +2,20 @@
 <Config>
   <OPCServer OPCServerHostIP="127.0.0.1" OPCServerHostName="" OPCServerName="RSLinx OPC Server" IsTest="false">
     <OPCGroups>
-      <OPCGroup GroupName="SRM01Partner" GroupString="[THOK]" Prefix="." UpdateRate="1000">
+      <OPCGroup GroupName="SRM01Partner" GroupString="[BH]" Prefix="." UpdateRate="1000">
+        <!--请求处理任务-->
+        <OPCItem ItemName="Task_Arrive_Request" OPCItemName="DB104[?]" ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="120"/>
         <!--1号堆垛机-->
-        <OPCItem ItemName="n_O_Get_Request" OPCItemName="DB1,INT300,2"/>
-        <OPCItem ItemName="n_I_Get_Permit" OPCItemName="DB1,INT304,2"/>
-        <OPCItem ItemName="n_O_Get_Complete" OPCItemName="DB1,INT308,2"/>
-        <OPCItem ItemName="n_O_Put_Request" OPCItemName="DB1,INT312,2"/>
-        <OPCItem ItemName="n_I_Put_Permit" OPCItemName="DB1,INT316,2"/>
-        <OPCItem ItemName="n_O_Put_Complete" OPCItemName="DB1,INT320,8"/>
+        <OPCItem ItemName="n_O_Get_Request" OPCItemName="DB105[?]" ArrayStartIndex="6" ArrayIndexInterval="1" ArrayLength="3"/>
+        <OPCItem ItemName="n_I_Get_Permit" OPCItemName="DB106[?]" ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="91"/>
+        <OPCItem ItemName="n_O_Get_Complete" OPCItemName="DB107[?]" ArrayStartIndex="6" ArrayIndexInterval="1" ArrayLength="3"/>
+        <OPCItem ItemName="n_O_Put_Request" OPCItemName="DB108[?]" ArrayStartIndex="2" ArrayIndexInterval="1" ArrayLength="1"/>
+        <OPCItem ItemName="n_I_Put_Permit" OPCItemName="DB109[?]" ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="91"/>
+        <OPCItem ItemName="n_O_Put_Complete" OPCItemName="DB110[?]" ArrayStartIndex="22" ArrayIndexInterval="1" ArrayLength="11"/>
+        <!--提升任务优先级-->
+        <OPCItem ItemName="Upgrade_Task_Level_Request" OPCItemName="DB111[?]" ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="31"/>
+        <!--拆盘完成请求-->
+        <OPCItem ItemName="Disassemble_Complete_Request" OPCItemName="DB112[?]" ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="31"/>
       </OPCGroup>
     </OPCGroups>
   </OPCServer>

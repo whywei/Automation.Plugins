@@ -17,7 +17,7 @@ namespace Automation.Plugins.AS.WCS.SRM.Process
 
         public override void Execute()
         {
-            SRMManager.FireHeartbeat("1号堆垛机");
+            SRMManager.FireHeartbeat("SRM01");
         }
     }
 }

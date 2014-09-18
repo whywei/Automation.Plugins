@@ -12,7 +12,7 @@
       <Value Profile="(Default)">1,2</Value>
     </Setting>
     <Setting Name="HttpUrl" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://10.93.5.172:8081/SortTask/</Value>
+      <Value Profile="(Default)">http://10.93.5.172:8081/</Value>
     </Setting>
   </Settings>
 </SettingsFile>

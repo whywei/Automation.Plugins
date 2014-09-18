@@ -9,7 +9,7 @@ namespace Automation.Plugins.AS.WCS.Rest
 {
     public class RestClient
     {
-        public const string httpUrl = "http://10.57.64.171:8080/";
+        public const string httpUrl = "http://10.93.5.172:8081/";
         private RestTemplate restTemplate;
 
         public RestClient(string url = null)
@@ -37,7 +37,7 @@ namespace Automation.Plugins.AS.WCS.Rest
 
         public SRMTask ApplyNewTask(string name, int travelPos,int liftPos)
         {
-            var restReturn = restTemplate.GetForObject<RestReturn<SRMTask>>(@"transport\getSrmTask\?name={name}&travelPos={travelPos}&liftPos={liftPos}", name, travelPos, liftPos);
+            var restReturn = restTemplate.GetForObject<RestReturn>(@"transport\getSrmTask\?name={name}&travelPos={travelPos}&liftPos={liftPos}", name, travelPos, liftPos);
             if (restReturn != null && restReturn.IsSuccess)
             {
                 if (restReturn.Message != string.Empty) Logger.Info(restReturn.Message);
