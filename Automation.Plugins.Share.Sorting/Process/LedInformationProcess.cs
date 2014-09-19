@@ -68,16 +68,18 @@ namespace Automation.Plugins.Share.Sorting.Process
 
         private LEDData LEDDataFactory(DataRow row, bool isLackChannel)
         {
+            string text = row["product_name"].ToString().Trim().Length > 0 ? row["remain_quantity"].ToString() + "|" + row["product_name"].ToString() : "无";
             LEDData ledData = new LEDData();
             ledData.CardNum = Convert.ToInt32(row["led_no"]);
             ledData.ColorFont = isLackChannel ? EQ2008.EQ2008.GREEN : EQ2008.EQ2008.RED;
-            ledData.Content = row["product_name"].ToString().Trim().Length > 0 ? row["remain_quantity"].ToString() + "|" + row["product_name"].ToString() : "无";
+            ledData.Content = text;
             ledData.FontName = "@宋体";
+            ledData.SingleText.FontInfo.iFontSize = 9;
             ledData.X = Convert.ToInt32(row["x"]);
             ledData.Y = Convert.ToInt32(row["y"]);
             ledData.Width = Convert.ToInt32(row["width"]);
             ledData.Height = Convert.ToInt32(row["height"]);
-            ledData.IsMove = true;
+            ledData.IsMove = text.Length > 6 ? true : false;
             ledData.MethodType = MethodType.AddSingleText;
             return ledData;
         }
