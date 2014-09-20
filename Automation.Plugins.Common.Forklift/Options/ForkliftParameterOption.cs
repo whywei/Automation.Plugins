@@ -1,5 +1,4 @@
 ﻿using Automation.Core.Option;
-using System.Windows.Forms;
 using Automation.Plugins.Common.Forklift.Options.Controls;
 
 namespace Automation.Plugins.Common.Forklift.Options
@@ -18,6 +17,16 @@ namespace Automation.Plugins.Common.Forklift.Options
             control = new ForkliftParameterControl();
             this.InnerControl = control;
             base.Initialize();
+
+            control.txtForkliftName.Text = Properties.Settings.Default.ForkliftName;
+            control.txtForkliftName.EditValueChanged += new System.EventHandler(txtForkliftName_EditValueChanged);
+        }
+
+        private void txtForkliftName_EditValueChanged(object sender, System.EventArgs e)
+        {
+            string forkliftName = control.txtForkliftName.Text.Trim();
+            Properties.Settings.Default.ForkliftName = forkliftName;
+            Properties.Settings.Default.Save();
         }
 
         public override void OnSelected()

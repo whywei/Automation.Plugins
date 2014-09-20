@@ -86,7 +86,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Automation.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Automation.Core.1.0.0.16\lib\net40-Client\Automation.Core.dll</HintPath>
+      <HintPath>..\packages\Automation.Core.1.0.0.18\lib\net40-Client\Automation.Core.dll</HintPath>
     </Reference>
     <Reference Include="Common.Logging">
       <HintPath>..\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>

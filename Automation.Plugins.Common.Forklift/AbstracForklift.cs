@@ -60,6 +60,8 @@ namespace Automation.Plugins.Common.Forklift
         [DescriptionAttribute("堆垛机当前任务")]
         public ForkliftTask CurrentTask { get; protected set; }
 
+        public ForkliftTask NextTask { get; private set; }
+
         public Dictionary<string, object> Parameter = new Dictionary<string, object>();
 
         
@@ -110,10 +112,16 @@ namespace Automation.Plugins.Common.Forklift
                 //请求新任务
                 if (CurrentTask == null && State == 0 && Auto)
                 {
-                    CurrentTask = ApplyNewTask();
+                    CurrentTask = NextTask ?? ApplyNewTask();
+                    NextTask = null;
                     State = 2;
                 }
-                
+
+                if (CurrentTask != null && State == 2 && NextTask == null)
+                {
+                    NextTask = ApplyNewTask();
+                }
+
                 Serialize();
 
                 //请求取货

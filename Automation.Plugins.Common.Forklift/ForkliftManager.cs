@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.ComponentModel.Composition;
+using Automation.Core;
 
 namespace Automation.Plugins.Common.Forklift
 {
@@ -20,6 +21,10 @@ namespace Automation.Plugins.Common.Forklift
         public void SelectForklift(string name)
         {
             ActiveForklift = Forklifts.Where(s => s.Name == name).FirstOrDefault();
+            if (ActiveForklift == null)
+            {
+                Logger.Error("SelectForklift : 设置的叉车名称不正确，请检查参数设置！");
+            }
         }
 
         public void FireHeartbeat()

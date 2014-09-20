@@ -59,5 +59,15 @@ namespace Automation.Plugins.AS.Forklift.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap HTTPParameter_16 {
+            get {
+                object obj = ResourceManager.GetObject("HTTPParameter_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

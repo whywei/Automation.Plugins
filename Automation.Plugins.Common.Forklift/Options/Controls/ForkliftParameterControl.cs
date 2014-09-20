@@ -16,5 +16,10 @@ namespace Automation.Plugins.Common.Forklift.Options.Controls
         {
             InitializeComponent();
         }
+
+        private void txtHTTP_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

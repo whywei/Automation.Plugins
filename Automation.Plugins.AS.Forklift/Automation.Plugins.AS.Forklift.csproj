@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Automation.Core">
-      <HintPath>..\packages\Automation.Core.1.0.0.16\lib\net40-Client\Automation.Core.dll</HintPath>
+      <HintPath>..\packages\Automation.Core.1.0.0.18\lib\net40-Client\Automation.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Automation.Service.OPC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -126,6 +126,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forklift\Forklift02.cs" />
+    <Compile Include="Forklift\Service\Forklift02PartnerOPCService.cs" />
+    <Compile Include="Options\Controls\HTTPParameterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Options\Controls\HTTPParameterControl.Designer.cs">
+      <DependentUpon>HTTPParameterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Options\HTTPParameterOption.cs" />
     <Compile Include="Rest\RestClient.cs" />
     <Compile Include="Rest\RestReturn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -151,6 +160,10 @@
     <Content Include="Config\Forklift01Partner.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Config\Forklift02Partner.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\HTTPParameter_16.png" />
     <Content Include="Serialize\Readme.txt" />
     <Content Include="TransactionScopeFactoryProviderConfig.xml" />
     <None Include="Properties\Settings.settings">
@@ -159,6 +172,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Options\Controls\HTTPParameterControl.resx">
+      <DependentUpon>HTTPParameterControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
