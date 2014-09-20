@@ -131,6 +131,14 @@
   <ItemGroup>
     <Compile Include="Action\FileMenuAction.cs" />
     <Compile Include="Action\HelpMenuAction.cs" />
+    <Compile Include="Options\Controls\SystemParameterPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Options\Controls\SystemParameterPanel.Designer.cs">
+      <DependentUpon>SystemParameterPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Options\ParameterOption.cs" />
+    <Compile Include="Options\SystemParameterOption.cs" />
     <Compile Include="Rest\RestClient.cs" />
     <Compile Include="Rest\RestReturn.cs" />
     <Compile Include="SRM\Action\SRMManagerAction.cs" />
@@ -171,6 +179,8 @@
     <Content Include="Config\SRM01Partner.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\ParameterOption_16.png" />
+    <None Include="Resources\ParameterOption_32.png" />
     <Content Include="Serialize\Readme.txt" />
     <Content Include="TransactionScopeFactoryProviderConfig.xml" />
     <None Include="Properties\Settings.settings">
@@ -297,6 +307,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Options\Controls\SystemParameterPanel.resx">
+      <DependentUpon>SystemParameterPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
