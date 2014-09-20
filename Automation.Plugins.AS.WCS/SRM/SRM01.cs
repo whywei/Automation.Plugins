@@ -18,7 +18,14 @@ namespace Automation.Plugins.AS.WCS.SRM
         protected override SRMTask ApplyNewTask()
         {
             RestClient restClient = new RestClient();
-            return restClient.ApplyNewTask(this.Name, this.TravelPos, this.LiftPos);
+            if (this.CurrentTask == null)
+            {
+                return restClient.ApplyNewTask(this.Name, this.TravelPos, this.LiftPos);
+            }
+            else
+            {
+                return restClient.ApplyNewTask(this.Name, this.CurrentTask.TravelPos2, this.CurrentTask.LiftPos2);
+            }
         }
 
         protected override bool CancelCurrentTask()
