@@ -20,7 +20,7 @@ namespace Automation.Plugins.Common.Forklift.View
             set
             {
                 forklift = value;
-                var control = this.InnerControl as ForkliftControl;
+                var control = this.InnerControl as ForkliftPanel;
                 if (control != null)
                 {
                     control.Forklift = value;
@@ -37,8 +37,9 @@ namespace Automation.Plugins.Common.Forklift.View
         {
             this.Key = "kForklift";
             this.Caption = "车载";
-            this.InnerControl = new ForkliftControl();
+            this.InnerControl = new ForkliftPanel();
             this.Dock = DockStyle.Fill;
+
             this.App.DockManager.PanelClosed += new EventHandler<DotSpatial.Controls.Docking.DockablePanelEventArgs>(DockManager_PanelClosed);
             this.App.DockManager.ActivePanelChanged += new EventHandler<DotSpatial.Controls.Docking.DockablePanelEventArgs>(DockManager_ActivePanelChanged);
         }
