@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过以下
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("AAutomation.Plugins.Common.Forklift")]
-[assembly: AssemblyDescription("AAutomation.Plugins.Common.Forklift")]
+[assembly: AssemblyTitle("Automation.Plugins.Common.Forklift")]
+[assembly: AssemblyDescription("Automation.Plugins.Common.Forklift")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("thok")]
-[assembly: AssemblyProduct("AAutomation.Plugins.Common.Forklift")]
+[assembly: AssemblyProduct("Automation.Plugins.Common.Forklift")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("thok")]
 [assembly: AssemblyCulture("")]

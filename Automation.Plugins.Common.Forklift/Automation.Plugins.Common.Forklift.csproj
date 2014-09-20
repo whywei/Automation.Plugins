@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\..\bin\Debug\Extensions\Packages\Automation.Plugins.Common.Forklift\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -33,14 +33,72 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Automation.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Automation.Core.1.0.0.16\lib\net40-Client\Automation.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="DevExpress.Data.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v13.1.Core, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraVerticalGrid.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DotSpatial.Symbology.Forms">
+    <Reference Include="DotSpatial.Controls">
+      <HintPath>..\packages\DotSpatial.Controls.1.6.0.0\lib\net40-Client\DotSpatial.Controls.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Data">
+      <HintPath>..\packages\DotSpatial.Data.1.6.0.0\lib\net40-Client\DotSpatial.Data.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Data.Forms">
+      <HintPath>..\packages\DotSpatial.Data.Forms.1.6.0.0\lib\net40-Client\DotSpatial.Data.Forms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Extensions">
+      <HintPath>..\packages\DotSpatial.Extensions.1.6.0.0\lib\net40-Client\DotSpatial.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Modeling.Forms">
+      <HintPath>..\packages\DotSpatial.Modeling.Forms.1.6.0.0\lib\net40-Client\DotSpatial.Modeling.Forms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Mono">
+      <HintPath>..\packages\DotSpatial.Mono.1.6.0.0\lib\net40-Client\DotSpatial.Mono.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Projections">
+      <HintPath>..\packages\DotSpatial.Projections.1.6.0.0\lib\net40-Client\DotSpatial.Projections.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Projections.Forms">
+      <HintPath>..\packages\DotSpatial.Projections.Forms.1.6.0.0\lib\net40-Client\DotSpatial.Projections.Forms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Serialization">
+      <HintPath>..\packages\DotSpatial.Serialization.1.6.0.0\lib\net40-Client\DotSpatial.Serialization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Symbology">
+      <HintPath>..\packages\DotSpatial.Symbology.1.6.0.0\lib\net40-Client\DotSpatial.Symbology.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Symbology.Forms, Version=1.6.0.0, Culture=neutral, PublicKeyToken=0544cdeefb662382, processorArchitecture=MSIL">
       <HintPath>..\packages\DotSpatial.Symbology.Forms.1.6.0.0\lib\net40-Client\DotSpatial.Symbology.Forms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotSpatial.Topology">
+      <HintPath>..\packages\DotSpatial.Topology.1.6.0.0\lib\net40-Client\DotSpatial.Topology.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.XmlTransform, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Xdt.2.1.1\lib\net40\Microsoft.Web.XmlTransform.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Core, Version=2.8.50506.491, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Core.2.8.2\lib\net40-Client\NuGet.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -55,32 +113,85 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstracForklift.cs" />
+    <Compile Include="Action\ForkliftManagerAction.cs" />
     <Compile Include="IForklift.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ForkliftControl.cs">
+    <Compile Include="Options\Controls\ForkliftParameterControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ForkliftControl.Designer.cs">
+    <Compile Include="Options\Controls\ForkliftParameterControl.Designer.cs">
+      <DependentUpon>ForkliftParameterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Options\ForkliftParameterOption.cs" />
+    <Compile Include="Process\ForkliftHeartbeatProcess.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\ForkliftControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\ForkliftControl.Designer.cs">
       <DependentUpon>ForkliftControl.cs</DependentUpon>
     </Compile>
     <Compile Include="ForkliftManager.cs" />
     <Compile Include="ForkliftTask.cs" />
+    <Compile Include="View\Controls\ForkliftPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\ForkliftPanel.Designer.cs">
+      <DependentUpon>ForkliftPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ForkliftManagerView.cs" />
+    <Compile Include="ForkliftPlugin.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Automation.Common.Forklift.nuspec" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Automation.Core\Automation.Core.csproj">
-      <Project>{1A4557D8-E0D3-4445-BCC0-A39DA0E00054}</Project>
-      <Name>Automation.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
+    <EmbeddedResource Include="Options\Controls\ForkliftParameterControl.resx">
+      <DependentUpon>ForkliftParameterControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
-    <EmbeddedResource Include="ForkliftControl.resx">
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\ForkliftControl.resx">
       <DependentUpon>ForkliftControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\ForkliftPanel.resx">
+      <DependentUpon>ForkliftPanel.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\run_right_32x32.png" />
+    <None Include="Resources\run_right_16x16.png" />
+    <None Include="Resources\ok_32x32.png" />
+    <None Include="Resources\ok_16x16.png" />
+    <None Include="Resources\hand_32x32.png" />
+    <None Include="Resources\hand_16x16.png" />
+    <None Include="Resources\cannel_32x32.png" />
+    <None Include="Resources\cannel_16x16.png" />
+    <None Include="Resources\batch_32x32.png" />
+    <None Include="Resources\batch_16x16.png" />
+    <None Include="Resources\apply_32x32.png" />
+    <None Include="Resources\apply_16x16.png" />
+    <Content Include="Serialize\Readme.txt" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

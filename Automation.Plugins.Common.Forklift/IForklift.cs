@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace AAutomation.Plugins.Common.Forklift
+namespace Automation.Plugins.Common.Forklift
 {
     public interface IForklift
     {
@@ -33,6 +33,9 @@ namespace AAutomation.Plugins.Common.Forklift
         bool PutFinish { get; set; }
         [DescriptionAttribute("叉车任务完成")]
         bool TaskFinish { get; set; }
+
+        [DescriptionAttribute("堆垛机当前任务")]
+        ForkliftTask CurrentTask { get;}
 
         void Initialize();
         void Release();

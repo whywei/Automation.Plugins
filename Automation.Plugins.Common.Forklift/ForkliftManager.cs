@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.ComponentModel.Composition;
 
-namespace AAutomation.Plugins.Common.Forklift
+namespace Automation.Plugins.Common.Forklift
 {
     [Export]
     public class ForkliftManager : IPartImportsSatisfiedNotification
@@ -20,7 +19,7 @@ namespace AAutomation.Plugins.Common.Forklift
 
         public void SelectForklift(string name)
         {
-            ActiveForklift = Forklifts.Where(s => s.Name == name).Single();
+            ActiveForklift = Forklifts.Where(s => s.Name == name).FirstOrDefault();
         }
 
         public void FireHeartbeat()

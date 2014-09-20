@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{D3A6ACE7-5FFC-4048-9B77-061C63F1A0CD}</ProjectGuid>
+    <ProjectGuid>{41C785D1-A3D5-4047-BFA7-EC6A7AFF76AA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Automation.Plugins.AS.WCS</RootNamespace>

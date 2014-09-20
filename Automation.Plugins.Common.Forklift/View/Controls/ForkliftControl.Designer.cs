@@ -1,4 +1,4 @@
-﻿namespace AAutomation.Plugins.Common.Forklift
+﻿namespace Automation.Plugins.Common.Forklift.View.Controls
 {
     partial class ForkliftControl
     {

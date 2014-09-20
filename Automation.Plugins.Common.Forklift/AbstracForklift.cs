@@ -9,7 +9,7 @@ using Automation.Core.Util;
 using System.Windows.Forms;
 using Automation.Core;
 
-namespace AAutomation.Plugins.Common.Forklift
+namespace Automation.Plugins.Common.Forklift
 {
     public abstract class AbstractForklift : IForklift, IPartImportsSatisfiedNotification
     {
@@ -108,10 +108,10 @@ namespace AAutomation.Plugins.Common.Forklift
             try
             {
                 //请求新任务
-                if (CurrentTask == null && State == 0
-                    && Auto && TaskFinish)
+                if (CurrentTask == null && State == 0 && Auto)
                 {
                     CurrentTask = ApplyNewTask();
+                    State = 2;
                 }
                 
                 Serialize();
@@ -121,6 +121,7 @@ namespace AAutomation.Plugins.Common.Forklift
                     && (!CurrentTask.HasGetRequest || CheckIsPermitGet()))
                 {
                     SetGetPermit(true);
+                    State = 3;
                 }
   
                 //请求放货
@@ -130,11 +131,7 @@ namespace AAutomation.Plugins.Common.Forklift
                         && (!CurrentTask.HasPutRequest || CheckIsPermitPut()))
                     {
                         SetPutPermit(true);
-                    }
-
-                    if (!CurrentTask.GetFinish)
-                    {
-                        SetPutPermit(true);
+                        State = 4;
                     }
                 }
 
@@ -154,6 +151,7 @@ namespace AAutomation.Plugins.Common.Forklift
                         {
                             CurrentTask.GetFinish = true;
                         }
+                        State = 2;
                     }
                 }
                 
@@ -188,6 +186,7 @@ namespace AAutomation.Plugins.Common.Forklift
                         {
                             CurrentTask.PutFinish = true;
                         }
+                        State = 1;
                     }
                 }
 
@@ -213,6 +212,8 @@ namespace AAutomation.Plugins.Common.Forklift
                     && FinishCurrentTask())
                 {
                     CurrentTask = null;
+                    TaskFinish = false;
+                    State = 0;
                 }
 
                 Serialize();

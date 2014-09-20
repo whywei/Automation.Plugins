@@ -1,6 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 
-namespace AAutomation.Plugins.Common.Forklift
+namespace Automation.Plugins.Common.Forklift.View.Controls
 {
     public partial class ForkliftControl : XtraUserControl
     {

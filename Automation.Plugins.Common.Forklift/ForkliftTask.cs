@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace AAutomation.Plugins.Common.Forklift
+﻿
+namespace Automation.Plugins.Common.Forklift
 {
     public class ForkliftTask
     {
