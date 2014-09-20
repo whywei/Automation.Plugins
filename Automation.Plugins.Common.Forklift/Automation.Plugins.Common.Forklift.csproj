@@ -27,7 +27,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\Automation.Plugins\packages\Automation.Common.SRM.1.0.0.3\lib\net40\</OutputPath>
+    <OutputPath>..\..\..\bin\Release\Extensions\Packages\Automation.Plugins.Common.Forklift\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -154,7 +154,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Automation.Common.Forklift.nuspec" />
+    <None Include="Automation.Plugins.Common.Forklift.nuspec" />
+    <None Include="Nuget\Automation.Plugins.Common.Forklift.nuspec" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

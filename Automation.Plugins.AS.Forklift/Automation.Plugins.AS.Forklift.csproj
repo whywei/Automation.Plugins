@@ -27,7 +27,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\bin\Release\Extensions\Packages\Automation.Plugins.AS.WCS\</OutputPath>
+    <OutputPath>..\..\..\bin\Release\Extensions\Packages\Automation.Plugins.AS.Forklift\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -154,6 +154,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Automation.Plugins.AS.Forklift.nuspec" />
+    <None Include="Nuget\Automation.Plugins.AS.Forklift.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
