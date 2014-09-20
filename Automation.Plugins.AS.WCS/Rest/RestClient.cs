@@ -3,7 +3,7 @@ using Spring.Rest.Client;
 using Spring.Http.Converters;
 using Spring.Http.Converters.Json;
 using Spring.Http;
-using Automation.Common.SRM;
+using Automation.Plugins.Common.SRM;
 
 namespace Automation.Plugins.AS.WCS.Rest
 {

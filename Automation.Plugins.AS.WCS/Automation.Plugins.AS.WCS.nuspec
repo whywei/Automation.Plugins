@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>1.0.0.11</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>http://nuget.wicp.net/license</licenseUrl>
+    <projectUrl>https://github.com/thok-sw</projectUrl>
+    <iconUrl>http://nuget.wicp.net/content/icon/package.ico</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>WCS</tags>
+  </metadata>
+</package>

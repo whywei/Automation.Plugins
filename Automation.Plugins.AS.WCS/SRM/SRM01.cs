@@ -1,7 +1,6 @@
-﻿using System;
-using System.ComponentModel.Composition;
-using Automation.Common.SRM;
+﻿using System.ComponentModel.Composition;
 using Automation.Plugins.AS.WCS.Rest;
+using Automation.Plugins.Common.SRM;
 
 namespace Automation.Plugins.AS.WCS.SRM
 {

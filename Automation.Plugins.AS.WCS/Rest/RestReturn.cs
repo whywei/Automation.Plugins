@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Automation.Common.SRM;
-
+﻿
+using Automation.Plugins.Common.SRM;
 namespace Automation.Plugins.AS.WCS.Rest
 {
     public class RestReturn
