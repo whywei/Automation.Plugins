@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Automation.Plugins.Common.Forklift.Properties {
+namespace Automation.Plugins.AS.Forklift.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -25,13 +25,25 @@ namespace Automation.Plugins.Common.Forklift.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Forklift01")]
-        public string ForkliftName {
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int ForkliftCount {
             get {
-                return ((string)(this["ForkliftName"]));
+                return ((int)(this["ForkliftCount"]));
             }
             set {
-                this["ForkliftName"] = value;
+                this["ForkliftCount"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://10.93.5.172:8081/")]
+        public string HttpUrl {
+            get {
+                return ((string)(this["HttpUrl"]));
+            }
+            set {
+                this["HttpUrl"] = value;
             }
         }
     }

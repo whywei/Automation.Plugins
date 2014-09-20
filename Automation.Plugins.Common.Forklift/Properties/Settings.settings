@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="ForkliftName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Forklift-01</Value>
+      <Value Profile="(Default)">Forklift01</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("Automation.Plugins.AS.Forklift")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Automation.Plugins.AS.Forklift")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("thok")]
 [assembly: AssemblyProduct("Automation.Plugins.AS.Forklift")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("thok")]
 [assembly: AssemblyCulture("")]
 
 // 将 ComVisible 设置为 false 使此程序集中的类型
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("18e3c17d-365e-4248-8e9b-308e3d428fde")]
+[assembly: Guid("6abd8c53-9556-4288-bedb-f807d9ea4e4b")]
 
 // 程序集的版本信息由下面四个值组成:
 //
