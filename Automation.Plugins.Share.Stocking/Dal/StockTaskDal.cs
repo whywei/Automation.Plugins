@@ -19,7 +19,7 @@ namespace Automation.Plugins.Share.Stocking.Dal
         public DataTable FindStockTask(string sql)
         {
             var ra = TransactionScopeManager[Global.DATABASE_NAME].NewRelationAccesser();
-            sql = string.Format(@"select * from ({0}) a order by a.id acs", sql);
+            sql = string.Format(@"select * from ({0}) a order by a.id asc", sql);
             return ra.DoQuery(sql).Tables[0];
         }
 

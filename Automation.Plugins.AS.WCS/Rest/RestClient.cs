@@ -45,7 +45,7 @@ namespace Automation.Plugins.AS.WCS.Rest
             }
             else if (restReturn != null && !restReturn.IsSuccess)
             {
-                Logger.Error(string.Format("{0}请求新任务失败，详情：{1}" ,name, restReturn.Message));
+                if (restReturn.Message != string.Empty) Logger.Error(string.Format("{0}请求新任务失败，详情：{1}", name, restReturn.Message));
                 return null;
             }
             else
@@ -64,7 +64,7 @@ namespace Automation.Plugins.AS.WCS.Rest
             }
             else if (restReturn != null && !restReturn.IsSuccess)
             {
-                Logger.Error(string.Format("{0}取消任务失败，详情：{1}", name, restReturn.Message));
+                if (restReturn.Message != string.Empty) Logger.Error(string.Format("{0}取消任务失败，详情：{1}", name, restReturn.Message));
                 return false;
             }
             else
@@ -83,7 +83,7 @@ namespace Automation.Plugins.AS.WCS.Rest
             }
             else if (restReturn != null && !restReturn.IsSuccess)
             {
-                Logger.Error(string.Format("{0}完成任务失败，详情：{1}", name, restReturn.Message));
+                if (restReturn.Message != string.Empty) Logger.Error(string.Format("{0}完成任务失败，详情：{1}", name, restReturn.Message));
                 return false;
             }
             else

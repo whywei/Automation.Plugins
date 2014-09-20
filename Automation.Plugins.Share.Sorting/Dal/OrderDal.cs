@@ -207,7 +207,7 @@ namespace Automation.Plugins.Share.Sorting.Dal
         public void UpdateMasterStatus(int packNo)
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
-            string sql = "update sort_order_allot_master set status='02',start_time=getdate() where pack_no<={0} and status='01'";
+            string sql = "update sort_order_allot_master set status='02',start_time=getdate(),finish_time=getdate() where pack_no<={0} and status='01'";
             ra.DoCommand(string.Format(sql, packNo));
         }
 
