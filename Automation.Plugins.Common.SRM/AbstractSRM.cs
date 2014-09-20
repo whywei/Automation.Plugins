@@ -182,11 +182,16 @@ namespace Automation.Plugins.Common.SRM
             }
         }
 
+        private IList<Task> tasks = new List<Task>();
         public virtual void Scan()
         {
             try
             {
-                IList<Task> tasks = new List<Task>();
+                if (tasks.Count > 0)
+                {
+                    Task.WaitAll(tasks.ToArray());
+                    tasks.Clear();
+                }   
                 tasks.Add(Task.Factory.StartNew(() => { HandShake = Ops.ReadSingle<bool>(Name, "b_I_HandShake"); }));
                 tasks.Add(Task.Factory.StartNew(() => { Auto = Ops.ReadSingle<bool>(Name, "b_I_Auto"); }));
                 tasks.Add(Task.Factory.StartNew(() => { Local = Ops.ReadSingle<bool>(Name, "b_I_Local"); }));
@@ -211,7 +216,6 @@ namespace Automation.Plugins.Common.SRM
                 tasks.Add(Task.Factory.StartNew(() => { UpForkSWRight = Ops.ReadSingle<bool>(Name, "b_I_UpFork_SW_Right"); }));
                 tasks.Add(Task.Factory.StartNew(() => { ForkSWLeft = Ops.ReadSingle<bool>(Name, "b_I_Fork_SW_Left"); }));
                 tasks.Add(Task.Factory.StartNew(() => { ForkSWRight = Ops.ReadSingle<bool>(Name, "b_I_Fork_SW_Right"); }));
-                Task.WaitAll(tasks.ToArray());
             }
             catch (Exception ex)
             {
