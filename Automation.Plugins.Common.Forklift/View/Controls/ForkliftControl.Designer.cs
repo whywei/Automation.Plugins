@@ -468,7 +468,6 @@
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl2;
-        private DevExpress.XtraVerticalGrid.PropertyGridControl propertyGridControl1;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow Connection;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow CurrentTask;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow ConnectState;
@@ -502,6 +501,7 @@
         private DevExpress.XtraVerticalGrid.PropertyDescriptionControl propertyDescriptionControl1;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow ForkliftName;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup skinsRibbonPageGroup;
+        public DevExpress.XtraVerticalGrid.PropertyGridControl propertyGridControl1;
 
 
     }

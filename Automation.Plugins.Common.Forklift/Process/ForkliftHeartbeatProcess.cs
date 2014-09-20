@@ -3,7 +3,7 @@ using System.ComponentModel.Composition;
 
 namespace Automation.Plugins.Common.Forklift.Process
 {
-    public class Forklift01HeartbeatRequstProcess : AbstractProcess
+    public class ForkliftHeartbeatProcess : AbstractProcess
     {
         [Import]
         public ForkliftManager ForkliftManager { get; set; }

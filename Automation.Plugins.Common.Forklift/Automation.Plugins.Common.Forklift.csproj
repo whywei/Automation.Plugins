@@ -37,6 +37,7 @@
       <HintPath>..\packages\Automation.Core.1.0.0.16\lib\net40-Client\Automation.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Automation.Plugins.Common.Forklift, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v13.1.Core, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />

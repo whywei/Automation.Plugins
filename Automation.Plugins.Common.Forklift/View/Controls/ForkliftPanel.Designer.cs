@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.lbProductName = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.propertyGridControl1 = new DevExpress.XtraVerticalGrid.PropertyGridControl();
+            this.rProductName = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rOriginCellName = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rTargetCellName = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rPiecesQutity = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rBarQuantity = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.forkliftControl1 = new Automation.Plugins.Common.Forklift.View.Controls.ForkliftControl();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
+            this.xtraTabControl1.SuspendLayout();
+            this.xtraTabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.propertyGridControl1)).BeginInit();
+            this.xtraTabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // repositoryItemCheckEdit1
@@ -53,160 +53,114 @@
             this.repositoryItemCheckEdit1.Caption = "Check";
             this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
             // 
-            // tabControl1
+            // xtraTabControl1
             // 
-            this.tabControl1.Alignment = System.Windows.Forms.TabAlignment.Left;
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Multiline = true;
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(699, 374);
-            this.tabControl1.TabIndex = 0;
+            this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControl1.HeaderLocation = DevExpress.XtraTab.TabHeaderLocation.Left;
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
+            this.xtraTabControl1.Name = "xtraTabControl1";
+            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
+            this.xtraTabControl1.Size = new System.Drawing.Size(699, 473);
+            this.xtraTabControl1.TabIndex = 0;
+            this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtraTabPage1,
+            this.xtraTabPage2});
             // 
-            // tabPage1
+            // xtraTabPage1
             // 
-            this.tabPage1.Controls.Add(this.labelControl1);
-            this.tabPage1.Controls.Add(this.labelControl8);
-            this.tabPage1.Controls.Add(this.labelControl5);
-            this.tabPage1.Controls.Add(this.labelControl9);
-            this.tabPage1.Controls.Add(this.labelControl4);
-            this.tabPage1.Controls.Add(this.labelControl7);
-            this.tabPage1.Controls.Add(this.labelControl3);
-            this.tabPage1.Controls.Add(this.labelControl6);
-            this.tabPage1.Controls.Add(this.labelControl2);
-            this.tabPage1.Controls.Add(this.lbProductName);
-            this.tabPage1.Location = new System.Drawing.Point(25, 4);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(670, 366);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "任务";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.xtraTabPage1.Controls.Add(this.propertyGridControl1);
+            this.xtraTabPage1.Name = "xtraTabPage1";
+            this.xtraTabPage1.Size = new System.Drawing.Size(670, 467);
+            this.xtraTabPage1.Text = "任务信息";
             // 
-            // tabPage2
+            // propertyGridControl1
             // 
-            this.tabPage2.Location = new System.Drawing.Point(25, 4);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(670, 366);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "状态";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.propertyGridControl1.Appearance.BandBorder.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.propertyGridControl1.Appearance.BandBorder.Options.UseFont = true;
+            this.propertyGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.propertyGridControl1.Font = new System.Drawing.Font("Tahoma", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.propertyGridControl1.Location = new System.Drawing.Point(0, 0);
+            this.propertyGridControl1.Name = "propertyGridControl1";
+            this.propertyGridControl1.RecordWidth = 142;
+            this.propertyGridControl1.RowHeaderWidth = 58;
+            this.propertyGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
+            this.rProductName,
+            this.rOriginCellName,
+            this.rTargetCellName,
+            this.rPiecesQutity,
+            this.rBarQuantity});
+            this.propertyGridControl1.Size = new System.Drawing.Size(670, 467);
+            this.propertyGridControl1.TabIndex = 1;
             // 
-            // lbProductName
+            // rProductName
             // 
-            this.lbProductName.Appearance.Font = new System.Drawing.Font("方正等线", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbProductName.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.lbProductName.Location = new System.Drawing.Point(42, 27);
-            this.lbProductName.Name = "lbProductName";
-            this.lbProductName.Size = new System.Drawing.Size(130, 35);
-            this.lbProductName.TabIndex = 0;
-            this.lbProductName.Text = "产品名称：";
+            this.rProductName.Height = 60;
+            this.rProductName.Name = "rProductName";
+            this.rProductName.Properties.Caption = "卷烟名称";
+            this.rProductName.Properties.FieldName = "ProductName";
+            this.rProductName.Properties.ReadOnly = true;
             // 
-            // labelControl1
+            // rOriginCellName
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("方正等线", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.labelControl1.Location = new System.Drawing.Point(189, 27);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(130, 35);
-            this.labelControl1.TabIndex = 0;
-            this.labelControl1.Text = "产品名称：";
+            this.rOriginCellName.Height = 60;
+            this.rOriginCellName.Name = "rOriginCellName";
+            this.rOriginCellName.Properties.Caption = "起始位置";
+            this.rOriginCellName.Properties.FieldName = "OriginCellName";
+            this.rOriginCellName.Properties.ReadOnly = true;
             // 
-            // labelControl2
+            // rTargetCellName
             // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("方正等线", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.labelControl2.Location = new System.Drawing.Point(42, 99);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(130, 35);
-            this.labelControl2.TabIndex = 0;
-            this.labelControl2.Text = "起始位置：";
+            this.rTargetCellName.Height = 60;
+            this.rTargetCellName.Name = "rTargetCellName";
+            this.rTargetCellName.Properties.Caption = "目标位置";
+            this.rTargetCellName.Properties.FieldName = "TargetCellName";
+            this.rTargetCellName.Properties.ReadOnly = true;
             // 
-            // labelControl3
+            // rPiecesQutity
             // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("方正等线", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.labelControl3.Location = new System.Drawing.Point(42, 171);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(130, 35);
-            this.labelControl3.TabIndex = 0;
-            this.labelControl3.Text = "目标位置：";
+            this.rPiecesQutity.Height = 60;
+            this.rPiecesQutity.Name = "rPiecesQutity";
+            this.rPiecesQutity.Properties.Caption = "数量(件)";
+            this.rPiecesQutity.Properties.FieldName = "PiecesQutity";
+            this.rPiecesQutity.Properties.ReadOnly = true;
             // 
-            // labelControl4
+            // rBarQuantity
             // 
-            this.labelControl4.Appearance.Font = new System.Drawing.Font("方正等线", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelControl4.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.labelControl4.Location = new System.Drawing.Point(42, 315);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(122, 35);
-            this.labelControl4.TabIndex = 0;
-            this.labelControl4.Text = "数量(条)：";
+            this.rBarQuantity.Height = 60;
+            this.rBarQuantity.Name = "rBarQuantity";
+            this.rBarQuantity.Properties.Caption = "数量(条)";
+            this.rBarQuantity.Properties.FieldName = "BarQuantity";
+            this.rBarQuantity.Properties.ReadOnly = true;
             // 
-            // labelControl5
+            // xtraTabPage2
             // 
-            this.labelControl5.Appearance.Font = new System.Drawing.Font("方正等线", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelControl5.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.labelControl5.Location = new System.Drawing.Point(42, 243);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(122, 35);
-            this.labelControl5.TabIndex = 0;
-            this.labelControl5.Text = "数量(件)：";
+            this.xtraTabPage2.Controls.Add(this.forkliftControl1);
+            this.xtraTabPage2.Name = "xtraTabPage2";
+            this.xtraTabPage2.Size = new System.Drawing.Size(670, 467);
+            this.xtraTabPage2.Text = "状态信息";
             // 
-            // labelControl6
+            // forkliftControl1
             // 
-            this.labelControl6.Appearance.Font = new System.Drawing.Font("方正等线", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelControl6.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.labelControl6.Location = new System.Drawing.Point(189, 99);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(130, 35);
-            this.labelControl6.TabIndex = 0;
-            this.labelControl6.Text = "起始位置：";
-            // 
-            // labelControl7
-            // 
-            this.labelControl7.Appearance.Font = new System.Drawing.Font("方正等线", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelControl7.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.labelControl7.Location = new System.Drawing.Point(189, 171);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(130, 35);
-            this.labelControl7.TabIndex = 0;
-            this.labelControl7.Text = "目标位置：";
-            // 
-            // labelControl8
-            // 
-            this.labelControl8.Appearance.Font = new System.Drawing.Font("方正等线", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelControl8.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.labelControl8.Location = new System.Drawing.Point(189, 243);
-            this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(122, 35);
-            this.labelControl8.TabIndex = 0;
-            this.labelControl8.Text = "数量(件)：";
-            // 
-            // labelControl9
-            // 
-            this.labelControl9.Appearance.Font = new System.Drawing.Font("方正等线", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelControl9.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.labelControl9.Location = new System.Drawing.Point(189, 315);
-            this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(122, 35);
-            this.labelControl9.TabIndex = 0;
-            this.labelControl9.Text = "数量(条)：";
+            this.forkliftControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.forkliftControl1.Forklift = null;
+            this.forkliftControl1.Location = new System.Drawing.Point(0, 0);
+            this.forkliftControl1.Name = "forkliftControl1";
+            this.forkliftControl1.Size = new System.Drawing.Size(670, 467);
+            this.forkliftControl1.TabIndex = 0;
             // 
             // ForkliftPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.xtraTabControl1);
             this.Name = "ForkliftPanel";
-            this.Size = new System.Drawing.Size(699, 374);
+            this.Size = new System.Drawing.Size(699, 473);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
+            this.xtraTabControl1.ResumeLayout(false);
+            this.xtraTabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.propertyGridControl1)).EndInit();
+            this.xtraTabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -214,18 +168,15 @@
         #endregion
 
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private DevExpress.XtraEditors.LabelControl lbProductName;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.LabelControl labelControl8;
-        private DevExpress.XtraEditors.LabelControl labelControl9;
-        private DevExpress.XtraEditors.LabelControl labelControl7;
-        private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
+        private ForkliftControl forkliftControl1;
+        private DevExpress.XtraVerticalGrid.PropertyGridControl propertyGridControl1;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rProductName;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rOriginCellName;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rPiecesQutity;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rBarQuantity;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rTargetCellName;
     }
 }
