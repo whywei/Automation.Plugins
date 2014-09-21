@@ -110,5 +110,43 @@ namespace Automation.Plugins.AS.WCS.Rest
                 return false;
             }
         }
+
+        public bool AutoCreateMoveBill()
+        {
+            var restReturn = restTemplate.GetForObject<RestReturn>(@"TaskRest\AutoCreateMoveBill\");
+            if (restReturn != null && restReturn.IsSuccess)
+            {
+                if (restReturn.Message != string.Empty) Logger.Info(restReturn.Message);
+                return true;
+            }
+            else if (restReturn != null && !restReturn.IsSuccess)
+            {
+                if (restReturn.Message != string.Empty) Logger.Error("自动生成补大品种拆盘位移库单失败，详情：" + restReturn.Message);
+                return false;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool CreateNewTaskForEmptyPalletStack(int positionName)
+        {
+            var restReturn = restTemplate.GetForObject<RestReturn>(@"TaskRest\CreateNewTaskForEmptyPalletStack/?positionName={p}", positionName);
+            if (restReturn != null && restReturn.IsSuccess)
+            {
+                if (restReturn.Message != string.Empty) Logger.Info(restReturn.Message);
+                return true;
+            }
+            else if (restReturn != null && !restReturn.IsSuccess)
+            {
+                if (restReturn.Message != string.Empty) Logger.Error("生成空托盘回收任务失败，详情：" + restReturn.Message);
+                return false;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

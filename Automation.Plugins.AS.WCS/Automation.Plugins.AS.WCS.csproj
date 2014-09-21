@@ -137,6 +137,8 @@
     </Compile>
     <Compile Include="Options\ParameterOption.cs" />
     <Compile Include="Options\SystemParameterOption.cs" />
+    <Compile Include="Process\AutoCreateMoveBillRequestProcess.cs" />
+    <Compile Include="Process\EmptyPalletStackRequestProcess.cs" />
     <Compile Include="Process\TaskArriveRequestProcess.cs" />
     <Compile Include="Rest\RestClient.cs" />
     <Compile Include="Rest\RestReturn.cs" />

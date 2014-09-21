@@ -41,6 +41,7 @@ namespace Automation.Plugins.AS.WCS.Process
                     if (!processedTasks.Any(t=>t[0] == task[0] && t[1] == task[1]) && rest.Arrive(task[1], task[0]))
                     {
                         processedTasks.Add(task);
+                        Logger.Info(string.Format("TaskArriveRequest : 任务[{0}] 到达 位置[{1}] 处理成功！", task[1], task[0]));
                     }
                 }                
             }
