@@ -34,8 +34,7 @@ namespace Automation.Plugins.AS.WCS.Options
 
         public override void OnSelected()
         {
-            txtHttpUrl.Text = Settings.Default.HttpUrl;
-            txtSRMCount.Text = Settings.Default.SRMCount.ToString(); ;
+            txtHttpUrl.Text = Settings.Default.HttpUrl;            
         }
 
         private void TxtHttpUrl_EditValueChanged(object sender, EventArgs e)
@@ -50,7 +49,7 @@ namespace Automation.Plugins.AS.WCS.Options
 
         private void TxtSTMCounte_EditValueChanged(object sender, EventArgs e)
         {
-            Settings.Default.SRMCount = Convert.ToInt32(txtSRMCount.Text);
+            
         }
     }
 }
