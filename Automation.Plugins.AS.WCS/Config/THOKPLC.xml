@@ -3,8 +3,10 @@
   <OPCServer OPCServerHostIP="127.0.0.1" OPCServerHostName="" OPCServerName="RSLinx OPC Server" IsTest="false">
     <OPCGroups>
       <OPCGroup GroupName="THOKPLC" GroupString="[BH]" Prefix="." UpdateRate="1000">
-        <!--请求处理任务-->
+        <!--请求处理任务到达-->
         <OPCItem ItemName="n_I_Task_Arrive_Request" OPCItemName="DB104[?]" ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="120"/>
+        <!--请求处理叠空托盘-->
+        <OPCItem ItemName="n_I_Disassemble_Complete_Request" OPCItemName="DB104[?]" ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="120"/>
       </OPCGroup>
     </OPCGroups>
   </OPCServer>
