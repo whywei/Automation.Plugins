@@ -805,7 +805,7 @@ namespace Automation.Plugins.Common.SRM
 
         protected string GetSerializeParameterFilePath()
         {
-            var directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var directory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
             return Path.Combine(directory, "Serialize", "SRM", Name + ".Parameter.Serialize");
         }        
 
