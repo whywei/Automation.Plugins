@@ -25,18 +25,6 @@ namespace Automation.Plugins.AS.Forklift.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public int ForkliftCount {
-            get {
-                return ((int)(this["ForkliftCount"]));
-            }
-            set {
-                this["ForkliftCount"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("http://10.93.5.172:8081/")]
         public string HttpUrl {
             get {
