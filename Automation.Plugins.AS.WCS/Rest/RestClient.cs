@@ -35,6 +35,25 @@ namespace Automation.Plugins.AS.WCS.Rest
             restTemplate.MessageConverters.Add(jsonConverter);
         }
 
+        public bool Arrive(int taskid, int positionName)
+        {
+            var restReturn = restTemplate.GetForObject<RestReturn>(@"transport\arrive\?taskid={taskid}&positionName={positionName}", taskid, positionName);
+            if (restReturn != null && restReturn.IsSuccess)
+            {
+                if (restReturn.Message != string.Empty) Logger.Info(restReturn.Message);
+                return true;
+            }
+            else if (restReturn != null && !restReturn.IsSuccess)
+            {
+                if (restReturn.Message != string.Empty) Logger.Error(string.Format(" 任务{0} 到达{1}失败，详情：{2}", taskid, positionName, restReturn.Message));
+                return false;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public SRMTask ApplyNewTask(string name, int travelPos,int liftPos)
         {
             var restReturn = restTemplate.GetForObject<RestReturn>(@"transport\getSrmTask\?name={name}&travelPos={travelPos}&liftPos={liftPos}", name, travelPos, liftPos);

@@ -128,6 +128,7 @@
   <ItemGroup>
     <Compile Include="Action\FileMenuAction.cs" />
     <Compile Include="Action\HelpMenuAction.cs" />
+    <Compile Include="Global.cs" />
     <Compile Include="Options\Controls\SystemParameterPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -136,9 +137,11 @@
     </Compile>
     <Compile Include="Options\ParameterOption.cs" />
     <Compile Include="Options\SystemParameterOption.cs" />
+    <Compile Include="Process\TaskArriveRequestProcess.cs" />
     <Compile Include="Rest\RestClient.cs" />
     <Compile Include="Rest\RestReturn.cs" />
     <Compile Include="Process\CigaretteInformationProcess.cs" />
+    <Compile Include="Service\THOKPLCOPCService.cs" />
     <Compile Include="SRM\Process\SRM01HeartbeatProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -174,6 +177,9 @@
     </Content>
     <None Include="Resources\ParameterOption_16.png" />
     <None Include="Resources\ParameterOption_32.png" />
+    <Content Include="Config\THOKPLC.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Serialize\Readme.txt" />
     <Content Include="TransactionScopeFactoryProviderConfig.xml" />
     <None Include="Properties\Settings.settings">
@@ -310,7 +316,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="FaultAlarm\" />
-    <Folder Include="Service\" />
     <Folder Include="View\Controls\" />
     <Folder Include="View\Dialogs\" />
     <Folder Include="View\Forms\" />

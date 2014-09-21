@@ -1,0 +1,11 @@
+﻿<?xml version='1.0' ?>
+<Config>
+  <OPCServer OPCServerHostIP="127.0.0.1" OPCServerHostName="" OPCServerName="RSLinx OPC Server" IsTest="false">
+    <OPCGroups>
+      <OPCGroup GroupName="THOKPLC" GroupString="[BH]" Prefix="." UpdateRate="1000">
+        <!--请求处理任务-->
+        <OPCItem ItemName="n_I_Task_Arrive_Request" OPCItemName="DB104[?]" ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="120"/>
+      </OPCGroup>
+    </OPCGroups>
+  </OPCServer>
+</Config>
