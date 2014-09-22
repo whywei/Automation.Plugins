@@ -13,7 +13,7 @@ namespace Automation.Plugins.Common.Forklift.View.Controls
             set
             {
                 forklift = value;
-                this.propertyGridControl1.SelectedObject = forklift;
+                this.propertyGridControl1.SelectedObject = forklift.CurrentTask;
                 this.propertyGridControl1.Refresh();
 
                 forkliftControl1.propertyGridControl1.SelectedObject = forklift;
