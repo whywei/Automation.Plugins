@@ -1,6 +1,6 @@
 ﻿<?xml version='1.0' ?>
 <Config>
-  <OPCServer OPCServerHostIP="127.0.0.1" OPCServerHostName="" OPCServerName="OPC.SimaticNET" IsTest="false">
+  <OPCServer OPCServerHostIP="10.93.5.174" OPCServerHostName="" OPCServerName="OPC.SimaticNET" IsTest="false">
     <OPCGroups>
       <OPCGroup GroupName="SRM01" GroupString="S7:[SRM01]" UpdateRate="1000" Prefix=".">
         <!--连接检查-->

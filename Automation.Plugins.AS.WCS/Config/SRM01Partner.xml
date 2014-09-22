@@ -1,6 +1,6 @@
 ﻿<?xml version='1.0' ?>
 <Config>
-  <OPCServer OPCServerHostIP="127.0.0.1" OPCServerHostName="" OPCServerName="RSLinx OPC Server" IsTest="false">
+  <OPCServer OPCServerHostIP="10.93.5.174" OPCServerHostName="" OPCServerName="RSLinx OPC Server" IsTest="false">
     <OPCGroups>
       <OPCGroup GroupName="SRM01Partner" GroupString="[BH]" Prefix="." UpdateRate="1000">
         <!--请求处理任务-->
