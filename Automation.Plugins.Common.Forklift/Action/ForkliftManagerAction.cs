@@ -85,7 +85,6 @@ namespace Automation.Plugins.Common.Forklift.Action
                     btnGetFinish.Enabled = false;
                     btnPutRequest.Enabled = false;
                     btnPutFinish.Enabled = false;
-                    btnCannel.Enabled = false;
                 }
             }
             else
@@ -96,7 +95,6 @@ namespace Automation.Plugins.Common.Forklift.Action
                 btnGetFinish.Enabled = false;
                 btnPutRequest.Enabled = false;
                 btnPutFinish.Enabled = false;
-                btnCannel.Enabled = false;
             }
             Ops.GetView<ForkliftManagerView>().Forklift = ForkliftManager.ActiveForklift;
         }

@@ -72,7 +72,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stocking", "Stocking", "{ED
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Forklift", "Forklift", "{CAB46868-9FAB-49A7-957B-BF68FF75DB0B}"
 	ProjectSection(SolutionItems) = preProject
-		Setup\AutomationDesktop.Setup.AS.Forklift\AutomationDesktop.exe.config = Setup\AutomationDesktop.Setup.AS.Forklift\AutomationDesktop.exe.config
 		Setup\AutomationDesktop.Setup.AS.Forklift\AutomationDesktop.ico = Setup\AutomationDesktop.Setup.AS.Forklift\AutomationDesktop.ico
 		Setup\AutomationDesktop.Setup.AS.Forklift\AutomationDesktop.jpg = Setup\AutomationDesktop.Setup.AS.Forklift\AutomationDesktop.jpg
 		Setup\AutomationDesktop.Setup.AS.Forklift\HomePanelImage.jpg = Setup\AutomationDesktop.Setup.AS.Forklift\HomePanelImage.jpg
