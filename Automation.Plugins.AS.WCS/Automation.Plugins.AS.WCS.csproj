@@ -142,7 +142,6 @@
     <Compile Include="Process\TaskArriveRequestProcess.cs" />
     <Compile Include="Rest\RestClient.cs" />
     <Compile Include="Rest\RestReturn.cs" />
-    <Compile Include="Process\CigaretteInformationProcess.cs" />
     <Compile Include="Service\THOKPLCOPCService.cs" />
     <Compile Include="SRM\Process\SRM01HeartbeatProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

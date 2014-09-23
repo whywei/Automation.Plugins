@@ -53,7 +53,6 @@ namespace Automation.Plugins.Common.SRM
         public bool PutFinish { get; set; }
 
         public string Barcode { get; set; }
-
         public bool IsSent { get; set; }
 
         public override string ToString()
@@ -99,12 +98,13 @@ namespace Automation.Plugins.Common.SRM
                 CurrentPositionName = this.CurrentPositionName,
                 CurrentPositionType = this.CurrentPositionType,
                 CurrentPositionExtension = this.CurrentPositionExtension,
-                NextPositionName = this.NextPositionName,
 
+                NextPositionName = this.NextPositionName,
                 NextPositionType = this.NextPositionType,
                 NextPositionExtension = this.NextPositionExtension,
 
                 NextTwoPositionName = this.NextTwoPositionName,
+
                 EndPositionName = this.EndPositionName,
                 EndPositionType = this.EndPositionType,
 
