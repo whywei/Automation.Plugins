@@ -110,7 +110,7 @@ namespace Automation.Plugins.Common.Forklift
             try
             {
                 //请求新任务
-                if (CurrentTask == null && State == 0 && Auto)
+                if (CurrentTask == null && Auto)
                 {
                     CurrentTask = NextTask ?? ApplyNewTask();
                     NextTask = null;
