@@ -9,6 +9,7 @@ using Automation.Core.Util;
 using System.Windows.Forms;
 using Automation.Core;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Automation.Plugins.Common.SRM
 {
@@ -452,6 +453,7 @@ namespace Automation.Plugins.Common.SRM
                         Ops.Write(Name, "n_O_Task_Data_Position2", position2);
                         Ops.Write(Name, "n_O_Task_Data_Type2", type2[0]);
                         Ops.Write(Name, "b_O_New_Task", true);
+                        Ops.Write(Name, "b_I_Task_Finish", false);
 
                         CurrentTask.IsSent = true;
                     }
@@ -619,11 +621,7 @@ namespace Automation.Plugins.Common.SRM
                 {
                     if (Ops.Write(PartnerName, "n_O_Get_Request", data))
                     {
-                        states = Ops.ReadArray<int>(PartnerName, "n_I_Get_Permit");
-                        if (states != null && states.Any(s => s == Convert.ToInt32(CurrentTask.CurrentPositionName)))
-                        {
-                            return true;
-                        }
+                        Thread.Sleep(500);
                         states = Ops.ReadArray<int>(PartnerName, "n_I_Get_Permit");
                         if (states != null && states.Any(s => s == Convert.ToInt32(CurrentTask.CurrentPositionName)))
                         {
@@ -662,11 +660,7 @@ namespace Automation.Plugins.Common.SRM
                 {
                     if (Ops.Write(PartnerName, "n_O_Put_Request", data))
                     {
-                        states = Ops.ReadArray<int>(PartnerName, "n_I_Put_Permit");
-                        if (states != null && states.Any(s => s == Convert.ToInt32(CurrentTask.NextPositionName)))
-                        {
-                            return true;
-                        }
+                        Thread.Sleep(500);
                         states = Ops.ReadArray<int>(PartnerName, "n_I_Put_Permit");
                         if (states != null && states.Any(s => s == Convert.ToInt32(CurrentTask.NextPositionName)))
                         {
