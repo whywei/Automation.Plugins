@@ -115,6 +115,7 @@
   <ItemGroup>
     <Compile Include="AbstracForklift.cs" />
     <Compile Include="Action\ForkliftManagerAction.cs" />
+    <Compile Include="ForkliftJsonTask.cs" />
     <Compile Include="IForklift.cs" />
     <Compile Include="Options\Controls\ForkliftParameterControl.cs">
       <SubType>UserControl</SubType>

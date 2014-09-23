@@ -6,7 +6,7 @@ namespace Automation.Plugins.AS.Forklift.Rest
     {
         public bool IsSuccess { get; set; }
         public string Message { get; set; }
-        public ForkliftTask Data { get; set; }
+        public ForkliftJsonTask Data { get; set; }
     }
 
     public class RestReturn<T>

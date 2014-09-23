@@ -12,6 +12,11 @@ namespace Automation.Plugins.AS.WCS.Proces
         {
             Description = "处理空托盘叠垛请求";
             base.Initialize();
+
+            if (Parameter.ContainsKey("processedTasks"))
+            {
+                processedTasks = Parameter["processedTasks"] as List<int[]>;
+            }
         }
 
         private IList<int[]> processedTasks = new List<int[]>();
@@ -34,6 +39,7 @@ namespace Automation.Plugins.AS.WCS.Proces
                 }
 
                 processedTasks = processedTasks.Where(a => a[0] != 0).ToList();
+                Serialize();
 
                 foreach (var task in tasks)
                 {
@@ -42,12 +48,26 @@ namespace Automation.Plugins.AS.WCS.Proces
                         processedTasks.Add(task);
                         Logger.Info(string.Format("EmptyPalletStackRequest : 位置[{0}]生成叠托盘任务成功！", task[0]));
                     }
-                } 
+                }
+                Serialize();
             }
             catch (Exception ex)
             {
                 Logger.Error("EmptyPalletStackRequestProcess 出错，原因：" + ex.Message + "/n" + ex.StackTrace);
             }
+        }
+
+        public override void Serialize()
+        {
+            if (!Parameter.ContainsKey("processedTasks"))
+            {
+                Parameter.Add("processedTasks", processedTasks);
+            }
+            else
+            {
+                Parameter["processedTasks"] = processedTasks;
+            }
+            base.Serialize();
         }
     }
 }

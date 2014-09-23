@@ -38,10 +38,10 @@ namespace Automation.Plugins.AS.Forklift.Rest
         public ForkliftTask ApplyNewTask(string name, int travelPos,int liftPos)
         {
             var restReturn = restTemplate.GetForObject<RestReturn>(@"transport\getSRMTask\?name={name}&travelPos={travelPos}&liftPos={liftPos}", name, travelPos, liftPos);
-            if (restReturn != null && restReturn.IsSuccess)
+            if (restReturn != null && restReturn.IsSuccess && restReturn.Data != null)
             {
                 if (restReturn.Message != string.Empty) Logger.Info(restReturn.Message);
-                return restReturn.Data;
+                return restReturn.Data.ToForkliftTask();
             }
             else if (restReturn != null && !restReturn.IsSuccess)
             {

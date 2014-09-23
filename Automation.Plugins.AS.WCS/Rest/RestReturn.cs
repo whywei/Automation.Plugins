@@ -6,7 +6,7 @@ namespace Automation.Plugins.AS.WCS.Rest
     {
         public bool IsSuccess { get; set; }
         public string Message { get; set; }
-        public SRMTask Data { get; set; }
+        public SRMJsonTask Data { get; set; }
     }
 
     public class RestReturn<T>

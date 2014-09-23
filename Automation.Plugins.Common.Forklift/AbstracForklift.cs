@@ -76,6 +76,10 @@ namespace Automation.Plugins.Common.Forklift
                     {
                         CurrentTask = Parameter["CurrentTask"] as ForkliftTask;
                     }
+                    if (Parameter.ContainsKey("NextTask"))
+                    {
+                        NextTask = Parameter["NextTask"] as ForkliftTask;
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -469,6 +473,14 @@ namespace Automation.Plugins.Common.Forklift
             else
             {
                 Parameter["CurrentTask"] = CurrentTask;
+            }
+            if (!Parameter.ContainsKey("NextTask"))
+            {
+                Parameter.Add("NextTask", NextTask);
+            }
+            else
+            {
+                Parameter["NextTask"] = NextTask;
             }
             SerializableUtil.Serialize(GetSerializeParameterFilePath(), Parameter);
         }

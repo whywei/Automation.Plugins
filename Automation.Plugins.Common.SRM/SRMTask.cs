@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Automation.Plugins.Common.SRM
 {
+    [Serializable]
     public class SRMTask
     {
         public int ID { get; set; }

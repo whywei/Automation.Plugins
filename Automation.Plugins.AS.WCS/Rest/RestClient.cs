@@ -57,10 +57,10 @@ namespace Automation.Plugins.AS.WCS.Rest
         public SRMTask ApplyNewTask(string name, int travelPos,int liftPos)
         {
             var restReturn = restTemplate.GetForObject<RestReturn>(@"transport\getSrmTask\?name={name}&travelPos={travelPos}&liftPos={liftPos}", name, travelPos, liftPos);
-            if (restReturn != null && restReturn.IsSuccess)
+            if (restReturn != null && restReturn.IsSuccess && restReturn.Data != null)
             {
                 if (restReturn.Message != string.Empty) Logger.Info(restReturn.Message);
-                return restReturn.Data;
+                return restReturn.Data.ToSRMTask(); ;
             }
             else if (restReturn != null && !restReturn.IsSuccess)
             {

@@ -149,6 +149,10 @@ namespace Automation.Plugins.Common.SRM
                     {
                         CurrentTask = Parameter["CurrentTask"] as SRMTask;
                     }
+                    if (Parameter.ContainsKey("NextTask"))
+                    {
+                        NextTask = Parameter["NextTask"] as SRMTask;
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -235,7 +239,7 @@ namespace Automation.Plugins.Common.SRM
                     NextTask = null;
                 }
 
-                if (CurrentTask != null && State == 2 && NextTask == null)
+                if (CurrentTask != null && CurrentTask.TaskType !="02" && State == 2 && NextTask == null)
                 {
                     NextTask = ApplyNewTask();
                 }
@@ -794,6 +798,14 @@ namespace Automation.Plugins.Common.SRM
             else
             {
                 Parameter["CurrentTask"] = CurrentTask;
+            }
+            if (!Parameter.ContainsKey("NextTask"))
+            {
+                Parameter.Add("NextTask", NextTask);
+            }
+            else
+            {
+                Parameter["NextTask"] = NextTask;
             }
             SerializableUtil.Serialize(GetSerializeParameterFilePath(), Parameter);
         }

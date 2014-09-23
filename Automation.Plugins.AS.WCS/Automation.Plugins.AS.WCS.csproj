@@ -322,6 +322,12 @@
     <Folder Include="View\Dialogs\" />
     <Folder Include="View\Forms\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Automation.Plugins.Common.SRM\Automation.Plugins.Common.SRM.csproj">
+      <Project>{1EC34619-E48B-47EA-8080-BFA3E8261002}</Project>
+      <Name>Automation.Plugins.Common.SRM</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
