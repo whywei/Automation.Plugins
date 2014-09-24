@@ -2,7 +2,8 @@ using System;
 using System.Windows.Forms;
 using System.ComponentModel.Composition;
 using System.Reflection;
-using Automation.Core;
+using Automation.Base;
+using DotSpatial.Controls;
 
 namespace AutomationDesktop
 {
@@ -12,6 +13,7 @@ namespace AutomationDesktop
         private static void Main()
         {
             Assembly.GetEntryAssembly().RegisterAssemblyResolveEvent();
+            AppManager.UseBaseDirectoryForExtensionsDirectory = true;
             Application.Run(new MainForm());
         }
     }

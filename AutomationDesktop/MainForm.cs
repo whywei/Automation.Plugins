@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 using DevExpress.XtraEditors;
 using System.Reflection;
 using DotSpatial.Controls;
-using Automation.Core;
+using Automation.Base;
 using System.IO;
 using System.Linq;
 using System.Globalization;
