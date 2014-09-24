@@ -120,8 +120,13 @@ namespace Automation.Plugins.Common.Forklift
                     NextTask = null;
                     State = 2;
                 }
+                else if (CurrentTask == null)
+                {
+                    CurrentTask = NextTask;
+                    NextTask = null;
+                }
 
-                if (CurrentTask != null && State == 2 && NextTask == null)
+                if (Auto && CurrentTask != null && State == 2 && NextTask == null)
                 {
                     NextTask = ApplyNewTask();
                 }
@@ -253,7 +258,7 @@ namespace Automation.Plugins.Common.Forklift
         {
             try
             {
-                if (CurrentTask != null && !CurrentTask.GetFinish && !CurrentTask.PutFinish)
+                if (CurrentTask != null && (!CurrentTask.GetFinish || !CurrentTask.HasGetRequest) && !CurrentTask.PutFinish)
                 {
                     if (SetCancelTask() && CancelCurrentTask())
                     {

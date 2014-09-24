@@ -239,8 +239,13 @@ namespace Automation.Plugins.Common.SRM
                     CurrentTask = NextTask ?? ApplyNewTask();
                     NextTask = null;
                 }
+                else if (CurrentTask == null)
+                {
+                    CurrentTask = NextTask;
+                    NextTask = null;
+                }
 
-                if (CurrentTask != null && CurrentTask.TaskType !="02" && State == 2 && NextTask == null)
+                if (Auto && CurrentTask != null && CurrentTask.TaskType != "02" && State == 2 && NextTask == null)
                 {
                     NextTask = ApplyNewTask();
                 }
