@@ -122,10 +122,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SRMControl.cs">
+    <Compile Include="View\Controls\SRMControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SRMControl.Designer.cs">
+    <Compile Include="View\Controls\SRMControl.Designer.cs">
       <DependentUpon>SRMControl.cs</DependentUpon>
     </Compile>
     <Compile Include="SRMManager.cs" />
@@ -152,7 +152,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="SRMControl.resx">
+    <EmbeddedResource Include="View\Controls\SRMControl.resx">
       <DependentUpon>SRMControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\SRMPanel.resx">

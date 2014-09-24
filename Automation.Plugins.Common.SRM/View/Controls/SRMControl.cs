@@ -1,6 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 
-namespace Automation.Plugins.Common.SRM
+namespace Automation.Plugins.Common.SRM.View.Controls
 {
     public partial class SRMControl : XtraUserControl
     {

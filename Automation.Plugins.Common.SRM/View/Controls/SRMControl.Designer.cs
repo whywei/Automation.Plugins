@@ -1,4 +1,4 @@
-﻿namespace Automation.Plugins.Common.SRM
+﻿namespace Automation.Plugins.Common.SRM.View.Controls
 {
     partial class SRMControl
     {
@@ -239,7 +239,7 @@
             this.State.Name = "State";
             this.State.OptionsRow.AllowSize = false;
             this.State.Properties.Caption = "工作状态";
-            this.State.Properties.FieldName = "StrState";
+            this.State.Properties.FieldName = "StateName";
             this.State.Properties.ReadOnly = true;
             // 
             // TaskStatus

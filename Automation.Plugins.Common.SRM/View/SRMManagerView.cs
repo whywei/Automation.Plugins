@@ -3,6 +3,7 @@ using Automation.Core;
 using System.Windows.Forms;
 using System.ComponentModel.Composition;
 using Automation.Plugins.Common.SRM.Properties;
+using Automation.Plugins.Common.SRM.View.Controls;
 
 namespace Automation.Plugins.Common.SRM.View
 {
