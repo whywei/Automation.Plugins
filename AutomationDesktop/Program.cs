@@ -13,7 +13,6 @@ namespace AutomationDesktop
         private static void Main()
         {
             Assembly.GetEntryAssembly().RegisterAssemblyResolveEvent();
-            AppManager.UseBaseDirectoryForExtensionsDirectory = true;
             Application.Run(new MainForm());
         }
     }
