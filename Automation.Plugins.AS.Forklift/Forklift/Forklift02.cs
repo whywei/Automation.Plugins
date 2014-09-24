@@ -7,10 +7,14 @@ namespace Automation.Plugins.AS.Forklift.Forklift
     [Export(typeof(IForklift))]
     public class Forklift02 : AbstractForklift
     {
+        public Forklift02()
+        {
+            this.Name = "Forklift02";
+        }
+
         public override void Initialize()
         {
             base.Initialize();
-            this.Name = "Forklift02";
             this.PartnerName = "Forklift02Partner";
         }
 

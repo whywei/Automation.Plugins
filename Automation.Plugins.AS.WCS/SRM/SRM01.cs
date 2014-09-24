@@ -7,10 +7,14 @@ namespace Automation.Plugins.AS.WCS.SRM
     [Export(typeof(ISRM))]
     public class SRM01 : AbstractSRM
     {
+        public SRM01()
+        {
+            this.Name = "SRM01";
+        }
+
         public override void Initialize()
         {
-            base.Initialize();
-            this.Name = "SRM01";
+            base.Initialize();            
             this.PartnerName = "SRM01Partner";
         }
 

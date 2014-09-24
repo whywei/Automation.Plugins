@@ -2,12 +2,17 @@
 using System.Linq;
 using System.ComponentModel.Composition;
 using Automation.Core;
+using DotSpatial.Controls;
+using System;
 
 namespace Automation.Plugins.Common.Forklift
 {
     [Export]
     public class ForkliftManager : IPartImportsSatisfiedNotification
-    {
+    {            
+        [Import]
+        public AppManager App { get; set; }
+
         [ImportMany(AllowRecomposition = true)]
         public IEnumerable<IForklift> Forklifts { get; private set; }
 
@@ -15,7 +20,12 @@ namespace Automation.Plugins.Common.Forklift
 
         public void OnImportsSatisfied()
         {
-            Forklifts.AsParallel().ForAll(s => s.Initialize());       
+            App.ExtensionsActivated += new EventHandler(App_ExtensionsActivated);
+        }
+
+        private void App_ExtensionsActivated(object sender, EventArgs e)
+        {
+            Forklifts.AsParallel().ForAll(s => s.Initialize());
         }
 
         public void SelectForklift(string name)

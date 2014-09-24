@@ -28,26 +28,33 @@ namespace Automation.Plugins.Common.SRM.Action
 
         public override void Activate()
         {
-            btnAuto = this.Add(new SimpleActionItem(rootKey, "全自动", btnAuto_Click) { SmallImage = Resources.auto_full_16x16, LargeImage = Resources.auto_full_32x32 });
-            btnHand = this.Add(new SimpleActionItem(rootKey, "半自动", btnHand_Click) { SmallImage = Resources.auto_semi_16x16, LargeImage = Resources.auto_semi_32x32 });
-            this.Add(new SimpleActionItem(rootKey, "故障复位", btReset_Click) { SmallImage = Resources.error_reset_16x16, LargeImage = Resources.error_reset_32x32 });
-            this.Add(new SimpleActionItem(rootKey, "重发任务", btResent_Click) { SmallImage = Resources.reset_16x16, LargeImage = Resources.reset_32x32 });
-            this.Add(new SimpleActionItem(rootKey, "取消任务", btCancel_Click) { SmallImage = Resources.cancel_16x16, LargeImage = Resources.cancel_32x32 });
-
-            dropItem = new DropDownActionItem() { RootKey = rootKey, GroupCaption = "选择堆垛机", Width = 170 };
-            foreach (var srm in SRMManager.SRMs)
+            try
             {
-                dropItem.Items.Add(srm.Name);
+                btnAuto = this.Add(new SimpleActionItem(rootKey, "全自动", btnAuto_Click) { SmallImage = Resources.auto_full_16x16, LargeImage = Resources.auto_full_32x32 });
+                btnHand = this.Add(new SimpleActionItem(rootKey, "半自动", btnHand_Click) { SmallImage = Resources.auto_semi_16x16, LargeImage = Resources.auto_semi_32x32 });
+                this.Add(new SimpleActionItem(rootKey, "故障复位", btReset_Click) { SmallImage = Resources.error_reset_16x16, LargeImage = Resources.error_reset_32x32 });
+                this.Add(new SimpleActionItem(rootKey, "重发任务", btResent_Click) { SmallImage = Resources.reset_16x16, LargeImage = Resources.reset_32x32 });
+                this.Add(new SimpleActionItem(rootKey, "取消任务", btCancel_Click) { SmallImage = Resources.cancel_16x16, LargeImage = Resources.cancel_32x32 });
+
+                dropItem = new DropDownActionItem() { RootKey = rootKey, GroupCaption = "选择堆垛机", Width = 170 };
+                foreach (var srm in SRMManager.SRMs)
+                {
+                    dropItem.Items.Add(srm.Name);
+                }
+
+                this.Add(dropItem);
+                dropItem.SelectedValueChanged += new EventHandler<SelectedValueChangedEventArgs>(dropItem_SelectedValueChanged);
+                dropItem.DisplayText = "请选择堆垛机";
+                SRMManager.ActiveSRM = SRMManager.SRMs.FirstOrDefault();
+                if (SRMManager.ActiveSRM != null)
+                {
+                    dropItem.SelectedItem = SRMManager.ActiveSRM.Name;
+                }
             }
-
-            this.Add(dropItem);
-            dropItem.SelectedValueChanged += new EventHandler<SelectedValueChangedEventArgs>(dropItem_SelectedValueChanged);
-            dropItem.DisplayText = "请选择堆垛机";
-            SRMManager.ActiveSRM = SRMManager.SRMs.FirstOrDefault();
-            if (SRMManager.ActiveSRM != null)
+            catch (Exception ex)
             {
-                dropItem.SelectedItem = SRMManager.ActiveSRM.Name;
-            }            
+                Logger.Error(ex.Message);
+            }
         }
 
         private void dropItem_SelectedValueChanged(object sender, SelectedValueChangedEventArgs e)

@@ -72,14 +72,6 @@ namespace Automation.Plugins.Common.Forklift
                 try
                 {
                     Deserialize();
-                    if (Parameter.ContainsKey("CurrentTask"))
-                    {
-                        CurrentTask = Parameter["CurrentTask"] as ForkliftTask;
-                    }
-                    if (Parameter.ContainsKey("NextTask"))
-                    {
-                        NextTask = Parameter["NextTask"] as ForkliftTask;
-                    }
                 }
                 catch (Exception ex)
                 {
@@ -471,28 +463,14 @@ namespace Automation.Plugins.Common.Forklift
 
         public virtual void Serialize()
         {
-            if (!Parameter.ContainsKey("CurrentTask"))
-            {
-                Parameter.Add("CurrentTask", CurrentTask);
-            }
-            else
-            {
-                Parameter["CurrentTask"] = CurrentTask;
-            }
-            if (!Parameter.ContainsKey("NextTask"))
-            {
-                Parameter.Add("NextTask", NextTask);
-            }
-            else
-            {
-                Parameter["NextTask"] = NextTask;
-            }
-            SerializableUtil.Serialize(GetSerializeParameterFilePath(), Parameter);
+            Ops.Write("MemoryPermanentSingleDataService", string.Format("{0}.CurrentTask", Name), CurrentTask);
+            Ops.Write("MemoryPermanentSingleDataService", string.Format("{0}.NextTask", Name), NextTask);
         }
 
         public virtual void Deserialize()
         {
-            Parameter = SerializableUtil.Deserialize<Dictionary<string, object>>(GetSerializeParameterFilePath());
+            CurrentTask = Ops.Read<ForkliftTask>("MemoryPermanentSingleDataService", string.Format("{0}.CurrentTask", Name));
+            NextTask = Ops.Read<ForkliftTask>("MemoryPermanentSingleDataService", string.Format("{0}.NextTask", Name));   
         }
 
         protected string GetSerializeParameterFilePath()

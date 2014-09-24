@@ -146,14 +146,6 @@ namespace Automation.Plugins.Common.SRM
                 try
                 {
                     Deserialize();
-                    if (Parameter.ContainsKey("CurrentTask"))
-                    {
-                        CurrentTask = Parameter["CurrentTask"] as SRMTask;
-                    }
-                    if (Parameter.ContainsKey("NextTask"))
-                    {
-                        NextTask = Parameter["NextTask"] as SRMTask;
-                    }
                 }
                 catch (Exception ex)
                 {
@@ -790,28 +782,14 @@ namespace Automation.Plugins.Common.SRM
 
         public virtual void Serialize()
         {
-            if (!Parameter.ContainsKey("CurrentTask"))
-            {
-                Parameter.Add("CurrentTask", CurrentTask);
-            }
-            else
-            {
-                Parameter["CurrentTask"] = CurrentTask;
-            }
-            if (!Parameter.ContainsKey("NextTask"))
-            {
-                Parameter.Add("NextTask", NextTask);
-            }
-            else
-            {
-                Parameter["NextTask"] = NextTask;
-            }
-            SerializableUtil.Serialize(GetSerializeParameterFilePath(), Parameter);
+            Ops.Write("MemoryPermanentSingleDataService", string.Format("{0}.CurrentTask", Name), CurrentTask);
+            Ops.Write("MemoryPermanentSingleDataService", "NextTask", NextTask);
         }
 
         public virtual void Deserialize()
         {
-            Parameter = SerializableUtil.Deserialize<Dictionary<string, object>>(GetSerializeParameterFilePath());
+            CurrentTask = Ops.Read<SRMTask>("MemoryPermanentSingleDataService", string.Format("{0}.CurrentTask", Name));
+            NextTask = Ops.Read<SRMTask>("MemoryPermanentSingleDataService", string.Format("{0}.NextTask", Name));            
         }
 
         protected string GetSerializeParameterFilePath()
