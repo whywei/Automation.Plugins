@@ -88,9 +88,6 @@
     <Reference Include="Automation.Base, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Automation.Base.1.0.0.8\lib\net40\Automation.Base.dll</HintPath>
     </Reference>
-    <Reference Include="Automation.Core">
-      <HintPath>..\packages\Automation.Core.1.0.0.21\lib\net40-Client\Automation.Core.dll</HintPath>
-    </Reference>
     <Reference Include="Common.Logging">
       <HintPath>..\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>
     </Reference>
@@ -285,6 +282,9 @@
     <Content Include="EQ2008_Dll.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Extensions\Packages\Automation.Plugins.MainPlugin\Automation.Core.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Extensions\Packages\Automation.Plugins.MainPlugin\Automation.Plugins.MainPlugin.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -300,7 +300,6 @@
     <Content Include="ReportDesigner.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Serialize\Readme.txt" />
     <Content Include="TransactionScopeFactoryProviderConfig.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
