@@ -184,35 +184,36 @@ namespace Automation.Plugins.Common.SRM
         {
             try
             {
-                if (tasks.Count > 0)
-                {
-                    Task.WaitAll(tasks.ToArray());
-                    tasks.Clear();
-                }   
-                tasks.Add(Task.Factory.StartNew(() => { HandShake = Ops.ReadSingle<bool>(Name, "b_I_HandShake"); }));
-                tasks.Add(Task.Factory.StartNew(() => { Auto = Ops.ReadSingle<bool>(Name, "b_I_Auto"); }));
-                tasks.Add(Task.Factory.StartNew(() => { Local = Ops.ReadSingle<bool>(Name, "b_I_Local"); }));
-                tasks.Add(Task.Factory.StartNew(() => { ManualControl = Ops.ReadSingle<bool>(Name, "b_I_Manual_Control"); }));
-                tasks.Add(Task.Factory.StartNew(() => { Alarm = Ops.ReadSingle<bool>(Name, "b_I_Alarm"); }));
-                tasks.Add(Task.Factory.StartNew(() => { Warning = Ops.ReadSingle<bool>(Name, "b_I_Warning"); }));
-                tasks.Add(Task.Factory.StartNew(() => { AlarmCode = Ops.ReadSingle<int>(Name, "n_I_AlarmCode"); }));
-                tasks.Add(Task.Factory.StartNew(() => { State = Ops.ReadSingle<int>(Name, "n_I_State"); }));
-                tasks.Add(Task.Factory.StartNew(() => { GetRequest = Ops.ReadSingle<bool>(Name, "b_I_Get_Request"); }));
-                tasks.Add(Task.Factory.StartNew(() => { PutRequest = Ops.ReadSingle<bool>(Name, "b_I_Put_Request"); }));
-                tasks.Add(Task.Factory.StartNew(() => { GetFinish = Ops.ReadSingle<bool>(Name, "b_I_Get_Finish"); }));
-                tasks.Add(Task.Factory.StartNew(() => { PutFinish = Ops.ReadSingle<bool>(Name, "b_I_Put_Finish"); }));
-                tasks.Add(Task.Factory.StartNew(() => { TaskFinish = Ops.ReadSingle<bool>(Name, "b_I_Task_Finish"); }));
-                tasks.Add(Task.Factory.StartNew(() => { Loaded = Ops.ReadSingle<bool>(Name, "b_I_Loaded"); }));
-                tasks.Add(Task.Factory.StartNew(() => { TravelPos = Ops.ReadSingle<int>(Name, "n_I_TravelPos"); }));
-                tasks.Add(Task.Factory.StartNew(() => { LiftPos = Ops.ReadSingle<int>(Name, "n_I_LiftPos"); }));
-                tasks.Add(Task.Factory.StartNew(() => { ForkPosSingle = Ops.ReadSingle<int>(Name, "n_I_ForkPos_Single"); }));
-                tasks.Add(Task.Factory.StartNew(() => { ForkPosDouble = Ops.ReadSingle<int>(Name, "n_I_ForkPos_Double"); }));
-                tasks.Add(Task.Factory.StartNew(() => { ForkType = Ops.ReadSingle<int>(Name, "n_I_ForkType"); }));
-                tasks.Add(Task.Factory.StartNew(() => { ForkZero = Ops.ReadSingle<bool>(Name, "b_I_Fork_Zero"); }));
-                tasks.Add(Task.Factory.StartNew(() => { UpForkSWLeft = Ops.ReadSingle<bool>(Name, "b_I_UpFork_SW_Left"); }));
-                tasks.Add(Task.Factory.StartNew(() => { UpForkSWRight = Ops.ReadSingle<bool>(Name, "b_I_UpFork_SW_Right"); }));
-                tasks.Add(Task.Factory.StartNew(() => { ForkSWLeft = Ops.ReadSingle<bool>(Name, "b_I_Fork_SW_Left"); }));
-                tasks.Add(Task.Factory.StartNew(() => { ForkSWRight = Ops.ReadSingle<bool>(Name, "b_I_Fork_SW_Right"); }));
+                HandShake = Ops.ReadSingle<bool>(Name, "b_I_HandShake");
+
+                Auto = Ops.ReadSingle<bool>(Name, "b_I_Auto");
+                Local = Ops.ReadSingle<bool>(Name, "b_I_Local");
+                ManualControl = Ops.ReadSingle<bool>(Name, "b_I_Manual_Control");
+
+                Alarm = Ops.ReadSingle<bool>(Name, "b_I_Alarm");
+                Warning = Ops.ReadSingle<bool>(Name, "b_I_Warning");
+                AlarmCode = Ops.ReadSingle<int>(Name, "n_I_AlarmCode");
+
+                State = Ops.ReadSingle<int>(Name, "n_I_State");
+                GetRequest = Ops.ReadSingle<bool>(Name, "b_I_Get_Request");
+                PutRequest = Ops.ReadSingle<bool>(Name, "b_I_Put_Request");
+                GetFinish = Ops.ReadSingle<bool>(Name, "b_I_Get_Finish");
+                PutFinish = Ops.ReadSingle<bool>(Name, "b_I_Put_Finish");
+                TaskFinish = Ops.ReadSingle<bool>(Name, "b_I_Task_Finish");
+
+                Loaded = Ops.ReadSingle<bool>(Name, "b_I_Loaded");
+                TravelPos = Ops.ReadSingle<int>(Name, "n_I_TravelPos");
+                LiftPos = Ops.ReadSingle<int>(Name, "n_I_LiftPos");
+
+                ForkPosSingle = Ops.ReadSingle<int>(Name, "n_I_ForkPos_Single");
+                ForkPosDouble = Ops.ReadSingle<int>(Name, "n_I_ForkPos_Double");
+                ForkType = Ops.ReadSingle<int>(Name, "n_I_ForkType");
+
+                ForkZero = Ops.ReadSingle<bool>(Name, "b_I_Fork_Zero");
+                UpForkSWLeft = Ops.ReadSingle<bool>(Name, "b_I_UpFork_SW_Left");
+                UpForkSWRight = Ops.ReadSingle<bool>(Name, "b_I_UpFork_SW_Right");
+                ForkSWLeft = Ops.ReadSingle<bool>(Name, "b_I_Fork_SW_Left");
+                ForkSWRight = Ops.ReadSingle<bool>(Name, "b_I_Fork_SW_Right");
             }
             catch (Exception ex)
             {
@@ -226,7 +227,7 @@ namespace Automation.Plugins.Common.SRM
             {
                 //请求新任务
                 if (CurrentTask == null && State == 0
-                    && Auto && !Local && !ManualControl && !Alarm && TaskFinish)
+                    && Auto && !Local && !ManualControl && !Alarm)
                 {
                     CurrentTask = NextTask ?? ApplyNewTask();
                     NextTask = null;
@@ -242,7 +243,8 @@ namespace Automation.Plugins.Common.SRM
                     NextTask = ApplyNewTask();
                 }
 
-                if (CurrentTask != null && !CurrentTask.IsSent)
+                if (CurrentTask != null && !CurrentTask.IsSent
+                    && Auto && !Local && !ManualControl && !Alarm)
                 {
                     Send();
                     return;
@@ -618,7 +620,7 @@ namespace Automation.Plugins.Common.SRM
                 {
                     if (Ops.Write(PartnerName, "n_O_Get_Request", data))
                     {
-                        Thread.Sleep(500);
+                        Thread.Sleep(1000);
                         states = Ops.ReadArray<int>(PartnerName, "n_I_Get_Permit");
                         if (states != null && states.Any(s => s == Convert.ToInt32(CurrentTask.CurrentPositionName)))
                         {
@@ -657,7 +659,7 @@ namespace Automation.Plugins.Common.SRM
                 {
                     if (Ops.Write(PartnerName, "n_O_Put_Request", data))
                     {
-                        Thread.Sleep(500);
+                        Thread.Sleep(1000);
                         states = Ops.ReadArray<int>(PartnerName, "n_I_Put_Permit");
                         if (states != null && states.Any(s => s == Convert.ToInt32(CurrentTask.NextPositionName)))
                         {

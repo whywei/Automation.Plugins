@@ -2,7 +2,7 @@
 <Config>
   <OPCServer OPCServerHostIP="10.93.5.174" OPCServerHostName="" OPCServerName="OPC.SimaticNET" IsTest="false">
     <OPCGroups>
-      <OPCGroup GroupName="SRM01" GroupString="S7:[SRM01]" UpdateRate="1000" Prefix=".">
+      <OPCGroup GroupName="SRM01" GroupString="S7:[SRM01]" UpdateRate="2000" Prefix=".">
         <!--连接检查-->
         <OPCItem ItemName="b_O_HandShake" OPCItemName="DB540,X0.0"/>
         <!--堆垛机操作-->
