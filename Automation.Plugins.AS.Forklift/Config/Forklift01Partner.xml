@@ -1,8 +1,8 @@
 ﻿<?xml version='1.0' ?>
 <Config>
-  <OPCServer OPCServerHostIP="" OPCServerHostName="asyc-626c5ccb29" OPCServerName="RSLinx OPC Server" IsTest="false">
+  <OPCServer OPCServerHostIP="10.93.5.174" OPCServerHostName="" OPCServerName="RSLinx OPC Server" IsTest="false">
     <OPCGroups>
-      <OPCGroup GroupName="Forklift01Partner" GroupString="[BH]" Prefix="." UpdateRate="1000">
+      <OPCGroup GroupName="Forklift01Partner" GroupString="[BH]" Prefix="." UpdateRate="2000">
         <!--1号叉车-->
         <OPCItem ItemName="n_O_Get_Request" OPCItemName="DB105[?]" ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="3"/>
         <OPCItem ItemName="n_I_Get_Permit" OPCItemName="DB106[?]" ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="91"/>
