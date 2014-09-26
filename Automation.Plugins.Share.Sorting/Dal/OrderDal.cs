@@ -124,7 +124,7 @@ namespace Automation.Plugins.Share.Sorting.Dal
         public int FindUnSortCount()
         {
             var ra = TransactionScopeManager[Global.SERVER_DATABASE_NAME].NewRelationAccesser();
-            string sql = string.Format(@"select count(*) from sms_sort_order_allot_master where status='01'");
+            string sql = string.Format(@"select count(*) from sms_sort_order_allot_master where status='02'");
             var r = ra.DoScalar(sql);
             return Convert.ToInt32(DBNullUtil.Convert(r));
         }
