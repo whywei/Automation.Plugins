@@ -77,7 +77,7 @@ namespace Automation.Plugins.Share.Sorting.View
                 string condition = string.Format("WHERE export_no='{0}'", exportNo["export_no"]);
                 DataTable packData = orderDal.FindPackData(condition);
                 string path = Properties.Settings.Default.PackDataPath;
-                string fileName = exportNo["order_date"] + " [" + (exportNo["export_no"].ToString() == "0" ? "All" : (exportNo["export_no"].ToString() == "1" ? "ONE" : "TWO")) + "].txt";
+                string fileName = exportNo["order_date"] + " [" + exportNo["batch_no"]+"-" + (exportNo["export_no"].ToString() == "0" ? "All" : (exportNo["export_no"].ToString() == "1" ? "ONE" : "TWO")) + "].txt";
                 //判断文件路径是否存在，不存在则创建
                 if (!System.IO.Directory.Exists(path))
                     System.IO.Directory.CreateDirectory(path);

@@ -22,10 +22,10 @@ namespace Automation.Plugins.Share.Sorting.Action
         public override void Activate()
         {
             this.Add(new RootItem(rootKey, "包装数据") { SortOrder = 10001 });
-            this.Add(new SimpleActionItem(rootKey, "刷新", PackDataRefresh_Click) { ToolTipText = "包装机数据查询", LargeImage = Resources.refresh_32x32 });
-            this.Add(new SimpleActionItem(rootKey, "生成", GeneratePackData_Click) { ToolTipText = "手动生成包装机数据",  LargeImage = Resources.refresh_32x32 });
+            //this.Add(new SimpleActionItem(rootKey, "刷新", PackDataRefresh_Click) { ToolTipText = "包装机数据查询", LargeImage = Resources.refresh_32x32 });
+            //this.Add(new SimpleActionItem(rootKey, "生成", GeneratePackData_Click) { ToolTipText = "手动生成包装机数据",  LargeImage = Resources.refresh_32x32 });
             this.Add(new SimpleActionItem(rootKey, "导出", PackDataExport_Click) { ToolTipText = "导出包装机数据", LargeImage = Resources.refresh_32x32 });
-            this.Add(new SimpleActionItem(rootKey, "打印", Print_Click) { ToolTipText = "打印烟道信息",LargeImage = Resources.Print_32 });
+            //this.Add(new SimpleActionItem(rootKey, "打印", Print_Click) { ToolTipText = "打印烟道信息",LargeImage = Resources.Print_32 });
             base.Activate();
         }
 

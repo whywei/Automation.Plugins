@@ -3,6 +3,7 @@ using System.Data;
 using Automation.Plugins.Share.Sorting.Dal;
 using Automation.Core;
 using DevExpress.XtraEditors;
+using Automation.Plugins.Share.Sorting.View;
 
 namespace Automation.Plugins.Share.Sorting.Bll
 {
@@ -120,6 +121,10 @@ namespace Automation.Plugins.Share.Sorting.Bll
                 {
                     Logger.Info(string.Format("订单下载完成。订单日期：{0}，批次：{1}，总量：{2}。", batchInfo.Rows[0]["order_date"], batchInfo.Rows[0]["batch_no"], sumQuantity));
                 }
+
+                //生成包装机数据
+                PackDataView packDataView = new PackDataView();
+                packDataView.ExportData();
             }
             catch (Exception ex)
             {

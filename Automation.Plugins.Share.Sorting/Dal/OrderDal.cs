@@ -237,7 +237,7 @@ namespace Automation.Plugins.Share.Sorting.Dal
         public DataTable FindExporNoFromMaster()
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
-            string sql = "select distinct export_no,convert(varchar(100),order_date,23) order_date from sort_order_allot_master";
+            string sql = "select distinct export_no,batch_no,convert(varchar(100),order_date,23) order_date from sort_order_allot_master";
             return ra.DoQuery(sql).Tables[0];
         }
 
