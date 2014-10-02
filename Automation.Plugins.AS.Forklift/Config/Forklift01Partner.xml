@@ -1,14 +1,14 @@
 ﻿<?xml version='1.0' ?>
 <Config>
-  <OPCServer OPCServerHostIP="10.93.5.174" OPCServerHostName="" OPCServerName="RSLinx OPC Server" IsTest="false">
+  <OPCServer OPCServerHostIP="10.93.5.174" OPCServerHostName="" OPCServerName="RSLinx Remote OPC Server" IsTest="false">
     <OPCGroups>
       <OPCGroup GroupName="Forklift01Partner" GroupString="[BH]" Prefix="." UpdateRate="2000">
         <!--1号叉车-->
         <OPCItem ItemName="n_O_Get_Request" OPCItemName="DB105[?]" ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="3"/>
-        <OPCItem ItemName="n_I_Get_Permit" OPCItemName="DB106[?]" ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="91"/>
+        <OPCItem ItemName="n_I_Get_Permit" OPCItemName="DB106[?]" ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="1"/>
         <OPCItem ItemName="n_O_Get_Complete" OPCItemName="DB107[?]" ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="3"/>
         <OPCItem ItemName="n_O_Put_Request" OPCItemName="DB108[?]" ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="1"/>
-        <OPCItem ItemName="n_I_Put_Permit" OPCItemName="DB109[?]" ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="91"/>
+        <OPCItem ItemName="n_I_Put_Permit" OPCItemName="DB109[?]" ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="1"/>
         <OPCItem ItemName="n_O_Put_Complete" OPCItemName="DB110[?]" ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="11"/>
       </OPCGroup>
     </OPCGroups>
