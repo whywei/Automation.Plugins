@@ -2,7 +2,7 @@
 <Config>
   <OPCServer OPCServerHostIP="127.0.0.1" OPCServerHostName="" OPCServerName="RSLinx OPC Server" IsTest="false">
     <OPCGroups>
-      <OPCGroup GroupName="StockPLC" GroupString="[BH_192.168.100.94]" UpdateRate="1000" Prefix=".">
+      <OPCGroup GroupName="StockPLC" GroupString="[BH]" UpdateRate="1000" Prefix=".">
         <!--写出库订单-->
         <OPCItem ItemName="Stock_Out_Order_Information" OPCItemName="DB503[?]"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="76"/>
         <OPCItem ItemName="Stock_Out_Order_Information_Sign" OPCItemName="DB503[?]"  ArrayStartIndex="75" ArrayIndexInterval="1" ArrayLength="1"/>

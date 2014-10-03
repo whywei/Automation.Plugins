@@ -2,7 +2,7 @@
 <Config>
   <OPCServer OPCServerHostIP="127.0.0.1" OPCServerHostName="" OPCServerName="RSLinx OPC Server" Real="RSLinx OPC Server" Test="RSLinx OPC Server" IsTest="false">
     <OPCGroups>
-      <OPCGroup GroupName="DefaultGroup" GroupString="[FJ_192.168.100.55]" UpdateRate="350" Prefix=".">
+      <OPCGroup GroupName="DefaultGroup" GroupString="[FJ]" UpdateRate="1000" Prefix=".">
         <!--重新分拣标志-->
         <OPCItem ItemName="Restart_Sign" OPCItemName="Restart_Sign"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="1"/>
         <!--A线缓存订单信息-->
@@ -48,7 +48,7 @@
         <!--运行状态-->
         <OPCItem ItemName="Device_Run_State" OPCItemName="Device_Run_State"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="1"/>
       </OPCGroup>
-      <OPCGroup GroupName="THOKPLC" GroupString="[BH_192.168.100.94]" UpdateRate="350" Prefix=".">
+      <OPCGroup GroupName="THOKPLC" GroupString="[BH]" UpdateRate="1000" Prefix=".">
         <!--生成补货计划-->
         <OPCItem ItemName="Supply_Cache_Position_Information" OPCItemName="DB502[?]"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="10"/>
       </OPCGroup>

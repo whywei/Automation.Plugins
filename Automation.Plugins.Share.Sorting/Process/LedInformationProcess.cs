@@ -68,7 +68,7 @@ namespace Automation.Plugins.Share.Sorting.Process
 
         private LEDData LEDDataFactory(DataRow row, bool isLackChannel)
         {
-            string text = (Convert.ToInt32(row["quantity"]) > 0 && row["product_name"].ToString().Trim().Length > 0) ? row["remain_quantity"].ToString() + "|" + row["product_name"].ToString() : "无";
+            string text = (Convert.ToInt32(row["quantity"]) > 0 && row["product_name"].ToString().Trim().Length > 0) ? row["remain_quantity"].ToString() + " " + row["product_name"].ToString() : "无";
             LEDData ledData = new LEDData();
             ledData.CardNum = Convert.ToInt32(row["led_no"]);
             ledData.ColorFont = isLackChannel ? EQ2008.EQ2008.GREEN : EQ2008.EQ2008.RED;
