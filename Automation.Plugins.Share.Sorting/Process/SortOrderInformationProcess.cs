@@ -50,7 +50,7 @@ namespace Automation.Plugins.Share.Sorting.Process
                 return;
             }
 
-            using (TransactionScopeManager TM = new TransactionScopeManager(true, IsolationLevel.ReadCommitted))
+            using (TransactionScopeManager TM = new TransactionScopeManager(true, IsolationLevel.ReadUncommitted))
             {
                 sortingDal.TransactionScopeManager = TM;
                 orderDal.TransactionScopeManager = TM;

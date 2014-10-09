@@ -15,7 +15,7 @@
         <!--B线分拣订单信息-->
         <!--<OPCItem ItemName="Sort_Order_Information_B" OPCItemName="Sort_Order_Information_B"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="226"/>-->
         <!--打码订单信息-->
-        <!--<OPCItem ItemName="Barcode_Printing_Order_Information" OPCItemName="Barcode_Printing_Order_Information"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="2"/>-->
+        <OPCItem ItemName="Barcode_Printing_Order_Information" OPCItemName="Barcode_Printing_Order_Information"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="2"/>
         <!--摆动订单信息-->
         <!--<OPCItem ItemName="Swing_Order_Information" OPCItemName="Swing_Order_Information"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="2"/>-->
         <!--1号包装机订单信息-->
