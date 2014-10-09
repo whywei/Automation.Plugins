@@ -38,12 +38,6 @@ namespace Automation.Plugins.Share.Sorting.View
             gridControl.DataSource = sortingDal.FindSortingRecordMaster();
         }
 
-        public void PackNofresh(int pack)
-        {
-            SortingRecordDal sortingDal = new SortingRecordDal();
-            gridControl.DataSource = sortingDal.FindSortingRecordByPackNo(pack);
-        }
-
         public void Print()
         {
             PrintSettingView controller = new PrintSettingView(this.gridControl);

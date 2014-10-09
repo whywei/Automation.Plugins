@@ -41,6 +41,8 @@
             this.address = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SUMQUANTITY = new DevExpress.XtraGrid.Columns.GridColumn();
             this.status = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.customer_order = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.customer_deliver_order = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridDetail = new DevExpress.XtraGrid.GridControl();
             this.viewDetail = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.PackNo = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -96,7 +98,9 @@
             this.deliver_line_name,
             this.address,
             this.SUMQUANTITY,
-            this.status});
+            this.status,
+            this.customer_order,
+            this.customer_deliver_order});
             this.viewMaster.GridControl = this.gridMaster;
             this.viewMaster.Name = "viewMaster";
             this.viewMaster.OptionsView.ColumnAutoWidth = false;
@@ -207,6 +211,26 @@
             this.status.OptionsColumn.AllowFocus = false;
             this.status.Visible = true;
             this.status.VisibleIndex = 9;
+            // 
+            // customer_order
+            // 
+            this.customer_order.Caption = "分拣顺序";
+            this.customer_order.FieldName = "customer_order";
+            this.customer_order.Name = "customer_order";
+            this.customer_order.OptionsColumn.AllowEdit = false;
+            this.customer_order.OptionsColumn.AllowFocus = false;
+            this.customer_order.Visible = true;
+            this.customer_order.VisibleIndex = 10;
+            // 
+            // customer_deliver_order
+            // 
+            this.customer_deliver_order.Caption = "配送顺序";
+            this.customer_deliver_order.FieldName = "customer_deliver_order";
+            this.customer_deliver_order.Name = "customer_deliver_order";
+            this.customer_deliver_order.OptionsColumn.AllowEdit = false;
+            this.customer_deliver_order.OptionsColumn.AllowFocus = false;
+            this.customer_deliver_order.Visible = true;
+            this.customer_deliver_order.VisibleIndex = 11;
             // 
             // gridDetail
             // 
@@ -337,5 +361,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn ChannelType;
         private DevExpress.XtraGrid.Columns.GridColumn batch_no;
         private DevExpress.XtraGrid.Columns.GridColumn pack_no;
+        private DevExpress.XtraGrid.Columns.GridColumn customer_order;
+        private DevExpress.XtraGrid.Columns.GridColumn customer_deliver_order;
     }
 }

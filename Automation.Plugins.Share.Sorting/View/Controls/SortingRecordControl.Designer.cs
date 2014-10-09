@@ -41,6 +41,7 @@
             this.product_code = new DevExpress.XtraGrid.Columns.GridColumn();
             this.product_name = new DevExpress.XtraGrid.Columns.GridColumn();
             this.status = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.customer_order = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridSortingRecord)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewSortingRecord)).BeginInit();
@@ -72,7 +73,8 @@
             this.export_no,
             this.product_code,
             this.product_name,
-            this.status});
+            this.status,
+            this.customer_order});
             this.viewSortingRecord.GridControl = this.gridSortingRecord;
             this.viewSortingRecord.Name = "viewSortingRecord";
             this.viewSortingRecord.OptionsBehavior.ReadOnly = true;
@@ -209,6 +211,16 @@
             this.status.VisibleIndex = 10;
             this.status.Width = 60;
             // 
+            // customer_order
+            // 
+            this.customer_order.Caption = "分拣顺序";
+            this.customer_order.FieldName = "customer_order";
+            this.customer_order.Name = "customer_order";
+            this.customer_order.OptionsColumn.AllowFocus = false;
+            this.customer_order.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
+            this.customer_order.Visible = true;
+            this.customer_order.VisibleIndex = 11;
+            // 
             // panelControl2
             // 
             this.panelControl2.Controls.Add(this.gridSortingRecord);
@@ -249,5 +261,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn product_name;
         private DevExpress.XtraGrid.Columns.GridColumn status;
         private DevExpress.XtraGrid.Columns.GridColumn group_no;
+        private DevExpress.XtraGrid.Columns.GridColumn customer_order;
     }
 }

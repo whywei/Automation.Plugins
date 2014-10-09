@@ -14,17 +14,17 @@ namespace Automation.Plugins.Share.Sorting.Dal
         /// 客户查询
         /// </summary>
         /// <returns>客户查询</returns>
-        public DataTable FindMaster(string product_name)
+        public DataTable FindMaster()
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
             string sql = @"select order_date,batch_no,min(pack_no) pack_no,dist_name,deliver_line_name,customer_code,customer_name,address,
-                           customer_info,sum(quantity) as quantity,
+                           customer_info,sum(quantity) as quantity,customer_order,customer_deliver_order,
                            case status when '01' then '未下单' else '已下单' end status 
-                           from sort_db.dbo.sort_order_allot_master 
+                           from sort_order_allot_master 
                            group by customer_code ,order_date,batch_no,dist_name,deliver_line_name,customer_code,
-                           customer_name,address,customer_info,status
+                           customer_name,address,customer_info,status,customer_order,customer_deliver_order
                            order by pack_no asc";
-            return ra.DoQuery(string.Format(sql)).Tables[0];
+            return ra.DoQuery(sql).Tables[0];
         }
 
         /// <summary>
@@ -47,18 +47,18 @@ namespace Automation.Plugins.Share.Sorting.Dal
             string sql = "";
             if (quantity!="")
                 sql = string.Format(@"select order_date,batch_no,min(pack_no) pack_no,dist_name,deliver_line_name,customer_code,customer_name,
-                            address,customer_info,sum(quantity) as quantity,
+                            address,customer_info,sum(quantity) as quantity,customer_order,customer_deliver_order,
                             case status when '01' then '未下单' else '已下单' end status  
                             from sort_db.dbo.sort_order_allot_master 
                             where customer_code in (select customer_code
-                            from sort_db.dbo.sort_order_allot_master a left join dbo.sort_order_allot_detail b on a.pack_no=b.pack_no
+                            from sort_order_allot_master a left join sort_order_allot_detail b on a.pack_no=b.pack_no
                             where product_name='{0}' 
                             group by customer_code,product_name having sum(b.quantity)='{1}')
                             group by customer_code ,order_date,batch_no,dist_name,deliver_line_name,customer_code,
-                            customer_name,address,customer_info,status order by pack_no asc", product_name, quantity);
+                            customer_name,address,customer_info,status,customer_order,customer_deliver_order order by pack_no asc", product_name, quantity);
             else
                 sql = string.Format(@"select order_date,batch_no,min(pack_no) pack_no,dist_name,deliver_line_name,customer_code,customer_name,address,
-                            customer_info,sum(quantity) as quantity,
+                            customer_info,sum(quantity) as quantity,customer_order,customer_deliver_order,
                             case status when '01' then '未下单' else '已下单' end status  
                             from sort_db.dbo.sort_order_allot_master 
                             where customer_code in (
@@ -66,8 +66,8 @@ namespace Automation.Plugins.Share.Sorting.Dal
                             from sort_db.dbo.sort_order_allot_master a left join dbo.sort_order_allot_detail b on a.pack_no=b.pack_no
                             where product_name='{0}')
                             group by customer_code ,order_date,batch_no,dist_name,deliver_line_name,customer_code,
-                            customer_name,address,customer_info,status order by pack_no asc", product_name, quantity);
-            return ra.DoQuery(string.Format(sql)).Tables[0];
+                            customer_name,address,customer_info,status,customer_order,customer_deliver_order order by pack_no asc", product_name, quantity);
+            return ra.DoQuery(sql).Tables[0];
         }
 
         public string[] GetProduct()

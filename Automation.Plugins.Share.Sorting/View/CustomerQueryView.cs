@@ -39,9 +39,9 @@ namespace Automation.Plugins.Share.Sorting.View
             gridMasterView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(GridMasterView_RowClick);
         }
 
-        public void Refresh(string product_name)
+        public void Refresh()
         {
-            gridControl.DataSource = customerDal.FindMaster(product_name);
+            gridControl.DataSource = customerDal.FindMaster();
             gridDetailControl.DataSource = null;
         }
         private void GridMasterView_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)

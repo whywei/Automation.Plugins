@@ -63,7 +63,7 @@ namespace Automation.Plugins.Share.Sorting.Action
 
         private void CustomerQueryRefresh_Click(object sender, EventArgs e)
         {
-            (View as CustomerQueryView).Refresh(null);
+            (View as CustomerQueryView).Refresh();
         }
 
         private void Select_Click(object sender, EventArgs e)

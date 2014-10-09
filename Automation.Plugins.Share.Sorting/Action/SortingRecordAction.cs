@@ -39,13 +39,6 @@ namespace Automation.Plugins.Share.Sorting.Action
             (View as SortingRecordView).Refresh();
         }
 
-        private void SortingPackNoRefresh_Click(object sender, EventArgs e)
-        {
-         
-            (View as SortingRecordView).PackNofresh(PackNo);
-
-        }
-
         public void Print_Click(object sender, EventArgs e)
         {
             (View as SortingRecordView).Print();
