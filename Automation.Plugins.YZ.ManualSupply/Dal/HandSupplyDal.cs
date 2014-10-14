@@ -35,7 +35,7 @@ namespace Automation.Plugins.YZ.ManualSupply.Dal
         public int GetCurrentSupplyBatch()
         {
             var ra = TransactionScopeManager[Global.yzSorting_DB_NAME].NewRelationAccesser();
-            string sql1 = string.Format("select top 1 supply_batch from handle_supply where status='0' order by supply_id,supply_batch ");
+            string sql1 = string.Format("select top 1 supply_batch from handle_supply where status='0' order by supply_batch,supply_id");
             string sql2 = string.Format("select max(supply_batch) supply_batch from handle_supply ");
             DataTable dt1 = ra.DoQuery(sql1).Tables[0];
             //作业已都补完
