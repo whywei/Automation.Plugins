@@ -4,7 +4,7 @@
     <OPCGroups>
       <OPCGroup GroupName="THOKPLC" GroupString="[BH]" Prefix="." UpdateRate="2000">
         <!--请求处理任务到达-->
-        <OPCItem ItemName="n_I_Task_Arrive_Request" OPCItemName="DB104[?]" ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="120"/>
+        <OPCItem ItemName="n_I_Task_Arrive_Request" OPCItemName="DB104[?]" ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="2"/>
         <!--请求处理叠空托盘-->
         <OPCItem ItemName="n_I_Disassemble_Complete_Request" OPCItemName="DB112[?]" ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="31"/>
       </OPCGroup>
