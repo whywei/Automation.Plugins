@@ -34,7 +34,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WCS", "WCS", "{737DBA44-AAA
 		Setup\AutomationDesktop.Setup.AS.WCS\AutomationDesktop.ico = Setup\AutomationDesktop.Setup.AS.WCS\AutomationDesktop.ico
 		Setup\AutomationDesktop.Setup.AS.WCS\AutomationDesktop.jpg = Setup\AutomationDesktop.Setup.AS.WCS\AutomationDesktop.jpg
 		Setup\AutomationDesktop.Setup.AS.WCS\HomePanelImage.jpg = Setup\AutomationDesktop.Setup.AS.WCS\HomePanelImage.jpg
-		Setup\AutomationDesktop.Setup.AS.WCS\TransactionScopeFactoryProviderConfig.xml = Setup\AutomationDesktop.Setup.AS.WCS\TransactionScopeFactoryProviderConfig.xml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ManualSupply", "ManualSupply", "{00C2063D-8285-4528-BE60-30AD8D2F0C6A}"
