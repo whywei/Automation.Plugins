@@ -76,7 +76,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Forklift", "Forklift", "{CA
 		Setup\AutomationDesktop.Setup.AS.Forklift\AutomationDesktop.ico = Setup\AutomationDesktop.Setup.AS.Forklift\AutomationDesktop.ico
 		Setup\AutomationDesktop.Setup.AS.Forklift\AutomationDesktop.jpg = Setup\AutomationDesktop.Setup.AS.Forklift\AutomationDesktop.jpg
 		Setup\AutomationDesktop.Setup.AS.Forklift\HomePanelImage.jpg = Setup\AutomationDesktop.Setup.AS.Forklift\HomePanelImage.jpg
-		Setup\AutomationDesktop.Setup.AS.Forklift\TransactionScopeFactoryProviderConfig.xml = Setup\AutomationDesktop.Setup.AS.Forklift\TransactionScopeFactoryProviderConfig.xml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.Plugins.Share.Sorting", "Automation.Plugins.Share.Sorting\Automation.Plugins.Share.Sorting.csproj", "{85AAB825-C8B5-40F3-B648-54F9B6553B0F}"
