@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Automation.Plugins.Common.SRM</id>
-    <version>1.0.0.24</version>
+    <version>1.0.0.25</version>
     <title>Automation.Plugins.Common.SRM</title>
     <authors>thok</authors>
     <owners>thok</owners>
@@ -13,7 +13,7 @@
     <description>Automation.Plugins.Common.SRM</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2014</copyright>
-    <tags>Automation Common SRM</tags>
+    <tags>Automation Plugins Common SRM</tags>
     <dependencies>
       <dependency id="Automation.Core" version="1.0.0.21" />
       <dependency id="Automation.Plugins.MainPlugin" version="1.0.0.13" />
