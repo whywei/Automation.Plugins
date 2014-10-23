@@ -34,15 +34,8 @@
             this.propertyGridControl1 = new DevExpress.XtraVerticalGrid.PropertyGridControl();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.ForkliftName = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.Connection = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.ConnectState = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.HandShake = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.RunStatus = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.Local = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.ManualControl = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.Auto = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.Alarm = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.Warning = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.State = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.TaskStatus = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.CurrentTask = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -53,16 +46,6 @@
             this.TaskFinish = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.ForkliftStatus = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.Loaded = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.ForkZero = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.UpForkSWLeft = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.UpForkSWRight = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.ForkSWLeft = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.ForkSWRight = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.TravelPos = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.LiftPos = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.ForkPosSingle = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.ForkPosDouble = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.ForkType = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.propertyDescriptionControl1 = new DevExpress.XtraVerticalGrid.PropertyDescriptionControl();
             this.skinsRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -124,7 +107,6 @@
             this.repositoryItemCheckEdit1});
             this.propertyGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.ForkliftName,
-            this.Connection,
             this.RunStatus,
             this.TaskStatus,
             this.ForkliftStatus});
@@ -141,71 +123,20 @@
             // 
             this.ForkliftName.Name = "ForkliftName";
             this.ForkliftName.OptionsRow.AllowSize = false;
-            this.ForkliftName.Properties.Caption = "堆垛机名称";
+            this.ForkliftName.Properties.Caption = "叉车名称";
             this.ForkliftName.Properties.FieldName = "Name";
             this.ForkliftName.Properties.ReadOnly = true;
-            // 
-            // Connection
-            // 
-            this.Connection.ChildRows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
-            this.ConnectState,
-            this.HandShake});
-            this.Connection.Name = "Connection";
-            this.Connection.OptionsRow.AllowSize = false;
-            this.Connection.Properties.Caption = "连接情况";
-            this.Connection.Properties.FieldName = "isNull";
-            this.Connection.Properties.ReadOnly = true;
-            // 
-            // ConnectState
-            // 
-            this.ConnectState.Name = "ConnectState";
-            this.ConnectState.OptionsRow.AllowSize = false;
-            this.ConnectState.Properties.Caption = "是否连接";
-            this.ConnectState.Properties.FieldName = "ConnectState";
-            this.ConnectState.Properties.ReadOnly = true;
-            this.ConnectState.Properties.RowEdit = this.repositoryItemCheckEdit1;
-            // 
-            // HandShake
-            // 
-            this.HandShake.Name = "HandShake";
-            this.HandShake.OptionsRow.AllowSize = false;
-            this.HandShake.Properties.Caption = "握手信号";
-            this.HandShake.Properties.FieldName = "HandShake";
-            this.HandShake.Properties.ReadOnly = true;
-            this.HandShake.Properties.RowEdit = this.repositoryItemCheckEdit1;
             // 
             // RunStatus
             // 
             this.RunStatus.ChildRows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
-            this.Local,
-            this.ManualControl,
             this.Auto,
-            this.Alarm,
-            this.Warning,
             this.State});
             this.RunStatus.Name = "RunStatus";
             this.RunStatus.OptionsRow.AllowSize = false;
-            this.RunStatus.Properties.Caption = "巷道堆垛机运行状态";
+            this.RunStatus.Properties.Caption = "运行状态";
             this.RunStatus.Properties.FieldName = "isNull";
             this.RunStatus.Properties.ReadOnly = true;
-            // 
-            // Local
-            // 
-            this.Local.Name = "Local";
-            this.Local.OptionsRow.AllowSize = false;
-            this.Local.Properties.Caption = "就地模式";
-            this.Local.Properties.FieldName = "Local";
-            this.Local.Properties.ReadOnly = true;
-            this.Local.Properties.RowEdit = this.repositoryItemCheckEdit1;
-            // 
-            // ManualControl
-            // 
-            this.ManualControl.Name = "ManualControl";
-            this.ManualControl.OptionsRow.AllowSize = false;
-            this.ManualControl.Properties.Caption = "手持模式";
-            this.ManualControl.Properties.FieldName = "ManualControl";
-            this.ManualControl.Properties.ReadOnly = true;
-            this.ManualControl.Properties.RowEdit = this.repositoryItemCheckEdit1;
             // 
             // Auto
             // 
@@ -215,24 +146,6 @@
             this.Auto.Properties.FieldName = "Auto";
             this.Auto.Properties.ReadOnly = true;
             this.Auto.Properties.RowEdit = this.repositoryItemCheckEdit1;
-            // 
-            // Alarm
-            // 
-            this.Alarm.Name = "Alarm";
-            this.Alarm.OptionsRow.AllowSize = false;
-            this.Alarm.Properties.Caption = "是否报警";
-            this.Alarm.Properties.FieldName = "Alarm";
-            this.Alarm.Properties.ReadOnly = true;
-            this.Alarm.Properties.RowEdit = this.repositoryItemCheckEdit1;
-            // 
-            // Warning
-            // 
-            this.Warning.Name = "Warning";
-            this.Warning.OptionsRow.AllowSize = false;
-            this.Warning.Properties.Caption = "是否警告";
-            this.Warning.Properties.FieldName = "Warning";
-            this.Warning.Properties.ReadOnly = true;
-            this.Warning.Properties.RowEdit = this.repositoryItemCheckEdit1;
             // 
             // State
             // 
@@ -253,7 +166,7 @@
             this.TaskFinish});
             this.TaskStatus.Name = "TaskStatus";
             this.TaskStatus.OptionsRow.AllowSize = false;
-            this.TaskStatus.Properties.Caption = "任务交互状态";
+            this.TaskStatus.Properties.Caption = "任务状态";
             this.TaskStatus.Properties.FieldName = "isNull";
             this.TaskStatus.Properties.ReadOnly = true;
             // 
@@ -315,20 +228,10 @@
             // ForkliftStatus
             // 
             this.ForkliftStatus.ChildRows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
-            this.Loaded,
-            this.ForkZero,
-            this.UpForkSWLeft,
-            this.UpForkSWRight,
-            this.ForkSWLeft,
-            this.ForkSWRight,
-            this.TravelPos,
-            this.LiftPos,
-            this.ForkPosSingle,
-            this.ForkPosDouble,
-            this.ForkType});
+            this.Loaded});
             this.ForkliftStatus.Name = "ForkliftStatus";
             this.ForkliftStatus.OptionsRow.AllowSize = false;
-            this.ForkliftStatus.Properties.Caption = "堆垛机状态";
+            this.ForkliftStatus.Properties.Caption = "叉车状态";
             this.ForkliftStatus.Properties.FieldName = "isNull";
             this.ForkliftStatus.Properties.ReadOnly = true;
             // 
@@ -341,92 +244,6 @@
             this.Loaded.Properties.FieldName = "Loaded";
             this.Loaded.Properties.ReadOnly = true;
             this.Loaded.Properties.RowEdit = this.repositoryItemCheckEdit1;
-            // 
-            // ForkZero
-            // 
-            this.ForkZero.Height = 17;
-            this.ForkZero.Name = "ForkZero";
-            this.ForkZero.OptionsRow.AllowSize = false;
-            this.ForkZero.Properties.Caption = "货叉是否处于原点";
-            this.ForkZero.Properties.FieldName = "ForkZero";
-            this.ForkZero.Properties.ReadOnly = true;
-            this.ForkZero.Properties.RowEdit = this.repositoryItemCheckEdit1;
-            // 
-            // UpForkSWLeft
-            // 
-            this.UpForkSWLeft.Name = "UpForkSWLeft";
-            this.UpForkSWLeft.OptionsRow.AllowSize = false;
-            this.UpForkSWLeft.Properties.Caption = "上叉是否左复位";
-            this.UpForkSWLeft.Properties.FieldName = "UpForkSWLeft";
-            this.UpForkSWLeft.Properties.ReadOnly = true;
-            this.UpForkSWLeft.Properties.RowEdit = this.repositoryItemCheckEdit1;
-            // 
-            // UpForkSWRight
-            // 
-            this.UpForkSWRight.Name = "UpForkSWRight";
-            this.UpForkSWRight.OptionsRow.AllowSize = false;
-            this.UpForkSWRight.Properties.Caption = "上叉是否右复位";
-            this.UpForkSWRight.Properties.FieldName = "UpForkSWRight";
-            this.UpForkSWRight.Properties.ReadOnly = true;
-            this.UpForkSWRight.Properties.RowEdit = this.repositoryItemCheckEdit1;
-            // 
-            // ForkSWLeft
-            // 
-            this.ForkSWLeft.Name = "ForkSWLeft";
-            this.ForkSWLeft.OptionsRow.AllowSize = false;
-            this.ForkSWLeft.Properties.Caption = "货叉是否到达左侧限位";
-            this.ForkSWLeft.Properties.FieldName = "ForkSWLeft";
-            this.ForkSWLeft.Properties.ReadOnly = true;
-            this.ForkSWLeft.Properties.RowEdit = this.repositoryItemCheckEdit1;
-            // 
-            // ForkSWRight
-            // 
-            this.ForkSWRight.Name = "ForkSWRight";
-            this.ForkSWRight.OptionsRow.AllowSize = false;
-            this.ForkSWRight.Properties.Caption = "货叉是否到达右侧限位";
-            this.ForkSWRight.Properties.FieldName = "ForkSWRight";
-            this.ForkSWRight.Properties.ReadOnly = true;
-            this.ForkSWRight.Properties.RowEdit = this.repositoryItemCheckEdit1;
-            // 
-            // TravelPos
-            // 
-            this.TravelPos.Name = "TravelPos";
-            this.TravelPos.OptionsRow.AllowSize = false;
-            this.TravelPos.Properties.Caption = "当前行走位置";
-            this.TravelPos.Properties.FieldName = "TravelPos";
-            this.TravelPos.Properties.ReadOnly = true;
-            // 
-            // LiftPos
-            // 
-            this.LiftPos.Name = "LiftPos";
-            this.LiftPos.OptionsRow.AllowSize = false;
-            this.LiftPos.Properties.Caption = "当前升降位置";
-            this.LiftPos.Properties.FieldName = "LiftPos";
-            this.LiftPos.Properties.ReadOnly = true;
-            // 
-            // ForkPosSingle
-            // 
-            this.ForkPosSingle.Name = "ForkPosSingle";
-            this.ForkPosSingle.OptionsRow.AllowSize = false;
-            this.ForkPosSingle.Properties.Caption = "当前单伸货叉位置";
-            this.ForkPosSingle.Properties.FieldName = "ForkPosSingle";
-            this.ForkPosSingle.Properties.ReadOnly = true;
-            // 
-            // ForkPosDouble
-            // 
-            this.ForkPosDouble.Name = "ForkPosDouble";
-            this.ForkPosDouble.OptionsRow.AllowSize = false;
-            this.ForkPosDouble.Properties.Caption = "当前双伸货叉位置";
-            this.ForkPosDouble.Properties.FieldName = "ForkPosDouble";
-            this.ForkPosDouble.Properties.ReadOnly = true;
-            // 
-            // ForkType
-            // 
-            this.ForkType.Name = "ForkType";
-            this.ForkType.OptionsRow.AllowSize = false;
-            this.ForkType.Properties.Caption = "货叉类型";
-            this.ForkType.Properties.FieldName = "ForkType";
-            this.ForkType.Properties.ReadOnly = true;
             // 
             // propertyDescriptionControl1
             // 
@@ -468,16 +285,9 @@
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl2;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow Connection;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow CurrentTask;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow ConnectState;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow HandShake;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow RunStatus;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow Local;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow ManualControl;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow Auto;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow Alarm;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow Warning;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow State;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow TaskStatus;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow GetRequest;
@@ -487,16 +297,6 @@
         private DevExpress.XtraVerticalGrid.Rows.EditorRow TaskFinish;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow ForkliftStatus;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow Loaded;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow ForkZero;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow UpForkSWLeft;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow UpForkSWRight;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow ForkSWLeft;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow ForkSWRight;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow TravelPos;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow LiftPos;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow ForkPosSingle;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow ForkPosDouble;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow ForkType;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private DevExpress.XtraVerticalGrid.PropertyDescriptionControl propertyDescriptionControl1;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow ForkliftName;

@@ -85,6 +85,7 @@
             this.propertyGridControl1.Font = new System.Drawing.Font("Tahoma", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.propertyGridControl1.Location = new System.Drawing.Point(0, 0);
             this.propertyGridControl1.Name = "propertyGridControl1";
+            this.propertyGridControl1.OptionsBehavior.PropertySort = DevExpress.XtraVerticalGrid.PropertySort.NoSort;
             this.propertyGridControl1.RecordWidth = 142;
             this.propertyGridControl1.RowHeaderWidth = 58;
             this.propertyGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
@@ -100,7 +101,7 @@
             // 
             this.rProductName.Height = 60;
             this.rProductName.Name = "rProductName";
-            this.rProductName.Properties.Caption = "1卷烟名称";
+            this.rProductName.Properties.Caption = "卷烟名称";
             this.rProductName.Properties.FieldName = "ProductName";
             this.rProductName.Properties.ReadOnly = true;
             // 
@@ -108,7 +109,7 @@
             // 
             this.rOriginCellName.Height = 60;
             this.rOriginCellName.Name = "rOriginCellName";
-            this.rOriginCellName.Properties.Caption = "2起始位置";
+            this.rOriginCellName.Properties.Caption = "起始位置";
             this.rOriginCellName.Properties.FieldName = "OriginCellName";
             this.rOriginCellName.Properties.ReadOnly = true;
             // 
@@ -116,7 +117,7 @@
             // 
             this.rTargetCellName.Height = 60;
             this.rTargetCellName.Name = "rTargetCellName";
-            this.rTargetCellName.Properties.Caption = "3目标位置";
+            this.rTargetCellName.Properties.Caption = "目标位置";
             this.rTargetCellName.Properties.FieldName = "TargetCellName";
             this.rTargetCellName.Properties.ReadOnly = true;
             // 
@@ -124,7 +125,7 @@
             // 
             this.rPiecesQutity.Height = 60;
             this.rPiecesQutity.Name = "rPiecesQutity";
-            this.rPiecesQutity.Properties.Caption = "4数量(件)";
+            this.rPiecesQutity.Properties.Caption = "数量(件)";
             this.rPiecesQutity.Properties.FieldName = "PiecesQutity";
             this.rPiecesQutity.Properties.ReadOnly = true;
             // 
@@ -132,7 +133,7 @@
             // 
             this.rBarQuantity.Height = 60;
             this.rBarQuantity.Name = "rBarQuantity";
-            this.rBarQuantity.Properties.Caption = "5数量(条)";
+            this.rBarQuantity.Properties.Caption = "数量(条)";
             this.rBarQuantity.Properties.FieldName = "BarQuantity";
             this.rBarQuantity.Properties.ReadOnly = true;
             // 
