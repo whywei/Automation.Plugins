@@ -60,7 +60,6 @@ namespace Automation.Plugins.Common.SRM.Action
         private void dropItem_SelectedValueChanged(object sender, SelectedValueChangedEventArgs e)
         {
             SRMManager.SelectSRM(e.SelectedItem.ToString());
-            Ops.GetView<SRMManagerView>().SRM = SRMManager.ActiveSRM;
         }
 
         private void btnAuto_Click(object sender, EventArgs e)
@@ -114,7 +113,6 @@ namespace Automation.Plugins.Common.SRM.Action
                 btnAuto.Enabled = !SRMManager.ActiveSRM.Auto;
                 btnHand.Enabled = SRMManager.ActiveSRM.Auto;
             }
-            Ops.GetView<SRMManagerView>().SRM = SRMManager.ActiveSRM;
         }
 
         [Export("BeforeStopping", typeof(Func<bool>))]

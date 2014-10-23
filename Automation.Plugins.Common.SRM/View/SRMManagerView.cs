@@ -9,25 +9,10 @@ namespace Automation.Plugins.Common.SRM.View
 {
     public class SRMManagerView : AbstractView, IPartImportsSatisfiedNotification
     {
-        private const string memoryServiceName = "MemoryPermanentSingleDataService";
+        [Import]
+        public SRMManager SRMManager { get; set; }
 
-        private ISRM srm = null;
-        public ISRM SRM
-        {
-            get
-            {
-                return srm;
-            }
-            set
-            {
-                srm = value;
-                var control = this.InnerControl as SRMControl;
-                if (control != null)
-                {
-                    control.SRM = value;
-                }
-            }
-        }
+        private SRMControl srmControl = null;
 
         public override void Initialize()
         {
@@ -38,7 +23,8 @@ namespace Automation.Plugins.Common.SRM.View
         {
             this.Key = "kSRM";
             this.Caption = "堆垛机";
-            this.InnerControl = new SRMControl();
+            srmControl = new SRMControl();
+            this.InnerControl = srmControl; 
             this.Dock = DockStyle.Fill;
             this.SmallImage = Resources.info_rhombus_32x32;
             this.App.DockManager.PanelClosed += new EventHandler<DotSpatial.Controls.Docking.DockablePanelEventArgs>(DockManager_PanelClosed);
@@ -78,7 +64,10 @@ namespace Automation.Plugins.Common.SRM.View
 
         private void Refresh()
         {
-
+            lock (this)
+            {
+                srmControl.SRM = SRMManager.ActiveSRM;
+            }
         }
     }
 }
