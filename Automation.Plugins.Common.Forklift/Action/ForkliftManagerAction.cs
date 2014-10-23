@@ -62,7 +62,6 @@ namespace Automation.Plugins.Common.Forklift.Action
                 { SmallImage = Resources.cannel_16x16, LargeImage = Resources.cannel_32x32 });
 
             ForkliftManager.SelectForklift(Properties.Settings.Default.ForkliftName);
-            Ops.GetView<ForkliftManagerView>().Forklift = ForkliftManager.ActiveForklift;
         }
 
         public override void RefreshAction()
@@ -96,7 +95,6 @@ namespace Automation.Plugins.Common.Forklift.Action
                 btnPutRequest.Enabled = false;
                 btnPutFinish.Enabled = false;
             }
-            Ops.GetView<ForkliftManagerView>().Forklift = ForkliftManager.ActiveForklift;
         }
     }
 }

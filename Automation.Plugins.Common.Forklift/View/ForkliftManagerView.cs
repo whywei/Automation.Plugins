@@ -8,25 +8,10 @@ namespace Automation.Plugins.Common.Forklift.View
 {
     public class ForkliftManagerView : AbstractView, IPartImportsSatisfiedNotification
     {
-        private const string memoryServiceName = "MemoryPermanentSingleDataService";
+        [Import]
+        public ForkliftManager ForkliftManager { get; set; }
 
-        private IForklift forklift = null;
-        public IForklift Forklift
-        {
-            get
-            {
-                return forklift;
-            }
-            set
-            {
-                forklift = value;
-                var control = this.InnerControl as ForkliftPanel;
-                if (control != null)
-                {
-                    control.Forklift = value;
-                }
-            }
-        }
+        private ForkliftPanel forkliftPanel = null;
 
         public override void Initialize()
         {
@@ -37,9 +22,9 @@ namespace Automation.Plugins.Common.Forklift.View
         {
             this.Key = "kForklift";
             this.Caption = "车载";
-            this.InnerControl = new ForkliftPanel();
+            forkliftPanel = new ForkliftPanel();
+            this.InnerControl = forkliftPanel;
             this.Dock = DockStyle.Fill;
-
             this.App.DockManager.PanelClosed += new EventHandler<DotSpatial.Controls.Docking.DockablePanelEventArgs>(DockManager_PanelClosed);
             this.App.DockManager.ActivePanelChanged += new EventHandler<DotSpatial.Controls.Docking.DockablePanelEventArgs>(DockManager_ActivePanelChanged);
         }
@@ -77,7 +62,10 @@ namespace Automation.Plugins.Common.Forklift.View
 
         private void Refresh()
         {
-
+            lock (this)
+            {
+                forkliftPanel.Forklift = ForkliftManager.ActiveForklift;
+            }            
         }
     }
 }
