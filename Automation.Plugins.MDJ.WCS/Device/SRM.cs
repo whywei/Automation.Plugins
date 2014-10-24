@@ -147,7 +147,8 @@ namespace Automation.Plugins.MDJ.WCS.Device
             {
                 if (value && CurrentTask != null)
                 {
-                    if (CurrentTask.TravelPos2 > TravelPos - 10
+                    if (CurrentTask.GetFinish 
+                            && CurrentTask.TravelPos2 > TravelPos - 10
                             && CurrentTask.TravelPos2 < TravelPos + 10
                             && CurrentTask.RealLiftPos2 + 80 > LiftPos - 30
                             && CurrentTask.RealLiftPos2 + 80 < LiftPos + 30
