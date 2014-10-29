@@ -3,7 +3,7 @@
   <OPCServer OPCServerHostIP="192.168.1.242" OPCServerHostName="" OPCServerName="Matrikon.OPC.Simulation.1" IsTest="false">
     <OPCGroups>
       <OPCGroup GroupName="THOKPLC" GroupString="S7:[OPCNAME]" UpdateRate="1000" Prefix=".">
-        <OPCItem ItemName="I_Test_1" OPCItemName="DB1,INT0,2" />
+        <OPCItem ItemName="I_Test_1" OPCItemName="DB1,INT0,2" ReadFromCache="true"/>
         <OPCItem ItemName="I_Test_2" OPCItemName="DB1,INT1,2" />
       </OPCGroup>
     </OPCGroups>
