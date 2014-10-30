@@ -3,7 +3,7 @@
   <OPCServer OPCServerHostIP="192.168.1.242" OPCServerHostName="" OPCServerName="Matrikon.OPC.Simulation.1" IsTest="false">
     <OPCGroups>
       <OPCGroup GroupName="THOKPLC" GroupString="S7:[OPCNAME]" UpdateRate="1000" Prefix=".">
-        <OPCItem ItemName="I_Test_1" OPCItemName="I_Test_1[?].DATA[!]" ReadFromCache="true"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="2" SunArrayLength="0" IsStringArray="true"/>
+        <OPCItem ItemName="I_Test_1" OPCItemName="I_Test_1[?].DATA[!]" ReadFromCache="true" UseMultiThreading = "true" ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="2" SunArrayLength="0" IsStringArray="true" Encoding = "UTF8"/>
         <OPCItem ItemName="I_Test_2" OPCItemName="I_Test_2[?]"  ArrayStartIndex="0" ArrayIndexInterval="1" ArrayLength="2"/>
       </OPCGroup>
     </OPCGroups>
