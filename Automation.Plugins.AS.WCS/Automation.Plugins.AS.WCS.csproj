@@ -118,6 +118,8 @@
   <ItemGroup>
     <Compile Include="Action\FileMenuAction.cs" />
     <Compile Include="Action\HelpMenuAction.cs" />
+    <Compile Include="Dal\AlarmInfoDal.cs" />
+    <Compile Include="FaultAlarm\SRMFaultAlarm.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Options\Controls\SystemParameterPanel.cs">
       <SubType>UserControl</SubType>
@@ -298,14 +300,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Options\Controls\SystemParameterPanel.resx">
       <DependentUpon>SystemParameterPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="FaultAlarm\" />
     <Folder Include="View\Controls\" />
     <Folder Include="View\Dialogs\" />
     <Folder Include="View\Forms\" />
