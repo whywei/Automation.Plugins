@@ -371,6 +371,7 @@ namespace Automation.Plugins.Common.SRM
                     && CurrentTask.TravelPos2 < TravelPos + 10
                     && CurrentTask.RealLiftPos2 > LiftPos - 10
                     && CurrentTask.RealLiftPos2 < LiftPos + 10
+                    && PutCompleteIsHandle()//PLC将完成信息移走后再更新任务状态
                     && FinishCurrentTask())
                 {
                     CurrentTask = null;
@@ -819,6 +820,16 @@ namespace Automation.Plugins.Common.SRM
             }
 
             return string.Format("SRM：{0}", Name);
+        }
+
+        public bool PutCompleteIsHandle()
+        {
+            int[] putCompleteItem = Ops.ReadArray<int>(PartnerName, "n_O_Put_Complete");
+            if (putCompleteItem.Length > 0 && putCompleteItem[putCompleteItem.Length - 1] == 0)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

@@ -218,6 +218,7 @@ namespace Automation.Plugins.Common.Forklift
                 if (CurrentTask != null && TaskFinish && Auto 
                     && CurrentTask.GetFinish
                     && CurrentTask.PutFinish
+                    && PutCompleteIsHandle()//PLC将完成信息移走后在更新任务状态
                     && FinishCurrentTask())
                 {
                     CurrentTask = null;
@@ -498,6 +499,16 @@ namespace Automation.Plugins.Common.Forklift
             }
 
             return string.Format("Forklift：{0}", Name);
+        }
+
+        public bool PutCompleteIsHandle()
+        {
+            int[] putCompleteItem = Ops.ReadArray<int>(PartnerName, "n_O_Put_Complete");
+            if (putCompleteItem.Length > 0 && putCompleteItem[putCompleteItem.Length - 1] == 0)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
