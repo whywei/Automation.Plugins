@@ -44,7 +44,7 @@ namespace Automation.Plugins.YZ.Sorting.Options
             {
                 XElement doc = XElement.Load(@"TransactionScopeFactoryProviderConfig.xml");
                 IList<XElement> el = (from d in doc.Descendants("key") where d.Attribute("name").Value == Global.yzSorting_DB_NAME select d).ToList();
-                if (el != null)
+                if (el.Count > 0)
                 {
                     var node = (from e in el[0].Elements("DataConfiguration")
                                 select new
@@ -54,7 +54,7 @@ namespace Automation.Plugins.YZ.Sorting.Options
                                     User = e.Element("User").Attribute("value").Value,
                                     Password = e.Element("Password").Attribute("value").Value
                                 }).ToList();
-                    if (node != null)
+                    if (node.Count > 0)
                     {
                         connectionModel = new ConnectionModel();
                         connectionModel.IP = node[0].IP;
@@ -99,7 +99,7 @@ namespace Automation.Plugins.YZ.Sorting.Options
                 {
                     XElement doc = XElement.Load(@"TransactionScopeFactoryProviderConfig.xml");
                     IList<XElement> el = (from d in doc.Descendants("key") where d.Attribute("name").Value == Global.yzSorting_DB_NAME select d).ToList();
-                    if (el != null)
+                    if (el.Count > 0)
                     {
                         var node = (from item in el[0].Elements("DataConfiguration")
                                     select new
@@ -109,7 +109,7 @@ namespace Automation.Plugins.YZ.Sorting.Options
                                         User = item.Element("User"),
                                         Password = item.Element("Password")
                                     }).ToList();
-                        if (node != null)
+                        if (node.Count > 0)
                         {
                             node[0].IP.Attribute("value").Value = connectionModel.IP.Trim();
                             node[0].DataBaseName.Attribute("value").Value = connectionModel.DataBaseName.Trim();

@@ -32,7 +32,7 @@ namespace Automation.Plugins.MDJ.WCS.Options
         {
             XElement doc = XElement.Load(@"TransactionScopeFactoryProviderConfig.xml");
             IList<XElement> el = (from d in doc.Descendants("key") where d.Attribute("name").Value ==Global.THOK_WCS_DB_NAME select d).ToList();
-            if (el != null)
+            if (el.Count > 0)
             {
                 var node = (from e in el[0].Elements("DataConfiguration") 
                             select new { 
@@ -41,7 +41,7 @@ namespace Automation.Plugins.MDJ.WCS.Options
                                 User = e.Element("User"),
                                 Password = e.Element("Password")
                             }).ToList();
-                if(node!=null)
+                if (node.Count > 0)
                 {
                     ((WCSDatabaseConnectionPanel)control).txtIP.Text = node[0].IP.Attribute("value").Value;
                     ((WCSDatabaseConnectionPanel)control).txtDatabaseName.Text = node[0].DataBaseName.Attribute("value").Value;
@@ -59,7 +59,7 @@ namespace Automation.Plugins.MDJ.WCS.Options
         {
             XElement doc = XElement.Load(@"TransactionScopeFactoryProviderConfig.xml");
             IList<XElement> el = (from d in doc.Descendants("key") where d.Attribute("name").Value == Global.THOK_WCS_DB_NAME select d).ToList();
-            if (el != null)
+            if (el.Count > 0)
             {
                 var node = (from item in el[0].Elements("DataConfiguration")
                             select new
@@ -69,7 +69,7 @@ namespace Automation.Plugins.MDJ.WCS.Options
                                 User = item.Element("User"),
                                 Password = item.Element("Password")
                             }).ToList();
-                if (node != null)
+                if (node.Count > 0)
                 {
                     node[0].IP.Attribute("value").Value = ((WCSDatabaseConnectionPanel)control).txtIP.Text.Trim();
                     node[0].DataBaseName.Attribute("value").Value = ((WCSDatabaseConnectionPanel)control).txtDatabaseName.Text;
