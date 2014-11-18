@@ -81,8 +81,9 @@
   <PropertyGroup />
   <PropertyGroup />
   <PropertyGroup />
+  <PropertyGroup />
   <PropertyGroup>
-    <NoWin32Manifest>true</NoWin32Manifest>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Automation.Base, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -237,6 +238,7 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="app.manifest" />
     <None Include="EQ2008_Dll_Set.ini">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
