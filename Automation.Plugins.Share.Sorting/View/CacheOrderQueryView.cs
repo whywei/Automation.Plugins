@@ -60,30 +60,27 @@ namespace Automation.Plugins.Share.Sorting.View
         public void Refresh(string position)
         {
             SortingDal sortingDal = new SortingDal();
-            string packNo="0";
-            Array array = null;
+            int sortNo = 0;
             switch (position)
             {
-                case "P":
-                    object obj = AutomationContext.Read(Global.PLC_SERVICE_NAME, "Barcode_Printing_Order_Information");
-                    array = (Array)obj;
-                    if (array.Length == 2)
+                case "P"://打码缓存查询
+                    int[] obj = Ops.ReadArray<int>(Global.PLC_SERVICE_NAME, "Barcode_Printing_Order_Information");
+                    if (obj.Length == 2)
                     {
-                        string sortNo = array.GetValue(0).ToString();
-                        packNo = sortingDal.FindPackNoBySortNo(sortNo);
+                        sortNo = sortingDal.FindPackNoBySortNo(obj[0], obj[1]);
                     }
                     break;
-                case "S":
-                    obj = AutomationContext.Read(Global.PLC_SERVICE_NAME, "Swing_Order_Information");
-                    array = (Array)obj;
-                    if (array.Length == 2)
-                    {
-                        string sortNo = array.GetValue(0).ToString();
-                        packNo = sortingDal.FindPackNoBySortNo(sortNo);
-                    }
-                    break;
+                //case "S":
+                //    obj = AutomationContext.Read(Global.PLC_SERVICE_NAME, "Swing_Order_Information");
+                //    array = (Array)obj;
+                //    if (array.Length == 2)
+                //    {
+                //        string sortNo = array.GetValue(0).ToString();
+                //        packNo = sortingDal.FindPackNoBySortNo(sortNo);
+                //    }
+                //    break;
             }
-            this.gridControl.DataSource = sortingDal.FindSortingForCacheQuery(packNo);
+            this.gridControl.DataSource = sortingDal.FindSortingForCacheQuery(sortNo);
         }
 
         public void Print()

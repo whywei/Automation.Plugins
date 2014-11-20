@@ -99,24 +99,24 @@ namespace Automation.Plugins.Share.Sorting.Dal
             return ra.DoQuery(string.Format(sql, sortNo, groupNo, quantity)).Tables[0];
         }
 
-        public DataTable FindSortingForCacheQuery(string packNo)
+        public DataTable FindSortingForCacheQuery(int sortNo)
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
-            string sql = @"select sort_no,a.pack_no,b.customer_name,a.product_name,1 quantity,b.quantity bag_quantity,c.channel_name
+            string sql = @"select top 200 sort_no,a.pack_no,b.customer_name,a.product_name,1 quantity,b.quantity bag_quantity,c.channel_name
                         ,case a.group_no when '1' then 'A线' else 'B线' end group_no,a.remain_quantity,a.export_no
                         from sorting a left join sort_order_allot_master b on a.pack_no=b.pack_no
                         left join channel_allot c on a.channel_code=c.channel_code and a.product_code=c.product_code
-                        where a.pack_no={0}
-                        order by a.pack_no,a.sort_no";
-            return ra.DoQuery(string.Format(sql, packNo)).Tables[0];
+                        where a.sort_no<={0}
+                        order by a.sort_no desc";
+            return ra.DoQuery(string.Format(sql, sortNo)).Tables[0];
         }
 
-        public string FindPackNoBySortNo(string sortNo)
+        public int FindPackNoBySortNo(int channelAddress, int remainQuantity)
         {
             var ra = TransactionScopeManager[Global.SORTING_DATABASE_NAME].NewRelationAccesser();
-            string sql = @"select distinct pack_no from sorting where sort_no={0}";
-            object obj = ra.DoScalar(string.Format(sql, sortNo));
-            return obj == null ? "0" : obj.ToString();
+            string sql = @"select isnull(sort_no,0) from sorting where channel_address={0} and remain_quantity={1}";
+            object obj = ra.DoScalar(string.Format(sql, channelAddress, remainQuantity));
+            return  Convert.ToInt32(obj);
         }
 
         public int FindIsSortMaxPackNo(int groupNo)
