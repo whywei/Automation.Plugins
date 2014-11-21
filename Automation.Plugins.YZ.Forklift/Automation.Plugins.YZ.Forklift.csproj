@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{EF1C4357-1FF5-4893-AB4C-FCE0C4CF2870}</ProjectGuid>
+    <ProjectGuid>{7FA78D62-2470-469A-97F6-5DF2C95E2E62}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Automation.Plugins.YB.ManualSupply</RootNamespace>
-    <AssemblyName>Automation.Plugins.YB.ManualSupply</AssemblyName>
+    <RootNamespace>Automation.Plugins.YZ.Forklift</RootNamespace>
+    <AssemblyName>Automation.Plugins.YZ.Forklift</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
